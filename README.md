@@ -315,10 +315,22 @@ python3 scripts/build_real_data.py
 # 重启开发服务器生效
 ```
 
+### 提交前自动化冒烟测试
+
+**每次提交前必须通过：** 这条测试能捕获 `buildOption is not defined` 之类的运行时错误，无需打开浏览器。
+
+```bash
+node tests/smoke.test.js
+# 期望输出: ✅ All 5 views initialized and destroyed successfully
+```
+
+如果测试失败（exit code ≠ 0），说明某个视图 `init()` 抛出了异常——先修再提交。
+
 ### 代码质量检查清单
 
 | 检查项 | 标准 |
 |--------|------|
+| 冒烟测试 | `node tests/smoke.test.js` 是否全部通过？ |
 | 视图接口 | 是否导出 `init(dom, store, data)` → `{ render, resize, destroy }`？ |
 | 数据流 | 是否从 `state` 读取筛选条件，而非视图内部缓存状态？ |
 | Store 交互 | 用户交互是否走 `store.dispatch(action)`，而非直接修改 DOM？ |
@@ -333,7 +345,7 @@ python3 scripts/build_real_data.py
    - `feat: add GeoJSON choropleth support`
    - `fix: prevent dataZoom dispatch loop`
    - `docs: add case study`
-3. **提交前检查**：开发服务器正常启动 + 所有视图无 Console 报错 + 联动不受影响
+3. **提交前检查**：`node tests/smoke.test.js` 通过 + 开发服务器正常启动 + 所有视图无 Console 报错 + 联动不受影响
 
 ---
 

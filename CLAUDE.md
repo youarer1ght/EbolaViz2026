@@ -21,7 +21,8 @@ conda activate EBOLAVIZ                           # Activate Python env
 python3 scripts/build_real_data.py                # Regenerate analysis datasets
 python3 scripts/generate_mock_data.py             # Generate synthetic dev data (fallback)
 
-# Testing (manual — visual system, no automated tests)
+# Testing
+node tests/smoke.test.js                           # Automated smoke test: all 5 views init + destroy OK
 # Open http://localhost:8080 and verify:
 #   - All 5 views render
 #   - dataZoom brush → other views update

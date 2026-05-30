@@ -1,0 +1,78 @@
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif; background: #f5f7fa; color: #333; overflow: hidden; }
+
+/* ── CSS Grid Layout ── */
+#app {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  grid-template-rows: auto 50fr 30fr 20fr;
+  grid-template-areas:
+    "titlebar  titlebar"
+    "heatmap   timeline"
+    "parallel  parallel"
+    "policy    detail";
+  height: 100vh;
+  gap: 4px;
+  padding: 4px;
+}
+
+/* ── Title Bar ── */
+#titlebar {
+  grid-area: titlebar;
+  display: flex; align-items: center; gap: 16px;
+  padding: 6px 16px; background: #fff; border-bottom: 2px solid #e0e0e0;
+}
+#titlebar h1 { font-size: 1.1rem; white-space: nowrap; }
+#controls { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+#controls button {
+  padding: 4px 12px; border: 1px solid #ccc; border-radius: 4px;
+  background: #fff; cursor: pointer; font-size: 0.8rem;
+}
+#controls button:hover { background: #e8e8e8; }
+#controls button:disabled { opacity: 0.4; cursor: default; }
+#current-date { font-weight: bold; color: #d32f2f; min-width: 120px; font-size: 0.85rem; }
+
+/* ── Grid Areas ── */
+#view-heatmap  { grid-area: heatmap; }
+#view-timeline { grid-area: timeline; }
+#view-parallel { grid-area: parallel; }
+#view-policy   { grid-area: policy; }
+#view-detail   { grid-area: detail; }
+
+/* ── Chart Containers ── */
+.chart-container {
+  background: #fff; border-radius: 4px; padding: 4px 6px;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.chart-container h2 {
+  font-size: 0.8rem; padding: 0 4px 2px; color: #555; flex-shrink: 0;
+}
+.chart { flex: 1; min-height: 0; }
+
+/* ── Detail Panel ── */
+#chart-detail { overflow-y: auto; padding: 8px; font-size: 0.8rem; line-height: 1.7; }
+#chart-detail .stat-value { font-weight: bold; font-size: 1.05rem; }
+#chart-detail .stat-label { color: #888; }
+#chart-detail table { width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-top: 8px; }
+#chart-detail th, #chart-detail td { padding: 2px 6px; border-bottom: 1px solid #f0f0f0; }
+#chart-detail th { text-align: left; color: #666; font-weight: 600; }
+#chart-detail td { text-align: right; }
+#chart-detail td:first-child { text-align: left; }
+#chart-detail .region-high { color: #d32f2f; font-weight: bold; }
+
+/* ── Policy type colors ── */
+.policy-lockdown { color: #d32f2f; }
+.policy-vaccination { color: #2e7d32; }
+.policy-aid { color: #1565c0; }
+.policy-surveillance { color: #f57c00; }
+.policy-health_response { color: #7b1fa2; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 35fr 25fr 25fr 25fr 25fr;
+    grid-template-areas: "titlebar" "heatmap" "timeline" "parallel" "policy" "detail";
+  }
+}

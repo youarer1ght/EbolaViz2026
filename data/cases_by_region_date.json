@@ -1,0 +1,167 @@
+[
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Mongbalu",
+    "province": "Ituri",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 302,
+    "suspected_deaths": 74,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Nyakunde",
+    "province": "Ituri",
+    "new_cases": 4,
+    "new_deaths": 0,
+    "suspected_cases": 14,
+    "suspected_deaths": 1,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Rwampara",
+    "province": "Ituri",
+    "new_cases": 19,
+    "new_deaths": 3,
+    "suspected_cases": 136,
+    "suspected_deaths": 38,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Bunia",
+    "province": "Ituri",
+    "new_cases": 6,
+    "new_deaths": 1,
+    "suspected_cases": 61,
+    "suspected_deaths": 18,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Butembo",
+    "province": "Nord-Kivu",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 1,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Katwa",
+    "province": "Nord-Kivu",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 1,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-18",
+    "country": "COD",
+    "region": "Goma",
+    "province": "Nord-Kivu",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 1,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Mongbalu",
+    "province": "Ituri",
+    "new_cases": 8,
+    "new_deaths": 2,
+    "suspected_cases": 415,
+    "suspected_deaths": 98,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Nyakunde",
+    "province": "Ituri",
+    "new_cases": 7,
+    "new_deaths": 1,
+    "suspected_cases": 22,
+    "suspected_deaths": 2,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Rwampara",
+    "province": "Ituri",
+    "new_cases": 31,
+    "new_deaths": 5,
+    "suspected_cases": 178,
+    "suspected_deaths": 52,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Bunia",
+    "province": "Ituri",
+    "new_cases": 9,
+    "new_deaths": 2,
+    "suspected_cases": 89,
+    "suspected_deaths": 24,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Butembo",
+    "province": "Nord-Kivu",
+    "new_cases": 2,
+    "new_deaths": 0,
+    "suspected_cases": 3,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Katwa",
+    "province": "Nord-Kivu",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 2,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "COD",
+    "region": "Goma",
+    "province": "Nord-Kivu",
+    "new_cases": 2,
+    "new_deaths": 0,
+    "suspected_cases": 3,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "UGA",
+    "region": "Kampala",
+    "province": "Kampala",
+    "new_cases": 7,
+    "new_deaths": 1,
+    "suspected_cases": 0,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  }
+]

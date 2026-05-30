@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 年埃博拉疫情时空可视化分析系统</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Title Bar -->
+    <header id="titlebar">
+      <h1>🦠 2026 年埃博拉疫情时空可视化分析系统</h1>
+      <div id="controls">
+        <button id="btn-play" title="播放动画">▶ 播放</button>
+        <button id="btn-pause" disabled title="暂停">⏸ 暂停</button>
+        <button id="btn-reset" title="重置所有筛选">↺ 重置</button>
+        <span id="current-date"></span>
+        <span id="data-source" style="font-size:0.7rem;color:#999;margin-left:8px;"></span>
+      </div>
+    </header>
+
+    <!-- View 1: Spatiotemporal Heatmap -->
+    <section id="view-heatmap" class="chart-container">
+      <h2>① 疫情时空热力图</h2>
+      <div id="chart-heatmap" class="chart"></div>
+    </section>
+
+    <!-- View 2: Timeline -->
+    <section id="view-timeline" class="chart-container">
+      <h2>② 时序趋势图 <span style="font-size:0.7rem;color:#999;">(dataZoom 刷选时间段)</span></h2>
+      <div id="chart-timeline" class="chart"></div>
+    </section>
+
+    <!-- View 3: Parallel Coordinates -->
+    <section id="view-parallel" class="chart-container">
+      <h2>③ 多因素关联分析（平行坐标图）</h2>
+      <div id="chart-parallel" class="chart"></div>
+    </section>
+
+    <!-- View 4: Policy Timeline -->
+    <section id="view-policy" class="chart-container">
+      <h2>④ 防控政策时间轴</h2>
+      <div id="chart-policy" class="chart"></div>
+    </section>
+
+    <!-- View 5: Detail Panel -->
+    <section id="view-detail" class="chart-container">
+      <h2>⑤ 详情与统计面板</h2>
+      <div id="chart-detail" class="chart"></div>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

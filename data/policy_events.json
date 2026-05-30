@@ -1,0 +1,162 @@
+[
+  {
+    "id": "P001",
+    "date": "2026-03-15",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Mongbalu",
+    "title": "First unusual deaths reported in Mongbwalu",
+    "description": "Healthcare worker deaths from hemorrhagic illness noted retrospectively. Suspected index case onset.",
+    "source": "WHO DON 605"
+  },
+  {
+    "id": "P002",
+    "date": "2026-05-05",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Mongbalu",
+    "title": "WHO alerted to high-mortality outbreak",
+    "description": "Unknown illness with high mortality reported in Mongbwalu health zone, Ituri Province.",
+    "source": "WHO DON 605"
+  },
+  {
+    "id": "P003",
+    "date": "2026-05-13",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Mongbalu",
+    "title": "Bundibugyo virus laboratory confirmed",
+    "description": "8 of 13 blood samples positive for Bundibugyo ebolavirus at INRB Kinshasa.",
+    "source": "WHO DON 605"
+  },
+  {
+    "id": "P004",
+    "date": "2026-05-15",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "DRC declares Ebola outbreak",
+    "description": "Government officially declares Bundibugyo virus disease outbreak. Uganda also declares outbreak same day.",
+    "source": "WHO AFRO"
+  },
+  {
+    "id": "P005",
+    "date": "2026-05-16",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Kinshasa",
+    "title": "WHO declares PHEIC",
+    "description": "WHO Director-General declares Public Health Emergency of International Concern. No approved vaccines exist for Bundibugyo strain.",
+    "source": "WHO PHEIC Declaration"
+  },
+  {
+    "id": "P006",
+    "date": "2026-05-17",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Goma",
+    "title": "Case confirmed in Kinshasa",
+    "description": "Confirmed case detected in capital; US physician evacuated to Germany after testing positive.",
+    "source": "WHO DON 605 / JAMA"
+  },
+  {
+    "id": "P007",
+    "date": "2026-05-18",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "WHO SitRep 01 published",
+    "description": "First weekly external situation report: 8 confirmed, 393 suspected, 105 deaths across 7 health zones.",
+    "source": "WHO AFRO SitRep 01"
+  },
+  {
+    "id": "P008",
+    "date": "2026-05-19",
+    "type": "aid",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "US commits $13 million in aid",
+    "description": "US State Department announces emergency funding. CDC deploys 25 staff already in DRC.",
+    "source": "US State Department / Christian Post"
+  },
+  {
+    "id": "P009",
+    "date": "2026-05-20",
+    "type": "aid",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "UK allocates £20 million",
+    "description": "UK government announces emergency aid package for Ebola response in DRC and Uganda.",
+    "source": "UK Health Security Agency"
+  },
+  {
+    "id": "P010",
+    "date": "2026-05-22",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "WHO upgrades DRC risk to Very High",
+    "description": "National risk level raised from High to Very High. 13 health zones affected across Ituri, Nord-Kivu, Sud-Kivu.",
+    "source": "WHO Risk Assessment"
+  },
+  {
+    "id": "P011",
+    "date": "2026-05-24",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "WHO SitRep 02 published",
+    "description": "Cases rise to 105 confirmed, 495 suspected, 148 deaths. Uganda reports 7 confirmed cases, 1 death.",
+    "source": "WHO AFRO SitRep 02"
+  },
+  {
+    "id": "P012",
+    "date": "2026-05-26",
+    "type": "lockdown",
+    "country": "COD",
+    "region": "Nord-Kivu",
+    "title": "CDC imposes US travel restrictions",
+    "description": "30-day entry ban on travelers from DRC, Uganda, South Sudan; exemptions for US citizens/permanent residents.",
+    "source": "CDC / USA Today"
+  },
+  {
+    "id": "P013",
+    "date": "2026-05-27",
+    "type": "lockdown",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "Uganda closes DRC border",
+    "description": "National Task Force orders immediate temporary border closure (4 weeks). Exemptions for Ebola response teams, food/cargo. Mandatory 21-day quarantine for entrants.",
+    "source": "ReliefWeb / Uganda National Task Force"
+  },
+  {
+    "id": "P014",
+    "date": "2026-05-27",
+    "type": "aid",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "UN launches $15.8M emergency appeal",
+    "description": "Three-month plan (May-August). $3.1M mobilized, $12.7M gap. Focus: case management, IPC, surveillance, WASH, refugees.",
+    "source": "ReliefWeb UN Emergency Appeal"
+  },
+  {
+    "id": "P015",
+    "date": "2026-05-28",
+    "type": "lockdown",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "Uganda tightens cross-border controls",
+    "description": "Schools in border districts ordered to enforce screening; media mandated 30+ min daily Ebola sensitization.",
+    "source": "Uganda Press & Publications Centre"
+  },
+  {
+    "id": "P016",
+    "date": "2026-05-29",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "Cases near 1,000 as containment efforts intensify",
+    "description": "DRC reports 977+ suspected cases, 228+ suspected deaths (CFR ~14.3%). Four treatment centers attacked in Ituri.",
+    "source": "One Health Society / Reuters"
+  }
+]

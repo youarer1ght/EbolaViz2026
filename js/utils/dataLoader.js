@@ -9,12 +9,12 @@
  */
 
 const DATA_PATHS = {
-  cases:        'data/cases_by_region_date.json',
-  demographics: 'data/demographics.json',
-  policies:     'data/policy_events.json',
-  borderPoE:    'data/border_poe.json',
-  geoDRC:       'data/geo/DRC.geojson',       // Placeholder — add real GeoJSON
-  geoUGA:       'data/geo/UGA.geojson',       // Placeholder — add real GeoJSON
+  cases:               'data/cases_by_region_date.json',
+  demographics:        'data/demographics.json',
+  policies:            'data/policy_events.json',
+  borderPoE:           'data/border_poe.json',
+  geoOutbreak:         'data/geo/outbreak_region.geojson',  // Merged DRC+UGA ADM1
+  ugaDistrictRegion:   'data/geo/uga_district_region_map.json',
 };
 
 /** Load all data files. Returns { cases, demographics, policies, borderPoE, geoDRC, geoUGA }. */
@@ -114,6 +114,43 @@ export function summarizeByRegion(cases) {
   for (const r of Object.keys(summary)) {
     summary[r].dateCount = summary[r].dates.size;
     delete summary[r].dates;
+  }
+  return summary;
+}
+
+/**
+ * Aggregate cases to ADM1 province level for choropleth map encoding.
+ *
+ * DRC health zones already carry a `province` field.
+ * Uganda zones use district names — we map them to ADM1 regions via
+ * `ugaDistrictRegion` (loaded from data/geo/uga_district_region_map.json).
+ *
+ * Returns { provinceName: { totalConfirmed, totalDeaths, totalSuspected, country } }
+ */
+export function summarizeByProvince(cases, ugaDistrictRegion) {
+  const summary = {};
+  const map = ugaDistrictRegion || {};
+
+  for (const c of cases) {
+    // Resolve ADM1 name: DRC uses province field; Uganda districts → region map
+    let adm1 = c.province || c.region;
+    if (c.country === 'UGA' && map[c.region]) {
+      adm1 = map[c.region];
+    }
+
+    if (!summary[adm1]) {
+      summary[adm1] = {
+        province: adm1,
+        country: c.country,
+        totalConfirmed: 0,
+        totalDeaths: 0,
+        totalSuspected: 0,
+      };
+    }
+    const s = summary[adm1];
+    s.totalConfirmed += c.new_cases || 0;
+    s.totalDeaths += c.new_deaths || 0;
+    s.totalSuspected += c.suspected_cases || 0;
   }
   return summary;
 }

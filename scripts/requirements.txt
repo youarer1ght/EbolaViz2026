@@ -1,2 +1,4 @@
-pandas>=2.0.0
-numpy>=1.24.0
+# Data pipeline: none needed (Python stdlib: csv, json, datetime)
+# PDF export (optional):
+# markdown2>=2.4
+# weasyprint>=60

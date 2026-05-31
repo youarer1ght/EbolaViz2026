@@ -73,17 +73,16 @@ conda activate EBOLAVIZ
 ### 安装依赖
 
 ```bash
-# 数据处理（真实数据构建）
-pip install pandas numpy
-
-# PDF 导出（中期/系统文档 → PDF）
-pip install markdown2 weasyprint
+# 数据构建（仅需 Python 标准库 csv + json，无需额外安装）
+# 以下为可选依赖：
+pip install pandas numpy          # 如需高级数据处理（当前脚本不需要）
+pip install markdown2 weasyprint  # PDF 导出（中期/系统文档 → PDF）
 ```
 
 ### 验证安装
 
 ```bash
-python3 -c "import pandas, numpy, markdown2; print('✅ 环境就绪')"
+python3 -c "import csv, json, markdown2; print('✅ 环境就绪')"
 ```
 
 ### 使用示例
@@ -113,9 +112,8 @@ print('✅ PDF generated')
 
 | 包 | 用途 | 安装方式 |
 |----|------|----------|
-| `pandas` | 数据清洗、合并、聚合 | `pip install pandas` |
-| `numpy` | 数值计算（数据推算） | `pip install numpy` |
-| `markdown2` | Markdown → HTML 转换 | `pip install markdown2` |
+| (无) | 数据构建（仅用 Python 内置 `csv`, `json`, `datetime`） | 无需安装 |
+| `markdown2` | Markdown → HTML 转换（PDF 导出用） | `pip install markdown2` |
 | `weasyprint` | HTML → PDF 导出 | `pip install weasyprint` |
 
 ---
@@ -150,20 +148,25 @@ EbolaViz2026/
 │       ├── dataLoader.js        # 数据加载 + 过滤/聚合工具
 │       └── colors.js            # 配色方案 (HEATMAP, TABLEAU, POLICY)
 ├── data/
-│   ├── cases_by_region_date.json  # 病例时序数据 (WHO AFRO SitReps)
-│   ├── demographics.json          # 人口/医疗资源 (World Bank/WHO GHO)
-│   ├── policy_events.json         # 防控政策事件 (WHO DON/ReliefWeb)
-│   ├── border_poe.json            # 边境口岸坐标 (OSM)
+│   ├── cases.csv                    # ★ 病例原始数据 (WHO SitReps → A角色编辑)
+│   ├── demographics.csv             # ★ 人口/医疗原始数据 (A角色编辑)
+│   ├── policy_events.csv            # ★ 政策事件原始数据 (A角色编辑)
+│   ├── border_poe.csv               # ★ 边境口岸原始数据 (A角色编辑)
+│   ├── cases_by_region_date.json    # 病例时序数据 (由 build_real_data.py 生成)
+│   ├── demographics.json            # 人口/医疗资源 (由 build_real_data.py 生成)
+│   ├── policy_events.json           # 防控政策事件 (由 build_real_data.py 生成)
+│   ├── border_poe.json              # 边境口岸坐标 (由 build_real_data.py 生成)
+│   ├── aliases.csv                  # 地名标准化映射表
+│   ├── epi_metadata.yaml            # 数据元信息（来源 URL、引用格式）
 │   └── geo/
-│       ├── DRC.geojson            # 刚果(金) 26 省 ADM1 边界
-│       ├── UGA.geojson            # 乌干达 4 大区 ADM1 边界
-│       ├── outbreak_region.geojson # 合并跨境地图 (热力图使用)
+│       ├── DRC.geojson              # 刚果(金) 26 省 ADM1 边界
+│       ├── UGA.geojson              # 乌干达 4 大区 ADM1 边界
+│       ├── outbreak_region.geojson  # 合并跨境地图 (热力图使用)
 │       └── uga_district_region_map.json  # 乌干达 district→大区 映射
 ├── scripts/
-│   ├── build_real_data.py         # 真实数据构建 (WHO/World Bank/ReliefWeb)
-│   ├── generate_mock_data.py      # Mock 数据生成 (开发 fallback, 不推荐)
-│   ├── merge_geojson.py           # 合并 DRC+UGA GeoJSON + 名称标准化
-│   └── requirements.txt           # Python 依赖列表
+│   ├── build_real_data.py           # ★ 数据构建: 读 CSV → 校验 → 输出 JSON
+│   ├── merge_geojson.py             # 合并 DRC+UGA GeoJSON + 名称标准化
+│   └── requirements.txt             # Python 依赖清单
 └── docs/
     ├── 中期文档.md / .pdf
     ├── 系统文档.md
@@ -191,23 +194,23 @@ EbolaViz2026/
 
 | 类别 | 具体文件 | 说明 |
 |:-----|---------|------|
-| 数据构建 | `scripts/build_real_data.py` | **核心**：从 WHO/World Bank/ReliefWeb 构建真实数据集 |
-| 数据构建 | `scripts/merge_geojson.py` | 合并 DRC+UGA 行政区划 GeoJSON，标准化地名 |
-| Mock 备用 | `scripts/generate_mock_data.py` | 合成测试数据生成器（仅当无法获取真实数据时使用） |
-| 依赖清单 | `scripts/requirements.txt` | Python 包依赖 (pandas, numpy, markdown2, weasyprint) |
-| 数据文件 | `data/cases_by_region_date.json` | 病例时序数据输出（由 build_real_data.py 生成） |
-| 数据文件 | `data/demographics.json` | 人口医疗数据输出 |
-| 数据文件 | `data/policy_events.json` | 政策事件数据输出 |
-| 数据文件 | `data/border_poe.json` | 边境口岸坐标输出 |
-| 原始数据 | `data/epi_cases_weekly.csv` | WHO 周报原始数据 |
-| 原始数据 | `data/aliases.csv` | 地名标准化映射 |
-| 原始数据 | `data/poe_coordinates.csv` | 口岸原始坐标 |
-| 原始数据 | `data/epi_metadata.yaml` | 数据元信息（来源 URL、引用格式） |
+| 数据源 ★ | `data/cases.csv` | **核心**：WHO 周报病例数据（Excel 可编辑，运行 build_real_data.py 后生成 JSON） |
+| 数据源 ★ | `data/demographics.csv` | 人口/医疗资源数据（按卫生区） |
+| 数据源 ★ | `data/policy_events.csv` | 防控政策事件时间线 |
+| 数据源 ★ | `data/border_poe.csv` | 边境口岸坐标 |
+| 数据处理 | `scripts/build_real_data.py` | **核心**：读取上述 4 个 CSV → 校验一致性 → 输出 JSON |
+| 数据处理 | `scripts/merge_geojson.py` | 合并 DRC+UGA 行政区划 GeoJSON，标准化地名 |
+| 辅助数据 | `data/aliases.csv` | 地名标准化映射（异名 → 规范名） |
+| 辅助数据 | `data/epi_metadata.yaml` | 数据元信息（来源 URL、引用格式） |
+| 输出 | `data/cases_by_region_date.json` | 病例时序 JSON（脚本自动生成，勿手动编辑） |
+| 输出 | `data/demographics.json` | 人口医疗 JSON |
+| 输出 | `data/policy_events.json` | 政策事件 JSON |
+| 输出 | `data/border_poe.json` | 边境口岸 JSON |
 | 文档 | `docs/中期文档.md` | **核心**：7 章中期报告（后可转为系统文档） |
 | 文档 | `docs/系统文档.md` | 最终系统文档（case study、设计决策、答辩要点） |
 | 文档 | `docs/分工说明.md` | 组员分工详细说明 |
 
-**技能要求**：Python 数据处理 (pandas)、数据源调研、学术写作
+**技能要求**：Excel/VS Code 表格编辑、数据源调研、学术写作
 
 ---
 
@@ -221,7 +224,7 @@ EbolaViz2026/
 | 状态核心 | `js/actions.js` | 9 个 action creator（setTimeRange, setSelectedRegions 等） |
 | 状态核心 | `js/utils/dataLoader.js` | 数据加载、多维度筛选 (filterCases)、聚合 (summarizeByRegion/Province) |
 | 配色系统 | `js/utils/colors.js` | HEATMAP 渐变、TABLEAU 10 色、POLICY 5 类型色 |
-| 视图 ① | `js/views/heatmapView.js` | **Choropleth 热力图**：GeoJSON 底图 + 省级填充 + 点击选中 |
+| 视图 ① | `js/views/heatmapView.js` | **Choropleth 热力图**：双 Series 边框叠加 + 分栏布局 + 省级放大 + 卫生区散点选择 |
 | 视图 ③ | `js/views/parallelView.js` | **平行坐标图**：5 轴 (人口/医生/病例/死亡率/床位) + brush 筛选 |
 | 视图 ⑤ | `js/views/detailView.js` | **统计详情面板**：卡片 + 排名表（纯 HTML 渲染，无 ECharts） |
 
@@ -375,7 +378,8 @@ python3 scripts/build_real_data.py
 
 ```bash
 python3 -c "
-import json
+import json, csv
+# Check JSON outputs
 checks = [
     ('cases_by_region_date', 15),   # 至少 15 条病例记录
     ('demographics',          12),   # 至少 12 个区域
@@ -385,6 +389,18 @@ for fname, min_count in checks:
     data = json.load(open(f'data/{fname}.json'))
     ok = len(data) >= min_count
     print(f'  {\"✅\" if ok else \"❌\"} {fname}: {len(data)} records (need ≥{min_count})')
+
+# Check CSV sources are in sync
+csv_checks = [
+    ('cases.csv',         15),
+    ('demographics.csv',  12),
+    ('policy_events.csv', 16),
+]
+for fname, min_count in csv_checks:
+    with open(f'data/{fname}') as f:
+        count = sum(1 for r in csv.DictReader(f))
+        ok = count >= min_count
+        print(f'  {\"✅\" if ok else \"❌\"} {fname}: {count} rows (need ≥{min_count})')
 "
 ```
 
@@ -599,16 +615,25 @@ window.__data.ugaDistrictRegion  // 乌干达 district→大区 映射
 
 ## 📖 常见任务
 
-### 更新疫情数据
+### 更新疫情数据（每周 WHO SitRep 发布后）
 
 ```bash
+# 1. 用 Excel / VS Code 打开 data/cases.csv，新增行：
+#    2026-06-01,COD,Mongbalu,Ituri,12,3,450,105
+#    ...（每个卫生区一行，填写最新累计数据）
+
+# 2. 如有新政策事件，同样编辑 data/policy_events.csv 追加行
+
+# 3. 运行构建脚本（校验 + 生成 JSON）
 conda activate EBOLAVIZ
-# 1. 编辑 scripts/build_real_data.py 的 build_cases() 列表
-# 2. 重新生成
 python3 scripts/build_real_data.py
-# 3. 提交
+
+# 4. 验证前端兼容
+node tests/smoke.test.js
+
+# 5. 提交
 git add data/
-git commit -m "feat: add WHO SitRep 03 data (2026-05-31)"
+git commit -m "feat: add WHO SitRep 03 data (2026-06-01)"
 ```
 
 ### 导出文档为 PDF

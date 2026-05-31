@@ -41,15 +41,9 @@ export function initTimeline(dom, store, data) {
 
   // Track whether we need to reset dataZoom (e.g. on RESET_ALL)
   let needsReset = true;
-  // All unique dates shown in the chart — used by dataZoom handler to
-  // map percentage positions back to actual dates. Updated on each render
-  // so the mapping is always relative to the currently visible data.
-  let chartDates = [...new Set(data.cases.map(c => c.date))].sort();
-
   function buildOption(state) {
     const filtered = filterCases(data.cases, state);
     const byRegion = aggregateByRegion(filtered);
-    chartDates = [...new Set(filtered.map(c => c.date))].sort();
 
     const allRegions = state.selectedRegions.length > 0
       ? state.selectedRegions.filter(r => byRegion[r])
@@ -152,25 +146,21 @@ export function initTimeline(dom, store, data) {
   }
 
   // dataZoom → dispatch time range (throttled to ~200ms)
-  chart.on('dataZoom', () => {
+  // Uses event params.batch[].startValue/endValue — actual date values
+  // from the chart, NOT percentage→date mapping. This avoids a feedback
+  // loop where each dispatch narrows the date range and subsequent
+  // percentage computations produce even narrower ranges.
+  chart.on('dataZoom', (params) => {
     const now = Date.now();
     if (now - lastZoomDispatch < 200) return;
     lastZoomDispatch = now;
 
-    const opt = chart.getOption();
-    if (opt.dataZoom && opt.dataZoom[0]) {
-      const dz = opt.dataZoom[0];
-      if (dz.start !== undefined && dz.end !== undefined) {
-        // Percentages are relative to the chart's current data domain.
-        // Use chartDates (unique dates in filtered data) for mapping.
-        if (chartDates.length > 0) {
-          const startIdx = Math.floor(dz.start / 100 * (chartDates.length - 1));
-          const endIdx = Math.ceil(dz.end / 100 * (chartDates.length - 1));
-          store.dispatch(setTimeRange([
-            chartDates[Math.max(0, startIdx)],
-            chartDates[Math.min(chartDates.length - 1, endIdx)],
-          ]));
-        }
+    if (params.batch && params.batch[0]) {
+      const b = params.batch[0];
+      // For time axes, ECharts populates startValue/endValue with the
+      // actual data values at the slider handles (date strings).
+      if (b.startValue != null && b.endValue != null) {
+        store.dispatch(setTimeRange([b.startValue, b.endValue]));
       }
     }
   });

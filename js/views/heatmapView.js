@@ -259,6 +259,7 @@ export function initHeatmap(dom, store, data) {
           color: isSelected ? '#ff8f00' : zoneMarkerColor(i),
           borderColor: isSelected ? '#333' : '#fff',
           borderWidth: isSelected ? 2.5 : 1,
+          opacity: isSelected ? 1 : 0.75,  // unselected markers semi-transparent
           shadowBlur: isSelected ? 10 : 2,
           shadowColor: 'rgba(0,0,0,0.3)',
         },

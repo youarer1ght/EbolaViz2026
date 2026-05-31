@@ -18,8 +18,15 @@ python3 -m http.server 8080                     # Start dev server (Python 3 bui
 
 # Data
 conda activate EBOLAVIZ                           # Activate Python env
-python3 scripts/build_real_data.py                # Regenerate analysis datasets
-python3 scripts/generate_mock_data.py             # Generate synthetic dev data (fallback)
+python3 scripts/build_real_data.py                # Regenerate analysis datasets from CSV sources
+# → Reads data/*.csv → validates → outputs data/*.json
+# → A 角色编辑 CSV 后运行此命令即可更新全部 JSON
+
+# Data CSV files (editable by Role A — Excel / VS Code / any spreadsheet)
+#   data/cases.csv           — weekly case data (WHO SitReps)
+#   data/demographics.csv    — population + healthcare per health zone
+#   data/policy_events.csv   — policy / humanitarian events timeline
+#   data/border_poe.csv      — border crossing points
 
 # Testing
 node tests/smoke.test.js                           # Automated smoke test: all 5 views init + destroy OK

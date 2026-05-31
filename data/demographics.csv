@@ -1,0 +1,13 @@
+country,region,province,population,population_density,urban_pct,doctors_per_100k,beds_per_10k,health_sites
+COD,Mongbalu,Ituri,185000,62.3,18,1.2,4.0,12
+COD,Nyakunde,Ituri,92000,38.1,12,0.8,3.2,7
+COD,Rwampara,Ituri,210000,89.5,22,0.9,3.8,9
+COD,Bunia,Ituri,480000,245.0,65,3.5,8.5,28
+COD,Butembo,Nord-Kivu,670000,312.0,58,2.8,7.2,22
+COD,Katwa,Nord-Kivu,156000,105.2,35,1.5,5.5,14
+COD,Goma,Nord-Kivu,1200000,580.0,82,5.2,12.0,45
+UGA,Kampala,Kampala,1750000,9200.0,100,12.5,18.0,120
+UGA,Kisoro,Kisoro,315000,421.0,14,2.1,6.0,18
+UGA,Kanungu,Kanungu,270000,203.0,9,1.8,5.2,15
+UGA,Arua,Arua,820000,175.0,31,3.0,7.0,35
+UGA,Bundibugyo,Bundibugyo,245000,288.0,16,1.5,4.8,11

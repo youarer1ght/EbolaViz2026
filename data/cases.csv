@@ -1,0 +1,16 @@
+date,country,region,province,confirmed_cases,confirmed_deaths,suspected_cases,suspected_deaths
+2026-05-18,COD,Mongbalu,Ituri,1,0,302,74
+2026-05-18,COD,Nyakunde,Ituri,4,0,14,1
+2026-05-18,COD,Rwampara,Ituri,19,3,136,38
+2026-05-18,COD,Bunia,Ituri,6,1,61,18
+2026-05-18,COD,Butembo,Nord-Kivu,1,0,1,0
+2026-05-18,COD,Katwa,Nord-Kivu,1,0,1,0
+2026-05-18,COD,Goma,Nord-Kivu,1,0,1,0
+2026-05-24,COD,Mongbalu,Ituri,8,2,415,98
+2026-05-24,COD,Nyakunde,Ituri,7,1,22,2
+2026-05-24,COD,Rwampara,Ituri,31,5,178,52
+2026-05-24,COD,Bunia,Ituri,9,2,89,24
+2026-05-24,COD,Butembo,Nord-Kivu,2,0,3,0
+2026-05-24,COD,Katwa,Nord-Kivu,1,0,2,0
+2026-05-24,COD,Goma,Nord-Kivu,2,0,3,0
+2026-05-24,UGA,Kampala,Kampala,7,1,0,0

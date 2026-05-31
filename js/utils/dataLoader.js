@@ -52,18 +52,19 @@ export function getAllRegions(cases) {
 }
 
 /** Filter cases by store state. Returns filtered array.
- *  Memoized: same state params → same result (no re-filtering needed).
+ *  Memoized: same state params + same source array → same result.
  *  Each state change triggers 5+ views calling filterCases with the
  *  same parameters — memoization cuts this to 1 actual filter pass. */
-const _filterCache = new Map();
 let _cacheKey = '';
 let _cacheResult = null;
+let _cacheSourceLen = -1;
 
 export function filterCases(cases, state) {
   if (!cases) return [];
 
-  // Build a cache key from the filtering-relevant state fields
-  const key = `${state.animatingDate || ''}|${(state.timeRange || []).join(',')}|${(state.selectedRegions || []).sort().join(',')}`;
+  // Build a cache key from source identity + filtering-relevant state fields.
+  // Include array length so different source arrays don't collide.
+  const key = `${cases.length}|${state.animatingDate || ''}|${(state.timeRange || []).join(',')}|${(state.selectedRegions || []).sort().join(',')}`;
   if (key === _cacheKey && _cacheResult !== null) return _cacheResult;
 
   _cacheKey = key;

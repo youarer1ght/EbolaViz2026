@@ -15,6 +15,11 @@ export function initTimeline(dom, store, data) {
   let lastZoomDispatch = 0;
   let overviewMode = false;  // false=detail lines, true=aggregate sum
 
+  // Prevent page scroll from stealing mouse-wheel events needed by
+  // ECharts inside dataZoom (zoom/pan). Without this, scrolling the
+  // wheel over the chart scrolls the page instead of the timeline.
+  dom.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+
   // ── Toggle button ──
   const toggleBtn = document.createElement('button');
   toggleBtn.textContent = '📊 概览';

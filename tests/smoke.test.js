@@ -26,16 +26,37 @@ globalThis.echarts = {
   registerMap: () => {},
 };
 
-// Mock document for heatmapView's province detail panel DOM lookup
+// Mock document for views that manipulate DOM (heatmap detail panel, parallel clear button)
+function createFakeDom() {
+  const style = {};
+  const children = [];
+  const el = {
+    style,
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    remove: () => {},
+    appendChild: (child) => { children.push(child); },
+    querySelector: () => null,
+  };
+  return el;
+}
+
 globalThis.document = {
   getElementById: (id) => {
-    if (id === 'chart-heatmap-detail') {
-      return {
-        querySelector: () => null,  // no placeholder element in test
-        style: {},
-      };
-    }
-    return null;
+    if (id === 'chart-heatmap-detail') return createFakeDom();
+    return createFakeDom();  // parallel, timeline, etc. all get a fake dom
+  },
+  createElement: (tag) => {
+    const el = {
+      tagName: tag,
+      style: {},
+      textContent: '',
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      remove: () => {},
+      appendChild: () => {},
+    };
+    return el;
   },
 };
 
@@ -69,11 +90,11 @@ let pass = 0, fail = 0;
 const results = [];
 
 const modules = [
-  { name: 'heatmapView',  path: '../js/views/heatmapView.js',  dom: {} },
-  { name: 'timelineView', path: '../js/views/timelineView.js', dom: {} },
-  { name: 'parallelView', path: '../js/views/parallelView.js', dom: {} },
-  { name: 'policyView',   path: '../js/views/policyView.js',   dom: {} },
-  { name: 'detailView',   path: '../js/views/detailView.js',   dom: {} },
+  { name: 'heatmapView',  path: '../js/views/heatmapView.js',  dom: createFakeDom() },
+  { name: 'timelineView', path: '../js/views/timelineView.js', dom: createFakeDom() },
+  { name: 'parallelView', path: '../js/views/parallelView.js', dom: createFakeDom() },
+  { name: 'policyView',   path: '../js/views/policyView.js',   dom: createFakeDom() },
+  { name: 'detailView',   path: '../js/views/detailView.js',   dom: createFakeDom() },
 ];
 
 for (const m of modules) {

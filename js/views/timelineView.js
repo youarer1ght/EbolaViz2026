@@ -107,7 +107,8 @@ export function initTimeline(dom, store, data) {
     // slider position internally. Including {start:0,end:100} in every
     // render creates a feedback loop: drag → dispatch → render →
     // slider snaps back to full range.
-    const dzConfig = [{ type: 'slider', height: 20, bottom: 6 }, { type: 'inside' }];
+    // Match grid margins so slider labels don't overflow the container
+    const dzConfig = [{ type: 'slider', height: 20, bottom: 6, left: 48, right: 16 }, { type: 'inside' }];
 
     // On RESET_ALL: force dataZoom back to full range
     if (needsReset) {

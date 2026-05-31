@@ -140,13 +140,13 @@ All views follow the same pattern:
 | `css/style.css` | CSS Grid layout (5-view), heatmap split flexbox, detail overlay, policy type colors | ~115 lines |
 | `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~75 lines |
 | `js/actions.js` | 7 action creator functions (pure) | ~12 lines |
-| `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~100 lines |
-| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()` | ~100 lines |
+| `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~140 lines |
+| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()` | ~155 lines |
 | `js/utils/colors.js` | Color constants (HEATMAP, TABLEAU, POLICY), `getRegionColor()`, `heatmapColor()` | ~50 lines |
 | `js/views/heatmapView.js` | Choropleth (two-series overlay) + split layout + province detail with real- coordinate zone markers + roam zoom | ~700 lines |
 | `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~80 lines |
 | `js/views/parallelView.js` | Parallel coordinates, click-to-select + clear button | ~220 lines |
-| `js/views/policyView.js` | Scatter markers + case trend background | ~100 lines |
+| `js/views/policyView.js` | Scatter markers + case trend background | ~130 lines |
 | `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~240 lines |
 | `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~170 lines |
 

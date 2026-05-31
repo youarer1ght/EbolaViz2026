@@ -24,7 +24,7 @@
  */
 import { setSelectedRegions, setHighlightedRegions } from '../actions.js';
 import { filterCases, summarizeByProvince, summarizeByRegion } from '../utils/dataLoader.js';
-import { HEATMAP, getRegionColor } from '../utils/colors.js';
+import { getRegionColor } from '../utils/colors.js';
 
 // Approximate health zone coordinates (for scatter/bubble fallback)
 const ZONE_COORDS = {

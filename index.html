@@ -21,10 +21,19 @@
       </div>
     </header>
 
-    <!-- View 1: Spatiotemporal Heatmap -->
+    <!-- View 1: Spatiotemporal Heatmap (split: overview + province detail) -->
     <section id="view-heatmap" class="chart-container">
       <h2>① 疫情时空热力图</h2>
-      <div id="chart-heatmap" class="chart"></div>
+      <div class="heatmap-split">
+        <div id="chart-heatmap" class="chart"></div>
+        <div class="chart chart-detail-wrapper">
+          <div id="chart-heatmap-detail"></div>
+          <div class="detail-placeholder">
+            <div class="placeholder-icon">🗺️</div>
+            <div>👆 点击左侧地图省份<br>查看卫生区详情</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- View 2: Timeline -->

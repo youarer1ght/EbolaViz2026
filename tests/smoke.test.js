@@ -26,6 +26,19 @@ globalThis.echarts = {
   registerMap: () => {},
 };
 
+// Mock document for heatmapView's province detail panel DOM lookup
+globalThis.document = {
+  getElementById: (id) => {
+    if (id === 'chart-heatmap-detail') {
+      return {
+        querySelector: () => null,  // no placeholder element in test
+        style: {},
+      };
+    }
+    return null;
+  },
+};
+
 // ── Load data (same files the browser fetches at runtime) ──
 function load(name, relPath) {
   try {

@@ -6,7 +6,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 #app {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  grid-template-rows: auto 50fr 30fr 20fr;
+  grid-template-rows: auto 55fr 25fr 20fr;
   grid-template-areas:
     "titlebar  titlebar"
     "heatmap   timeline"
@@ -44,11 +44,46 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 .chart-container {
   background: #fff; border-radius: 4px; padding: 4px 6px;
   display: flex; flex-direction: column; overflow: hidden;
+  position: relative;
 }
 .chart-container h2 {
   font-size: 0.8rem; padding: 0 4px 2px; color: #555; flex-shrink: 0;
 }
 .chart { flex: 1; min-height: 0; }
+
+/* Stacking: interactive views with tooltips need overflow + z-index tuning */
+#view-parallel { overflow: visible !important; z-index: 2; }
+#view-policy   { overflow: visible !important; z-index: 2; }
+#view-heatmap  { overflow: hidden; z-index: 1; }
+#view-timeline { overflow: hidden; z-index: 1; }
+#view-detail   { z-index: 1; }
+
+/* ── Heatmap split layout (overview map + province detail) ── */
+.heatmap-split {
+  display: flex; flex-direction: row; flex: 1; min-height: 0; gap: 6px;
+}
+.heatmap-split > #chart-heatmap {
+  flex: 0 0 55%;
+}
+.chart-detail-wrapper {
+  position: relative; flex: 1; min-height: 0;
+  background: #f8f9fb; border-radius: 4px;
+  border: 1px dashed #d0d0d0;
+}
+.chart-detail-wrapper #chart-heatmap-detail {
+  width: 100%; height: 100%;
+}
+.chart-detail-wrapper .detail-placeholder {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; color: #aaa; font-size: 0.8rem; line-height: 1.8;
+  pointer-events: none; user-select: none;
+  background: #f8f9fb; border-radius: 4px;
+}
+.chart-detail-wrapper .detail-placeholder .placeholder-icon {
+  font-size: 2rem; margin-bottom: 4px;
+}
 
 /* ── Detail Panel ── */
 #chart-detail { overflow-y: auto; padding: 8px; font-size: 0.8rem; line-height: 1.7; }
@@ -72,7 +107,10 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 @media (max-width: 900px) {
   #app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 35fr 25fr 25fr 25fr 25fr;
+    grid-template-rows: auto 40fr 25fr 25fr 25fr 25fr;
     grid-template-areas: "titlebar" "heatmap" "timeline" "parallel" "policy" "detail";
   }
+  .heatmap-split { flex-direction: column; }
+  .heatmap-split > #chart-heatmap  { flex: 0 0 55%; }
+  .chart-detail-wrapper           { flex: 1; }
 }

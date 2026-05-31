@@ -6,7 +6,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 #app {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  grid-template-rows: auto 55fr 25fr 20fr;
+  grid-template-rows: auto 48fr 22fr 30fr;
   grid-template-areas:
     "titlebar  titlebar"
     "heatmap   timeline"
@@ -107,7 +107,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 @media (max-width: 900px) {
   #app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 40fr 25fr 25fr 25fr 25fr;
+    grid-template-rows: auto 35fr 25fr 20fr 10fr 10fr;
     grid-template-areas: "titlebar" "heatmap" "timeline" "parallel" "policy" "detail";
   }
   .heatmap-split { flex-direction: column; }

@@ -12,7 +12,6 @@ import { getRegionColor } from '../utils/colors.js';
 
 export function initTimeline(dom, store, data) {
   const chart = echarts.init(dom);
-  let lastZoomDispatch = 0;
   let overviewMode = false;  // false=detail lines, true=aggregate sum
 
   // Wheel events are handled by CSS overscroll-behavior on the container.
@@ -145,24 +144,21 @@ export function initTimeline(dom, store, data) {
     };
   }
 
-  // dataZoom → dispatch time range (throttled to ~200ms)
-  // Uses event params.batch[].startValue/endValue — actual date values
-  // from the chart, NOT percentage→date mapping. This avoids a feedback
-  // loop where each dispatch narrows the date range and subsequent
-  // percentage computations produce even narrower ranges.
+  // dataZoom → dispatch time range (debounced)
+  // During rapid slider drag, ECharts fires dataZoom at ~60 fps.
+  // Dispatching on every frame floods all 5 views with re-renders.
+  // Debounce: only dispatch after the user pauses or stops dragging.
+  let zoomDebounce = null;
   chart.on('dataZoom', (params) => {
-    const now = Date.now();
-    if (now - lastZoomDispatch < 200) return;
-    lastZoomDispatch = now;
-
-    if (params.batch && params.batch[0]) {
-      const b = params.batch[0];
-      // For time axes, ECharts populates startValue/endValue with the
-      // actual data values at the slider handles (date strings).
-      if (b.startValue != null && b.endValue != null) {
-        store.dispatch(setTimeRange([b.startValue, b.endValue]));
+    if (zoomDebounce) clearTimeout(zoomDebounce);
+    zoomDebounce = setTimeout(() => {
+      if (params.batch && params.batch[0]) {
+        const b = params.batch[0];
+        if (b.startValue != null && b.endValue != null) {
+          store.dispatch(setTimeRange([b.startValue, b.endValue]));
+        }
       }
-    }
+    }, 250);  // wait 250ms after last drag event before dispatching
   });
 
   const fullTimeRange = getTimeRange(data.cases);

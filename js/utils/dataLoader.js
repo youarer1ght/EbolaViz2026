@@ -51,9 +51,22 @@ export function getAllRegions(cases) {
   return [...new Set(cases.map(c => c.region))].sort();
 }
 
-/** Filter cases by store state. Returns filtered array. */
+/** Filter cases by store state. Returns filtered array.
+ *  Memoized: same state params → same result (no re-filtering needed).
+ *  Each state change triggers 5+ views calling filterCases with the
+ *  same parameters — memoization cuts this to 1 actual filter pass. */
+const _filterCache = new Map();
+let _cacheKey = '';
+let _cacheResult = null;
+
 export function filterCases(cases, state) {
   if (!cases) return [];
+
+  // Build a cache key from the filtering-relevant state fields
+  const key = `${state.animatingDate || ''}|${(state.timeRange || []).join(',')}|${(state.selectedRegions || []).sort().join(',')}`;
+  if (key === _cacheKey && _cacheResult !== null) return _cacheResult;
+
+  _cacheKey = key;
   let filtered = cases;
 
   // Animation date — precise single-date filter, overrides timeRange
@@ -69,6 +82,7 @@ export function filterCases(cases, state) {
     filtered = filtered.filter(c => state.selectedRegions.includes(c.region));
   }
 
+  _cacheResult = filtered;
   return filtered;
 }
 

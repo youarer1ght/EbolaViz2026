@@ -61,11 +61,12 @@ export function initPolicy(dom, store, data) {
         trigger: 'item',
         formatter: params => {
           if (params.componentType === 'series' && params.seriesType === 'scatter') {
-            const d = params.data;
-            return `<b>📌 ${d[0]}</b><br/>
+            // params.value is always the raw array, even when data is an object
+            const v = params.value || [];
+            return `<b>📌 ${v[0]}</b><br/>
               <b>${params.name}</b><br/>
-              类型: ${d[3]} | 来源: ${d[5]}<br/>
-              <em>${d[4]}</em>`;
+              类型: ${v[3]} | 来源: ${v[5]}<br/>
+              <em>${v[4]}</em>`;
           }
           return `${params.value[0]}<br/>病例: ${params.value[1]}`;
         },

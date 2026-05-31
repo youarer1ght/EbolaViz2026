@@ -3,13 +3,14 @@
 html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif; background: #f5f7fa; color: #333; overflow-y: auto; overflow-x: hidden; }
 
 /* ── CSS Grid Layout ── */
-/*    Scrollable — each row has a min-height. Page scrolls vertically
-      if total exceeds viewport. fr-based heights are removed so content
-      determines height (no squishing of dense views like parallel). */
+/*    Row 1 (500px): Heatmap + Timeline — spatiotemporal pairing (分析任务1)
+      Row 2 (420px): Parallel coords full-width — needs room for 500+ lines (分析任务2)
+      Row 3 (380px): Policy + Detail bar chart — intervention + stats (分析任务3+4)
+      Page scrolls if total exceeds viewport. */
 #app {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  grid-template-rows: auto minmax(480px, auto) minmax(380px, auto) minmax(400px, auto);
+  grid-template-rows: auto minmax(500px, auto) minmax(420px, auto) minmax(380px, auto);
   grid-template-areas:
     "titlebar  titlebar"
     "heatmap   timeline"

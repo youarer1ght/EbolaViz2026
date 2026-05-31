@@ -1,79 +1,66 @@
 /**
- * View ⑤: Detail Panel — aggregate statistics and regional breakdown.
+ * View ⑤: Detail Panel — stats cards (HTML) + region ranking bar chart (ECharts).
  *
- * Pure HTML rendering (no ECharts). Reads store state and data to
- * compute summary statistics, CFR, regional ranking, and selected-
- * region demographic context.
+ * Top section:  5 summary cards + filter context + selected demographics (HTML)
+ * Bottom section: Horizontal bar chart — regions ranked by confirmed cases,
+ *                 bar color encoded by CFR (green→red). Click to select.
+ *
+ * Coordination:
+ *   Click bar → toggle region → SET_SELECTED_REGIONS → all views
  */
 import { setSelectedRegions } from '../actions.js';
 import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
 
 export function initDetail(dom, store, data) {
 
-  /** Resolve ADM1 province name (same logic as heatmapView). */
+  // ── Helper: resolve ADM1 province ──
   function resolveAdm1(d, ugaMap) {
-    if (d.country === 'UGA' && ugaMap && ugaMap[d.region]) {
-      return ugaMap[d.region];
-    }
+    if (d.country === 'UGA' && ugaMap && ugaMap[d.region]) return ugaMap[d.region];
     return d.province || d.region;
   }
 
-  /** Resolve demographic info for selected region(s). */
-  function selectedDemographics(selectedRegions) {
-    if (!data.demographics || selectedRegions.length === 0) return null;
-    const demos = selectedRegions
-      .map(r => data.demographics.find(d => d.region === r))
-      .filter(Boolean);
-    if (demos.length === 0) return null;
+  // ── Split dom: top half HTML cards, bottom half ECharts bar chart ──
+  dom.innerHTML = `
+    <div id="detail-cards" style="flex-shrink:0;"></div>
+    <div id="detail-bars" style="flex:1;min-height:0;"></div>`;
+  dom.style.display = 'flex';
+  dom.style.flexDirection = 'column';
 
-    // Aggregate: sum populations, average rates
-    const ugaMap = data.ugaDistrictRegion;
-    const info = {
-      totalPop: demos.reduce((s, d) => s + (d.population || 0), 0),
-      avgDensity: Math.round(demos.reduce((s, d) => s + (d.population_density || 0), 0) / demos.length),
-      avgUrban: Math.round(demos.reduce((s, d) => s + (d.urban_pct || 0), 0) / demos.length),
-      avgDoctors: (demos.reduce((s, d) => s + (d.doctors_per_100k || 0), 0) / demos.length).toFixed(1),
-      avgBeds: (demos.reduce((s, d) => s + (d.beds_per_10k || 0), 0) / demos.length).toFixed(1),
-      zoneCount: demos.length,
-      // Use same ADM1 resolution as heatmap so province names match
-      provinceList: [...new Set(demos.map(d => resolveAdm1(d, ugaMap)))].join('、'),
-    };
-    return info;
+  const cardsDom = dom.querySelector('#detail-cards');
+  const barsDom = dom.querySelector('#detail-bars');
+  const barChart = echarts.init(barsDom);
+
+  // ── Mortality color scale (same as parallelView's lineColor) ──
+  function cfrColor(cfr) {
+    const t = Math.min(1, Math.max(0, cfr / 20));
+    return `rgb(${Math.round(255*t)},${Math.round(200*(1-t))},${Math.round(100*(1-t))})`;
   }
 
-  function buildHTML(state) {
+  // ── Build stats cards HTML ──
+  function buildCardsHTML(state) {
     const filtered = filterCases(data.cases, state);
     const summary = summarizeByRegion(filtered);
+    const rows = Object.values(summary).sort((a, b) => b.totalConfirmed - a.totalConfirmed);
 
-    // Totals
     let totalConfirmed = 0, totalDeaths = 0, totalSuspected = 0;
-    const regionRows = Object.values(summary)
-      .sort((a, b) => b.totalConfirmed - a.totalConfirmed);
-
-    for (const s of regionRows) {
+    for (const s of rows) {
       totalConfirmed += s.totalConfirmed;
       totalDeaths += s.totalDeaths;
       totalSuspected += s.totalSuspected;
     }
-    const cfr = totalConfirmed > 0
-      ? (totalDeaths / totalConfirmed * 100).toFixed(1) : '0.0';
+    const cfr = totalConfirmed > 0 ? (totalDeaths / totalConfirmed * 100).toFixed(1) : '0.0';
 
-    // State context — count distinct regions WITH CASE DATA (not demographics total)
+    // Filter context
     const selCount = state.selectedRegions.length;
-    // All distinct regions that appear in case data (time-filtered, but ignoring region selection)
     const allRegionsWithCases = [...new Set(data.cases
-      .filter(c => state.timeRange
-        ? (c.date >= state.timeRange[0] && c.date <= state.timeRange[1])
-        : true)
+      .filter(c => !state.timeRange || (c.date >= state.timeRange[0] && c.date <= state.timeRange[1]))
       .map(c => c.region))];
-    const totalCaseRegions = allRegionsWithCases.length;
     const regionInfo = selCount > 0
-      ? `<b style="color:#d32f2f;">${selCount}</b> / ${totalCaseRegions} 区域已选`
-      : `<span style="color:#666;">全部 ${totalCaseRegions} 区域</span>`;
+      ? `<b style="color:#d32f2f;">${selCount}</b> / ${allRegionsWithCases.length} 区域已选`
+      : `<span style="color:#666;">全部 ${allRegionsWithCases.length} 区域</span>`;
 
     const timeInfo = state.timeRange
-      ? `${state.timeRange[0]} ~ ${state.timeRange[1]}`
-      : '全部时段';
+      ? `${state.timeRange[0]} ~ ${state.timeRange[1]}` : '全部时段';
 
     let policyInfo = '无';
     if (state.selectedPolicyIds.length > 0) {
@@ -83,131 +70,170 @@ export function initDetail(dom, store, data) {
       }).join('; ');
     }
 
-    // Region table
-    const maxConfirmed = Math.max(1, ...regionRows.map(r => r.totalConfirmed));
-    const maxDeaths = Math.max(1, ...regionRows.map(r => r.totalDeaths));
-
-    const tableRows = regionRows.length > 0
-      ? regionRows.map(r => {
-          const rCFR = r.totalConfirmed > 0
-            ? (r.totalDeaths / r.totalConfirmed * 100).toFixed(1) : '0.0';
-          const isSelected = selCount === 0 || state.selectedRegions.includes(r.region);
-          const caseIntensity = r.totalConfirmed / maxConfirmed;
-          const deathBarW = maxDeaths > 0 ? Math.round((r.totalDeaths / maxDeaths) * 60) : 0;
-          return `
-            <tr data-region="${r.region}" style="cursor:pointer;${isSelected ? 'background:#fff3e0;' : ''}${isSelected ? '' : 'opacity:0.35;'}">
-              <td><span style="font-weight:${caseIntensity>0.3?'bold':'normal'};">${r.region}</span>
-                <span style="color:#999;font-size:0.65rem;"> ${r.country}</span></td>
-              <td style="text-align:right;color:${caseIntensity>0.5?'#d32f2f':'#333'};font-weight:${caseIntensity>0.5?'bold':'normal'};">
-                ${r.totalConfirmed}</td>
-              <td style="text-align:right;">${r.totalDeaths}
-                <span style="display:inline-block;width:${deathBarW}px;height:4px;background:#e57373;border-radius:2px;vertical-align:middle;margin-left:3px;"></span></td>
-              <td style="text-align:right;color:${parseFloat(rCFR)>10?'#d32f2f':'#666'};font-weight:${parseFloat(rCFR)>10?'bold':'normal'};">
-                ${rCFR}%</td>
-              <td style="text-align:right;font-size:0.7rem;color:#888;">${r.totalSuspected>0?r.totalSuspected+'疑':'-'}</td>
-            </tr>`;
-        }).join('')
-      : '<tr><td colspan="5" style="text-align:center;color:#999;">暂无数据</td></tr>';
-
-    // Demographic detail (shown when 1+ zones selected)
+    // Demographics for selected regions
     let demoHTML = '';
-    if (selCount > 0) {
-      const info = selectedDemographics(state.selectedRegions);
-      if (info) {
-        const countryLabel = state.selectedRegions.some(r =>
-          ['Kampala','Kisoro','Kanungu','Arua','Bundibugyo'].includes(r)
-        ) ? '刚果(金)/乌干达' : '刚果(金)';
+    if (selCount > 0 && data.demographics) {
+      const demos = state.selectedRegions
+        .map(r => data.demographics.find(d => d.region === r))
+        .filter(Boolean);
+      if (demos.length > 0) {
+        const totalPop = demos.reduce((s, d) => s + (d.population || 0), 0);
+        const avgDensity = Math.round(demos.reduce((s, d) => s + (d.population_density || 0), 0) / demos.length);
+        const avgUrban = Math.round(demos.reduce((s, d) => s + (d.urban_pct || 0), 0) / demos.length);
+        const avgDoctors = (demos.reduce((s, d) => s + (d.doctors_per_100k || 0), 0) / demos.length).toFixed(1);
+        const avgBeds = (demos.reduce((s, d) => s + (d.beds_per_10k || 0), 0) / demos.length).toFixed(1);
+        const ugaMap = data.ugaDistrictRegion;
+        const provinces = [...new Set(demos.map(d => resolveAdm1(d, ugaMap)))].join('、');
         demoHTML = `
-          <div style="margin-bottom:8px;padding:6px 8px;background:#f3f8ff;border-radius:4px;font-size:0.72rem;line-height:1.6;border-left:3px solid #1f77b4;">
-            <b>📋 已选区域概况</b>
-            <span style="color:#888;font-size:0.65rem;"> (${info.zoneCount}区: ${info.provinceList})</span>
-            <span style="color:#888;font-size:0.65rem;"> · ${countryLabel}</span>
-            <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:2px;color:#555;">
-              <span>👥 人口: <b>${(info.totalPop/10000).toFixed(0)}万</b></span>
-              <span>📐 密度: ${info.avgDensity}/km²</span>
-              <span>🏙 城镇化: ${info.avgUrban}%</span>
-              <span>🩺 医生: ${info.avgDoctors}/10万</span>
-              <span>🛏 床位: ${info.avgBeds}/万人</span>
-            </div>
+          <div style="padding:4px 8px;background:#f3f8ff;border-radius:4px;font-size:0.7rem;line-height:1.5;border-left:3px solid #1f77b4;">
+            <b>📋 已选区域</b> (${demos.length}区: ${provinces})
+            <span style="display:flex;gap:14px;flex-wrap:wrap;color:#555;">
+              <span>👥 ${(totalPop/1e4).toFixed(0)}万</span>
+              <span>📐 ${avgDensity}/km²</span>
+              <span>🏙 ${avgUrban}%</span>
+              <span>🩺 ${avgDoctors}/10万</span>
+              <span>🛏 ${avgBeds}/万人</span>
+            </span>
           </div>`;
       }
     }
 
-    // Assemble
     return `
-      <div style="padding:6px 8px;font-size:0.78rem;line-height:1.8;height:100%;display:flex;flex-direction:column;">
-        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:4px;font-size:0.7rem;color:#555;">
+      <div style="padding:6px 8px 4px;font-size:0.72rem;line-height:1.6;">
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:4px;font-size:0.68rem;color:#555;">
           <span>📍 ${regionInfo}</span>
           <span>📅 ${timeInfo}</span>
-          <span>📋 政策: ${policyInfo}</span>
+          <span>📋 ${policyInfo}</span>
         </div>
-
-        <div style="display:flex;gap:8px;margin-bottom:8px;">
-          <div style="flex:1;min-width:0;background:#fff3e0;padding:6px;border-radius:4px;text-align:center;">
-            <div style="font-size:0.6rem;color:#999;">确诊</div>
-            <div style="font-weight:bold;font-size:1.05rem;color:#d32f2f;">${totalConfirmed}</div>
+        <div style="display:flex;gap:6px;margin-bottom:4px;">
+          <div style="flex:1;min-width:0;background:#fff3e0;padding:4px;border-radius:3px;text-align:center;">
+            <div style="font-size:0.58rem;color:#999;">确诊</div>
+            <div style="font-weight:bold;font-size:0.95rem;color:#d32f2f;">${totalConfirmed}</div>
           </div>
-          <div style="flex:1;min-width:0;background:#fce4ec;padding:6px;border-radius:4px;text-align:center;">
-            <div style="font-size:0.6rem;color:#999;">死亡</div>
-            <div style="font-weight:bold;font-size:1.05rem;">${totalDeaths}</div>
+          <div style="flex:1;min-width:0;background:#fce4ec;padding:4px;border-radius:3px;text-align:center;">
+            <div style="font-size:0.58rem;color:#999;">死亡</div>
+            <div style="font-weight:bold;font-size:0.95rem;">${totalDeaths}</div>
           </div>
-          <div style="flex:1;min-width:0;background:#f3e5f5;padding:6px;border-radius:4px;text-align:center;">
-            <div style="font-size:0.6rem;color:#999;">CFR</div>
-            <div style="font-weight:bold;font-size:1.05rem;color:${parseFloat(cfr)>5?'#d32f2f':'#333'};">${cfr}%</div>
+          <div style="flex:1;min-width:0;background:#f3e5f5;padding:4px;border-radius:3px;text-align:center;">
+            <div style="font-size:0.58rem;color:#999;">CFR</div>
+            <div style="font-weight:bold;font-size:0.95rem;color:${parseFloat(cfr)>5?'#d32f2f':'#333'};">${cfr}%</div>
           </div>
-          <div style="flex:1;min-width:0;background:#e8eaf6;padding:6px;border-radius:4px;text-align:center;">
-            <div style="font-size:0.6rem;color:#999;">含疑似</div>
-            <div style="font-weight:bold;font-size:1.05rem;">${(totalConfirmed+totalSuspected)}</div>
+          <div style="flex:1;min-width:0;background:#e8eaf6;padding:4px;border-radius:3px;text-align:center;">
+            <div style="font-size:0.58rem;color:#999;">含疑似</div>
+            <div style="font-weight:bold;font-size:0.95rem;">${(totalConfirmed+totalSuspected)}</div>
           </div>
-          <div style="flex:1;min-width:0;background:#e8f5e9;padding:6px;border-radius:4px;text-align:center;">
-            <div style="font-size:0.6rem;color:#999;">疫区</div>
-            <div style="font-weight:bold;font-size:1.05rem;">${regionRows.length}</div>
+          <div style="flex:1;min-width:0;background:#e8f5e9;padding:4px;border-radius:3px;text-align:center;">
+            <div style="font-size:0.58rem;color:#999;">疫区</div>
+            <div style="font-weight:bold;font-size:0.95rem;">${rows.length}</div>
           </div>
         </div>
-
         ${demoHTML}
-
-        <div style="flex:1;overflow-y:auto;min-height:0;">
-          <table style="width:100%;border-collapse:collapse;font-size:0.72rem;">
-            <thead><tr style="border-bottom:2px solid #e0e0e0;">
-              <th style="text-align:left;padding:2px 4px;color:#888;font-weight:600;">区域</th>
-              <th style="text-align:right;padding:2px 4px;color:#888;font-weight:600;" title="累计确诊">确诊</th>
-              <th style="text-align:right;padding:2px 4px;color:#888;font-weight:600;" title="累计死亡">死亡</th>
-              <th style="text-align:right;padding:2px 4px;color:#888;font-weight:600;" title="Case Fatality Rate">CFR</th>
-              <th style="text-align:right;padding:2px 4px;color:#888;font-weight:600;" title="疑似病例">疑似</th>
-            </tr></thead>
-            <tbody>${tableRows}</tbody>
-          </table>
-        </div>
-
-        <div style="margin-top:4px;font-size:0.6rem;color:#bbb;border-top:1px solid #f0f0f0;padding-top:4px;">
-          WHO AFRO SitReps · ${state.timeRange?state.timeRange[1]:'2026-05-24'}
-          ${state.animatingDate?' · 动画: '+state.animatingDate:''}
-        </div>
-      </div>
-    `;
+      </div>`;
   }
 
-  function render(state) {
-    if (dom) dom.innerHTML = buildHTML(state);
+  // ── Build ECharts bar chart option ──
+  function buildBarOption(state) {
+    const filtered = filterCases(data.cases, state);
+    const summary = summarizeByRegion(filtered);
+    const rows = Object.values(summary)
+      .filter(r => r.totalConfirmed > 0)
+      .sort((a, b) => b.totalConfirmed - a.totalConfirmed);
+
+    const selectedSet = new Set(state.selectedRegions);
+    const maxVal = Math.max(1, ...rows.map(r => r.totalConfirmed));
+
+    // Build bar data — top regions by confirmed cases
+    const barData = rows.map(r => {
+      const rCFR = r.totalConfirmed > 0 ? (r.totalDeaths / r.totalConfirmed * 100) : 0;
+      const isSelected = selectedSet.has(r.region);
+      return {
+        name: r.region,
+        value: r.totalConfirmed,
+        deaths: r.totalDeaths,
+        cfr: rCFR,
+        itemStyle: {
+          color: isSelected ? '#ff8f00' : cfrColor(rCFR),
+          borderColor: isSelected ? '#333' : 'transparent',
+          borderWidth: isSelected ? 2 : 0,
+          borderRadius: [0, 3, 3, 0],
+        },
+        label: {
+          show: r.totalConfirmed > maxVal * 0.08 || isSelected,
+          formatter: '{b}',
+          position: 'right',
+          fontSize: isSelected ? 11 : 9,
+          fontWeight: isSelected ? 'bold' : 'normal',
+          color: isSelected ? '#333' : '#555',
+        },
+        emphasis: {
+          itemStyle: { borderColor: '#333', borderWidth: 1.5 },
+          label: { fontSize: 11, fontWeight: 'bold' },
+        },
+      };
+    });
+
+    // Don't show too few bars (looks sparse)
+    const showCount = Math.max(15, Math.min(barData.length, 40));
+
+    return {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: { type: 'shadow' },
+        formatter: p => {
+          if (!p || p.length === 0) return '';
+          const d = p[0].data;
+          return `<b>${d.name}</b><br/>
+            确诊: <b>${d.value}</b> | 死亡: <b>${d.deaths}</b><br/>
+            CFR: <b style="color:${cfrColor(d.cfr)};">${d.cfr.toFixed(1)}%</b><br/>
+            <em style="color:#888;">📌 点击选中/取消该区域</em>`;
+        },
+      },
+      grid: { top: 2, right: 120, bottom: 2, left: 4 },
+      xAxis: {
+        type: 'value',
+        axisLabel: { fontSize: 8, formatter: v => v >= 1000 ? (v/1000).toFixed(0)+'k' : v },
+        splitLine: { lineStyle: { color: '#f0f0f0' } },
+      },
+      yAxis: {
+        type: 'category',
+        inverse: true,  // top-ranked at top
+        data: barData.slice(0, showCount).map(d => d.name),
+        axisLabel: { fontSize: 9, width: 110, overflow: 'truncate' },
+        axisTick: { show: false },
+        axisLine: { show: false },
+      },
+      series: [{
+        type: 'bar',
+        data: barData.slice(0, showCount),
+        barMaxWidth: 16,
+        emphasis: {
+          itemStyle: { shadowBlur: 6, shadowColor: 'rgba(0,0,0,0.2)' },
+        },
+      }],
+    };
   }
 
-  // ── Click on table row → toggle region selection ──
-  dom.addEventListener('click', (e) => {
-    const tr = e.target.closest('tr[data-region]');
-    if (!tr) return;
-    const region = tr.dataset.region;
-    const current = new Set(store.getState().selectedRegions);
-    current.has(region) ? current.delete(region) : current.add(region);
-    store.dispatch(setSelectedRegions([...current]));
+  // ── Bar click → toggle region ──
+  barChart.on('click', params => {
+    if (params.componentType === 'series' && params.name) {
+      const current = new Set(store.getState().selectedRegions);
+      current.has(params.name) ? current.delete(params.name) : current.add(params.name);
+      store.dispatch(setSelectedRegions([...current]));
+    }
   });
+
+  // ── Store → render ──
+  function render(state) {
+    cardsDom.innerHTML = buildCardsHTML(state);
+    barChart.setOption(buildBarOption(state), true);
+  }
 
   const unsub = store.subscribe(render);
   render(store.getState());
 
   return {
     render,
-    resize: () => {},
-    destroy: () => { unsub(); dom && (dom.innerHTML = ''); },
+    resize: () => barChart.resize(),
+    destroy: () => { unsub(); barChart.dispose(); dom.innerHTML = ''; },
   };
 }

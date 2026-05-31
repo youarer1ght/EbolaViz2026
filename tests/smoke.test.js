@@ -30,13 +30,17 @@ globalThis.echarts = {
 function createFakeDom() {
   const style = {};
   const children = [];
+  let _innerHTML = '';
   const el = {
     style,
+    get innerHTML() { return _innerHTML; },
+    set innerHTML(v) { _innerHTML = v; },
     addEventListener: () => {},
     removeEventListener: () => {},
     remove: () => {},
     appendChild: (child) => { children.push(child); },
-    querySelector: () => null,
+    // detailView uses querySelector('#detail-cards') and ('#detail-bars')
+    querySelector: (sel) => createFakeDom(),
   };
   return el;
 }

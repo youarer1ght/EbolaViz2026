@@ -2,12 +2,12 @@
  * View ③: Parallel Coordinates — multi-factor correlation analysis.
  *
  * Coordination:
- *   Brush on axes → extract selected region names → dispatch
+ *   Click on a line → toggle that region's selection → dispatch
  *   SET_SELECTED_REGIONS → heatmap / timeline / detail filter.
- *   Click on a line → toggle that region's selection.
+ *   Double-click background → clear all selections.
  *
- * Selection styling: selected lines are gold and thick; unselected
- * keep their mortality-based color at reduced opacity for context.
+ * Selection styling: selected lines are thick + full opacity; unselected
+ * are thin + faded. Mortality-based green→red color gradient always preserved.
  */
 import { setSelectedRegions } from '../actions.js';
 import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
@@ -88,22 +88,11 @@ export function initParallel(dom, store, data) {
             床位: ${v[4]} 张/万人`;
         },
       },
-      brush: {
-        toolbox: ['rect', 'clear'],
-        throttleType: 'debounce',
-        throttleDelay: 200,
-        // Note: ECharts only keeps the most recent brush area on parallel axes.
-        // Multi-axis AND is handled by our custom accumulator in handleBrush.
-        // inBrush/outOfBrush only set lineWidth — color + opacity come from
-        // per-item lineStyle (mortality gradient) so brush never washes out hues.
-        inBrush: { lineWidth: 2.5 },
-        outOfBrush: { opacity: 0.08, lineWidth: 0.5 },
-        brushStyle: {
-          borderWidth: 1,
-          color: 'rgba(31,119,180,0.08)',
-          borderColor: 'rgba(31,119,180,0.25)',
-        },
-      },
+      // Brush removed — ECharts parallel brush has a hardcoded blue fill
+      // that cannot be made fully transparent (rgba color is ignored).
+      // Instead, click on any line to select/deselect that region.
+      // Selected lines = thick + full opacity; unselected = thin + faded.
+      // Mortality-based green→red gradient always preserved.
       // ── Header row: graphic text above the parallel area ──
       //     Positions in pixels, matching parallel.left:70 + even spacing.
       //     First axis at 70px, last at containerWidth-70px, 3 middle spaced evenly.
@@ -163,80 +152,24 @@ export function initParallel(dom, store, data) {
     };
   }
 
-  // ── Brush → region selection (multi-axis AND intersection) ──
-  //     ECharts parallel coords only keeps the most recent brush visually;
-  //     previous brush areas disappear.  We work around this by accumulating
-  //     selected data-index sets across brush events via simple set intersection.
-  //     Only the toolbox clear button (empty batch) resets the accumulator.
-  let lastBrushed = null;
-  let accumulatedIndices = null; // Set of data indices accumulated across brushes
-
-  function handleBrush(params) {
-    const merged = buildMerged(data.cases);
-
-    // ── Collect data indices from current brush event ──
-    const currentIndices = new Set();
-    for (const b of (params.batch || [])) {
-      for (const sel of (b.selected || [])) {
-        if (sel.dataIndex) {
-          for (const i of sel.dataIndex) currentIndices.add(i);
-        }
-      }
-    }
-
-    // ── No selection (clear button or empty brush) → reset ──
-    if (currentIndices.size === 0) {
-      accumulatedIndices = null;
-      lastBrushed = null;
-      store.dispatch(setSelectedRegions([]));
-      console.log('🔍 框选已清除');
-      return;
-    }
-
-    // ── Accumulate: intersect with previous brush results ──
-    if (accumulatedIndices === null) {
-      accumulatedIndices = new Set(currentIndices);
-    } else {
-      // AND: keep only indices present in BOTH the new brush and the accumulator
-      accumulatedIndices = new Set(
-        [...accumulatedIndices].filter(i => currentIndices.has(i))
-      );
-    }
-
-    // ── Resolve indices → region names ──
-    const regions = [...accumulatedIndices]
-      .filter(i => i >= 0 && i < merged.length)
-      .map(i => merged[i].region);
-
-    const key = regions.sort().join(',');
-    if (key !== lastBrushed) {
-      lastBrushed = key;
-      console.log(`🔍 累积框选: ${accumulatedIndices.size} 个区域 → ${regions.length} 个卫生区`, regions);
-      store.dispatch(setSelectedRegions(regions));
-    } else {
-      console.log(`🔍 累积框选: ${accumulatedIndices.size} 个区域 (未变化)`, regions);
-    }
-  }
-
-  chart.on('brushSelected', handleBrush);
-  chart.on('brushEnd', handleBrush);
-
   // ── Click on line → toggle single region ──
   chart.on('click', params => {
     if (params.componentType === 'series' && params.name) {
       const current = new Set(store.getState().selectedRegions);
       current.has(params.name) ? current.delete(params.name) : current.add(params.name);
-      const next = [...current];
-      lastBrushed = next.sort().join(',');
-      store.dispatch(setSelectedRegions(next));
+      store.dispatch(setSelectedRegions([...current]));
+    }
+  });
+
+  // ── Double-click on background → clear all selections ──
+  chart.on('dblclick', params => {
+    if (params.componentType === 'parallel') {
+      store.dispatch(setSelectedRegions([]));
     }
   });
 
   // ── Store → render ──
   function render(state) {
-    // notMerge:false preserves brush state across render cycles.
-    // Without this, setOption(...,true) destroys active brush areas
-    // every time the store updates, breaking multi-axis accumulation.
     chart.setOption(buildOption(state), false);
   }
 

@@ -1,20 +1,23 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif; background: #f5f7fa; color: #333; overflow: hidden; }
+html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif; background: #f5f7fa; color: #333; overflow-y: auto; overflow-x: hidden; }
 
 /* ── CSS Grid Layout ── */
+/*    Scrollable — each row has a min-height. Page scrolls vertically
+      if total exceeds viewport. fr-based heights are removed so content
+      determines height (no squishing of dense views like parallel). */
 #app {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  grid-template-rows: auto 48fr 22fr 30fr;
+  grid-template-rows: auto minmax(480px, auto) minmax(380px, auto) minmax(400px, auto);
   grid-template-areas:
     "titlebar  titlebar"
     "heatmap   timeline"
     "parallel  parallel"
     "policy    detail";
-  height: 100vh;
   gap: 4px;
   padding: 4px;
+  min-height: 100vh;
 }
 
 /* ── Title Bar ── */
@@ -86,7 +89,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 }
 
 /* ── Detail Panel ── */
-#chart-detail { overflow-y: auto; padding: 8px; font-size: 0.8rem; line-height: 1.7; }
+#chart-detail { padding: 8px; font-size: 0.8rem; line-height: 1.7; }
 #chart-detail .stat-value { font-weight: bold; font-size: 1.05rem; }
 #chart-detail .stat-label { color: #888; }
 #chart-detail table { width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-top: 8px; }
@@ -107,7 +110,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 @media (max-width: 900px) {
   #app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 35fr 25fr 20fr 10fr 10fr;
+    grid-template-rows: auto minmax(350px, auto) minmax(250px, auto) minmax(300px, auto) minmax(250px, auto) minmax(300px, auto);
     grid-template-areas: "titlebar" "heatmap" "timeline" "parallel" "policy" "detail";
   }
   .heatmap-split { flex-direction: column; }

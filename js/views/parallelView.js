@@ -4,7 +4,7 @@
  * Coordination:
  *   Click on a line → toggle that region's selection → dispatch
  *   SET_SELECTED_REGIONS → heatmap / timeline / detail filter.
- *   Click anywhere else → clear all selections.
+ *   Click "✕ 清除" button (top-right) → clear all selections.
  *
  * Selection styling: selected lines are thick + full opacity; unselected
  * are thin + faded. Mortality-based green→red color gradient always preserved.
@@ -152,22 +152,57 @@ export function initParallel(dom, store, data) {
     };
   }
 
-  // ── Click on line → toggle; click anywhere else → clear all ──
+  // ── Click on line → toggle single region ──
   chart.on('click', params => {
     if (params.componentType === 'series' && params.name) {
-      // Clicked a specific line → toggle that region
       const current = new Set(store.getState().selectedRegions);
       current.has(params.name) ? current.delete(params.name) : current.add(params.name);
       store.dispatch(setSelectedRegions([...current]));
-    } else {
-      // Clicked on background / axis / header → clear all selections
-      store.dispatch(setSelectedRegions([]));
     }
+  });
+
+  // ── Clear button (DOM element overlaid on chart) ──
+  //     ECharts parallel coords click events are unreliable for detecting
+  //     "background" clicks (it often still reports componentType:'series').
+  //     A DOM button is a guaranteed, visible escape hatch.
+  const clearBtn = document.createElement('button');
+  clearBtn.textContent = '✕ 清除';
+  clearBtn.title = '清除所有选中区域';
+  Object.assign(clearBtn.style, {
+    position: 'absolute',
+    top: '6px',
+    right: '10px',
+    zIndex: '10',
+    padding: '2px 10px',
+    fontSize: '11px',
+    cursor: 'pointer',
+    border: '1px solid #ccc',
+    borderRadius: '3px',
+    background: '#fff',
+    color: '#888',
+    opacity: '0',
+    transition: 'opacity 0.15s',
+    pointerEvents: 'none',
+  });
+  dom.style.position = 'relative';
+  dom.appendChild(clearBtn);
+
+  // Show button only when there are selections
+  function updateClearBtn(state) {
+    const hasSelection = state.selectedRegions.length > 0;
+    clearBtn.style.opacity = hasSelection ? '1' : '0';
+    clearBtn.style.pointerEvents = hasSelection ? 'auto' : 'none';
+  }
+
+  clearBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    store.dispatch(setSelectedRegions([]));
   });
 
   // ── Store → render ──
   function render(state) {
     chart.setOption(buildOption(state), false);
+    updateClearBtn(state);
   }
 
   const unsub = store.subscribe(render);
@@ -176,6 +211,6 @@ export function initParallel(dom, store, data) {
   return {
     render,
     resize: () => chart.resize(),
-    destroy: () => { unsub(); chart.dispose(); },
+    destroy: () => { unsub(); chart.dispose(); clearBtn.remove(); },
   };
 }

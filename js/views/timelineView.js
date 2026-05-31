@@ -15,10 +15,9 @@ export function initTimeline(dom, store, data) {
   let lastZoomDispatch = 0;
   let overviewMode = false;  // false=detail lines, true=aggregate sum
 
-  // Prevent page scroll from stealing mouse-wheel events needed by
-  // ECharts inside dataZoom (zoom/pan). Without this, scrolling the
-  // wheel over the chart scrolls the page instead of the timeline.
-  dom.addEventListener('wheel', e => e.preventDefault(), { passive: false });
+  // Wheel events are handled by CSS overscroll-behavior on the container.
+  // No JS wheel interception needed — ECharts inside-dataZoom consumes
+  // wheel events on its canvas; CSS prevents the page from also scrolling.
 
   // ── Toggle button ──
   const toggleBtn = document.createElement('button');

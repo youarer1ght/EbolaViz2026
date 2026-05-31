@@ -97,13 +97,9 @@ export function initParallel(dom, store, data) {
         inBrush: { opacity: 1, lineWidth: 3.5 },
         outOfBrush: { opacity: 0.08, lineWidth: 0.5 },
         brushStyle: {
-          borderWidth: 1.5,
-          color: 'rgba(31,119,180,0.08)',
+          borderWidth: 2,
+          color: 'transparent',       // no fill — axis labels stay readable
           borderColor: '#1f77b4',
-          shadowBlur: 4,
-          shadowColor: 'rgba(31,119,180,0.3)',
-          shadowOffsetX: 0,
-          shadowOffsetY: 0,
         },
       },
       // ── Header row: graphic text above the parallel area ──

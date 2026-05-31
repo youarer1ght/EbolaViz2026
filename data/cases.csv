@@ -150,3 +150,11 @@ date,country,region,province,confirmed_cases,confirmed_deaths,suspected_cases,su
 2026-05-27,COD,Rwampara,Ituri,33,2,228,69
 2026-05-28,COD,Rwampara,Ituri,65,13,241,71
 2026-05-24,UGA,Kampala,Kampala,7,1,0,0
+2026-05-24,UGA,Kisoro,Kisoro,1,0,3,1
+2026-05-28,UGA,Kisoro,Kisoro,2,0,5,1
+2026-05-24,UGA,Kanungu,Kanungu,0,0,2,0
+2026-05-28,UGA,Kanungu,Kanungu,1,0,4,1
+2026-05-26,UGA,Bundibugyo,Bundibugyo,0,0,4,2
+2026-05-28,UGA,Bundibugyo,Bundibugyo,1,0,6,2
+2026-05-27,UGA,Arua,Arua,0,0,5,1
+2026-05-28,UGA,Arua,Arua,1,0,7,1

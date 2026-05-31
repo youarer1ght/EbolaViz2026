@@ -1659,5 +1659,93 @@
     "suspected_cases": 0,
     "suspected_deaths": 0,
     "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "UGA",
+    "region": "Kisoro",
+    "province": "Kisoro",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 3,
+    "suspected_deaths": 1,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-28",
+    "country": "UGA",
+    "region": "Kisoro",
+    "province": "Kisoro",
+    "new_cases": 2,
+    "new_deaths": 0,
+    "suspected_cases": 5,
+    "suspected_deaths": 1,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-24",
+    "country": "UGA",
+    "region": "Kanungu",
+    "province": "Kanungu",
+    "new_cases": 0,
+    "new_deaths": 0,
+    "suspected_cases": 2,
+    "suspected_deaths": 0,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-28",
+    "country": "UGA",
+    "region": "Kanungu",
+    "province": "Kanungu",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 4,
+    "suspected_deaths": 1,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-26",
+    "country": "UGA",
+    "region": "Bundibugyo",
+    "province": "Bundibugyo",
+    "new_cases": 0,
+    "new_deaths": 0,
+    "suspected_cases": 4,
+    "suspected_deaths": 2,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-28",
+    "country": "UGA",
+    "region": "Bundibugyo",
+    "province": "Bundibugyo",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 6,
+    "suspected_deaths": 2,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-27",
+    "country": "UGA",
+    "region": "Arua",
+    "province": "Arua",
+    "new_cases": 0,
+    "new_deaths": 0,
+    "suspected_cases": 5,
+    "suspected_deaths": 1,
+    "source": "WHO AFRO Weekly External Situation Report"
+  },
+  {
+    "date": "2026-05-28",
+    "country": "UGA",
+    "region": "Arua",
+    "province": "Arua",
+    "new_cases": 1,
+    "new_deaths": 0,
+    "suspected_cases": 7,
+    "suspected_deaths": 1,
+    "source": "WHO AFRO Weekly External Situation Report"
   }
 ]

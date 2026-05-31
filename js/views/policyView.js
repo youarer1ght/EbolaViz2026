@@ -19,10 +19,13 @@ export function initPolicy(dom, store, data) {
       policies = policies.filter(p => state.selectedRegions.includes(p.region));
     }
 
-    // Build daily case totals as background
-    const filtered = filterCases(data.cases, state);
+    // Build daily case totals as background trend line.
+    // Use time-range only (ignore animatingDate + region selection) so the
+    // trend line stays stable and informative during animation playback.
+    const bgState = { ...state, animatingDate: null, selectedRegions: [] };
+    const bgCases = filterCases(data.cases, bgState);
     const dailyTotals = {};
-    for (const c of filtered) {
+    for (const c of bgCases) {
       dailyTotals[c.date] = (dailyTotals[c.date] || 0) + (c.new_cases || c.suspected_cases || 0);
     }
     const caseLine = Object.entries(dailyTotals)

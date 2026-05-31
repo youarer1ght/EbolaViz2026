@@ -175,15 +175,29 @@ export function initTimeline(dom, store, data) {
   });
 
   const fullTimeRange = getTimeRange(data.cases);
+  // Track previous state to avoid full series rebuild on hover-only changes
+  let prevSelKey = '';
+  let prevTimeKey = '';
 
   function render(state) {
-    // Detect RESET_ALL: if store timeRange was restored to full, reset slider too
+    // Detect RESET_ALL
     if (state.timeRange[0] === fullTimeRange[0] && state.timeRange[1] === fullTimeRange[1]) {
       needsReset = true;
     }
-    // replaceMerge: replace series completely (removes stale lines when
-    // selection changes) but merge everything else (preserves dataZoom position).
-    chart.setOption(buildOption(state), { notMerge: false, replaceMerge: ['series'] });
+    // Only use replaceMerge when series actually change (selection/time).
+    // Hover only changes lineStyle.width — merge is sufficient and avoids
+    // destroying/recreating all series on every mouse move.
+    const selKey = state.selectedRegions.sort().join(',');
+    const timeKey = (state.timeRange || []).join('~');
+    const structuralChange = selKey !== prevSelKey || timeKey !== prevTimeKey;
+    prevSelKey = selKey;
+    prevTimeKey = timeKey;
+
+    chart.setOption(buildOption(state),
+      structuralChange
+        ? { notMerge: false, replaceMerge: ['series'] }
+        : false  // merge only — no series destroyed, just line width updated
+    );
   }
 
   const unsub = store.subscribe(render);

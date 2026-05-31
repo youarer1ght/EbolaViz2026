@@ -276,7 +276,7 @@ export function initHeatmap(dom, store, data) {
           label: { fontSize: 11, fontWeight: 'bold' },
         },
       };
-    });
+    }).reverse();  // small markers on top → always clickable even in dense clusters
 
     // Count how many zones are selected in this province
     const selectedZoneCount = zones.filter(z => selectedSet.has(z)).length;
@@ -306,7 +306,7 @@ export function initHeatmap(dom, store, data) {
       },
       geo: {
         map: mapName,
-        roam: false,
+        roam: true,   // scroll-wheel zoom + drag pan to separate dense markers
         zoom: 1.0,
         center: centroid,
         aspectScale: 0.85,

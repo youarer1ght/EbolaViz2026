@@ -92,7 +92,8 @@ export function initParallel(dom, store, data) {
         toolbox: ['rect', 'clear'],
         throttleType: 'debounce',
         throttleDelay: 200,
-        brushLink: [],
+        brushMode: 'multiple',       // allow brushing on multiple axes simultaneously
+        removeOnClick: false,        // don't clear on click — use clear button instead
         inBrush: { opacity: 1, lineWidth: 3 },
         outOfBrush: { opacity: 0.15, lineWidth: 1 },
         brushStyle: { borderWidth: 1, color: 'rgba(31,119,180,0.2)', borderColor: '#1f77b4' },
@@ -153,24 +154,48 @@ export function initParallel(dom, store, data) {
     };
   }
 
-  // ── Brush → region selection ──
+  // ── Brush → region selection (multi-axis AND) ──
+  //     With brushMode:'multiple', each brushed axis contributes a batch
+  //     entry.  Take the INTERSECTION of all active brush areas so only
+  //     lines passing through ALL selected ranges are highlighted.
   let lastBrushed = null;
 
   function handleBrush(params) {
-    if (!params.batch || params.batch.length === 0) return;
+    const merged = buildMerged(data.cases);
 
-    const indices = new Set();
+    // Brush cleared (toolbox clear button or empty selection)
+    if (!params.batch || params.batch.length === 0) {
+      lastBrushed = null;
+      store.dispatch(setSelectedRegions([]));
+      return;
+    }
+
+    // Collect the data-index set from each active brush area.
+    // With brushMode:'multiple', each axis brush stays active independently.
+    const batchSets = [];
     for (const b of params.batch) {
+      const idxSet = new Set();
       for (const sel of (b.selected || [])) {
         if (sel.dataIndex) {
-          for (const i of sel.dataIndex) indices.add(i);
+          for (const i of sel.dataIndex) idxSet.add(i);
         }
+      }
+      if (idxSet.size > 0) batchSets.push(idxSet);
+    }
+
+    if (batchSets.length === 0) return;
+
+    // AND intersection: only keep indices present in EVERY batch
+    const intersection = new Set(batchSets[0]);
+    for (let i = 1; i < batchSets.length; i++) {
+      for (const idx of intersection) {
+        if (!batchSets[i].has(idx)) intersection.delete(idx);
       }
     }
 
-    const merged = buildMerged(data.cases);
+    // Resolve indices → region names
     const regions = [];
-    for (const i of indices) {
+    for (const i of intersection) {
       if (i >= 0 && i < merged.length) regions.push(merged[i].region);
     }
 
@@ -182,7 +207,7 @@ export function initParallel(dom, store, data) {
   }
 
   chart.on('brushSelected', handleBrush);
-  chart.on('brushEnd', handleBrush);  // Belt-and-suspenders: both events
+  chart.on('brushEnd', handleBrush);
 
   // ── Click on line → toggle single region ──
   chart.on('click', params => {

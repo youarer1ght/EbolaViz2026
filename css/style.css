@@ -58,7 +58,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 
 /* Stacking: interactive views with tooltips need overflow + z-index tuning */
 #view-parallel { overflow: visible !important; z-index: 2; }
-#view-policy   { overflow: visible !important; z-index: 2; }
+#view-policy   { overflow: visible !important; z-index: 3; }  /* above parallel → markLine labels visible */
 #view-heatmap  { overflow: hidden; z-index: 1; }
 #view-timeline { overflow: hidden; z-index: 1; }
 #view-detail   { z-index: 1; }

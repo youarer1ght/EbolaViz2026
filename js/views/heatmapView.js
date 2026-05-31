@@ -288,6 +288,24 @@ export function initHeatmap(dom, store, data) {
             <em style="color:#888;">📌 点击选中/取消该卫生区</em>`;
         },
       },
+      // ── Select all / clear buttons for the province detail panel ──
+      // Injected as graphic elements inside the chart (reliable positioning)
+      graphic: [
+        { id:'btn-select-all', type:'text', left:8, top:4, z:200,
+          style:{ text:'☑ 全选', fontSize:10, fill:'#555', fontFamily:'sans-serif' },
+          onclick:() => {
+            const zones = provinceToZones[activeDetailProvince] || [];
+            const cur = store.getState().selectedRegions;
+            store.dispatch(setSelectedRegions([...new Set([...cur, ...zones])]));
+          } },
+        { id:'btn-clear-prov', type:'text', left:60, top:4, z:200,
+          style:{ text:'✕ 清除', fontSize:10, fill:'#888', fontFamily:'sans-serif' },
+          onclick:() => {
+            const zones = provinceToZones[activeDetailProvince] || [];
+            const cur = store.getState().selectedRegions;
+            store.dispatch(setSelectedRegions(cur.filter(r => !zones.includes(r))));
+          } },
+      ],
       geo: {
         map: mapName,
         roam: true,   // scroll-wheel zoom + drag pan to separate dense markers

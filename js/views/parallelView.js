@@ -4,7 +4,7 @@
  * Coordination:
  *   Click on a line → toggle that region's selection → dispatch
  *   SET_SELECTED_REGIONS → heatmap / timeline / detail filter.
- *   Double-click background → clear all selections.
+ *   Click on background (empty space between axes) → clear all selections.
  *
  * Selection styling: selected lines are thick + full opacity; unselected
  * are thin + faded. Mortality-based green→red color gradient always preserved.
@@ -161,8 +161,8 @@ export function initParallel(dom, store, data) {
     }
   });
 
-  // ── Double-click on background → clear all selections ──
-  chart.on('dblclick', params => {
+  // ── Click on background (empty area between axes) → clear all selections ──
+  chart.on('click', params => {
     if (params.componentType === 'parallel') {
       store.dispatch(setSelectedRegions([]));
     }

@@ -244,8 +244,9 @@ export function initHeatmap(dom, store, data) {
     const scatterData = displayZones.map((zone, i) => {
       const s = zoneSummary[zone] || { totalConfirmed: 0, totalDeaths: 0 };
       const isSelected = selectedSet.has(zone);
-      // Log-scale sizing relative to provincial max
-      const size = 8 + 42 * (Math.log((s.totalConfirmed || 0) + 1) / Math.log(maxZoneCases + 1));
+      // Log-scale sizing: 6–30px — keeps markers distinguishable without
+      // excessive overlap even in dense provinces like Nord-Kivu
+      const size = 6 + 24 * (Math.log((s.totalConfirmed || 0) + 1) / Math.log(maxZoneCases + 1));
       // Real position from shapefile centroids, fallback to province centroid
       const coord = zoneCoords[zone];
       const lon = coord ? coord.lon : centroid[0];
@@ -271,8 +272,8 @@ export function initHeatmap(dom, store, data) {
           offset: [4, 0],
         },
         emphasis: {
-          scale: 1.8,
-          label: { fontSize: 12, fontWeight: 'bold' },
+          scale: 1.5,
+          label: { fontSize: 11, fontWeight: 'bold' },
         },
       };
     });

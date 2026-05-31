@@ -46,11 +46,11 @@ export function initTimeline(dom, store, data) {
         },
       },
       legend: {
-        type: 'scroll', top: 0,
+        type: 'scroll', bottom: 28,
         textStyle: { fontSize: 9 },
         pageTextStyle: { fontSize: 9 },
       },
-      grid: { top: 32, right: 16, bottom: 50, left: 48 },
+      grid: { top: 8, right: 16, bottom: 55, left: 48 },
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 9, rotate: 30 },
@@ -61,6 +61,7 @@ export function initTimeline(dom, store, data) {
         type: 'value',
         name: '病例数',
         axisLabel: { fontSize: 9 },
+        nameTextStyle: { fontSize: 10, fontWeight: 'bold' },
       },
       dataZoom: [
         { type: 'slider', start: 0, end: 100, height: 20, bottom: 6 },

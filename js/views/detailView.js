@@ -5,6 +5,7 @@
  * compute summary statistics, CFR, regional ranking, and selected-
  * region demographic context.
  */
+import { setSelectedRegions } from '../actions.js';
 import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
 
 export function initDetail(dom, store, data) {
@@ -94,7 +95,7 @@ export function initDetail(dom, store, data) {
           const caseIntensity = r.totalConfirmed / maxConfirmed;
           const deathBarW = maxDeaths > 0 ? Math.round((r.totalDeaths / maxDeaths) * 60) : 0;
           return `
-            <tr style="${isSelected ? '' : 'opacity:0.35;'}">
+            <tr data-region="${r.region}" style="cursor:pointer;${isSelected ? 'background:#fff3e0;' : ''}${isSelected ? '' : 'opacity:0.35;'}">
               <td><span style="font-weight:${caseIntensity>0.3?'bold':'normal'};">${r.region}</span>
                 <span style="color:#999;font-size:0.65rem;"> ${r.country}</span></td>
               <td style="text-align:right;color:${caseIntensity>0.5?'#d32f2f':'#333'};font-weight:${caseIntensity>0.5?'bold':'normal'};">
@@ -190,6 +191,16 @@ export function initDetail(dom, store, data) {
   function render(state) {
     if (dom) dom.innerHTML = buildHTML(state);
   }
+
+  // ── Click on table row → toggle region selection ──
+  dom.addEventListener('click', (e) => {
+    const tr = e.target.closest('tr[data-region]');
+    if (!tr) return;
+    const region = tr.dataset.region;
+    const current = new Set(store.getState().selectedRegions);
+    current.has(region) ? current.delete(region) : current.add(region);
+    store.dispatch(setSelectedRegions([...current]));
+  });
 
   const unsub = store.subscribe(render);
   render(store.getState());

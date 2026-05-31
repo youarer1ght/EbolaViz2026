@@ -117,6 +117,17 @@ export function initParallel(dom, store, data) {
           type: 'line', z: 99,
           shape: { x1: '7%', y1: 32, x2: '93%', y2: 32 },
           style: { stroke: '#e0e0e0', lineWidth: 1 },
+        }, {
+          id: 'header-hint',
+          type: 'text',
+          left: 'center',
+          top: 35,
+          z: 100,
+          style: {
+            text: '💡 点击线条选中/取消卫生区  |  悬停查看数据  |  ✕ 清除全部',
+            fontSize: 10, fill: '#aaa',
+            fontFamily: '-apple-system, "Noto Sans SC", sans-serif',
+          },
         }]);
       })(),
       parallelAxis: [
@@ -132,7 +143,7 @@ export function initParallel(dom, store, data) {
           axisLabel: { fontSize: 10 } },
       ],
       parallel: {
-        left: 70, right: 70, top: 46, bottom: 24,
+        left: 70, right: 70, top: 52, bottom: 24,
         parallelAxisDefault: {
           axisLabel: { fontSize: 10 },
           nameLocation: 'start', nameGap: 0,

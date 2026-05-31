@@ -42,12 +42,22 @@ const ZONE_COORDS = {
   "Bundibugyo":  [30.06, 0.71],
 };
 
-// 5-level yellow-orange-red gradient for choropleth
-const PROVINCE_COLORS = ['#ffffcc', '#ffeda0', '#feb24c', '#f03b20', '#bd0026'];
+// 7-level yellow-orange-red gradient for choropleth (ColorBrewer YlOrRd 7-class)
+// Log-scale mapping handles the exponential distribution of epidemic data:
+// early/sporadic zones spread apart at the low end while maintaining
+// differentiation between major epicenters at the high end.
+const PROVINCE_COLORS = [
+  '#ffffcc', '#ffeda0', '#fed976', '#feb24c', '#fd8d3c', '#f03b20', '#bd0026',
+];
 
+/** Log-scale color mapping: t = log(value+1) / log(max+1) → 7 buckets.
+ *  Linear mapping would collapse 130–341 (6 provinces) into one bucket
+ *  while leaving the 7k–40k range spanning 4 empty buckets.  Log scale
+ *  distributes the 8 non-zero provinces across 4–5 visible colors. */
 function choroplethColor(value, max) {
   if (max === 0 || value === 0) return '#f0f0f0';
-  const idx = Math.min(4, Math.floor((value / max) * 5));
+  const t = Math.log(value + 1) / Math.log(max + 1);
+  const idx = Math.min(6, Math.floor(t * 7));
   return PROVINCE_COLORS[Math.max(0, idx)];
 }
 

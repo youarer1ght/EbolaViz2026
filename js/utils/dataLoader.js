@@ -15,6 +15,7 @@ const DATA_PATHS = {
   borderPoE:           'data/border_poe.json',
   geoOutbreak:         'data/geo/outbreak_region.geojson',  // Merged DRC+UGA ADM1
   ugaDistrictRegion:   'data/geo/uga_district_region_map.json',
+  zoneCoords:          'data/zone_coords.json',             // Health zone centroids from INRB shapefile
 };
 
 /** Load all data files. Returns { cases, demographics, policies, borderPoE, geoDRC, geoUGA }. */

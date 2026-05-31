@@ -1,0 +1,2612 @@
+{
+  "Wembo Nyama": {
+    "lon": 24.721,
+    "lat": -3.8916,
+    "province": "RDC"
+  },
+  "Kole": {
+    "lon": 22.2613,
+    "lat": -3.6532,
+    "province": "RDC"
+  },
+  "Pania Mutombo": {
+    "lon": 23.8032,
+    "lat": -5.1762,
+    "province": "RDC"
+  },
+  "Minga": {
+    "lon": 23.9227,
+    "lat": -4.6464,
+    "province": "RDC"
+  },
+  "Lusambo": {
+    "lon": 23.4029,
+    "lat": -4.9446,
+    "province": "RDC"
+  },
+  "Dikungu": {
+    "lon": 24.2225,
+    "lat": -4.3168,
+    "province": "RDC"
+  },
+  "Vanga Kete": {
+    "lon": 23.4407,
+    "lat": -3.7947,
+    "province": "RDC"
+  },
+  "Lodja": {
+    "lon": 23.4839,
+    "lat": -3.4659,
+    "province": "RDC"
+  },
+  "Omendjadi": {
+    "lon": 23.3849,
+    "lat": -3.094,
+    "province": "RDC"
+  },
+  "Djalo Djeka": {
+    "lon": 24.1064,
+    "lat": -3.0692,
+    "province": "RDC"
+  },
+  "Katako Kombe": {
+    "lon": 24.6748,
+    "lat": -3.1875,
+    "province": "RDC"
+  },
+  "Bena Dibele": {
+    "lon": 22.8469,
+    "lat": -3.7471,
+    "province": "RDC"
+  },
+  "Kamiji": {
+    "lon": 23.2661,
+    "lat": -6.6789,
+    "province": "RDC"
+  },
+  "Tshitenge": {
+    "lon": 23.7323,
+    "lat": -6.1104,
+    "province": "RDC"
+  },
+  "Miabi": {
+    "lon": 23.2948,
+    "lat": -6.0884,
+    "province": "RDC"
+  },
+  "Ngandajika": {
+    "lon": 24.0753,
+    "lat": -6.7553,
+    "province": "RDC"
+  },
+  "Mulumba": {
+    "lon": 23.8416,
+    "lat": -6.546,
+    "province": "RDC"
+  },
+  "Tshilenge": {
+    "lon": 23.7076,
+    "lat": -6.2882,
+    "province": "RDC"
+  },
+  "Cilundu": {
+    "lon": 23.2588,
+    "lat": -6.3203,
+    "province": "RDC"
+  },
+  "Lubao": {
+    "lon": 25.8251,
+    "lat": -5.7282,
+    "province": "RDC"
+  },
+  "Kalonda Est": {
+    "lon": 25.0809,
+    "lat": -6.2697,
+    "province": "RDC"
+  },
+  "Kabinda": {
+    "lon": 24.4495,
+    "lat": -6.153,
+    "province": "RDC"
+  },
+  "Ludimbi Lukula": {
+    "lon": 24.6424,
+    "lat": -5.7508,
+    "province": "RDC"
+  },
+  "Kalambayi Kabanga": {
+    "lon": 24.1568,
+    "lat": -6.5678,
+    "province": "RDC"
+  },
+  "Makota": {
+    "lon": 23.4108,
+    "lat": -7.0196,
+    "province": "RDC"
+  },
+  "Mwene Ditu": {
+    "lon": 23.4413,
+    "lat": -6.9528,
+    "province": "RDC"
+  },
+  "Wikong": {
+    "lon": 23.2337,
+    "lat": -7.8724,
+    "province": "RDC"
+  },
+  "Luputa": {
+    "lon": 23.6868,
+    "lat": -7.5476,
+    "province": "RDC"
+  },
+  "Kanda Kanda": {
+    "lon": 23.6655,
+    "lat": -6.8787,
+    "province": "RDC"
+  },
+  "Bonzola": {
+    "lon": 23.6191,
+    "lat": -6.1544,
+    "province": "RDC"
+  },
+  "Dibindi": {
+    "lon": 23.6231,
+    "lat": -6.1282,
+    "province": "RDC"
+  },
+  "Kansele": {
+    "lon": 23.6112,
+    "lat": -6.1166,
+    "province": "RDC"
+  },
+  "Muya": {
+    "lon": 23.6319,
+    "lat": -6.0951,
+    "province": "RDC"
+  },
+  "Diulu": {
+    "lon": 23.6079,
+    "lat": -6.0974,
+    "province": "RDC"
+  },
+  "Bipemba": {
+    "lon": 23.5709,
+    "lat": -6.097,
+    "province": "RDC"
+  },
+  "Mpokolo": {
+    "lon": 23.5445,
+    "lat": -6.0829,
+    "province": "RDC"
+  },
+  "Nzaba": {
+    "lon": 23.5562,
+    "lat": -6.1393,
+    "province": "RDC"
+  },
+  "Kabeya Kamuanga": {
+    "lon": 23.2177,
+    "lat": -6.0922,
+    "province": "RDC"
+  },
+  "Mukumbi": {
+    "lon": 23.6097,
+    "lat": -5.9443,
+    "province": "RDC"
+  },
+  "Lukelenge": {
+    "lon": 23.6501,
+    "lat": -6.1186,
+    "province": "RDC"
+  },
+  "Tshishimbi": {
+    "lon": 23.5278,
+    "lat": -6.2261,
+    "province": "RDC"
+  },
+  "Lubilanji": {
+    "lon": 23.6077,
+    "lat": -6.1332,
+    "province": "RDC"
+  },
+  "Kamana": {
+    "lon": 25.5416,
+    "lat": -5.8495,
+    "province": "RDC"
+  },
+  "Kasansa": {
+    "lon": 23.6167,
+    "lat": -6.5093,
+    "province": "RDC"
+  },
+  "Bibanga": {
+    "lon": 23.9002,
+    "lat": -6.1923,
+    "province": "RDC"
+  },
+  "Kalenda": {
+    "lon": 23.4858,
+    "lat": -7.4379,
+    "province": "RDC"
+  },
+  "Tshofa": {
+    "lon": 24.9737,
+    "lat": -5.2618,
+    "province": "RDC"
+  },
+  "Pimu": {
+    "lon": 21.2041,
+    "lat": 1.791,
+    "province": "RDC"
+  },
+  "Nyanga": {
+    "lon": 20.3539,
+    "lat": -6.0759,
+    "province": "RDC"
+  },
+  "Kalonda Ouest": {
+    "lon": 20.7918,
+    "lat": -6.0921,
+    "province": "RDC"
+  },
+  "Kamonia": {
+    "lon": 21.049,
+    "lat": -6.9324,
+    "province": "RDC"
+  },
+  "Mutena": {
+    "lon": 21.2916,
+    "lat": -6.9391,
+    "province": "RDC"
+  },
+  "Banga Lubaka": {
+    "lon": 20.4079,
+    "lat": -5.6373,
+    "province": "RDC"
+  },
+  "Kamwesha": {
+    "lon": 21.3465,
+    "lat": -6.496,
+    "province": "RDC"
+  },
+  "Mweka": {
+    "lon": 21.8484,
+    "lat": -4.9718,
+    "province": "RDC"
+  },
+  "Moba": {
+    "lon": 29.6381,
+    "lat": -7.7072,
+    "province": "RDC"
+  },
+  "Bogosenubia": {
+    "lon": 19.6098,
+    "lat": 3.8616,
+    "province": "RDC"
+  },
+  "Moanda": {
+    "lon": 12.5307,
+    "lat": -5.8888,
+    "province": "RDC"
+  },
+  "Kitona": {
+    "lon": 12.4339,
+    "lat": -5.9447,
+    "province": "RDC"
+  },
+  "Boma": {
+    "lon": 13.0636,
+    "lat": -5.8575,
+    "province": "RDC"
+  },
+  "Boma Bungu": {
+    "lon": 12.9847,
+    "lat": -5.7992,
+    "province": "RDC"
+  },
+  "Seke-Banza": {
+    "lon": 13.3381,
+    "lat": -5.2889,
+    "province": "RDC"
+  },
+  "Inga": {
+    "lon": 13.4354,
+    "lat": -5.3792,
+    "province": "RDC"
+  },
+  "Lukula": {
+    "lon": 12.8826,
+    "lat": -5.4286,
+    "province": "RDC"
+  },
+  "Tshela": {
+    "lon": 12.9119,
+    "lat": -4.873,
+    "province": "RDC"
+  },
+  "Vaku": {
+    "lon": 13.0485,
+    "lat": -5.0697,
+    "province": "RDC"
+  },
+  "Kizu": {
+    "lon": 12.9702,
+    "lat": -4.9344,
+    "province": "RDC"
+  },
+  "Kibunzi": {
+    "lon": 13.7365,
+    "lat": -5.0358,
+    "province": "RDC"
+  },
+  "Luozi": {
+    "lon": 14.0127,
+    "lat": -4.8426,
+    "province": "RDC"
+  },
+  "Kimpangu": {
+    "lon": 14.9247,
+    "lat": -5.6841,
+    "province": "RDC"
+  },
+  "Ngidinga": {
+    "lon": 15.4254,
+    "lat": -5.5937,
+    "province": "RDC"
+  },
+  "Boko-Kivulu": {
+    "lon": 15.0017,
+    "lat": -5.4168,
+    "province": "RDC"
+  },
+  "Mbanza-Ngungu": {
+    "lon": 14.8063,
+    "lat": -5.1896,
+    "province": "RDC"
+  },
+  "Kwilu-Ngongo": {
+    "lon": 14.7115,
+    "lat": -5.4902,
+    "province": "RDC"
+  },
+  "Kisantu": {
+    "lon": 15.3471,
+    "lat": -5.1673,
+    "province": "RDC"
+  },
+  "Mikope": {
+    "lon": 20.4435,
+    "lat": -5.0125,
+    "province": "RDC"
+  },
+  "Oshwe": {
+    "lon": 20.0932,
+    "lat": -3.8453,
+    "province": "RDC"
+  },
+  "Bosobe": {
+    "lon": 19.2196,
+    "lat": -3.1096,
+    "province": "RDC"
+  },
+  "Bokoro": {
+    "lon": 18.5947,
+    "lat": -2.9587,
+    "province": "RDC"
+  },
+  "Masi-Manimba": {
+    "lon": 17.8014,
+    "lat": -4.9982,
+    "province": "RDC"
+  },
+  "Yasa-Bonga": {
+    "lon": 17.8513,
+    "lat": -4.5744,
+    "province": "RDC"
+  },
+  "Idiofa": {
+    "lon": 19.4398,
+    "lat": -4.9145,
+    "province": "RDC"
+  },
+  "Ipamu": {
+    "lon": 19.7877,
+    "lat": -4.3048,
+    "province": "RDC"
+  },
+  "Koshibanda": {
+    "lon": 19.9182,
+    "lat": -4.7712,
+    "province": "RDC"
+  },
+  "Kingandu": {
+    "lon": 18.7057,
+    "lat": -5.6981,
+    "province": "RDC"
+  },
+  "Bulungu": {
+    "lon": 18.7767,
+    "lat": -4.6566,
+    "province": "RDC"
+  },
+  "Bagata": {
+    "lon": 17.8458,
+    "lat": -3.8337,
+    "province": "RDC"
+  },
+  "Bandundu": {
+    "lon": 17.4245,
+    "lat": -3.3105,
+    "province": "RDC"
+  },
+  "Kajiji": {
+    "lon": 18.5385,
+    "lat": -7.4588,
+    "province": "RDC"
+  },
+  "Kikwit-Nord": {
+    "lon": 18.8065,
+    "lat": -5.0105,
+    "province": "RDC"
+  },
+  "Lusanga": {
+    "lon": 18.8102,
+    "lat": -4.9541,
+    "province": "RDC"
+  },
+  "Feshi": {
+    "lon": 18.3957,
+    "lat": -6.3648,
+    "province": "RDC"
+  },
+  "Wamba Lwadi": {
+    "lon": 17.3213,
+    "lat": -6.5376,
+    "province": "RDC"
+  },
+  "Panzi": {
+    "lon": 18.0224,
+    "lat": -7.0998,
+    "province": "RDC"
+  },
+  "Tembo": {
+    "lon": 17.626,
+    "lat": -7.6743,
+    "province": "RDC"
+  },
+  "Moanza": {
+    "lon": 18.1013,
+    "lat": -5.4722,
+    "province": "RDC"
+  },
+  "Kimbau": {
+    "lon": 17.1805,
+    "lat": -5.559,
+    "province": "RDC"
+  },
+  "Kenge": {
+    "lon": 17.3679,
+    "lat": -4.6508,
+    "province": "RDC"
+  },
+  "Boko": {
+    "lon": 16.6051,
+    "lat": -4.9409,
+    "province": "RDC"
+  },
+  "Viadana": {
+    "lon": 27.2958,
+    "lat": 3.432,
+    "province": "RDC"
+  },
+  "Poko": {
+    "lon": 26.7602,
+    "lat": 3.0964,
+    "province": "RDC"
+  },
+  "Basali": {
+    "lon": 24.3494,
+    "lat": 1.7969,
+    "province": "RDC"
+  },
+  "Basoko": {
+    "lon": 23.7324,
+    "lat": 1.2343,
+    "province": "RDC"
+  },
+  "Bengamisa": {
+    "lon": 25.0881,
+    "lat": 1.2521,
+    "province": "RDC"
+  },
+  "Yakusu": {
+    "lon": 24.4459,
+    "lat": 0.5058,
+    "province": "RDC"
+  },
+  "Yahisuli": {
+    "lon": 23.9715,
+    "lat": 0.0647,
+    "province": "RDC"
+  },
+  "Yabaondo": {
+    "lon": 24.0416,
+    "lat": 0.5129,
+    "province": "RDC"
+  },
+  "Isangi": {
+    "lon": 24.2138,
+    "lat": 0.8222,
+    "province": "RDC"
+  },
+  "Yaleko": {
+    "lon": 24.5461,
+    "lat": -0.6212,
+    "province": "RDC"
+  },
+  "Banalia": {
+    "lon": 25.5489,
+    "lat": 1.7036,
+    "province": "RDC"
+  },
+  "Bafwasende": {
+    "lon": 26.6242,
+    "lat": 0.9037,
+    "province": "RDC"
+  },
+  "Bafwagbogbo": {
+    "lon": 26.7565,
+    "lat": 1.6217,
+    "province": "RDC"
+  },
+  "Buta": {
+    "lon": 24.9066,
+    "lat": 2.7824,
+    "province": "RDC"
+  },
+  "Titule": {
+    "lon": 25.3313,
+    "lat": 2.9819,
+    "province": "RDC"
+  },
+  "Ganga": {
+    "lon": 25.884,
+    "lat": 3.1999,
+    "province": "RDC"
+  },
+  "Vanga": {
+    "lon": 18.2973,
+    "lat": -4.4203,
+    "province": "RDC"
+  },
+  "Djuma": {
+    "lon": 18.728,
+    "lat": -4.3451,
+    "province": "RDC"
+  },
+  "Sia": {
+    "lon": 18.4418,
+    "lat": -3.8464,
+    "province": "RDC"
+  },
+  "Mungindu": {
+    "lon": 18.9362,
+    "lat": -5.5304,
+    "province": "RDC"
+  },
+  "Kimputu": {
+    "lon": 19.3815,
+    "lat": -4.4765,
+    "province": "RDC"
+  },
+  "Mosango": {
+    "lon": 18.2155,
+    "lat": -4.8845,
+    "province": "RDC"
+  },
+  "Pay Kongila": {
+    "lon": 18.5714,
+    "lat": -4.9481,
+    "province": "RDC"
+  },
+  "Matadi": {
+    "lon": 13.4617,
+    "lat": -5.8452,
+    "province": "RDC"
+  },
+  "Nzanza": {
+    "lon": 13.4115,
+    "lat": -5.8323,
+    "province": "RDC"
+  },
+  "Ndjili": {
+    "lon": 15.3665,
+    "lat": -4.4019,
+    "province": "RDC"
+  },
+  "Mont Ngafula I": {
+    "lon": 15.3012,
+    "lat": -4.4951,
+    "province": "RDC"
+  },
+  "Biyela": {
+    "lon": 15.4176,
+    "lat": -4.4625,
+    "province": "RDC"
+  },
+  "Kikimi": {
+    "lon": 15.437,
+    "lat": -4.4745,
+    "province": "RDC"
+  },
+  "Lemba": {
+    "lon": 15.324,
+    "lat": -4.4005,
+    "province": "RDC"
+  },
+  "Matete": {
+    "lon": 15.3597,
+    "lat": -4.3897,
+    "province": "RDC"
+  },
+  "Kisenso": {
+    "lon": 15.3549,
+    "lat": -4.4185,
+    "province": "RDC"
+  },
+  "Lingwala": {
+    "lon": 15.2994,
+    "lat": -4.3249,
+    "province": "RDC"
+  },
+  "Barumbu": {
+    "lon": 15.3227,
+    "lat": -4.3206,
+    "province": "RDC"
+  },
+  "Kinshasa": {
+    "lon": 15.3124,
+    "lat": -4.3232,
+    "province": "RDC"
+  },
+  "Limete": {
+    "lon": 15.3296,
+    "lat": -4.3544,
+    "province": "RDC"
+  },
+  "Kalamu II": {
+    "lon": 15.3219,
+    "lat": -4.3421,
+    "province": "RDC"
+  },
+  "Kalamu I": {
+    "lon": 15.3161,
+    "lat": -4.3587,
+    "province": "RDC"
+  },
+  "Bumbu": {
+    "lon": 15.2955,
+    "lat": -4.3723,
+    "province": "RDC"
+  },
+  "Makala": {
+    "lon": 15.3073,
+    "lat": -4.3859,
+    "province": "RDC"
+  },
+  "Ngaba": {
+    "lon": 15.3266,
+    "lat": -4.3791,
+    "province": "RDC"
+  },
+  "Bandalungwa": {
+    "lon": 15.2857,
+    "lat": -4.3413,
+    "province": "RDC"
+  },
+  "Selembao": {
+    "lon": 15.2745,
+    "lat": -4.398,
+    "province": "RDC"
+  },
+  "Masina I": {
+    "lon": 15.4207,
+    "lat": -4.3845,
+    "province": "RDC"
+  },
+  "Kintambo": {
+    "lon": 15.2711,
+    "lat": -4.3452,
+    "province": "RDC"
+  },
+  "Kasa-Vubu": {
+    "lon": 15.3031,
+    "lat": -4.3415,
+    "province": "RDC"
+  },
+  "Ngiri-Ngiri": {
+    "lon": 15.2991,
+    "lat": -4.3561,
+    "province": "RDC"
+  },
+  "Binza Meteo": {
+    "lon": 15.241,
+    "lat": -4.3592,
+    "province": "RDC"
+  },
+  "Binza Ozone": {
+    "lon": 15.2336,
+    "lat": -4.3533,
+    "province": "RDC"
+  },
+  "Kikongo": {
+    "lon": 17.1686,
+    "lat": -4.1851,
+    "province": "RDC"
+  },
+  "Mont Ngafula II": {
+    "lon": 15.1975,
+    "lat": -4.4512,
+    "province": "RDC"
+  },
+  "Sona-Bata": {
+    "lon": 15.4128,
+    "lat": -4.6848,
+    "province": "RDC"
+  },
+  "Nsele": {
+    "lon": 15.6398,
+    "lat": -4.4362,
+    "province": "RDC"
+  },
+  "Kanzala": {
+    "lon": 20.8197,
+    "lat": -6.5046,
+    "province": "RDC"
+  },
+  "Tshikapa": {
+    "lon": 20.6077,
+    "lat": -6.6461,
+    "province": "RDC"
+  },
+  "Kingasani": {
+    "lon": 15.4111,
+    "lat": -4.4227,
+    "province": "RDC"
+  },
+  "Kimbanseke": {
+    "lon": 15.3615,
+    "lat": -4.4389,
+    "province": "RDC"
+  },
+  "Bwamanda": {
+    "lon": 19.292,
+    "lat": 3.3561,
+    "province": "RDC"
+  },
+  "Kungu": {
+    "lon": 18.7314,
+    "lat": 2.7601,
+    "province": "RDC"
+  },
+  "Loko": {
+    "lon": 20.6797,
+    "lat": 3.8054,
+    "province": "RDC"
+  },
+  "Bangabola": {
+    "lon": 19.5415,
+    "lat": 2.3116,
+    "province": "RDC"
+  },
+  "Boso Mondanda": {
+    "lon": 19.7638,
+    "lat": 1.717,
+    "province": "RDC"
+  },
+  "Budjala": {
+    "lon": 19.5635,
+    "lat": 2.3162,
+    "province": "RDC"
+  },
+  "Binga": {
+    "lon": 20.6074,
+    "lat": 2.3427,
+    "province": "RDC"
+  },
+  "Yamaluka": {
+    "lon": 22.3963,
+    "lat": 2.3902,
+    "province": "RDC"
+  },
+  "Boso Manzi": {
+    "lon": 21.3188,
+    "lat": 2.5625,
+    "province": "RDC"
+  },
+  "Karawa": {
+    "lon": 20.3318,
+    "lat": 3.219,
+    "province": "RDC"
+  },
+  "Bominenge": {
+    "lon": 20.1468,
+    "lat": 3.2453,
+    "province": "RDC"
+  },
+  "Gemena": {
+    "lon": 19.8606,
+    "lat": 3.1668,
+    "province": "RDC"
+  },
+  "Mbaya": {
+    "lon": 20.3349,
+    "lat": 2.6247,
+    "province": "RDC"
+  },
+  "Bulu": {
+    "lon": 20.0375,
+    "lat": 2.4111,
+    "province": "RDC"
+  },
+  "Tandala": {
+    "lon": 19.5539,
+    "lat": 2.9564,
+    "province": "RDC"
+  },
+  "Kibombo": {
+    "lon": 25.4543,
+    "lat": -4.2209,
+    "province": "RDC"
+  },
+  "Kindu": {
+    "lon": 25.8864,
+    "lat": -2.9226,
+    "province": "RDC"
+  },
+  "Alunguli": {
+    "lon": 25.9586,
+    "lat": -2.9429,
+    "province": "RDC"
+  },
+  "Kokolo": {
+    "lon": 15.2894,
+    "lat": -4.3334,
+    "province": "RDC"
+  },
+  "Police": {
+    "lon": 15.3013,
+    "lat": -4.3157,
+    "province": "RDC"
+  },
+  "Makiso-Kisangani": {
+    "lon": 25.2331,
+    "lat": 0.5133,
+    "province": "RDC"
+  },
+  "Mangobo": {
+    "lon": 25.1216,
+    "lat": 0.5983,
+    "province": "RDC"
+  },
+  "Kabondo": {
+    "lon": 25.4318,
+    "lat": 0.6839,
+    "province": "RDC"
+  },
+  "Tshopo": {
+    "lon": 25.3161,
+    "lat": 0.7716,
+    "province": "RDC"
+  },
+  "Kaniama": {
+    "lon": 24.1248,
+    "lat": -7.7216,
+    "province": "RDC"
+  },
+  "Kalemie": {
+    "lon": 28.7851,
+    "lat": -5.9693,
+    "province": "RDC"
+  },
+  "Kansimba": {
+    "lon": 29.0,
+    "lat": -7.4894,
+    "province": "RDC"
+  },
+  "Butumba": {
+    "lon": 26.5296,
+    "lat": -8.9443,
+    "province": "RDC"
+  },
+  "Kinkondja": {
+    "lon": 26.4088,
+    "lat": -7.7878,
+    "province": "RDC"
+  },
+  "Baka": {
+    "lon": 24.8016,
+    "lat": -8.5908,
+    "province": "RDC"
+  },
+  "Kiyambi": {
+    "lon": 28.13,
+    "lat": -7.5437,
+    "province": "RDC"
+  },
+  "Manono": {
+    "lon": 27.2457,
+    "lat": -7.2893,
+    "province": "RDC"
+  },
+  "Samba": {
+    "lon": 26.4675,
+    "lat": -4.5199,
+    "province": "RDC"
+  },
+  "Kasongo": {
+    "lon": 26.5971,
+    "lat": -4.1849,
+    "province": "RDC"
+  },
+  "Kunda": {
+    "lon": 26.4759,
+    "lat": -4.0081,
+    "province": "RDC"
+  },
+  "Saramabila": {
+    "lon": 27.5308,
+    "lat": -4.2636,
+    "province": "RDC"
+  },
+  "Kampene": {
+    "lon": 26.5615,
+    "lat": -3.3262,
+    "province": "RDC"
+  },
+  "Nyemba": {
+    "lon": 28.7887,
+    "lat": -5.8811,
+    "province": "RDC"
+  },
+  "Nyunzu": {
+    "lon": 27.9744,
+    "lat": -5.9351,
+    "province": "RDC"
+  },
+  "Kabambare": {
+    "lon": 27.7963,
+    "lat": -4.4897,
+    "province": "RDC"
+  },
+  "Pangi": {
+    "lon": 26.5865,
+    "lat": -3.1732,
+    "province": "RDC"
+  },
+  "Kalima": {
+    "lon": 26.6004,
+    "lat": -2.947,
+    "province": "RDC"
+  },
+  "Yalimbongo": {
+    "lon": 23.5088,
+    "lat": 1.9043,
+    "province": "RDC"
+  },
+  "Aketi": {
+    "lon": 23.8912,
+    "lat": 2.7222,
+    "province": "RDC"
+  },
+  "Lolo": {
+    "lon": 23.0308,
+    "lat": 2.32,
+    "province": "RDC"
+  },
+  "Yamongili": {
+    "lon": 22.7212,
+    "lat": 2.527,
+    "province": "RDC"
+  },
+  "Abuzi": {
+    "lon": 22.1783,
+    "lat": 3.5256,
+    "province": "RDC"
+  },
+  "Yambuku": {
+    "lon": 22.426,
+    "lat": 2.8497,
+    "province": "RDC"
+  },
+  "Wasolo": {
+    "lon": 22.2199,
+    "lat": 3.6499,
+    "province": "RDC"
+  },
+  "Bosondjo": {
+    "lon": 22.0633,
+    "lat": 1.9913,
+    "province": "RDC"
+  },
+  "Bumba": {
+    "lon": 22.7419,
+    "lat": 2.2485,
+    "province": "RDC"
+  },
+  "Mondombe": {
+    "lon": 22.9931,
+    "lat": -0.9209,
+    "province": "RDC"
+  },
+  "Djolu": {
+    "lon": 22.5634,
+    "lat": 0.5154,
+    "province": "RDC"
+  },
+  "Opienge": {
+    "lon": 27.2166,
+    "lat": 0.3972,
+    "province": "RDC"
+  },
+  "Obokote": {
+    "lon": 26.706,
+    "lat": -1.2116,
+    "province": "RDC"
+  },
+  "Lowa": {
+    "lon": 25.6099,
+    "lat": -1.0476,
+    "province": "RDC"
+  },
+  "Wanierukula": {
+    "lon": 25.8716,
+    "lat": -0.1068,
+    "province": "RDC"
+  },
+  "Lubutu": {
+    "lon": 26.8494,
+    "lat": -0.4874,
+    "province": "RDC"
+  },
+  "Kitenda": {
+    "lon": 17.417,
+    "lat": -7.2656,
+    "province": "RDC"
+  },
+  "Kasongo Lunda": {
+    "lon": 16.9487,
+    "lat": -6.4992,
+    "province": "RDC"
+  },
+  "Popokabaka": {
+    "lon": 16.6312,
+    "lat": -5.6591,
+    "province": "RDC"
+  },
+  "Kimvula": {
+    "lon": 16.0194,
+    "lat": -5.3926,
+    "province": "RDC"
+  },
+  "Maluku I": {
+    "lon": 15.9993,
+    "lat": -4.5509,
+    "province": "RDC"
+  },
+  "Kimpese": {
+    "lon": 14.307,
+    "lat": -5.4456,
+    "province": "RDC"
+  },
+  "Nsona-Mpangu": {
+    "lon": 14.0153,
+    "lat": -5.5488,
+    "province": "RDC"
+  },
+  "Kangu": {
+    "lon": 12.828,
+    "lat": -5.2912,
+    "province": "RDC"
+  },
+  "Kuimba": {
+    "lon": 12.7098,
+    "lat": -4.9943,
+    "province": "RDC"
+  },
+  "Kinkonzi": {
+    "lon": 13.1153,
+    "lat": -4.8335,
+    "province": "RDC"
+  },
+  "Mangembo": {
+    "lon": 14.1939,
+    "lat": -4.7404,
+    "province": "RDC"
+  },
+  "Gombe-Matadi": {
+    "lon": 14.6548,
+    "lat": -5.0695,
+    "province": "RDC"
+  },
+  "Masa": {
+    "lon": 15.1869,
+    "lat": -4.5787,
+    "province": "RDC"
+  },
+  "Bokonzi": {
+    "lon": 18.5931,
+    "lat": 2.1699,
+    "province": "RDC"
+  },
+  "Mawuya": {
+    "lon": 18.8451,
+    "lat": 3.1344,
+    "province": "RDC"
+  },
+  "Zongo": {
+    "lon": 18.672,
+    "lat": 4.2289,
+    "province": "RDC"
+  },
+  "Libenge": {
+    "lon": 19.1785,
+    "lat": 4.1503,
+    "province": "RDC"
+  },
+  "Bili": {
+    "lon": 24.1738,
+    "lat": 4.2321,
+    "province": "RDC"
+  },
+  "Gbadolite": {
+    "lon": 20.8773,
+    "lat": 4.2574,
+    "province": "RDC"
+  },
+  "Mobayi Mbongo": {
+    "lon": 20.9352,
+    "lat": 4.1128,
+    "province": "RDC"
+  },
+  "Yakoma": {
+    "lon": 22.3524,
+    "lat": 4.0894,
+    "province": "RDC"
+  },
+  "Monga": {
+    "lon": 23.1111,
+    "lat": 4.2334,
+    "province": "RDC"
+  },
+  "Bondo": {
+    "lon": 23.7495,
+    "lat": 4.1823,
+    "province": "RDC"
+  },
+  "Ango": {
+    "lon": 26.0383,
+    "lat": 4.663,
+    "province": "RDC"
+  },
+  "Opala": {
+    "lon": 24.3272,
+    "lat": -0.8797,
+    "province": "RDC"
+  },
+  "Kahemba": {
+    "lon": 19.2699,
+    "lat": -7.0682,
+    "province": "RDC"
+  },
+  "Gungu": {
+    "lon": 19.2462,
+    "lat": -6.018,
+    "province": "RDC"
+  },
+  "Kitangwa": {
+    "lon": 20.0157,
+    "lat": -6.3976,
+    "province": "RDC"
+  },
+  "Mukedi": {
+    "lon": 19.8586,
+    "lat": -5.7188,
+    "province": "RDC"
+  },
+  "Kongolo": {
+    "lon": 27.0587,
+    "lat": -5.1297,
+    "province": "RDC"
+  },
+  "Mbulula": {
+    "lon": 26.69,
+    "lat": -5.2952,
+    "province": "RDC"
+  },
+  "Kabalo": {
+    "lon": 26.8777,
+    "lat": -6.2459,
+    "province": "RDC"
+  },
+  "Bukama": {
+    "lon": 25.831,
+    "lat": -9.4034,
+    "province": "RDC"
+  },
+  "Kabondo Dianda": {
+    "lon": 25.9673,
+    "lat": -8.4261,
+    "province": "RDC"
+  },
+  "Kabongo": {
+    "lon": 25.503,
+    "lat": -7.1972,
+    "province": "RDC"
+  },
+  "Songa": {
+    "lon": 24.9158,
+    "lat": -8.387,
+    "province": "RDC"
+  },
+  "Kayamba": {
+    "lon": 25.4147,
+    "lat": -7.1586,
+    "province": "RDC"
+  },
+  "Kitenge": {
+    "lon": 25.7482,
+    "lat": -6.4924,
+    "province": "RDC"
+  },
+  "Ankoro": {
+    "lon": 26.5769,
+    "lat": -7.0275,
+    "province": "RDC"
+  },
+  "Mulongo": {
+    "lon": 27.2935,
+    "lat": -7.614,
+    "province": "RDC"
+  },
+  "Lwamba": {
+    "lon": 26.5514,
+    "lat": -7.8972,
+    "province": "RDC"
+  },
+  "Mukanga": {
+    "lon": 27.1629,
+    "lat": -8.2919,
+    "province": "RDC"
+  },
+  "Malemba": {
+    "lon": 26.5246,
+    "lat": -8.1382,
+    "province": "RDC"
+  },
+  "Kinda": {
+    "lon": 24.961,
+    "lat": -9.4019,
+    "province": "RDC"
+  },
+  "Kamina": {
+    "lon": 25.2219,
+    "lat": -8.6517,
+    "province": "RDC"
+  },
+  "Kikwit-Sud": {
+    "lon": 18.8149,
+    "lat": -5.0816,
+    "province": "RDC"
+  },
+  "Kenya": {
+    "lon": 27.7753,
+    "lat": -11.9211,
+    "province": "RDC"
+  },
+  "Kamalondo": {
+    "lon": 27.6776,
+    "lat": -11.7686,
+    "province": "RDC"
+  },
+  "Tshamilemba": {
+    "lon": 27.6207,
+    "lat": -11.6554,
+    "province": "RDC"
+  },
+  "Pweto": {
+    "lon": 28.7993,
+    "lat": -8.1321,
+    "province": "RDC"
+  },
+  "Lukafu": {
+    "lon": 27.9297,
+    "lat": -10.7842,
+    "province": "RDC"
+  },
+  "Mufunga Sampwe": {
+    "lon": 26.7515,
+    "lat": -9.7328,
+    "province": "RDC"
+  },
+  "Kilwa": {
+    "lon": 28.4225,
+    "lat": -8.9613,
+    "province": "RDC"
+  },
+  "Kapolowe": {
+    "lon": 26.8745,
+    "lat": -11.1554,
+    "province": "RDC"
+  },
+  "Panda": {
+    "lon": 26.7376,
+    "lat": -11.437,
+    "province": "RDC"
+  },
+  "Kashobwe": {
+    "lon": 28.4367,
+    "lat": -9.6009,
+    "province": "RDC"
+  },
+  "Kampemba": {
+    "lon": 27.8716,
+    "lat": -11.7684,
+    "province": "RDC"
+  },
+  "Rwashi": {
+    "lon": 27.89,
+    "lat": -11.5793,
+    "province": "RDC"
+  },
+  "Bena Tshiadi": {
+    "lon": 22.7944,
+    "lat": -4.469,
+    "province": "RDC"
+  },
+  "Yangala": {
+    "lon": 23.1396,
+    "lat": -7.3398,
+    "province": "RDC"
+  },
+  "Ilebo": {
+    "lon": 20.6489,
+    "lat": -4.3333,
+    "province": "RDC"
+  },
+  "Luebo": {
+    "lon": 21.4076,
+    "lat": -5.6904,
+    "province": "RDC"
+  },
+  "Bena Leka": {
+    "lon": 22.1366,
+    "lat": -5.1024,
+    "province": "RDC"
+  },
+  "Muetshi": {
+    "lon": 22.7006,
+    "lat": -5.0493,
+    "province": "RDC"
+  },
+  "Tshikula": {
+    "lon": 22.7042,
+    "lat": -6.049,
+    "province": "RDC"
+  },
+  "Dibaya": {
+    "lon": 23.0858,
+    "lat": -6.507,
+    "province": "RDC"
+  },
+  "Kalomba": {
+    "lon": 21.6194,
+    "lat": -6.8117,
+    "province": "RDC"
+  },
+  "Tshibala": {
+    "lon": 22.0188,
+    "lat": -6.9642,
+    "province": "RDC"
+  },
+  "Mushenge": {
+    "lon": 21.228,
+    "lat": -4.3698,
+    "province": "RDC"
+  },
+  "Bulape": {
+    "lon": 21.8498,
+    "lat": -4.3229,
+    "province": "RDC"
+  },
+  "Masuika": {
+    "lon": 22.4649,
+    "lat": -7.5949,
+    "province": "RDC"
+  },
+  "Luiza": {
+    "lon": 22.4004,
+    "lat": -7.0186,
+    "province": "RDC"
+  },
+  "Katoka": {
+    "lon": 22.3253,
+    "lat": -5.8719,
+    "province": "RDC"
+  },
+  "Ndesha": {
+    "lon": 22.3978,
+    "lat": -5.8208,
+    "province": "RDC"
+  },
+  "Tshikaji": {
+    "lon": 22.4849,
+    "lat": -5.9961,
+    "province": "RDC"
+  },
+  "Bilomba": {
+    "lon": 22.248,
+    "lat": -6.5125,
+    "province": "RDC"
+  },
+  "Ndekesha": {
+    "lon": 22.0088,
+    "lat": -6.4361,
+    "province": "RDC"
+  },
+  "Bunkonde": {
+    "lon": 22.5195,
+    "lat": -6.3507,
+    "province": "RDC"
+  },
+  "Mikalayi": {
+    "lon": 22.2055,
+    "lat": -6.0424,
+    "province": "RDC"
+  },
+  "Luambo": {
+    "lon": 22.1223,
+    "lat": -7.3626,
+    "province": "RDC"
+  },
+  "Katende": {
+    "lon": 22.8472,
+    "lat": -5.425,
+    "province": "RDC"
+  },
+  "Ndjoko-Mpunda": {
+    "lon": 21.1613,
+    "lat": -5.7812,
+    "province": "RDC"
+  },
+  "Lubondaie": {
+    "lon": 22.8027,
+    "lat": -6.6844,
+    "province": "RDC"
+  },
+  "Kakenge": {
+    "lon": 22.1018,
+    "lat": -4.4376,
+    "province": "RDC"
+  },
+  "Rwampara": {
+    "lon": 30.1046,
+    "lat": 1.6109,
+    "province": "RDC"
+  },
+  "Bunia": {
+    "lon": 30.2243,
+    "lat": 1.6235,
+    "province": "RDC"
+  },
+  "Jiba": {
+    "lon": 30.7681,
+    "lat": 1.7885,
+    "province": "RDC"
+  },
+  "Linga": {
+    "lon": 30.8098,
+    "lat": 1.9063,
+    "province": "RDC"
+  },
+  "Mangala": {
+    "lon": 30.395,
+    "lat": 1.9603,
+    "province": "RDC"
+  },
+  "Damas": {
+    "lon": 30.1947,
+    "lat": 2.1746,
+    "province": "RDC"
+  },
+  "Fataki": {
+    "lon": 30.4976,
+    "lat": 1.8868,
+    "province": "RDC"
+  },
+  "Drodro": {
+    "lon": 30.5313,
+    "lat": 1.7808,
+    "province": "RDC"
+  },
+  "Tchomia": {
+    "lon": 30.5662,
+    "lat": 1.5313,
+    "province": "RDC"
+  },
+  "Rethy": {
+    "lon": 30.7292,
+    "lat": 2.0857,
+    "province": "RDC"
+  },
+  "Nyakunde": {
+    "lon": 29.867,
+    "lat": 1.4936,
+    "province": "RDC"
+  },
+  "Nizi": {
+    "lon": 30.3245,
+    "lat": 1.7514,
+    "province": "RDC"
+  },
+  "Bambu": {
+    "lon": 30.2375,
+    "lat": 1.8597,
+    "province": "RDC"
+  },
+  "Kilo": {
+    "lon": 30.0588,
+    "lat": 1.7773,
+    "province": "RDC"
+  },
+  "Mongbalu": {
+    "lon": 29.9197,
+    "lat": 1.9811,
+    "province": "RDC"
+  },
+  "Komanda": {
+    "lon": 29.573,
+    "lat": 1.0883,
+    "province": "RDC"
+  },
+  "Gethy": {
+    "lon": 30.232,
+    "lat": 1.2542,
+    "province": "RDC"
+  },
+  "Boga": {
+    "lon": 29.9967,
+    "lat": 0.9713,
+    "province": "RDC"
+  },
+  "Nia-Nia": {
+    "lon": 27.8533,
+    "lat": 1.286,
+    "province": "RDC"
+  },
+  "Mandima": {
+    "lon": 29.2709,
+    "lat": 0.818,
+    "province": "RDC"
+  },
+  "Lolwa": {
+    "lon": 29.4477,
+    "lat": 1.7623,
+    "province": "RDC"
+  },
+  "Lita": {
+    "lon": 30.3816,
+    "lat": 1.5836,
+    "province": "RDC"
+  },
+  "Boma-Mangbetu": {
+    "lon": 27.754,
+    "lat": 2.2577,
+    "province": "RDC"
+  },
+  "Isiro": {
+    "lon": 27.2765,
+    "lat": 2.4448,
+    "province": "RDC"
+  },
+  "Wamba": {
+    "lon": 27.7688,
+    "lat": 2.012,
+    "province": "RDC"
+  },
+  "Doruma": {
+    "lon": 27.7571,
+    "lat": 4.3129,
+    "province": "RDC"
+  },
+  "Pawa": {
+    "lon": 27.553,
+    "lat": 2.2901,
+    "province": "RDC"
+  },
+  "Niangara": {
+    "lon": 27.9268,
+    "lat": 3.5132,
+    "province": "RDC"
+  },
+  "Rungu": {
+    "lon": 28.0089,
+    "lat": 2.931,
+    "province": "RDC"
+  },
+  "Mambasa": {
+    "lon": 28.7342,
+    "lat": 1.3161,
+    "province": "RDC"
+  },
+  "Rimba": {
+    "lon": 30.7492,
+    "lat": 2.2248,
+    "province": "RDC"
+  },
+  "Logo": {
+    "lon": 30.9075,
+    "lat": 2.1724,
+    "province": "RDC"
+  },
+  "Angumu": {
+    "lon": 31.0488,
+    "lat": 2.0205,
+    "province": "RDC"
+  },
+  "Nyarambe": {
+    "lon": 31.0967,
+    "lat": 2.1383,
+    "province": "RDC"
+  },
+  "Mahagi": {
+    "lon": 30.9325,
+    "lat": 2.302,
+    "province": "RDC"
+  },
+  "Makoro": {
+    "lon": 29.9659,
+    "lat": 3.1378,
+    "province": "RDC"
+  },
+  "Kambala": {
+    "lon": 30.4443,
+    "lat": 2.3169,
+    "province": "RDC"
+  },
+  "Biringi": {
+    "lon": 30.3597,
+    "lat": 2.6975,
+    "province": "RDC"
+  },
+  "Laybo": {
+    "lon": 30.5092,
+    "lat": 3.3431,
+    "province": "RDC"
+  },
+  "Ariwara": {
+    "lon": 30.7614,
+    "lat": 3.2081,
+    "province": "RDC"
+  },
+  "Adi": {
+    "lon": 30.7622,
+    "lat": 3.4522,
+    "province": "RDC"
+  },
+  "Aru": {
+    "lon": 30.7029,
+    "lat": 2.8302,
+    "province": "RDC"
+  },
+  "Adja": {
+    "lon": 30.4373,
+    "lat": 3.049,
+    "province": "RDC"
+  },
+  "Aungba": {
+    "lon": 30.5149,
+    "lat": 2.6451,
+    "province": "RDC"
+  },
+  "Faradje": {
+    "lon": 29.7875,
+    "lat": 3.6494,
+    "province": "RDC"
+  },
+  "Gombari": {
+    "lon": 28.9543,
+    "lat": 2.8196,
+    "province": "RDC"
+  },
+  "Dungu": {
+    "lon": 28.7719,
+    "lat": 3.7486,
+    "province": "RDC"
+  },
+  "Watsa": {
+    "lon": 29.6645,
+    "lat": 2.9218,
+    "province": "RDC"
+  },
+  "Demba": {
+    "lon": 22.3171,
+    "lat": -5.4609,
+    "province": "RDC"
+  },
+  "Mutoto": {
+    "lon": 22.6717,
+    "lat": -5.6325,
+    "province": "RDC"
+  },
+  "Lubunga": {
+    "lon": 25.1727,
+    "lat": 0.3857,
+    "province": "RDC"
+  },
+  "Kananga": {
+    "lon": 22.4296,
+    "lat": -5.9236,
+    "province": "RDC"
+  },
+  "Maluku II": {
+    "lon": 15.8474,
+    "lat": -4.5574,
+    "province": "RDC"
+  },
+  "Nselo": {
+    "lon": 15.6038,
+    "lat": -5.1981,
+    "province": "RDC"
+  },
+  "Lomela": {
+    "lon": 23.6471,
+    "lat": -2.2994,
+    "province": "RDC"
+  },
+  "Nioki": {
+    "lon": 17.8763,
+    "lat": -2.8575,
+    "province": "RDC"
+  },
+  "Bolobo": {
+    "lon": 16.4113,
+    "lat": -2.6393,
+    "province": "RDC"
+  },
+  "Mushie": {
+    "lon": 17.0942,
+    "lat": -2.4514,
+    "province": "RDC"
+  },
+  "Kwamouth": {
+    "lon": 16.4102,
+    "lat": -3.7144,
+    "province": "RDC"
+  },
+  "Mokala": {
+    "lon": 19.0235,
+    "lat": -3.9832,
+    "province": "RDC"
+  },
+  "Kisanji": {
+    "lon": 18.9744,
+    "lat": -6.4919,
+    "province": "RDC"
+  },
+  "Lukonga": {
+    "lon": 22.4791,
+    "lat": -5.842,
+    "province": "RDC"
+  },
+  "Tunda": {
+    "lon": 25.3234,
+    "lat": -4.2143,
+    "province": "RDC"
+  },
+  "Bosobolo": {
+    "lon": 19.9036,
+    "lat": 4.548,
+    "province": "RDC"
+  },
+  "Businga": {
+    "lon": 21.423,
+    "lat": 3.1469,
+    "province": "RDC"
+  },
+  "Boto": {
+    "lon": 18.765,
+    "lat": 2.908,
+    "province": "RDC"
+  },
+  "Lisala": {
+    "lon": 20.9714,
+    "lat": 2.4291,
+    "province": "RDC"
+  },
+  "Ndage": {
+    "lon": 20.7285,
+    "lat": 2.7585,
+    "province": "RDC"
+  },
+  "Mwela Lembwa": {
+    "lon": 17.8142,
+    "lat": -6.2041,
+    "province": "RDC"
+  },
+  "Kingabwa": {
+    "lon": 15.3642,
+    "lat": -4.3591,
+    "province": "RDC"
+  },
+  "Likati": {
+    "lon": 23.7792,
+    "lat": 3.1979,
+    "province": "RDC"
+  },
+  "Yahuma": {
+    "lon": 23.0259,
+    "lat": 0.7807,
+    "province": "RDC"
+  },
+  "Ikela": {
+    "lon": 23.2457,
+    "lat": -1.2666,
+    "province": "RDC"
+  },
+  "Ubundu": {
+    "lon": 25.3543,
+    "lat": -0.3276,
+    "province": "RDC"
+  },
+  "Kailo": {
+    "lon": 25.8377,
+    "lat": -2.5145,
+    "province": "RDC"
+  },
+  "Ototo": {
+    "lon": 23.4914,
+    "lat": -4.4923,
+    "province": "RDC"
+  },
+  "Tshumbe": {
+    "lon": 24.7418,
+    "lat": -4.5755,
+    "province": "RDC"
+  },
+  "Lusangi": {
+    "lon": 27.4297,
+    "lat": -4.5234,
+    "province": "RDC"
+  },
+  "Bobozo": {
+    "lon": 22.3783,
+    "lat": -5.9708,
+    "province": "RDC"
+  },
+  "Punia": {
+    "lon": 27.0461,
+    "lat": -1.9187,
+    "province": "RDC"
+  },
+  "Kyondo": {
+    "lon": 29.4933,
+    "lat": 0.1045,
+    "province": "RDC"
+  },
+  "Mabalako": {
+    "lon": 29.2828,
+    "lat": 0.4101,
+    "province": "RDC"
+  },
+  "Biena": {
+    "lon": 28.9931,
+    "lat": 0.2278,
+    "province": "RDC"
+  },
+  "Masereka": {
+    "lon": 29.4271,
+    "lat": -0.0833,
+    "province": "RDC"
+  },
+  "Lubero": {
+    "lon": 29.2281,
+    "lat": -0.2343,
+    "province": "RDC"
+  },
+  "Manguredjipa": {
+    "lon": 28.5357,
+    "lat": 0.2787,
+    "province": "RDC"
+  },
+  "Mutwanga": {
+    "lon": 29.6728,
+    "lat": 0.3609,
+    "province": "RDC"
+  },
+  "Kamango": {
+    "lon": 29.7702,
+    "lat": 0.614,
+    "province": "RDC"
+  },
+  "Oicha": {
+    "lon": 29.6275,
+    "lat": 0.7133,
+    "province": "RDC"
+  },
+  "Binza": {
+    "lon": 29.5442,
+    "lat": -0.7946,
+    "province": "RDC"
+  },
+  "Rwanguba": {
+    "lon": 29.5135,
+    "lat": -1.1264,
+    "province": "RDC"
+  },
+  "Rutshuru": {
+    "lon": 29.373,
+    "lat": -1.1465,
+    "province": "RDC"
+  },
+  "Birambizo": {
+    "lon": 29.1206,
+    "lat": -1.1919,
+    "province": "RDC"
+  },
+  "Beni": {
+    "lon": 29.4721,
+    "lat": 0.4994,
+    "province": "RDC"
+  },
+  "Vuhovi": {
+    "lon": 29.289,
+    "lat": 0.2464,
+    "province": "RDC"
+  },
+  "Musienene": {
+    "lon": 28.67,
+    "lat": 0.0322,
+    "province": "RDC"
+  },
+  "Butembo": {
+    "lon": 29.2663,
+    "lat": 0.1276,
+    "province": "RDC"
+  },
+  "Katwa": {
+    "lon": 29.3101,
+    "lat": 0.1332,
+    "province": "RDC"
+  },
+  "Kayna": {
+    "lon": 28.9206,
+    "lat": -0.4756,
+    "province": "RDC"
+  },
+  "Goma": {
+    "lon": 29.1791,
+    "lat": -1.6598,
+    "province": "RDC"
+  },
+  "Karisimbi": {
+    "lon": 29.1914,
+    "lat": -1.6177,
+    "province": "RDC"
+  },
+  "Kibua": {
+    "lon": 28.3769,
+    "lat": -1.2516,
+    "province": "RDC"
+  },
+  "Masisi": {
+    "lon": 28.7956,
+    "lat": -1.4311,
+    "province": "RDC"
+  },
+  "Mweso": {
+    "lon": 28.8706,
+    "lat": -1.1889,
+    "province": "RDC"
+  },
+  "Kirotshe": {
+    "lon": 28.9848,
+    "lat": -1.5305,
+    "province": "RDC"
+  },
+  "Pinga": {
+    "lon": 28.5336,
+    "lat": -0.624,
+    "province": "RDC"
+  },
+  "Walikale": {
+    "lon": 27.9429,
+    "lat": -1.1685,
+    "province": "RDC"
+  },
+  "Kibirizi": {
+    "lon": 29.2107,
+    "lat": -0.8512,
+    "province": "RDC"
+  },
+  "Kalunguta": {
+    "lon": 29.5135,
+    "lat": 0.3966,
+    "province": "RDC"
+  },
+  "Alimbongo": {
+    "lon": 28.9263,
+    "lat": -0.2258,
+    "province": "RDC"
+  },
+  "Nyiragongo": {
+    "lon": 29.2741,
+    "lat": -1.5263,
+    "province": "RDC"
+  },
+  "Katoyi": {
+    "lon": 28.772,
+    "lat": -1.6085,
+    "province": "RDC"
+  },
+  "Bambo": {
+    "lon": 29.2519,
+    "lat": -1.0501,
+    "province": "RDC"
+  },
+  "Itebero": {
+    "lon": 28.1503,
+    "lat": -1.6297,
+    "province": "RDC"
+  },
+  "Mwana": {
+    "lon": 28.6434,
+    "lat": -2.863,
+    "province": "RDC"
+  },
+  "Kaziba": {
+    "lon": 28.8369,
+    "lat": -2.8083,
+    "province": "RDC"
+  },
+  "Nyantende": {
+    "lon": 28.8832,
+    "lat": -2.5962,
+    "province": "RDC"
+  },
+  "Nyangezi": {
+    "lon": 28.9439,
+    "lat": -2.7315,
+    "province": "RDC"
+  },
+  "Kabare": {
+    "lon": 28.7881,
+    "lat": -2.4759,
+    "province": "RDC"
+  },
+  "Mubumbano": {
+    "lon": 28.5307,
+    "lat": -2.8028,
+    "province": "RDC"
+  },
+  "Walungu": {
+    "lon": 28.7325,
+    "lat": -2.6056,
+    "province": "RDC"
+  },
+  "Hauts-Plateaux": {
+    "lon": 28.8641,
+    "lat": -3.4559,
+    "province": "RDC"
+  },
+  "Kaniola": {
+    "lon": 28.3189,
+    "lat": -2.5889,
+    "province": "RDC"
+  },
+  "Kalonge": {
+    "lon": 28.4987,
+    "lat": -2.3489,
+    "province": "RDC"
+  },
+  "Bunyakiri": {
+    "lon": 28.5288,
+    "lat": -1.9734,
+    "province": "RDC"
+  },
+  "Uvira": {
+    "lon": 29.1793,
+    "lat": -3.4214,
+    "province": "RDC"
+  },
+  "Kitutu": {
+    "lon": 27.9938,
+    "lat": -3.5633,
+    "province": "RDC"
+  },
+  "Kamituga": {
+    "lon": 28.2367,
+    "lat": -3.1217,
+    "province": "RDC"
+  },
+  "Itombwe": {
+    "lon": 28.609,
+    "lat": -3.4505,
+    "province": "RDC"
+  },
+  "Minembwe": {
+    "lon": 28.5761,
+    "lat": -4.125,
+    "province": "RDC"
+  },
+  "Nundu": {
+    "lon": 28.8861,
+    "lat": -3.8288,
+    "province": "RDC"
+  },
+  "Ruzizi": {
+    "lon": 29.1667,
+    "lat": -3.0378,
+    "province": "RDC"
+  },
+  "Lemera": {
+    "lon": 29.0585,
+    "lat": -2.8918,
+    "province": "RDC"
+  },
+  "Fizi": {
+    "lon": 28.7245,
+    "lat": -4.1396,
+    "province": "RDC"
+  },
+  "Shabunda": {
+    "lon": 27.0846,
+    "lat": -2.8092,
+    "province": "RDC"
+  },
+  "Lulingu": {
+    "lon": 27.088,
+    "lat": -2.3551,
+    "province": "RDC"
+  },
+  "Kalole": {
+    "lon": 27.5151,
+    "lat": -3.6772,
+    "province": "RDC"
+  },
+  "Mwenga": {
+    "lon": 28.5946,
+    "lat": -3.052,
+    "province": "RDC"
+  },
+  "Mulungu": {
+    "lon": 28.1943,
+    "lat": -2.6946,
+    "province": "RDC"
+  },
+  "Bagira": {
+    "lon": 28.8333,
+    "lat": -2.4869,
+    "province": "RDC"
+  },
+  "Kadutu": {
+    "lon": 28.8466,
+    "lat": -2.5012,
+    "province": "RDC"
+  },
+  "Ibanda": {
+    "lon": 28.8665,
+    "lat": -2.5224,
+    "province": "RDC"
+  },
+  "Katana": {
+    "lon": 28.8735,
+    "lat": -2.1816,
+    "province": "RDC"
+  },
+  "Lualaba": {
+    "lon": 25.5978,
+    "lat": -11.0181,
+    "province": "RDC"
+  },
+  "Kafakumba": {
+    "lon": 23.8341,
+    "lat": -9.4315,
+    "province": "RDC"
+  },
+  "Kanzenze": {
+    "lon": 25.4462,
+    "lat": -9.8734,
+    "province": "RDC"
+  },
+  "Kasaji": {
+    "lon": 23.1461,
+    "lat": -10.5873,
+    "province": "RDC"
+  },
+  "Dilolo": {
+    "lon": 22.8995,
+    "lat": -10.6464,
+    "province": "RDC"
+  },
+  "Sandoa": {
+    "lon": 22.7203,
+    "lat": -9.535,
+    "province": "RDC"
+  },
+  "Kalamba": {
+    "lon": 23.2576,
+    "lat": -8.1776,
+    "province": "RDC"
+  },
+  "Lubudi": {
+    "lon": 26.1208,
+    "lat": -9.8927,
+    "province": "RDC"
+  },
+  "Bunkeya": {
+    "lon": 26.9083,
+    "lat": -10.2013,
+    "province": "RDC"
+  },
+  "Fungurume": {
+    "lon": 26.2783,
+    "lat": -10.8357,
+    "province": "RDC"
+  },
+  "Kambove": {
+    "lon": 26.9692,
+    "lat": -10.9217,
+    "province": "RDC"
+  },
+  "Lubumbashi": {
+    "lon": 27.571,
+    "lat": -11.71,
+    "province": "RDC"
+  },
+  "Kisanga": {
+    "lon": 27.5427,
+    "lat": -11.8947,
+    "province": "RDC"
+  },
+  "Katuba": {
+    "lon": 27.6432,
+    "lat": -11.8675,
+    "province": "RDC"
+  },
+  "Mumbunda": {
+    "lon": 27.5371,
+    "lat": -11.8219,
+    "province": "RDC"
+  },
+  "Kipushi": {
+    "lon": 27.4917,
+    "lat": -11.85,
+    "province": "RDC"
+  },
+  "Sakania": {
+    "lon": 28.7953,
+    "lat": -12.5897,
+    "province": "RDC"
+  },
+  "Kafubu": {
+    "lon": 28.1724,
+    "lat": -11.4437,
+    "province": "RDC"
+  },
+  "Kilela Balanda": {
+    "lon": 26.6896,
+    "lat": -11.5171,
+    "province": "RDC"
+  },
+  "Manika": {
+    "lon": 26.0861,
+    "lat": -11.362,
+    "province": "RDC"
+  },
+  "Vangu": {
+    "lon": 27.5165,
+    "lat": -11.6543,
+    "province": "RDC"
+  },
+  "Kowe": {
+    "lon": 27.4939,
+    "lat": -11.6732,
+    "province": "RDC"
+  },
+  "Mitwaba": {
+    "lon": 27.2554,
+    "lat": -8.6239,
+    "province": "RDC"
+  },
+  "Gombe": {
+    "lon": 15.3058,
+    "lat": -4.3134,
+    "province": "RDC"
+  },
+  "Minova": {
+    "lon": 29.0191,
+    "lat": -1.7953,
+    "province": "RDC"
+  },
+  "Kalehe": {
+    "lon": 28.9005,
+    "lat": -2.051,
+    "province": "RDC"
+  },
+  "Miti-Murhesa": {
+    "lon": 28.9265,
+    "lat": -2.2936,
+    "province": "RDC"
+  },
+  "Idjwi": {
+    "lon": 28.96,
+    "lat": -2.0419,
+    "province": "RDC"
+  },
+  "Aba": {
+    "lon": 30.3001,
+    "lat": 3.6252,
+    "province": "RDC"
+  },
+  "Masina II": {
+    "lon": 15.3688,
+    "lat": -4.364,
+    "province": "RDC"
+  },
+  "Kapanga": {
+    "lon": 22.3574,
+    "lat": -8.2418,
+    "province": "RDC"
+  },
+  "Dilala": {
+    "lon": 25.2648,
+    "lat": -10.4904,
+    "province": "RDC"
+  },
+  "Mutshatsha": {
+    "lon": 24.7294,
+    "lat": -10.4882,
+    "province": "RDC"
+  },
+  "Kikula": {
+    "lon": 27.2563,
+    "lat": -10.6601,
+    "province": "RDC"
+  },
+  "Kimbi Lulenge": {
+    "lon": 28.4324,
+    "lat": -4.2972,
+    "province": "RDC"
+  },
+  "Ferekeni": {
+    "lon": 26.285,
+    "lat": -1.8309,
+    "province": "RDC"
+  },
+  "Wapinda": {
+    "lon": 22.9329,
+    "lat": 3.7159,
+    "province": "RDC"
+  },
+  "Likasi": {
+    "lon": 26.7542,
+    "lat": -10.9993,
+    "province": "RDC"
+  },
+  "Kasenga": {
+    "lon": 27.9844,
+    "lat": -10.7995,
+    "province": "RDC"
+  },
+  "Ntandembelo": {
+    "lon": 17.0493,
+    "lat": -2.0158,
+    "province": "RDC"
+  },
+  "Yumbi": {
+    "lon": 16.5334,
+    "lat": -2.1033,
+    "province": "RDC"
+  },
+  "Tshudi Loto": {
+    "lon": 22.7762,
+    "lat": -2.3979,
+    "province": "RDC"
+  },
+  "Kiri": {
+    "lon": 19.1986,
+    "lat": -1.7425,
+    "province": "RDC"
+  },
+  "Bosanga": {
+    "lon": 22.0461,
+    "lat": -1.117,
+    "province": "RDC"
+  },
+  "Yalifafo": {
+    "lon": 22.3699,
+    "lat": -1.1423,
+    "province": "RDC"
+  },
+  "Dekese": {
+    "lon": 21.4293,
+    "lat": -3.2442,
+    "province": "RDC"
+  },
+  "Mimia": {
+    "lon": 20.2114,
+    "lat": -2.3454,
+    "province": "RDC"
+  },
+  "Makanza": {
+    "lon": 19.1211,
+    "lat": 1.4489,
+    "province": "RDC"
+  },
+  "Bomongo": {
+    "lon": 18.3714,
+    "lat": 1.4745,
+    "province": "RDC"
+  },
+  "Lolanga Mampoko": {
+    "lon": 18.8292,
+    "lat": 0.8802,
+    "province": "RDC"
+  },
+  "Penjwa": {
+    "lon": 19.0656,
+    "lat": -1.1477,
+    "province": "RDC"
+  },
+  "Bokungu": {
+    "lon": 22.2587,
+    "lat": -0.5104,
+    "province": "RDC"
+  },
+  "Wema": {
+    "lon": 21.3089,
+    "lat": -0.9117,
+    "province": "RDC"
+  },
+  "Befale": {
+    "lon": 20.8993,
+    "lat": 0.6577,
+    "province": "RDC"
+  },
+  "Lotumbe": {
+    "lon": 19.823,
+    "lat": -0.6996,
+    "province": "RDC"
+  },
+  "Monkoto": {
+    "lon": 20.5819,
+    "lat": -1.2376,
+    "province": "RDC"
+  },
+  "Djombo": {
+    "lon": 20.4438,
+    "lat": 1.4536,
+    "province": "RDC"
+  },
+  "Bongandanga": {
+    "lon": 21.3504,
+    "lat": 1.1783,
+    "province": "RDC"
+  },
+  "Lingomo": {
+    "lon": 22.2721,
+    "lat": 0.9795,
+    "province": "RDC"
+  },
+  "Basankusu": {
+    "lon": 19.7589,
+    "lat": 0.776,
+    "province": "RDC"
+  },
+  "Boende": {
+    "lon": 20.3788,
+    "lat": -0.618,
+    "province": "RDC"
+  },
+  "Mompono": {
+    "lon": 21.8243,
+    "lat": 0.2735,
+    "province": "RDC"
+  },
+  "Monieka": {
+    "lon": 19.9933,
+    "lat": 0.007,
+    "province": "RDC"
+  },
+  "Banjow Moke": {
+    "lon": 17.9665,
+    "lat": -1.934,
+    "province": "RDC"
+  },
+  "Inongo": {
+    "lon": 18.4912,
+    "lat": -1.9529,
+    "province": "RDC"
+  },
+  "Wangata": {
+    "lon": 18.2399,
+    "lat": 0.0476,
+    "province": "RDC"
+  },
+  "Bolenge": {
+    "lon": 18.1213,
+    "lat": -0.2096,
+    "province": "RDC"
+  },
+  "Bolomba": {
+    "lon": 19.1085,
+    "lat": 0.2974,
+    "province": "RDC"
+  },
+  "Ingende": {
+    "lon": 18.8815,
+    "lat": -0.4704,
+    "province": "RDC"
+  },
+  "Iboko": {
+    "lon": 18.3738,
+    "lat": -0.9347,
+    "province": "RDC"
+  },
+  "Irebu": {
+    "lon": 17.6225,
+    "lat": -0.885,
+    "province": "RDC"
+  },
+  "Mbandaka": {
+    "lon": 18.3458,
+    "lat": 0.1093,
+    "province": "RDC"
+  },
+  "Lukolela": {
+    "lon": 17.3157,
+    "lat": -1.2584,
+    "province": "RDC"
+  },
+  "Bikoro": {
+    "lon": 18.3024,
+    "lat": -0.3847,
+    "province": "RDC"
+  },
+  "Ntondo": {
+    "lon": 18.1637,
+    "lat": -0.9919,
+    "province": "RDC"
+  },
+  "Lilanga Bobangi": {
+    "lon": 17.9994,
+    "lat": 0.2213,
+    "province": "RDC"
+  },
+  "Kampala": {
+    "lon": 32.58,
+    "lat": 0.32,
+    "province": "Kampala"
+  },
+  "Kisoro": {
+    "lon": 29.68,
+    "lat": -1.28,
+    "province": "Kisoro"
+  },
+  "Kanungu": {
+    "lon": 29.78,
+    "lat": -0.78,
+    "province": "Kanungu"
+  },
+  "Bundibugyo": {
+    "lon": 30.06,
+    "lat": 0.71,
+    "province": "Bundibugyo"
+  },
+  "Arua": {
+    "lon": 30.91,
+    "lat": 3.02,
+    "province": "Arua"
+  }
+}

@@ -234,11 +234,9 @@ export function initHeatmap(dom, store, data) {
     const displayZones = activeZones.length > 0 ? activeZones : zones.slice(0, 8);
     const selectedSet = new Set(state.selectedRegions);
 
-    // Compute zone marker positions around province centroid
+    // Use real geographic coordinates from INRB health zone shapefile
+    const zoneCoords = data.zoneCoords || {};
     const centroid = provinceCentroids[provinceName] || [0, 0];
-    // Adaptive radius: smaller for compact provinces, larger for big ones
-    const radius = displayZones.length <= 2 ? 0.15 : displayZones.length <= 4 ? 0.25 : 0.4;
-    const positions = spreadZonePositions(centroid, displayZones.length, radius);
 
     const maxZoneCases = Math.max(1,
       ...displayZones.map(z => (zoneSummary[z] || {}).totalConfirmed || 0));
@@ -246,12 +244,15 @@ export function initHeatmap(dom, store, data) {
     const scatterData = displayZones.map((zone, i) => {
       const s = zoneSummary[zone] || { totalConfirmed: 0, totalDeaths: 0 };
       const isSelected = selectedSet.has(zone);
-      // Log-scale sizing: maps wide case range (1~40k) to 8~50px
-      // sqrt-based formula clamped everything >2500 to 40px — useless for new data
+      // Log-scale sizing relative to provincial max
       const size = 8 + 42 * (Math.log((s.totalConfirmed || 0) + 1) / Math.log(maxZoneCases + 1));
+      // Real position from shapefile centroids, fallback to province centroid
+      const coord = zoneCoords[zone];
+      const lon = coord ? coord.lon : centroid[0];
+      const lat = coord ? coord.lat : centroid[1];
       return {
         name: zone,
-        value: [...positions[i], s.totalConfirmed, s.totalDeaths, s.totalSuspected || 0],
+        value: [lon, lat, s.totalConfirmed, s.totalDeaths, s.totalSuspected || 0],
         symbolSize: size,
         itemStyle: {
           color: isSelected ? '#ff8f00' : zoneMarkerColor(i),

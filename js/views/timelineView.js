@@ -181,8 +181,9 @@ export function initTimeline(dom, store, data) {
     if (state.timeRange[0] === fullTimeRange[0] && state.timeRange[1] === fullTimeRange[1]) {
       needsReset = true;
     }
-    // notMerge:false — incremental update, preserves dataZoom position
-    chart.setOption(buildOption(state), false);
+    // replaceMerge: replace series completely (removes stale lines when
+    // selection changes) but merge everything else (preserves dataZoom position).
+    chart.setOption(buildOption(state), { notMerge: false, replaceMerge: ['series'] });
   }
 
   const unsub = store.subscribe(render);

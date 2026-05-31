@@ -108,6 +108,7 @@ export function initParallel(dom, store, data) {
         // 5 axes evenly distributed between 8.75% and 91.25%.
         const positions = ['8.75%', '29.4%', '50%', '70.6%', '91.25%'];
         return LABELS.map((text, i) => ({
+          id: `header-label-${i}`,
           type: 'text',
           left: positions[i],
           top: 10,
@@ -117,6 +118,7 @@ export function initParallel(dom, store, data) {
             fontFamily: '-apple-system, "Noto Sans SC", sans-serif',
           },
         })).concat([{
+          id: 'header-sep',
           type: 'line', z: 99,
           shape: { x1: '7%', y1: 32, x2: '93%', y2: 32 },
           style: { stroke: '#e0e0e0', lineWidth: 1 },
@@ -142,6 +144,7 @@ export function initParallel(dom, store, data) {
         },
       },
       series: [{
+        id: 'parallel-series',
         type: 'parallel',
         lineStyle: { width: 1.5, opacity: 0.75 },
         emphasis: { lineStyle: { width: 4, opacity: 1 } },
@@ -225,8 +228,10 @@ export function initParallel(dom, store, data) {
 
   // ── Store → render ──
   function render(state) {
-    // Don't rebuild on hover-only changes (highlightedRegions)
-    chart.setOption(buildOption(state), true);
+    // notMerge:false preserves brush state across render cycles.
+    // Without this, setOption(...,true) destroys active brush areas
+    // every time the store updates, breaking multi-axis accumulation.
+    chart.setOption(buildOption(state), false);
   }
 
   const unsub = store.subscribe(render);

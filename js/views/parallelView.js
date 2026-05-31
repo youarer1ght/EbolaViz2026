@@ -94,13 +94,12 @@ export function initParallel(dom, store, data) {
         throttleDelay: 200,
         // Note: ECharts only keeps the most recent brush area on parallel axes.
         // Multi-axis AND is handled by our custom accumulator in handleBrush.
-        inBrush: { opacity: 1, lineWidth: 3.5 },
-        outOfBrush: { opacity: 0.08, lineWidth: 0.5 },
+        inBrush: { opacity: 1, lineWidth: 1.8 },
+        outOfBrush: { opacity: 0.06, lineWidth: 0.5 },
         brushStyle: {
-          borderWidth: 2,
-          color: 'rgba(0,0,0,0)',     // fully transparent — axis labels readable through
-          borderColor: '#888',        // subtle gray outline, not intrusive blue
-          opacity: 0,                 // belt-and-suspenders: zero fill opacity
+          borderWidth: 0,
+          color: 'rgba(0,0,0,0)',
+          shadowBlur: 0,
         },
       },
       // ── Header row: graphic text above the parallel area ──

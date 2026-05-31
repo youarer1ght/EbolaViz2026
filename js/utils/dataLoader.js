@@ -56,14 +56,12 @@ export function filterCases(cases, state) {
   if (!cases) return [];
   let filtered = cases;
 
-  // Time filter
-  if (state.timeRange && state.timeRange.length === 2) {
-    filtered = filtered.filter(c => c.date >= state.timeRange[0] && c.date <= state.timeRange[1]);
-  }
-
-  // Animation date — show only that date
+  // Animation date — precise single-date filter, overrides timeRange
   if (state.animatingDate) {
     filtered = filtered.filter(c => c.date === state.animatingDate);
+  } else if (state.timeRange && state.timeRange.length === 2) {
+    // Time range filter — only active when NOT animating
+    filtered = filtered.filter(c => c.date >= state.timeRange[0] && c.date <= state.timeRange[1]);
   }
 
   // Region filter (persistent selection)

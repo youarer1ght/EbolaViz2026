@@ -36,8 +36,8 @@ python3 -m http.server 8080
 |------|------|
 | **助教**（运行系统） | README 快速开始 + [CLAUDE.md](CLAUDE.md) 命令 |
 | **助教**（评审作业） | [docs/系统文档.md](docs/系统文档.md) + [docs/分工说明.md](docs/分工说明.md) |
-| **开发者**（接手维护） | [CLAUDE.md](CLAUDE.md) + [docs/系统文档.md §第五章](docs/系统文档.md) |
-| **答辩评委** | [docs/系统文档.md](docs/系统文档.md) 案例展示 + 设计决策 |
+| **开发者**（接手维护） | [CLAUDE.md](CLAUDE.md) + [docs/系统文档.md §第五章](docs/系统文档.md#第五章-后续维护指南) |
+| **答辩评委** | [docs/系统文档.md §第三章](docs/系统文档.md#第三章-案例展示-case-study) 案例展示 + [§2.4](docs/系统文档.md#24-关键设计决策) 设计决策 |
 
 ### 提交作业需要的文档
 
@@ -122,4 +122,4 @@ git push origin main
 
 ## 🤖 AI 使用声明
 
-开发使用了 Claude (Anthropic) 辅助架构设计、ECharts 配置调试、数据管线重构；GitHub Copilot 辅助前端代码补全。详见 [docs/系统文档.md §第四章](docs/系统文档.md)。
+开发使用了 Claude (Anthropic) 辅助架构设计、ECharts 配置调试、数据管线重构；GitHub Copilot 辅助前端代码补全。详见 [docs/系统文档.md §第四章](docs/系统文档.md#第四章-ai-使用声明)。

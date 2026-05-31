@@ -178,6 +178,7 @@ export function initDetail(dom, store, data) {
     return {
       tooltip: {
         trigger: 'axis',
+        confine: true,
         axisPointer: { type: 'shadow' },
         formatter: p => {
           if (!p || p.length === 0) return '';

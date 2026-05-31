@@ -115,6 +115,7 @@ export function initTimeline(dom, store, data) {
       backgroundColor: '#f5f7fa',
       tooltip: {
         trigger: 'axis',
+        confine: true,
         formatter: params => {
           if (!params || params.length === 0) return '';
           if (overviewMode) {

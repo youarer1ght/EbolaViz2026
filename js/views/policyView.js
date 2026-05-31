@@ -59,6 +59,7 @@ export function initPolicy(dom, store, data) {
       backgroundColor: '#f5f7fa',
       tooltip: {
         trigger: 'item',
+        confine: true,
         formatter: params => {
           if (params.componentType === 'series' && params.seriesType === 'scatter') {
             // params.value is always the raw array, even when data is an object

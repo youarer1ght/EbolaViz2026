@@ -154,56 +154,104 @@ export function initParallel(dom, store, data) {
     };
   }
 
-  // ── Brush → region selection (multi-axis AND) ──
-  //     With brushMode:'multiple', each brushed axis contributes a batch
-  //     entry.  Take the INTERSECTION of all active brush areas so only
-  //     lines passing through ALL selected ranges are highlighted.
+  // ── Brush → region selection (multi-axis AND intersection) ──
+  //     Tracks per-axis brushed ranges via params.areas so intersection
+  //     works regardless of how ECharts structures the batch/selected data.
   let lastBrushed = null;
+  const axisRanges = [null, null, null, null, null]; // per-dim [min,max]
 
   function handleBrush(params) {
     const merged = buildMerged(data.cases);
 
-    // Brush cleared (toolbox clear button or empty selection)
-    if (!params.batch || params.batch.length === 0) {
+    // ── Brush cleared (toolbox clear button) ──
+    if (!params.areas || params.areas.length === 0) {
+      for (let d = 0; d < 5; d++) axisRanges[d] = null;
       lastBrushed = null;
       store.dispatch(setSelectedRegions([]));
       return;
     }
 
-    // Collect the data-index set from each active brush area.
-    // With brushMode:'multiple', each axis brush stays active independently.
-    const batchSets = [];
-    for (const b of params.batch) {
-      const idxSet = new Set();
-      for (const sel of (b.selected || [])) {
-        if (sel.dataIndex) {
-          for (const i of sel.dataIndex) idxSet.add(i);
+    // ── Update per-axis ranges from active brush areas ──
+    //     Reset all first, then fill from params.areas.
+    //     areas[] order matches the axis index order in parallel coords.
+    for (let d = 0; d < 5; d++) axisRanges[d] = null;
+    for (const area of params.areas) {
+      if (area.brushType === 'rect' && area.coordRange) {
+        // Determine axis index: use area.axisIndex if available,
+        // otherwise infer from area's position in the parallel grid.
+        // Fallback: match coordRange magnitude against per-axis max values.
+        const dim = area.axisIndex != null ? area.axisIndex
+                  : area.dim != null ? area.dim
+                  : inferAxisByRange(area.coordRange, merged);
+        if (dim >= 0 && dim < 5) {
+          axisRanges[dim] = area.coordRange;
         }
       }
-      if (idxSet.size > 0) batchSets.push(idxSet);
     }
 
-    if (batchSets.length === 0) return;
-
-    // AND intersection: only keep indices present in EVERY batch
-    const intersection = new Set(batchSets[0]);
-    for (let i = 1; i < batchSets.length; i++) {
-      for (const idx of intersection) {
-        if (!batchSets[i].has(idx)) intersection.delete(idx);
+    // ── If no ranges could be parsed, fall back to batch intersection ──
+    const hasRanges = axisRanges.some(r => r !== null);
+    if (!hasRanges) {
+      // Fallback: use batch data-index intersection (original logic)
+      const batchSets = [];
+      for (const b of (params.batch || [])) {
+        const s = new Set();
+        for (const sel of (b.selected || [])) {
+          if (sel.dataIndex) for (const i of sel.dataIndex) s.add(i);
+        }
+        if (s.size > 0) batchSets.push(s);
       }
+      if (batchSets.length === 0) return;
+      const inter = new Set(batchSets[0]);
+      for (let i = 1; i < batchSets.length; i++) {
+        for (const idx of inter) if (!batchSets[i].has(idx)) inter.delete(idx);
+      }
+      const regions = [...inter].filter(i => i >= 0 && i < merged.length).map(i => merged[i].region);
+      const key = regions.sort().join(',');
+      if (key !== lastBrushed) { lastBrushed = key; store.dispatch(setSelectedRegions(regions)); }
+      return;
     }
 
-    // Resolve indices → region names
+    // ── Primary path: AND intersection across all active axis ranges ──
     const regions = [];
-    for (const i of intersection) {
-      if (i >= 0 && i < merged.length) regions.push(merged[i].region);
+    for (let i = 0; i < merged.length; i++) {
+      const vals = merged[i].values;
+      let ok = true;
+      for (let d = 0; d < 5; d++) {
+        const range = axisRanges[d];
+        if (!range) continue;           // no filter on this axis
+        if (vals[d] < range[0] || vals[d] > range[1]) {
+          ok = false;
+          break;
+        }
+      }
+      if (ok) regions.push(merged[i].region);
     }
 
-    const key = [...regions].sort().join(',');
+    const key = regions.sort().join(',');
     if (key !== lastBrushed) {
       lastBrushed = key;
       store.dispatch(setSelectedRegions(regions));
     }
+  }
+
+  /** Guess which parallel axis a coordRange belongs to by value magnitude. */
+  function inferAxisByRange(range, merged) {
+    if (!merged || merged.length === 0) return -1;
+    // Compute per-axis max from merged data
+    const maxes = [0, 0, 0, 0, 0];
+    for (const row of merged) {
+      for (let d = 0; d < 5; d++) {
+        if (row.values[d] > maxes[d]) maxes[d] = row.values[d];
+      }
+    }
+    const rangeMax = Math.max(Math.abs(range[0]), Math.abs(range[1]));
+    let bestDim = -1, bestDist = Infinity;
+    for (let d = 0; d < 5; d++) {
+      const dist = Math.abs(maxes[d] - rangeMax);
+      if (dist < bestDist) { bestDist = dist; bestDim = d; }
+    }
+    return bestDim;
   }
 
   chart.on('brushSelected', handleBrush);

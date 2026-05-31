@@ -46,11 +46,11 @@ export function initTimeline(dom, store, data) {
         },
       },
       legend: {
-        type: 'scroll', bottom: 0,
+        type: 'scroll', top: 0,
         textStyle: { fontSize: 9 },
         pageTextStyle: { fontSize: 9 },
       },
-      grid: { top: 8, right: 16, bottom: 40, left: 48 },
+      grid: { top: 32, right: 16, bottom: 50, left: 48 },
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 9, rotate: 30 },
@@ -63,7 +63,7 @@ export function initTimeline(dom, store, data) {
         axisLabel: { fontSize: 9 },
       },
       dataZoom: [
-        { type: 'slider', start: 0, end: 100, height: 18, bottom: 20 },
+        { type: 'slider', start: 0, end: 100, height: 20, bottom: 6 },
         { type: 'inside' },
       ],
       series,

@@ -165,17 +165,9 @@ export function initParallel(dom, store, data) {
   function handleBrush(params) {
     const merged = buildMerged(data.cases);
 
-    // ── Brush cleared (toolbox clear button or empty batch) → reset ──
-    if (!params.batch || params.batch.length === 0) {
-      accumulatedIndices = null;
-      lastBrushed = null;
-      store.dispatch(setSelectedRegions([]));
-      return;
-    }
-
     // ── Collect data indices from current brush event ──
     const currentIndices = new Set();
-    for (const b of params.batch) {
+    for (const b of (params.batch || [])) {
       for (const sel of (b.selected || [])) {
         if (sel.dataIndex) {
           for (const i of sel.dataIndex) currentIndices.add(i);
@@ -183,7 +175,14 @@ export function initParallel(dom, store, data) {
       }
     }
 
-    if (currentIndices.size === 0) return;
+    // ── No selection (clear button or empty brush) → reset ──
+    if (currentIndices.size === 0) {
+      accumulatedIndices = null;
+      lastBrushed = null;
+      store.dispatch(setSelectedRegions([]));
+      console.log('🔍 框选已清除');
+      return;
+    }
 
     // ── Accumulate: intersect with previous brush results ──
     if (accumulatedIndices === null) {
@@ -203,10 +202,10 @@ export function initParallel(dom, store, data) {
     const key = regions.sort().join(',');
     if (key !== lastBrushed) {
       lastBrushed = key;
-      console.log(`🔍 累积框选: ${accumulatedIndices.size} 个区域 → ${regions.length} 个卫生区`);
+      console.log(`🔍 累积框选: ${accumulatedIndices.size} 个区域 → ${regions.length} 个卫生区`, regions);
       store.dispatch(setSelectedRegions(regions));
     } else {
-      console.log(`🔍 累积框选: ${accumulatedIndices.size} 个区域 (未变化)`);
+      console.log(`🔍 累积框选: ${accumulatedIndices.size} 个区域 (未变化)`, regions);
     }
   }
 

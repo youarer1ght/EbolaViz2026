@@ -41,10 +41,16 @@ export function initTimeline(dom, store, data) {
 
   // Track whether we need to reset dataZoom (e.g. on RESET_ALL)
   let needsReset = true;
+  // Store the date range of the current chart data — used by the dataZoom
+  // handler to correctly map slider percentages back to dates.
+  let chartDateRange = getTimeRange(data.cases);
 
   function buildOption(state) {
     const filtered = filterCases(data.cases, state);
     const byRegion = aggregateByRegion(filtered);
+    // Update the date range used by dataZoom handler — must match the
+    // dates actually shown in the chart, not the full dataset.
+    chartDateRange = getTimeRange(filtered);
 
     const allRegions = state.selectedRegions.length > 0
       ? state.selectedRegions.filter(r => byRegion[r])
@@ -154,19 +160,17 @@ export function initTimeline(dom, store, data) {
     const opt = chart.getOption();
     if (opt.dataZoom && opt.dataZoom[0]) {
       const dz = opt.dataZoom[0];
-      // Use percentage values (start/end) — ECharts time-axis dataZoom
-      // doesn't populate startValue/endValue in percentage mode
       if (dz.start !== undefined && dz.end !== undefined) {
-        // Convert percentages to dates from the actual x-axis data
-        const allDates = [...new Set(
-          (data.cases || []).map(c => c.date)
-        )].sort();
-        if (allDates.length > 0) {
-          const startIdx = Math.floor(dz.start / 100 * (allDates.length - 1));
-          const endIdx = Math.ceil(dz.end / 100 * (allDates.length - 1));
+        // Percentages are relative to the chart's CURRENT data domain
+        // (which may already be filtered). Use chartDateRange updated
+        // by buildOption, NOT the full data.cases.
+        const dates = [...new Set(chartDateRange)].sort();
+        if (dates.length > 0) {
+          const startIdx = Math.floor(dz.start / 100 * (dates.length - 1));
+          const endIdx = Math.ceil(dz.end / 100 * (dates.length - 1));
           store.dispatch(setTimeRange([
-            allDates[Math.max(0, startIdx)],
-            allDates[Math.min(allDates.length - 1, endIdx)],
+            dates[Math.max(0, startIdx)],
+            dates[Math.min(dates.length - 1, endIdx)],
           ]));
         }
       }

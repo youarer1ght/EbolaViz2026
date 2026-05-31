@@ -20,7 +20,7 @@ import { initDetail }   from './views/detailView.js';
 
 async function main() {
   console.log('🦠 EbolaViz2026 — 疫情时空可视化分析系统');
-  console.log('   数据来源: WHO AFRO SitReps, kraemer-lab/Ebola_DRC_2026, ReliefWeb, World Bank');
+  console.log('   数据: 5/14–5/28 INSP 真实数据 (159条) + 5/29–8/15 SEIR模型外推');
 
   // ── 1. Load data ──
   console.log('📦 Loading data...');
@@ -33,7 +33,7 @@ async function main() {
 
   // Update data source label
   const srcEl = document.getElementById('data-source');
-  if (srcEl) srcEl.textContent = `数据: WHO AFRO SitReps (截至 ${fullTimeRange[1]})`;
+  if (srcEl) srcEl.textContent = `数据: 5/14–5/28 WHO INSP 真实数据 + 5/29–8/15 SEIR 模型外推`;
 
   // ── 2. Create Store ──
   const store = createStore(reducer, getInitialState(fullTimeRange));

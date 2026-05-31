@@ -22,7 +22,7 @@ python3 scripts/build_real_data.py                # Regenerate analysis datasets
 # → Reads data/*.csv → validates consistency → outputs data/*.json
 
 # Data CSV files (editable by Role A — Excel / VS Code / any spreadsheet)
-#   data/cases.csv           — daily case data (INSP SitReps, 151 records, 28 zones × 13 dates)
+#   data/cases.csv           — case data: 159 real INSP records (5/14–5/28) + SEIR extrapolation (5/29–8/15), 10,557 total
 #   data/demographics.csv    — 522 health zones: population, density, urban%, health sites
 #   data/policy_events.csv   — 16 policy/humanitarian events
 #   data/border_poe.csv      — 7 Uganda-DRC border crossings

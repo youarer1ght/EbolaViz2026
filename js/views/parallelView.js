@@ -239,7 +239,9 @@ export function initParallel(dom, store, data) {
 
   // ── Store → render ──
   function render(state) {
-    chart.setOption(buildOption(state), false);
+    // replaceMerge: replace series data when time range changes
+    // (old zones outside the new time window are removed, not merged)
+    chart.setOption(buildOption(state), { notMerge: false, replaceMerge: ['series'] });
     updateClearBtn(state);
   }
 

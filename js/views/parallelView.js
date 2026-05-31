@@ -81,11 +81,11 @@ export function initParallel(dom, store, data) {
           if (!row) return '';
           const v = row.values;
           return `<b>${p.name}</b><br/>
-            人口密度: ${v[0]}<br/>
-            医生/10万: ${v[1]}<br/>
-            确诊: ${v[2]}<br/>
+            人口密度: ${v[0]} 人/km²<br/>
+            医生: ${v[1]} 人/10万<br/>
+            确诊: ${v[2]} 例<br/>
             死亡率: ${v[3]}%<br/>
-            床位/万: ${v[4]}`;
+            床位: ${v[4]} 张/万人`;
         },
       },
       brush: {
@@ -97,46 +97,47 @@ export function initParallel(dom, store, data) {
         outOfBrush: { opacity: 0.15, lineWidth: 1 },
         brushStyle: { borderWidth: 1, color: 'rgba(31,119,180,0.2)', borderColor: '#1f77b4' },
       },
+      // ── Header row: graphic text above the parallel area ──
+      //     Positions in pixels, matching parallel.left:70 + even spacing.
+      //     First axis at 70px, last at containerWidth-70px, 3 middle spaced evenly.
+      //     Use 'center' + offset for middle axes to handle variable width.
+      graphic: (() => {
+        const LABELS = ['人口密度 (人/km²)', '医生 (人/10万)', '确诊数 (例)', '死亡率 (%)', '床位 (张/万人)'];
+        // Positions match parallel grid: left=70px (~8.75% of ~800px chart), right=70px (~91.25%).
+        // 5 axes evenly distributed between 8.75% and 91.25%.
+        const positions = ['8.75%', '29.4%', '50%', '70.6%', '91.25%'];
+        return LABELS.map((text, i) => ({
+          type: 'text',
+          left: positions[i],
+          top: 10,
+          z: 100,
+          style: {
+            text, fontSize: 12, fontWeight: 'bold', fill: '#333',
+            fontFamily: '-apple-system, "Noto Sans SC", sans-serif',
+          },
+        })).concat([{
+          type: 'line', z: 99,
+          shape: { x1: '7%', y1: 32, x2: '93%', y2: 32 },
+          style: { stroke: '#e0e0e0', lineWidth: 1 },
+        }]);
+      })(),
       parallelAxis: [
-        { dim: 0, name: '人口密度 (人/km²)', type: 'value', max: Math.max(1, maxValues[0]),
-          nameLocation: 'start', nameGap: 2,
-          axisLabel: { fontSize: 10, formatter: v => v > 500 ? (v/1000).toFixed(1)+'k' : v },
-          nameTextStyle: { fontSize: 12, fontWeight: 'bold', color: '#333',
-            backgroundColor: '#fff', borderColor: '#d0d0d0', borderWidth: 0.5,
-            padding: [4, 7], borderRadius: 4 } },
-        { dim: 1, name: '医生/10万人', type: 'value', max: Math.max(1, maxValues[1]),
-          nameLocation: 'start', nameGap: 2,
-          axisLabel: { fontSize: 10 },
-          nameTextStyle: { fontSize: 12, fontWeight: 'bold', color: '#333',
-            backgroundColor: '#fff', borderColor: '#d0d0d0', borderWidth: 0.5,
-            padding: [4, 7], borderRadius: 4 } },
-        { dim: 2, name: '确诊数 (例)', type: 'value', max: Math.max(1, maxValues[2]),
-          nameLocation: 'start', nameGap: 2,
-          axisLabel: { fontSize: 10 },
-          nameTextStyle: { fontSize: 12, fontWeight: 'bold', color: '#333',
-            backgroundColor: '#fff', borderColor: '#d0d0d0', borderWidth: 0.5,
-            padding: [4, 7], borderRadius: 4 } },
-        { dim: 3, name: '死亡率(%)', type: 'value', max: Math.max(5, maxValues[3]),
-          nameLocation: 'start', nameGap: 2,
-          axisLabel: { fontSize: 10 },
-          nameTextStyle: { fontSize: 12, fontWeight: 'bold', color: '#333',
-            backgroundColor: '#fff', borderColor: '#d0d0d0', borderWidth: 0.5,
-            padding: [4, 7], borderRadius: 4 } },
-        { dim: 4, name: '床位/万人', type: 'value', max: Math.max(1, maxValues[4]),
-          nameLocation: 'start', nameGap: 2,
-          axisLabel: { fontSize: 10 },
-          nameTextStyle: { fontSize: 12, fontWeight: 'bold', color: '#333',
-            backgroundColor: '#fff', borderColor: '#d0d0d0', borderWidth: 0.5,
-            padding: [4, 7], borderRadius: 4 } },
+        { dim: 0, name: '', type: 'value', max: Math.max(1, maxValues[0]),
+          axisLabel: { fontSize: 10, formatter: v => v > 500 ? (v/1000).toFixed(1)+'k' : v } },
+        { dim: 1, name: '', type: 'value', max: Math.max(1, maxValues[1]),
+          axisLabel: { fontSize: 10 } },
+        { dim: 2, name: '', type: 'value', max: Math.max(1, maxValues[2]),
+          axisLabel: { fontSize: 10 } },
+        { dim: 3, name: '', type: 'value', max: Math.max(5, maxValues[3]),
+          axisLabel: { fontSize: 10 } },
+        { dim: 4, name: '', type: 'value', max: Math.max(1, maxValues[4]),
+          axisLabel: { fontSize: 10 } },
       ],
       parallel: {
-        left: 70, right: 70, top: 50, bottom: 24,
+        left: 70, right: 70, top: 46, bottom: 24,
         parallelAxisDefault: {
           axisLabel: { fontSize: 10 },
-          nameLocation: 'start', nameGap: 2,
-          nameTextStyle: { fontSize: 12, fontWeight: 'bold', color: '#333',
-            backgroundColor: '#fff', borderColor: '#d0d0d0', borderWidth: 0.5,
-            padding: [4, 7], borderRadius: 4 },
+          nameLocation: 'start', nameGap: 0,
         },
       },
       series: [{

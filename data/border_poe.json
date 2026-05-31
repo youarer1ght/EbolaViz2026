@@ -1,50 +1,50 @@
 [
   {
     "name": "Goli",
-    "lat": 2.3874,
-    "lon": 31.0296,
+    "lat": 2.3874268,
+    "lon": 31.0296457,
     "country": "UGA",
     "type": "road"
   },
   {
     "name": "Ntoroko Main",
-    "lat": 0.9916,
-    "lon": 30.385,
+    "lat": 0.991574,
+    "lon": 30.3849572,
     "country": "UGA",
-    "type": "lake_port"
+    "type": "road"
   },
   {
     "name": "Odramacaku",
-    "lat": 3.1128,
-    "lon": 30.8203,
+    "lat": 3.1128037,
+    "lon": 30.8202923,
     "country": "UGA",
     "type": "road"
   },
   {
     "name": "Vurra",
-    "lat": 2.7642,
-    "lon": 30.8905,
+    "lat": 2.7642396,
+    "lon": 30.8904716,
     "country": "UGA",
     "type": "road"
   },
   {
     "name": "Busanza",
-    "lat": -0.7383,
-    "lon": 29.643,
+    "lat": -0.7383216,
+    "lon": 29.6429671,
     "country": "UGA",
     "type": "road"
   },
   {
     "name": "Busunga",
-    "lat": 0.633,
-    "lon": 29.9639,
+    "lat": 0.632954,
+    "lon": 29.963895,
     "country": "UGA",
     "type": "road"
   },
   {
-    "name": "Mpondwe-Kasindi",
-    "lat": 0.0396,
-    "lon": 29.7257,
+    "name": "Mpondwe",
+    "lat": 0.0396318,
+    "lon": 29.7256531,
     "country": "UGA",
     "type": "road"
   }

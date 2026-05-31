@@ -6,13 +6,34 @@
  *   SET_SELECTED_REGIONS → heatmap / timeline / detail filter.
  *   Click "✕ 清除" button (top-right) → clear all selections.
  *
- * Selection styling: selected lines are thick + full opacity; unselected
- * are thin + faded. Mortality-based green→red color gradient always preserved.
+ * Visual encoding:
+ *   Color = province (categorical, 10-color palette)
+ *   Opacity = mortality rate (higher CFR → more opaque)
+ *   Width = selection state (thick = selected, thin = unselected)
+ *   Selected lines turn gold regardless of province
  */
 import { setSelectedRegions } from '../actions.js';
 import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
 
+// Province color palette — distinct hues for visual separation
+const PROVINCE_COLORS = [
+  '#e6194b', '#3cb44b', '#4363d8', '#f58231', '#911eb4',
+  '#42d4f4', '#f032e6', '#bfef45', '#fabed4', '#469990',
+  '#dcbeff', '#9a6324', '#800000', '#000075', '#aaffc3',
+];
+
 export function initParallel(dom, store, data) {
+
+  // ── Build province → color index mapping (stable across renders) ──
+  const provColorMap = {};
+  let nextColor = 0;
+  function getProvinceColor(province) {
+    if (!provColorMap[province]) {
+      provColorMap[province] = PROVINCE_COLORS[nextColor % PROVINCE_COLORS.length];
+      nextColor++;
+    }
+    return provColorMap[province];
+  }
 
   // ── Build merged rows: one per region, all 5 dimensions ──
   function buildMerged(cases) {
@@ -26,6 +47,7 @@ export function initParallel(dom, store, data) {
           : 0;
         return {
           region: s.region,
+          province: demo.province || s.region,
           values: [
             demo.population_density || 0,
             demo.doctors_per_100k || 0,
@@ -37,19 +59,20 @@ export function initParallel(dom, store, data) {
       });
   }
 
-  /** Per-line base color: green (low mortality) → red (high mortality). */
-  function lineColor(mortality) {
-    const t = Math.min(1, Math.max(0, mortality / 20));
-    return `rgb(${Math.round(255*t)},${Math.round(200*(1-t))},${Math.round(100*(1-t))})`;
+  /** Opacity from mortality: higher CFR → more visible (0.25–0.90). */
+  function mortalityOpacity(cfr) {
+    return 0.25 + 0.65 * Math.min(1, cfr / 25);
   }
 
-  /** Selection-aware style: keep color encoding, vary thickness + opacity. */
+  /** Selection-aware style:
+   *   Selected  → gold, thick, fully opaque
+   *   Unselected → province color, thin, opacity from mortality */
   function lineStyle(row, selectedSet) {
-    const baseColor = lineColor(row.values[3]);
     if (selectedSet.has(row.region)) {
-      return { color: baseColor, width: 3.5, opacity: 1 };
+      return { color: '#ff8f00', width: 3.5, opacity: 1 };
     }
-    return { color: baseColor, width: 1, opacity: 0.45 };
+    const provColor = getProvinceColor(row.province);
+    return { color: provColor, width: 1, opacity: mortalityOpacity(row.values[3]) };
   }
 
   // ── Init ──
@@ -83,7 +106,8 @@ export function initParallel(dom, store, data) {
           const row = merged.find(r => r.region === p.name);
           if (!row) return '';
           const v = row.values;
-          return `<b>${p.name}</b><br/>
+          const prov = row.province || '';
+          return `<b>${p.name}</b> <span style="color:#888;font-size:0.85em;">${prov}</span><br/>
             人口密度: ${v[0]} 人/km²<br/>
             医生: ${v[1]} 人/10万<br/>
             确诊: ${v[2]} 例<br/>
@@ -127,7 +151,7 @@ export function initParallel(dom, store, data) {
           top: 35,
           z: 100,
           style: {
-            text: '💡 点击线条选中/取消卫生区  |  悬停查看数据  |  ✕ 清除全部',
+            text: '🎨 色=省份  |  浓淡=死亡率  |  点击线条选中/取消  |  悬停查看数据  |  ✕ 清除',
             fontSize: 10, fill: '#aaa',
             fontFamily: '-apple-system, "Noto Sans SC", sans-serif',
           },

@@ -34,9 +34,7 @@ export const A = {
   SET_IS_PLAYING:          'SET_IS_PLAYING',
   SET_SELECTED_REGIONS:    'SET_SELECTED_REGIONS',
   SET_HIGHLIGHTED_REGIONS: 'SET_HIGHLIGHTED_REGIONS',
-  SET_PARALLEL_AXES_FILTER:'SET_PARALLEL_AXES_FILTER',
   SET_SELECTED_POLICY_IDS: 'SET_SELECTED_POLICY_IDS',
-  SET_ACTIVE_VIEW:         'SET_ACTIVE_VIEW',
   RESET_ALL:               'RESET_ALL',
 };
 
@@ -53,12 +51,8 @@ export function reducer(state, action) {
       return { ...state, selectedRegions: action.payload };
     case A.SET_HIGHLIGHTED_REGIONS:
       return { ...state, highlightedRegions: action.payload };
-    case A.SET_PARALLEL_AXES_FILTER:
-      return { ...state, parallelAxesFilter: { ...state.parallelAxesFilter, ...action.payload } };
     case A.SET_SELECTED_POLICY_IDS:
       return { ...state, selectedPolicyIds: action.payload };
-    case A.SET_ACTIVE_VIEW:
-      return { ...state, activeView: action.payload };
     case A.RESET_ALL:
       return { ...state,
         timeRange: action.payload.timeRange,
@@ -66,7 +60,6 @@ export function reducer(state, action) {
         isPlaying: false,
         selectedRegions: [],
         highlightedRegions: [],
-        parallelAxesFilter: { populationDensity: [-Infinity,Infinity], caseCount: [-Infinity,Infinity], mortalityRate: [-Infinity,Infinity], healthcareAccess: [-Infinity,Infinity] },
         selectedPolicyIds: [],
       };
     default: return state;
@@ -81,13 +74,6 @@ export function getInitialState(fullTimeRange) {
     isPlaying: false,
     selectedRegions: [],
     highlightedRegions: [],
-    parallelAxesFilter: {
-      populationDensity: [-Infinity, Infinity],
-      caseCount: [-Infinity, Infinity],
-      mortalityRate: [-Infinity, Infinity],
-      healthcareAccess: [-Infinity, Infinity],
-    },
     selectedPolicyIds: [],
-    activeView: null,
   };
 }

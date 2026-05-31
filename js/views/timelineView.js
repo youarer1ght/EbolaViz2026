@@ -41,16 +41,15 @@ export function initTimeline(dom, store, data) {
 
   // Track whether we need to reset dataZoom (e.g. on RESET_ALL)
   let needsReset = true;
-  // Store the date range of the current chart data — used by the dataZoom
-  // handler to correctly map slider percentages back to dates.
-  let chartDateRange = getTimeRange(data.cases);
+  // All unique dates shown in the chart — used by dataZoom handler to
+  // map percentage positions back to actual dates. Updated on each render
+  // so the mapping is always relative to the currently visible data.
+  let chartDates = [...new Set(data.cases.map(c => c.date))].sort();
 
   function buildOption(state) {
     const filtered = filterCases(data.cases, state);
     const byRegion = aggregateByRegion(filtered);
-    // Update the date range used by dataZoom handler — must match the
-    // dates actually shown in the chart, not the full dataset.
-    chartDateRange = getTimeRange(filtered);
+    chartDates = [...new Set(filtered.map(c => c.date))].sort();
 
     const allRegions = state.selectedRegions.length > 0
       ? state.selectedRegions.filter(r => byRegion[r])
@@ -161,16 +160,14 @@ export function initTimeline(dom, store, data) {
     if (opt.dataZoom && opt.dataZoom[0]) {
       const dz = opt.dataZoom[0];
       if (dz.start !== undefined && dz.end !== undefined) {
-        // Percentages are relative to the chart's CURRENT data domain
-        // (which may already be filtered). Use chartDateRange updated
-        // by buildOption, NOT the full data.cases.
-        const dates = [...new Set(chartDateRange)].sort();
-        if (dates.length > 0) {
-          const startIdx = Math.floor(dz.start / 100 * (dates.length - 1));
-          const endIdx = Math.ceil(dz.end / 100 * (dates.length - 1));
+        // Percentages are relative to the chart's current data domain.
+        // Use chartDates (unique dates in filtered data) for mapping.
+        if (chartDates.length > 0) {
+          const startIdx = Math.floor(dz.start / 100 * (chartDates.length - 1));
+          const endIdx = Math.ceil(dz.end / 100 * (chartDates.length - 1));
           store.dispatch(setTimeRange([
-            dates[Math.max(0, startIdx)],
-            dates[Math.min(dates.length - 1, endIdx)],
+            chartDates[Math.max(0, startIdx)],
+            chartDates[Math.min(chartDates.length - 1, endIdx)],
           ]));
         }
       }

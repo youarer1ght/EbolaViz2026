@@ -246,7 +246,9 @@ export function initHeatmap(dom, store, data) {
     const scatterData = displayZones.map((zone, i) => {
       const s = zoneSummary[zone] || { totalConfirmed: 0, totalDeaths: 0 };
       const isSelected = selectedSet.has(zone);
-      const size = Math.max(10, Math.min(40, Math.sqrt(s.totalConfirmed || 1) * 4));
+      // Log-scale sizing: maps wide case range (1~40k) to 8~50px
+      // sqrt-based formula clamped everything >2500 to 40px — useless for new data
+      const size = 8 + 42 * (Math.log((s.totalConfirmed || 0) + 1) / Math.log(maxZoneCases + 1));
       return {
         name: zone,
         value: [...positions[i], s.totalConfirmed, s.totalDeaths, s.totalSuspected || 0],

@@ -219,18 +219,21 @@ export function initHeatmap(dom, store, data) {
     // Get zone stats from unfiltered (time+animation filtered only) data
     const colorState = { ...state, selectedRegions: [], highlightedRegions: [] };
     const zoneSummary = summarizeByRegion(filterCases(data.cases, colorState));
+    const activeZones = zones.filter(z => (zoneSummary[z] || {}).totalConfirmed > 0);
+    const inactiveCount = zones.length - activeZones.length;
+    const displayZones = activeZones.length > 0 ? activeZones : zones.slice(0, 8);
     const selectedSet = new Set(state.selectedRegions);
 
     // Compute zone marker positions around province centroid
     const centroid = provinceCentroids[provinceName] || [0, 0];
     // Adaptive radius: smaller for compact provinces, larger for big ones
-    const radius = zones.length <= 2 ? 0.15 : zones.length <= 4 ? 0.25 : 0.4;
-    const positions = spreadZonePositions(centroid, zones.length, radius);
+    const radius = displayZones.length <= 2 ? 0.15 : displayZones.length <= 4 ? 0.25 : 0.4;
+    const positions = spreadZonePositions(centroid, displayZones.length, radius);
 
     const maxZoneCases = Math.max(1,
-      ...zones.map(z => (zoneSummary[z] || {}).totalConfirmed || 0));
+      ...displayZones.map(z => (zoneSummary[z] || {}).totalConfirmed || 0));
 
-    const scatterData = zones.map((zone, i) => {
+    const scatterData = displayZones.map((zone, i) => {
       const s = zoneSummary[zone] || { totalConfirmed: 0, totalDeaths: 0 };
       const isSelected = selectedSet.has(zone);
       const size = Math.max(10, Math.min(40, Math.sqrt(s.totalConfirmed || 1) * 4));
@@ -268,7 +271,8 @@ export function initHeatmap(dom, store, data) {
       backgroundColor: '#fff',
       title: {
         text: provinceName,
-        subtext: `${zones.length} 个卫生区 · ${selectedZoneCount} 已选`,
+        subtext: `${activeZones.length}/${zones.length} 个卫生区有病例 · ${selectedZoneCount} 已选`
+          + (inactiveCount > 0 ? ` · ${inactiveCount} 个暂未受累` : ''),
         left: 'center',
         top: 6,
         textStyle: { fontSize: 12, fontWeight: 'bold', color: '#333' },

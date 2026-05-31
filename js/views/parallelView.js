@@ -92,8 +92,8 @@ export function initParallel(dom, store, data) {
         toolbox: ['rect', 'clear'],
         throttleType: 'debounce',
         throttleDelay: 200,
-        brushMode: 'multiple',       // allow brushing on multiple axes simultaneously
-        removeOnClick: false,        // don't clear on click — use clear button instead
+        // Note: ECharts only keeps the most recent brush area on parallel axes.
+        // Multi-axis AND is handled by our custom axisRanges accumulator in handleBrush.
         inBrush: { opacity: 1, lineWidth: 3 },
         outOfBrush: { opacity: 0.15, lineWidth: 1 },
         brushStyle: { borderWidth: 1, color: 'rgba(31,119,180,0.2)', borderColor: '#1f77b4' },
@@ -155,15 +155,18 @@ export function initParallel(dom, store, data) {
   }
 
   // ── Brush → region selection (multi-axis AND intersection) ──
-  //     Tracks per-axis brushed ranges via params.areas so intersection
-  //     works regardless of how ECharts structures the batch/selected data.
+  //     ECharts only reports the *current* brush area in each event;
+  //     previous areas are cleared visually.  We accumulate per-axis
+  //     ranges ourselves so all brushed axes contribute to the AND filter.
+  //     Only the toolbox clear button (empty areas) resets everything.
   let lastBrushed = null;
   const axisRanges = [null, null, null, null, null]; // per-dim [min,max]
+  const AXIS_NAMES = ['人口密度', '医生', '确诊数', '死亡率', '床位'];
 
   function handleBrush(params) {
     const merged = buildMerged(data.cases);
 
-    // ── Brush cleared (toolbox clear button) ──
+    // ── Brush cleared (toolbox clear button) → reset all ──
     if (!params.areas || params.areas.length === 0) {
       for (let d = 0; d < 5; d++) axisRanges[d] = null;
       lastBrushed = null;
@@ -171,15 +174,10 @@ export function initParallel(dom, store, data) {
       return;
     }
 
-    // ── Update per-axis ranges from active brush areas ──
-    //     Reset all first, then fill from params.areas.
-    //     areas[] order matches the axis index order in parallel coords.
-    for (let d = 0; d < 5; d++) axisRanges[d] = null;
+    // ── Update: only modify axes present in this event ──
+    //     Other axes keep their stored range (accumulate across brushes).
     for (const area of params.areas) {
       if (area.brushType === 'rect' && area.coordRange) {
-        // Determine axis index: use area.axisIndex if available,
-        // otherwise infer from area's position in the parallel grid.
-        // Fallback: match coordRange magnitude against per-axis max values.
         const dim = area.axisIndex != null ? area.axisIndex
                   : area.dim != null ? area.dim
                   : inferAxisByRange(area.coordRange, merged);
@@ -189,10 +187,12 @@ export function initParallel(dom, store, data) {
       }
     }
 
-    // ── If no ranges could be parsed, fall back to batch intersection ──
-    const hasRanges = axisRanges.some(r => r !== null);
-    if (!hasRanges) {
-      // Fallback: use batch data-index intersection (original logic)
+    const activeAxes = axisRanges
+      .map((r, d) => r ? `${AXIS_NAMES[d]}[${r[0].toFixed(1)},${r[1].toFixed(1)}]` : null)
+      .filter(Boolean);
+
+    // ── Fallback: use batch data-index intersection ──
+    if (activeAxes.length === 0) {
       const batchSets = [];
       for (const b of (params.batch || [])) {
         const s = new Set();
@@ -212,22 +212,20 @@ export function initParallel(dom, store, data) {
       return;
     }
 
-    // ── Primary path: AND intersection across all active axis ranges ──
+    // ── AND intersection: row must satisfy EVERY active axis range ──
     const regions = [];
     for (let i = 0; i < merged.length; i++) {
       const vals = merged[i].values;
       let ok = true;
       for (let d = 0; d < 5; d++) {
         const range = axisRanges[d];
-        if (!range) continue;           // no filter on this axis
-        if (vals[d] < range[0] || vals[d] > range[1]) {
-          ok = false;
-          break;
-        }
+        if (!range) continue;
+        if (vals[d] < range[0] || vals[d] > range[1]) { ok = false; break; }
       }
       if (ok) regions.push(merged[i].region);
     }
 
+    console.log(`🔍 ${activeAxes.length} 轴框选 (${activeAxes.join(' ∧ ')}) → ${regions.length} 个区域`);
     const key = regions.sort().join(',');
     if (key !== lastBrushed) {
       lastBrushed = key;

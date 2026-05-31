@@ -467,6 +467,7 @@ export function initHeatmap(dom, store, data) {
       backgroundColor: '#f5f7fa',
       tooltip: {
         trigger: 'item',
+        confine: true,
         formatter: p => {
           // Only the base series triggers tooltips (overlay items have silent:true)
           if (!p.name || p.value === undefined) return '';

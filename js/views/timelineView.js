@@ -7,7 +7,7 @@
  *   Overview: single aggregate line = sum of all visible regions
  */
 import { setTimeRange } from '../actions.js';
-import { filterCases, aggregateByRegion } from '../utils/dataLoader.js';
+import { filterCases, aggregateByRegion, getTimeRange } from '../utils/dataLoader.js';
 import { getRegionColor } from '../utils/colors.js';
 
 export function initTimeline(dom, store, data) {
@@ -40,6 +40,9 @@ export function initTimeline(dom, store, data) {
     render(store.getState());
   });
 
+  // Track whether we need to reset dataZoom (e.g. on RESET_ALL)
+  let needsReset = true;
+
   function buildOption(state) {
     const filtered = filterCases(data.cases, state);
     const byRegion = aggregateByRegion(filtered);
@@ -64,7 +67,7 @@ export function initTimeline(dom, store, data) {
         .map(([date, val]) => [date, val]);
 
       series = [{
-        name: overviewMode ? '全部区域合计' : '合计',
+        name: '全部区域合计',
         type: 'line',
         data: aggData,
         smooth: true,
@@ -89,12 +92,25 @@ export function initTimeline(dom, store, data) {
       }));
     }
 
-    // Only show legend in detail mode (too cluttered otherwise)
+    // Only show legend in detail mode
     const legend = overviewMode ? { show: false } : {
       type: 'scroll', bottom: 28,
       textStyle: { fontSize: 9 },
       pageTextStyle: { fontSize: 9 },
     };
+
+    // DO NOT include start/end in dataZoom config — ECharts manages
+    // slider position internally. Including {start:0,end:100} in every
+    // render creates a feedback loop: drag → dispatch → render →
+    // slider snaps back to full range.
+    const dzConfig = [{ type: 'slider', height: 20, bottom: 6 }, { type: 'inside' }];
+
+    // On RESET_ALL: force dataZoom back to full range
+    if (needsReset) {
+      dzConfig[0].start = 0;
+      dzConfig[0].end = 100;
+      needsReset = false;
+    }
 
     return {
       backgroundColor: '#f5f7fa',
@@ -125,10 +141,7 @@ export function initTimeline(dom, store, data) {
         axisLabel: { fontSize: 9 },
         nameTextStyle: { fontSize: 10, fontWeight: 'bold' },
       },
-      dataZoom: [
-        { type: 'slider', start: 0, end: 100, height: 20, bottom: 6 },
-        { type: 'inside' },
-      ],
+      dataZoom: dzConfig,
       series,
     };
   }
@@ -161,8 +174,14 @@ export function initTimeline(dom, store, data) {
     }
   });
 
+  const fullTimeRange = getTimeRange(data.cases);
+
   function render(state) {
-    // notMerge:false — incremental update, much faster for 82+ series
+    // Detect RESET_ALL: if store timeRange was restored to full, reset slider too
+    if (state.timeRange[0] === fullTimeRange[0] && state.timeRange[1] === fullTimeRange[1]) {
+      needsReset = true;
+    }
+    // notMerge:false — incremental update, preserves dataZoom position
     chart.setOption(buildOption(state), false);
   }
 

@@ -133,11 +133,25 @@ export function initTimeline(dom, store, data) {
     const now = Date.now();
     if (now - lastZoomDispatch < 200) return;
     lastZoomDispatch = now;
+
     const opt = chart.getOption();
     if (opt.dataZoom && opt.dataZoom[0]) {
       const dz = opt.dataZoom[0];
-      if (dz.startValue && dz.endValue) {
-        store.dispatch(setTimeRange([dz.startValue, dz.endValue]));
+      // Use percentage values (start/end) — ECharts time-axis dataZoom
+      // doesn't populate startValue/endValue in percentage mode
+      if (dz.start !== undefined && dz.end !== undefined) {
+        // Convert percentages to dates from the actual x-axis data
+        const allDates = [...new Set(
+          (data.cases || []).map(c => c.date)
+        )].sort();
+        if (allDates.length > 0) {
+          const startIdx = Math.floor(dz.start / 100 * (allDates.length - 1));
+          const endIdx = Math.ceil(dz.end / 100 * (allDates.length - 1));
+          store.dispatch(setTimeRange([
+            allDates[Math.max(0, startIdx)],
+            allDates[Math.min(allDates.length - 1, endIdx)],
+          ]));
+        }
       }
     }
   });

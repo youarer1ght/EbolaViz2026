@@ -56,9 +56,12 @@ export function initParallel(dom, store, data) {
   const chart = echarts.init(dom);
 
   function buildOption(state) {
-    // Use unfiltered data for rendering so all zones are visible;
-    // selection state drives visual emphasis only.
-    const merged = buildMerged(data.cases);
+    // Filter by time range only (not by selectedRegions) so all zones
+    // remain visible but reflect the current time window from dataZoom.
+    const timeFiltered = filterCases(data.cases, {
+      ...state, selectedRegions: [], highlightedRegions: [],
+    });
+    const merged = buildMerged(timeFiltered);
     const selectedSet = new Set(state.selectedRegions);
 
     // Per-axis max

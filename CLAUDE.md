@@ -19,14 +19,21 @@ python3 -m http.server 8080                     # Start dev server (Python 3 bui
 # Data
 conda activate EBOLAVIZ                           # Activate Python env
 python3 scripts/build_real_data.py                # Regenerate analysis datasets from CSV sources
-# → Reads data/*.csv → validates → outputs data/*.json
-# → A 角色编辑 CSV 后运行此命令即可更新全部 JSON
+# → Reads data/*.csv → validates consistency → outputs data/*.json
 
 # Data CSV files (editable by Role A — Excel / VS Code / any spreadsheet)
-#   data/cases.csv           — weekly case data (WHO SitReps)
-#   data/demographics.csv    — population + healthcare per health zone
-#   data/policy_events.csv   — policy / humanitarian events timeline
-#   data/border_poe.csv      — border crossing points
+#   data/cases.csv           — daily case data (INSP SitReps, 151 records, 28 zones × 13 dates)
+#   data/demographics.csv    — 522 health zones: population, density, urban%, health sites
+#   data/policy_events.csv   — 16 policy/humanitarian events
+#   data/border_poe.csv      — 7 Uganda-DRC border crossings
+#
+# Data sources (all CC BY 4.0):
+#   INRB-UMIE/Ebola_DRC_2026 — primary: INSP daily cases, health zone shapefile, PoE
+#   WorldPop — population counts & density per health zone
+#   healthsites.io — health facility counts per health zone
+#   FAO LCCS — satellite-derived urban fraction per health zone
+#   CCVI — socioeconomic deprivation index
+#   geoBoundaries — ADM1 province GeoJSON (DRC 26 + Uganda 4)
 
 # Testing
 node tests/smoke.test.js                           # Automated smoke test: all 5 views init + destroy OK

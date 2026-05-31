@@ -159,9 +159,7 @@ def build_demographics():
             "doctors_per_100k": to_float(r.get("doctors_per_100k", 0), "doctors_per_100k", ln),
             "beds_per_10k": to_float(r.get("beds_per_10k", 0), "beds_per_10k", ln),
             "health_sites": to_int(r.get("health_sites", 0), "health_sites", ln),
-            "gdp_per_capita": to_float(r.get("gdp_per_capita", 0), "gdp_per_capita", ln),
-            "socioeconomic_inequality": to_float(r.get("socioeconomic_inequality", 0), "socioeconomic_inequality", ln),
-            "source": "World Bank + WHO GHO + HDX + FAO LCCS + CCVI + GDP",
+            "source": "World Bank + WHO GHO + HDX + FAO LCCS",
         }
         if not record["region"]:
             warn(f"Missing region name {ln}")

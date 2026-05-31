@@ -1,523 +1,523 @@
-country,region,province,population,population_density,urban_pct,doctors_per_100k,beds_per_10k,health_sites,gdp_per_capita,socioeconomic_inequality
-COD,Aba,Haut-Uele,191373,74.6,0.0,1.5,0.3,0,614.3,0.588
-COD,Abuzi,Nord-Ubangi,76682,6.2,0.0,1.7,0.3,0,680.7,0.313
-COD,Adi,Ituri,291035,259.6,0.1,1.7,0.3,0,896.1,0.663
-COD,Adja,Ituri,171376,149.7,0.0,2.0,0.3,0,835.1,0.738
-COD,Aketi,Bas-Uele,168220,11.8,0.0,1.7,0.3,0,765.2,0.407
-COD,Alimbongo,Nord-Kivu,326610,153.9,0.1,2.3,1.0,17,721.0,0.838
-COD,Alunguli,Maniema,80008,1103.5,9.1,1.7,0.3,0,1422.5,0.508
-COD,Ango,Bas-Uele,161144,4.7,0.0,1.6,0.3,0,847.4,0.404
-COD,Angumu,Ituri,164109,132.3,0.0,3.3,0.3,0,969.1,0.638
-COD,Ankoro,Tanganyika,253911,29.0,0.0,1.7,0.3,1,837.5,0.759
-COD,Ariwara,Ituri,301519,468.6,1.3,2.5,4.3,23,1046.2,0.768
-COD,Aru,Ituri,307811,358.2,1.0,2.5,0.3,0,1039.5,0.773
-COD,Aungba,Ituri,229697,175.5,0.0,2.2,0.3,0,973.4,0.776
-COD,Bafwagbogbo,Tshopo,68898,6.3,0.0,1.7,0.3,1,684.9,0.799
-COD,Bafwasende,Tshopo,153666,8.9,0.0,1.8,0.3,0,697.7,0.828
-COD,Bagata,Kwilu,380223,45.5,0.1,1.8,0.3,0,698.3,0.696
-COD,Bagira,Sud-Kivu,243663,7546.0,11.5,2.8,44.4,12,1140.9,0.553
-COD,Baka,Haut-Lomami,206722,29.0,0.2,2.1,0.3,1,613.5,0.707
-COD,Bambo,Nord-Kivu,152279,172.2,0.1,3.3,0.8,6,865.0,0.836
-COD,Bambu,Ituri,148752,305.1,0.0,2.4,3.1,12,842.2,0.799
-COD,Banalia,Tshopo,191745,11.2,0.0,1.7,0.3,1,776.7,0.83
-COD,Bandalungwa,Kinshasa,197743,30886.7,100.0,4.5,548.6,27,2391.3,0.549
-COD,Bandundu,Kwilu,298235,823.8,6.0,2.6,4.0,12,753.4,0.6
-COD,Banga Lubaka,Kasai,158486,23.9,0.0,1.7,0.3,0,695.7,0.475
-COD,Bangabola,Sud-Ubangi,165747,66.8,0.0,1.7,0.3,0,668.5,0.53
-COD,Banjow Moke,Mai-Ndombe,177449,30.7,0.1,1.7,0.3,0,739.5,0.518
-COD,Barumbu,Kinshasa,165261,27678.3,100.0,4.4,454.3,16,2316.0,0.562
-COD,Basali,Tshopo,84235,5.8,0.0,1.7,0.3,0,671.1,0.83
-COD,Basankusu,Équateur,254057,19.5,0.1,1.7,0.3,0,846.7,0.315
-COD,Basoko,Tshopo,163032,100.4,0.3,2.2,0.3,0,668.8,0.83
-COD,Befale,Tshuapa,183661,14.3,0.0,1.7,0.3,0,749.7,0.224
-COD,Bena Dibele,Sankuru,238535,17.7,0.0,1.7,0.3,0,931.9,0.445
-COD,Bena Leka,Central Kasai,297894,69.4,0.1,1.7,0.3,0,783.1,0.443
-COD,Bena Tshiadi,Central Kasai,115772,33.7,0.0,1.7,0.3,0,707.1,0.445
-COD,Bengamisa,Tshopo,195050,30.2,0.0,2.2,0.3,0,819.7,0.83
-COD,Beni,Nord-Kivu,382409,9070.5,80.2,2.6,378.3,81,2206.0,0.801
-COD,Bibanga,Kasai-Oriental,204771,106.7,0.2,2.2,0.3,3,838.4,0.752
-COD,Biena,Nord-Kivu,118805,121.8,0.1,2.1,0.3,0,722.8,0.841
-COD,Bikoro,Équateur,174082,37.1,0.0,1.7,0.5,19,719.0,0.322
-COD,Bili,Bas-Uele,64624,0.0,12,14.0,0.3,0,0,0
-COD,Bilomba,Central Kasai,133996,106.1,0.2,1.7,0.3,0,781.0,0.44
-COD,Binga,Mongala,267907,37.6,0.0,1.8,0.3,0,793.9,0.361
-COD,Binza,Nord-Kivu,191411,150.8,0.5,3.5,0.3,0,931.6,0.658
-COD,Binza Meteo,Kinshasa,1000233,20965.7,83.9,4.5,120.2,48,2387.8,0.544
-COD,Binza Ozone,Kinshasa,434109,20707.4,80.9,4.6,125.4,22,2730.5,0.526
-COD,Bipemba,Kasai-Oriental,377834,12096.0,71.4,2.3,0.3,0,1681.3,0.674
-COD,Birambizo,Nord-Kivu,385710,334.1,0.3,2.9,0.3,1,872.8,0.836
-COD,Biringi,Ituri,141867,75.7,0.0,1.9,0.3,0,845.9,0.752
-COD,Biyela,Kinshasa,321186,3613.1,22.0,3.7,26.9,20,2315.8,0.61
-COD,Bobozo,Central Kasai,45546,95.2,0.0,1.9,0.3,0,2197.5,0.442
-COD,Boende,Tshuapa,352878,34.2,0.0,1.9,0.3,3,764.4,0.219
-COD,Boga,Ituri,73524,67.8,0.0,2.4,1.3,12,735.2,0.726
-COD,Bogosenubia,Sud-Ubangi,143364,31.3,0.0,1.7,0.3,0,494.5,0.521
-COD,Boko,Kwango,350586,37.8,0.0,1.7,0.3,0,766.0,0.69
-COD,Boko-Kivulu,Kongo-Central,524081,264.6,0.4,2.8,0.3,2,708.9,0.605
-COD,Bokonzi,Sud-Ubangi,215776,25.5,0.0,2.1,0.3,0,1050.6,0.502
-COD,Bokoro,Mai-Ndombe,414436,43.8,0.3,1.7,0.3,0,668.2,0.575
-COD,Bokungu,Tshuapa,232882,29.8,0.0,1.7,0.3,0,632.3,0.212
-COD,Bolenge,Équateur,84416,61.7,0.1,1.9,1.0,9,1371.8,0.325
-COD,Bolobo,Mai-Ndombe,185526,45.1,0.2,2.7,0.3,0,1231.5,0.418
-COD,Bolomba,Équateur,272361,18.0,0.0,1.7,0.3,1,731.1,0.318
-COD,Boma,Kongo-Central,416172,2992.7,12.5,3.6,0.9,1,2220.3,0.604
-COD,Boma Bungu,Kongo-Central,82994,32.0,0.0,3.0,0.3,1,939.5,0.611
-COD,Boma-Mangbetu,Haut-Uele,254167,178.6,0.1,1.7,0.3,0,649.9,0.606
-COD,Bominenge,Sud-Ubangi,195432,85.9,0.0,1.7,0.3,0,503.2,0.471
-COD,Bomongo,Équateur,114364,10.6,0.0,1.9,0.3,0,1087.6,0.352
-COD,Bondo,Bas-Uele,271684,30.8,0.1,1.7,0.3,0,911.7,0.598
-COD,Bongandanga,Mongala,140374,9.1,0.0,1.7,0.3,0,943.8,0.291
-COD,Bonzola,Kasai-Oriental,369052,12538.4,63.0,2.4,8.1,2,1812.2,0.682
-COD,Bosanga,Tshuapa,222117,21.1,0.0,1.7,0.3,0,641.9,0.212
-COD,Boso Manzi,Mongala,179435,31.2,0.0,1.7,0.3,1,784.9,0.339
-COD,Boso Mondanda,Mongala,147938,36.1,0.0,1.7,0.3,0,933.5,0.316
-COD,Bosobe,Mai-Ndombe,126881,14.0,0.0,1.7,0.3,0,634.9,0.575
-COD,Bosobolo,Nord-Ubangi,199871,28.6,0.0,1.6,0.3,0,831.0,0.41
-COD,Bosondjo,Mongala,205140,28.2,0.0,1.8,0.3,0,962.7,0.333
-COD,Boto,Sud-Ubangi,146310,102.8,0.1,1.9,0.3,0,824.8,0.538
-COD,Budjala,Sud-Ubangi,214656,47.2,0.1,1.7,0.3,0,663.4,0.541
-COD,Bukama,Haut-Lomami,350446,51.5,0.1,2.1,0.4,18,719.1,0.704
-COD,Bulape,Kasai,179204,44.9,0.1,1.7,0.3,0,787.6,0.45
-COD,Bulu,Sud-Ubangi,178348,98.0,0.1,1.7,0.3,0,667.8,0.495
-COD,Bulungu,Kwilu,431715,145.8,0.3,1.7,0.3,0,797.6,0.725
-COD,Bumba,Mongala,211816,79.1,0.4,2.2,0.3,0,612.5,0.433
-COD,Bumbu,Kinshasa,450907,33316.3,100.0,4.4,798.7,29,2318.1,0.559
-COD,Bunia,Ituri,715168,1950.6,6.2,2.5,18.6,57,731.2,0.769
-COD,Bunkeya,Lualaba,62923,18.4,0.1,2.2,0.3,0,890.2,0.71
-COD,Bunkonde,Central Kasai,115234,55.2,0.0,1.7,0.3,0,847.1,0.442
-COD,Bunyakiri,Sud-Kivu,209555,49.6,0.0,2.1,0.3,0,845.6,0.685
-COD,Businga,Nord-Ubangi,128857,19.1,0.0,1.7,0.3,0,696.7,0.321
-COD,Buta,Bas-Uele,277007,25.5,0.1,1.7,0.3,0,523.3,0.83
-COD,Butembo,Nord-Kivu,316182,3851.8,20.5,2.6,65.7,41,1813.1,0.835
-COD,Butumba,Haut-Lomami,195533,17.7,0.0,1.7,0.3,3,720.9,0.709
-COD,Bwamanda,Sud-Ubangi,393985,116.9,0.1,1.7,0.3,0,498.6,0.545
-COD,Cilundu,Kasai-Oriental,210624,169.9,0.3,2.4,0.3,0,775.4,0.689
-COD,Damas,Ituri,116731,49.4,0.0,1.9,0.3,0,842.4,0.782
-COD,Dekese,Kasai,177566,6.9,0.0,1.7,0.3,0,643.0,0.453
-COD,Demba,Central Kasai,328690,86.9,0.3,2.0,0.3,0,799.4,0.441
-COD,Dibaya,Central Kasai,163014,115.6,0.3,1.8,0.3,0,851.6,0.527
-COD,Dibindi,Kasai-Oriental,279888,31689.3,100.0,2.4,25.5,1,2224.6,0.684
-COD,Dikungu,Sankuru,145449,41.2,0.2,1.7,0.3,1,820.8,0
-COD,Dilala,Lualaba,295769,18.9,0.1,3.0,0.3,0,728.6,0.693
-COD,Dilolo,Lualaba,186853,19.9,0.1,5.0,0.3,2,1242.0,0.659
-COD,Diulu,Kasai-Oriental,391935,22655.2,94.9,2.4,0.3,0,1905.2,0.678
-COD,Djalo Djeka,Sankuru,353287,24.2,0.0,1.7,0.3,0,934.7,0
-COD,Djolu,Tshuapa,362638,34.1,0.0,1.7,0.3,0,562.0,0.295
-COD,Djombo,Équateur,113789,16.3,0.0,1.7,0.3,0,682.7,0.308
-COD,Djuma,Kwilu,386424,131.7,0.1,1.7,0.3,0,795.9,0.723
-COD,Doruma,Haut-Uele,73656,5.0,0.0,1.2,0.3,0,612.2,0.524
-COD,Drodro,Ituri,210812,324.8,0.1,2.5,1.1,6,843.0,0.704
-COD,Dungu,Haut-Uele,305065,16.0,0.1,1.7,0.3,0,685.7,0.593
-COD,Faradje,Haut-Uele,199096,30.7,0.0,2.2,0.3,0,610.1,0.598
-COD,Fataki,Ituri,150054,381.9,0.6,2.4,0.3,0,843.0,0.735
-COD,Ferekeni,Maniema,71818,8.1,0.0,1.8,0.3,0,687.9,0.559
-COD,Feshi,Kwango,154950,22.6,0.0,1.7,0.3,0,800.6,0
-COD,Fizi,Sud-Kivu,620550,75.4,0.1,1.8,1.3,89,1445.1,0.647
-COD,Fungurume,Lualaba,399238,112.7,0.7,2.8,0.3,0,897.8,0.702
-COD,Ganga,Bas-Uele,245787,24.9,0.0,1.7,0.3,0,802.1,0
-COD,Gbadolite,Nord-Ubangi,182242,145.5,0.9,2.4,0.3,0,720.0,0.318
-COD,Gemena,Sud-Ubangi,550895,310.0,1.1,1.7,0.3,0,492.1,0.536
-COD,Gethy,Ituri,186541,84.2,0.0,2.2,0.6,10,693.2,0.714
-COD,Goma,Nord-Kivu,277156,10628.9,54.8,4.3,164.9,36,1315.9,0.583
-COD,Gombari,Haut-Uele,137969,13.3,0.0,1.9,0.3,0,496.9,0.608
-COD,Gombe,Kinshasa,245307,19432.1,94.8,4.6,350.2,37,2379.1,0.549
-COD,Gombe-Matadi,Kongo-Central,177116,64.0,0.0,3.0,0.3,0,726.8,0.524
-COD,Gungu,Kwilu,394248,67.4,0.0,1.9,0.3,0,629.5,0.725
-COD,Hauts-Plateaux,Sud-Kivu,188187,107.9,0.0,1.6,0.3,0,811.4,0.55
-COD,Ibanda,Sud-Kivu,429737,15710.3,53.9,2.7,179.1,41,1457.6,0.536
-COD,Iboko,Équateur,102724,35.5,0.0,1.7,0.3,6,658.6,0.388
-COD,Idiofa,Kwilu,681929,113.2,0.4,1.7,0.3,0,721.7,0.724
-COD,Idjwi,Sud-Kivu,358506,208.8,0.0,3.7,1.5,21,904.4,0.505
-COD,Ikela,Tshuapa,160388,11.0,0.0,1.7,0.3,0,627.8,0.282
-COD,Ilebo,Kasai,252101,176.8,0.7,2.1,0.3,0,731.4,0.481
-COD,Inga,Kongo-Central,210689,116.5,0.2,2.8,0.3,0,676.9,0.606
-COD,Ingende,Équateur,150415,35.8,0.0,1.8,0.3,1,620.1,0.327
-COD,Inongo,Mai-Ndombe,230637,15.6,0.0,1.7,0.3,16,757.3,0.538
-COD,Ipamu,Kwilu,376759,136.0,0.6,1.7,0.3,0,715.4,0.666
-COD,Irebu,Équateur,35783,21.8,0.2,1.8,0.3,0,1056.6,0.334
-COD,Isangi,Tshopo,211493,98.5,0.2,1.7,0.3,0,681.0,0.83
-COD,Isiro,Haut-Uele,517113,116.7,0.4,1.7,0.3,1,863.3,0.596
-COD,Itebero,Nord-Kivu,178038,20.8,0.0,1.8,0.3,0,697.9,0.794
-COD,Itombwe,Sud-Kivu,118705,35.8,0.0,1.9,0.3,0,997.4,0.607
-COD,Jiba,Ituri,137046,97.8,0.1,2.3,0.3,0,843.0,0.674
-COD,Kabalo,Tanganyika,295806,20.3,0.0,1.7,0.3,0,831.4,0.767
-COD,Kabambare,Maniema,116783,10.1,0.0,1.7,0.3,3,669.0,0.552
-COD,Kabare,Sud-Kivu,320337,555.7,0.0,2.8,0.3,0,873.0,0.574
-COD,Kabeya Kamuanga,Kasai-Oriental,220205,101.2,0.4,2.0,0.3,0,732.1,0.586
-COD,Kabinda,Lomami,355815,65.2,0.2,1.7,0.3,2,710.1,0.852
-COD,Kabondo,Tshopo,176621,18.6,0.0,2.4,0.3,0,1519.7,0.83
-COD,Kabondo Dianda,Haut-Lomami,271621,43.0,0.1,1.9,0.3,1,717.3,0.707
-COD,Kabongo,Haut-Lomami,451684,44.3,0.2,1.8,0.3,0,741.1,0.712
-COD,Kadutu,Sud-Kivu,337413,16677.9,52.6,2.7,133.4,19,1286.4,0.545
-COD,Kafakumba,Lualaba,124487,10.0,0.0,1.7,0.3,0,792.5,0.695
-COD,Kafubu,Haut-Katanga,96145,20.5,0.2,2.9,0.3,0,809.2,0.72
-COD,Kahemba,Kwango,246131,18.6,0.0,1.9,0.3,0,1230.3,0.613
-COD,Kailo,Maniema,178737,7.8,0.0,1.7,0.3,0,863.0,0.511
-COD,Kajiji,Kwango,148107,13.7,0.0,2.0,0.3,0,1202.3,0.629
-COD,Kakenge,Kasai,149498,25.2,0.1,1.7,0.3,0,788.5,0.448
-COD,Kalamba,Lualaba,106698,8.9,0.1,1.7,0.3,0,621.3,0.702
-COD,Kalambayi Kabanga,Lomami,159486,40.6,0.2,1.7,0.3,1,726.7,0.83
-COD,Kalamu I,Kinshasa,158720,29914.6,100.0,4.3,511.9,15,2316.0,0.565
-COD,Kalamu II,Kinshasa,141665,28727.8,100.0,4.4,584.8,12,2316.0,0.563
-COD,Kalehe,Sud-Kivu,266738,226.2,0.0,2.7,0.3,0,853.4,0.626
-COD,Kalemie,Tanganyika,342190,23.4,0.1,2.2,0.3,22,1568.8,0.765
-COD,Kalenda,Lomami,223277,54.8,0.4,1.8,0.3,0,678.6,0.758
-COD,Kalima,Maniema,209205,52.7,0.2,2.0,0.3,0,683.9,0.524
-COD,Kalole,Sud-Kivu,177354,22.6,0.0,1.7,0.3,0,730.9,0.582
-COD,Kalomba,Central Kasai,152881,78.0,0.2,1.7,0.3,0,782.9,0.449
-COD,Kalonda Est,Lomami,230909,32.2,0.0,1.7,0.3,0,706.9,0.824
-COD,Kalonda Ouest,Kasai,414522,91.1,0.2,2.3,1.1,28,874.7,0.451
-COD,Kalonge,Sud-Kivu,157437,159.1,0.0,2.4,0.3,0,851.3,0.597
-COD,Kalunguta,Nord-Kivu,254340,243.7,1.4,2.6,6.3,55,1778.8,0.802
-COD,Kamalondo,Haut-Katanga,63116,55.8,0.0,3.3,0.3,0,730.0,0.712
-COD,Kamana,Lomami,193055,17.3,0.0,1.7,0.3,0,664.6,0.857
-COD,Kamango,Nord-Kivu,105654,119.1,0.1,2.9,0.9,4,866.0,0.697
-COD,Kambala,Ituri,132027,96.5,0.0,2.1,0.3,0,950.7,0.787
-COD,Kambove,Haut-Katanga,314169,78.5,0.5,2.9,0.3,0,635.3,0.72
-COD,Kamiji,Lomami,98868,65.7,0.1,1.8,0.3,0,830.7,0.716
-COD,Kamina,Haut-Lomami,316517,315.6,0.6,2.1,0.3,0,613.0,0.707
-COD,Kamituga,Sud-Kivu,189313,80.2,0.2,2.1,1.2,22,862.1,0.608
-COD,Kamonia,Kasai,327156,48.2,0.2,3.7,0.3,10,1158.6,0.499
-COD,Kampemba,Haut-Katanga,398990,15.9,0.0,3.0,0.3,0,739.1,0.721
-COD,Kampene,Maniema,224613,37.9,0.1,1.7,0.3,0,676.1,0.519
-COD,Kamwesha,Kasai,392581,84.8,0.2,2.0,0.3,10,873.0,0.448
-COD,Kananga,Central Kasai,276101,4080.8,28.0,2.0,0.3,0,2424.0,0.442
-COD,Kanda Kanda,Lomami,237492,74.9,0.2,1.7,0.3,0,703.6,0.81
-COD,Kangu,Kongo-Central,289321,215.3,0.1,3.1,0.3,0,885.3,0.632
-COD,Kaniama,Haut-Lomami,285224,20.9,0.1,1.7,0.3,0,689.4,0.741
-COD,Kaniola,Sud-Kivu,165719,66.7,0.0,2.2,0.3,0,885.7,0.599
-COD,Kansele,Kasai-Oriental,267447,33482.5,100.0,2.4,0.3,0,2140.3,0.681
-COD,Kansimba,Tanganyika,160746,3.9,0.0,1.8,0.3,0,779.2,0.756
-COD,Kanzala,Kasai,268939,1194.7,4.2,2.4,1.6,3,878.0,0.452
-COD,Kanzenze,Lualaba,98122,4.7,0.0,2.2,0.3,0,864.1,0.696
-COD,Kapanga,Lualaba,176364,13.7,0.1,2.1,0.3,0,621.4,0.67
-COD,Kapolowe,Haut-Katanga,163588,35.0,0.4,2.8,0.3,0,605.0,0.724
-COD,Karawa,Nord-Ubangi,371086,93.0,0.1,1.7,0.3,0,686.7,0.4
-COD,Karisimbi,Nord-Kivu,583593,8309.4,42.0,4.4,183.7,108,1628.9,0.584
-COD,Kasa-Vubu,Kinshasa,144580,26913.9,100.0,4.4,726.8,23,2316.0,0.558
-COD,Kasaji,Lualaba,263245,16.1,0.1,1.9,0.3,0,621.1,0.691
-COD,Kasansa,Kasai-Oriental,308120,232.7,1.1,2.1,0.3,0,970.9,0.756
-COD,Kasenga,Haut-Katanga,158275,24.0,0.1,3.1,0.3,0,1742.3,0.698
-COD,Kashobwe,Haut-Katanga,143478,14.0,0.1,2.8,0.3,0,1346.8,0.704
-COD,Kasongo,Maniema,510251,92.4,0.2,1.7,0.3,0,656.4,0.51
-COD,Kasongo Lunda,Kwango,170337,58.4,0.1,3.1,0.3,0,790.4,0.598
-COD,Katako Kombe,Sankuru,138538,16.5,0.0,1.7,0.3,0,956.3,0.508
-COD,Katana,Sud-Kivu,246937,794.7,1.2,3.1,0.8,2,815.2,0.565
-COD,Katende,Central Kasai,169548,55.1,0.2,1.7,0.3,0,710.4,0.497
-COD,Katoka,Central Kasai,278674,1987.6,10.9,2.0,0.3,0,2377.9,0.442
-COD,Katoyi,Nord-Kivu,234381,378.5,0.1,2.3,1.9,10,932.2,0.753
-COD,Katuba,Haut-Katanga,249154,18.6,0.0,3.3,0.3,0,730.1,0.693
-COD,Katwa,Nord-Kivu,621980,6492.1,43.0,2.7,149.6,120,1647.9,0.825
-COD,Kayamba,Haut-Lomami,156491,26.6,0.0,1.8,0.3,0,737.0,0.748
-COD,Kayna,Nord-Kivu,428885,142.6,0.3,2.2,1.0,24,724.1,0.842
-COD,Kaziba,Sud-Kivu,119173,426.9,0.0,2.3,0.3,0,1286.9,0.562
-COD,Kenge,Kwango,444536,87.7,0.2,1.7,0.3,0,751.8,0.703
-COD,Kenya,Haut-Katanga,263256,14.2,0.0,3.1,0.3,0,755.9,0.705
-COD,Kibirizi,Nord-Kivu,321011,152.1,2.1,2.4,0.4,5,838.3,0.838
-COD,Kibombo,Maniema,150614,12.0,0.0,1.7,0.3,15,708.8,0.511
-COD,Kibua,Nord-Kivu,135300,33.9,0.0,1.8,0.3,4,740.0,0.833
-COD,Kibunzi,Kongo-Central,82600,37.9,0.0,2.1,0.3,0,688.1,0.564
-COD,Kikimi,Kinshasa,279722,1543.3,10.3,3.6,8.9,11,2310.5,0.621
-COD,Kikongo,Kwilu,259092,41.8,0.1,1.7,0.3,0,709.4,0.663
-COD,Kikula,Haut-Katanga,234550,18.8,0.1,2.4,0.3,0,642.0,0.725
-COD,Kikwit-Nord,Kwilu,433464,4574.9,23.4,1.9,1.3,1,1516.7,0.725
-COD,Kikwit-Sud,Kwilu,296477,5003.0,24.7,2.0,0.3,0,1432.3,0.725
-COD,Kilela Balanda,Haut-Katanga,69634,6.1,0.0,2.6,0.3,0,758.1,0.711
-COD,Kilo,Ituri,55902,112.3,0.0,2.4,3.5,10,836.6,0.801
-COD,Kilwa,Haut-Katanga,316511,17.7,0.1,2.2,0.3,0,732.1,0.718
-COD,Kimbanseke,Kinshasa,306115,15173.0,59.5,3.8,175.4,26,2316.0,0.599
-COD,Kimbau,Kwango,194329,46.6,0.0,1.7,0.3,0,753.7,0
-COD,Kimbi Lulenge,Sud-Kivu,185491,48.9,0.1,2.0,0.3,11,1305.6,0.588
-COD,Kimpangu,Kongo-Central,152040,103.0,0.4,3.0,0.3,0,1154.4,0.606
-COD,Kimpese,Kongo-Central,362464,102.2,0.3,2.7,0.3,0,702.7,0.606
-COD,Kimputu,Kwilu,244623,93.2,0.2,1.7,0.3,0,725.1,0.712
-COD,Kimvula,Kongo-Central,160870,41.9,0.0,1.9,0.3,1,958.4,0.612
-COD,Kinda,Haut-Lomami,89291,5.1,0.0,1.9,0.3,0,617.3,0.706
-COD,Kindu,Maniema,380316,1565.9,10.5,1.7,0.5,1,1334.7,0.508
-COD,Kingabwa,Kinshasa,228172,12522.3,61.9,4.2,394.9,57,2316.0,0.58
-COD,Kingandu,Kwilu,119308,45.4,0.0,1.8,0.3,6,627.3,0.725
-COD,Kingasani,Kinshasa,289584,30978.7,100.0,3.8,357.9,28,2316.0,0.607
-COD,Kinkondja,Haut-Lomami,250502,25.3,0.0,1.9,0.3,0,862.4,0.712
-COD,Kinkonzi,Kongo-Central,112829,105.9,0.0,2.8,0.3,0,1048.2,0.509
-COD,Kinshasa,Kinshasa,182137,32002.5,100.0,4.5,676.7,17,2316.0,0.557
-COD,Kintambo,Kinshasa,127378,32030.5,100.0,4.6,330.5,11,2497.2,0.544
-COD,Kipushi,Haut-Katanga,374051,177.7,1.6,3.3,0.3,2,1543.0,0.687
-COD,Kiri,Mai-Ndombe,139869,16.8,0.0,1.7,0.3,0,695.9,0.506
-COD,Kirotshe,Nord-Kivu,510671,572.6,0.6,3.0,15.1,113,926.4,0.712
-COD,Kisanga,Haut-Katanga,234352,39.4,0.0,3.5,0.3,0,901.4,0.677
-COD,Kisanji,Kwango,114432,23.4,0.0,1.7,0.3,0,799.7,0.725
-COD,Kisantu,Kongo-Central,430365,250.9,0.4,2.9,0.3,0,793.0,0.606
-COD,Kisenso,Kinshasa,471267,25155.0,99.1,4.0,438.5,57,2316.0,0.585
-COD,Kitangwa,Kasai,246979,18.9,0.0,1.7,0.3,0,877.4,0.478
-COD,Kitenda,Kwango,148015,23.1,0.0,2.2,0.3,0,740.0,0.689
-COD,Kitenge,Haut-Lomami,279110,21.6,0.0,1.7,0.3,0,738.0,0.756
-COD,Kitona,Kongo-Central,98593,239.6,0.7,6.6,0.3,0,887.5,0.67
-COD,Kitutu,Sud-Kivu,145114,47.1,0.2,2.0,0.3,0,859.4,0.608
-COD,Kiyambi,Tanganyika,164535,7.2,0.0,1.8,0.3,1,838.2,0.755
-COD,Kizu,Kongo-Central,135348,421.2,0.2,4.1,0.3,0,997.0,0.618
-COD,Kokolo,Kinshasa,291697,25379.2,100.0,4.5,190.4,2,2373.9,0.549
-COD,Kole,Sankuru,90428,20.6,0.0,1.7,0.3,0,941.6,0.45
-COD,Komanda,Ituri,222354,69.7,0.1,1.9,0.3,3,692.6,0.807
-COD,Kongolo,Tanganyika,383213,74.1,0.1,1.7,0.3,0,681.0,0.743
-COD,Koshibanda,Kwilu,357238,71.4,0.1,1.7,0.3,0,720.0,0.663
-COD,Kowe,Haut-Katanga,35959,13945.0,100.0,3.3,0.3,0,1661.0,0.701
-COD,Kuimba,Kongo-Central,150209,232.9,0.0,5.1,0.3,0,1450.1,0.675
-COD,Kunda,Maniema,267171,40.6,0.1,1.7,0.3,0,619.8,0.508
-COD,Kungu,Sud-Ubangi,403887,93.3,0.0,1.7,0.3,0,838.8,0.539
-COD,Kwamouth,Mai-Ndombe,196222,13.5,0.0,2.1,0.3,0,836.7,0.541
-COD,Kwilu-Ngongo,Kongo-Central,329452,159.0,1.2,2.8,0.3,0,703.3,0.609
-COD,Kyondo,Nord-Kivu,493964,486.5,0.8,2.7,5.8,49,885.2,0.802
-COD,Laybo,Ituri,183193,142.4,0.0,2.0,0.3,0,822.9,0.704
-COD,Lemba,Kinshasa,350421,25224.4,96.5,4.1,417.3,48,2316.0,0.575
-COD,Lemera,Sud-Kivu,190565,277.7,2.8,1.5,0.3,1,873.0,0.497
-COD,Libenge,Sud-Ubangi,303035,33.3,0.0,1.8,0.3,0,921.7,0.523
-COD,Likasi,Haut-Katanga,435159,1615.1,20.8,3.0,0.3,0,1287.1,0.723
-COD,Likati,Bas-Uele,165900,12.7,0.0,1.7,0.3,0,790.5,0.313
-COD,Lilanga Bobangi,Équateur,81435,5.3,0.0,2.1,0.3,0,1548.8,0.345
-COD,Limete,Kinshasa,275017,22249.9,100.0,4.3,377.0,39,2316.0,0.572
-COD,Linga,Ituri,147492,183.6,0.0,2.4,0.3,0,843.8,0.701
-COD,Lingomo,Tshuapa,187335,22.8,0.0,1.7,0.3,0,583.4,0.286
-COD,Lingwala,Kinshasa,93616,30060.6,100.0,4.5,502.4,11,2316.0,0.553
-COD,Lisala,Mongala,390628,70.2,0.2,1.7,0.3,0,883.8,0.315
-COD,Lita,Ituri,128175,212.4,0.0,2.6,0.3,1,808.7,0.735
-COD,Lodja,Sankuru,485365,148.4,0.4,1.7,0.3,0,712.5,0
-COD,Logo,Ituri,240552,577.9,0.5,2.9,0.3,0,947.3,0.724
-COD,Loko,Nord-Ubangi,129292,25.7,0.0,1.7,0.3,0,692.2,0.351
-COD,Lolanga Mampoko,Équateur,91049,12.8,0.0,1.7,0.3,2,733.7,0.318
-COD,Lolo,Mongala,186170,67.2,0.1,1.9,0.3,0,614.1,0.454
-COD,Lolwa,Ituri,45779,4.0,0.0,1.7,0.3,8,651.6,0.802
-COD,Lomela,Sankuru,136051,9.4,0.1,1.7,0.3,0,942.9,0.667
-COD,Lotumbe,Équateur,106294,9.0,0.0,1.7,0.3,0,620.6,0.317
-COD,Lowa,Tshopo,127609,6.1,0.0,1.7,0.3,0,881.2,0.763
-COD,Lualaba,Lualaba,1058500,139.9,1.4,3.1,0.3,0,728.2,0.694
-COD,Luambo,Central Kasai,276396,61.3,0.2,2.1,0.3,0,744.7,0.484
-COD,Lubao,Lomami,210304,22.0,0.1,1.7,0.3,0,666.2,0.834
-COD,Lubero,Nord-Kivu,272813,153.6,0.3,2.5,2.8,41,721.3,0.826
-COD,Lubilanji,Kasai-Oriental,275215,34711.5,100.0,2.4,0.3,0,2054.6,0.684
-COD,Lubondaie,Central Kasai,152399,61.3,0.0,1.7,0.3,0,849.8,0.487
-COD,Lubudi,Lualaba,108618,14.2,0.0,2.1,0.3,1,893.7,0.697
-COD,Lubumbashi,Haut-Katanga,1880027,3934.0,39.0,3.3,15.5,62,1646.6,0.7
-COD,Lubunga,Tshopo,158178,0.0,12,14.0,0.3,0,0,0
-COD,Lubutu,Maniema,181487,17.2,0.0,1.7,0.3,0,653.9,0.585
-COD,Ludimbi Lukula,Lomami,155414,25.3,0.0,1.7,0.3,0,706.1,0.865
-COD,Luebo,Kasai,304486,48.9,0.1,1.7,0.3,0,699.4,0.448
-COD,Luiza,Central Kasai,281997,82.6,0.2,1.8,0.3,0,743.6,0.441
-COD,Lukafu,Haut-Katanga,88161,11.7,0.0,2.2,0.3,1,746.5,0.725
-COD,Lukelenge,Kasai-Oriental,287611,11225.9,65.8,2.4,0.3,0,1990.3,0.687
-COD,Lukolela,Équateur,209390,28.0,0.1,2.0,0.3,0,1398.7,0.34
-COD,Lukonga,Central Kasai,275712,2672.4,16.8,2.0,1.3,1,2418.9,0.442
-COD,Lukula,Kongo-Central,365163,163.3,0.2,2.9,0.3,0,873.3,0.624
-COD,Lulingu,Sud-Kivu,162584,23.5,0.0,1.7,0.3,0,727.3,0.587
-COD,Luozi,Kongo-Central,212008,77.1,0.1,2.0,0.3,0,727.2,0.528
-COD,Luputa,Lomami,315091,98.5,0.6,1.7,0.3,1,678.2,0.833
-COD,Lusambo,Sankuru,93220,21.6,0.0,1.7,0.3,0,830.7,0.558
-COD,Lusanga,Kwilu,392516,109.0,0.1,1.9,0.3,0,816.9,0.725
-COD,Lusangi,Maniema,170540,34.0,0.0,1.7,0.3,0,555.4,0.557
-COD,Lwamba,Haut-Lomami,332940,175.9,0.5,2.1,0.3,0,863.6,0.709
-COD,Mabalako,Nord-Kivu,253372,193.0,0.8,2.6,2.1,23,889.7,0.824
-COD,Mahagi,Ituri,339666,603.9,0.3,3.1,0.3,0,990.5,0.737
-COD,Makala,Kinshasa,334674,30397.9,100.0,4.3,348.7,15,2316.0,0.566
-COD,Makanza,Équateur,129676,18.4,0.1,1.7,0.3,0,602.8,0.329
-COD,Makiso-Kisangani,Tshopo,1141442,2279.9,11.5,2.5,1.7,7,1554.2,0.83
-COD,Makoro,Haut-Uele,197226,54.7,0.0,2.1,0.3,0,616.3,0.65
-COD,Makota,Lomami,239015,1781.7,12.0,1.8,5.6,3,830.6,0.756
-COD,Malemba,Haut-Lomami,285915,65.2,0.3,1.8,0.3,0,719.7,0.707
-COD,Maluku I,Kinshasa,195736,36.2,0.0,2.1,0.4,20,2282.7,0.683
-COD,Maluku II,Kinshasa,378500,113.3,0.6,3.2,0.9,25,2574.5,0.645
-COD,Mambasa,Ituri,164108,9.2,0.0,1.8,0.3,4,650.0,0.804
-COD,Mandima,Ituri,274950,145.1,0.3,2.4,1.4,23,677.3,0.816
-COD,Mangala,Ituri,92662,131.4,0.0,2.4,0.3,0,843.0,0.777
-COD,Mangembo,Kongo-Central,139668,60.3,0.0,2.5,0.3,0,818.2,0.455
-COD,Mangobo,Tshopo,193112,42.0,0.0,2.4,0.3,0,1550.3,0.83
-COD,Manguredjipa,Nord-Kivu,72437,10.8,0.0,1.8,0.3,4,724.7,0.835
-COD,Manika,Haut-Katanga,465774,2.4,0.0,2.4,0.3,0,691.2,0.71
-COD,Manono,Tanganyika,343601,36.7,0.1,2.0,0.3,0,1281.0,0.76
-COD,Masa,Kongo-Central,159661,300.5,0.6,3.6,0.3,0,1121.6,0.541
-COD,Masereka,Nord-Kivu,177664,189.4,0.3,2.6,2.5,16,729.4,0.82
-COD,Masi-Manimba,Kwilu,347696,105.0,0.2,1.7,0.3,0,629.7,0.725
-COD,Masina I,Kinshasa,363551,8756.6,30.9,3.8,115.9,14,2316.0,0.606
-COD,Masina II,Kinshasa,300224,8039.8,31.2,4.0,150.2,42,2316.0,0.594
-COD,Masisi,Nord-Kivu,409779,312.3,0.2,2.0,2.0,16,935.2,0.806
-COD,Masuika,Central Kasai,303881,133.7,0.6,1.7,0.3,1,735.7,0.494
-COD,Matadi,Kongo-Central,562001,8772.2,38.6,3.8,5.6,3,2074.0,0.599
-COD,Matete,Kinshasa,313812,30106.1,98.9,4.1,787.3,31,2316.0,0.583
-COD,Mawuya,Sud-Ubangi,156833,43.8,0.0,2.2,0.3,0,1186.1,0.515
-COD,Mbandaka,Équateur,237892,208.6,1.1,2.0,1.4,13,1429.9,0.318
-COD,Mbanza-Ngungu,Kongo-Central,202473,477.9,1.1,2.9,1.7,6,702.0,0.606
-COD,Mbaya,Sud-Ubangi,136799,48.8,0.0,1.7,0.3,0,666.0,0.478
-COD,Mbulula,Tanganyika,268282,34.0,0.1,1.7,0.3,1,682.4,0.77
-COD,Miabi,Kasai-Oriental,172074,385.0,2.6,2.5,0.3,1,792.4,0.666
-COD,Mikalayi,Central Kasai,286054,87.6,0.1,1.8,0.3,0,840.6,0.442
-COD,Mikope,Kasai,226662,19.7,0.0,1.7,0.3,0,681.8,0.498
-COD,Mimia,Mai-Ndombe,55138,2.6,0.0,1.7,0.3,0,627.5,0.533
-COD,Minembwe,Sud-Kivu,81204,33.5,0.0,1.8,0.3,0,1414.9,0.603
-COD,Minga,Sankuru,164596,20.8,0.0,1.7,0.3,2,793.4,0.867
-COD,Minova,Sud-Kivu,342770,595.4,0.3,3.2,1.2,6,866.8,0.64
-COD,Miti-Murhesa,Sud-Kivu,265958,1017.0,0.1,3.0,0.9,2,848.4,0.544
-COD,Mitwaba,Haut-Katanga,132172,9.5,0.0,1.8,0.3,0,700.3,0.725
-COD,Moanda,Kongo-Central,483746,396.0,1.7,6.9,0.3,1,921.3,0.685
-COD,Moanza,Kwilu,415778,63.2,0.1,1.7,0.3,1,635.5,0.725
-COD,Moba,Tanganyika,656414,34.3,0.1,2.1,0.3,0,777.5,0.758
-COD,Mobayi Mbongo,Nord-Ubangi,173991,20.3,0.1,2.0,0.3,0,650.0,0.316
-COD,Mokala,Kwilu,241198,88.1,0.3,1.7,0.3,1,724.2,0.673
-COD,Mompono,Tshuapa,134619,20.8,0.0,1.7,0.3,0,735.9,0.214
-COD,Mondombe,Tshuapa,240323,31.1,0.0,1.7,0.3,0,623.4,0.231
-COD,Monga,Bas-Uele,129589,16.8,0.0,1.6,0.3,0,876.5,0.413
-COD,Mongbalu,Ituri,159146,117.0,0.2,2.0,0.3,2,841.8,0.783
-COD,Monieka,Équateur,80241,8.3,0.0,1.7,0.3,0,742.5,0.288
-COD,Monkoto,Tshuapa,209462,5.9,0.0,1.7,0.3,0,673.7,0.237
-COD,Mont Ngafula I,Kinshasa,836440,2093.7,9.2,4.0,10.5,35,2305.2,0.571
-COD,Mont Ngafula II,Kinshasa,564790,4391.5,20.2,4.3,38.1,41,2512.7,0.528
-COD,Mosango,Kwilu,159752,95.7,0.2,1.7,0.3,0,637.6,0.725
-COD,Mpokolo,Kasai-Oriental,321312,3959.8,34.7,2.3,0.3,0,1454.6,0.669
-COD,Mubumbano,Sud-Kivu,285896,403.3,0.0,2.4,0.3,0,1332.8,0.587
-COD,Muetshi,Central Kasai,150037,43.4,0.0,1.7,0.3,0,708.0,0.444
-COD,Mufunga Sampwe,Haut-Katanga,175986,9.0,0.0,1.7,0.3,0,701.1,0.721
-COD,Mukanga,Haut-Lomami,216220,36.2,0.2,1.9,0.3,0,864.0,0.712
-COD,Mukedi,Kwilu,279913,75.5,0.0,1.7,0.3,0,632.0,0.678
-COD,Mukumbi,Kasai-Oriental,186124,125.1,0.1,2.0,0.3,1,1356.6,0.632
-COD,Mulongo,Haut-Lomami,287662,69.6,0.2,2.2,0.3,2,867.3,0.715
-COD,Mulumba,Lomami,292626,280.2,2.0,1.9,0.3,0,738.2,0.805
-COD,Mulungu,Sud-Kivu,151768,17.7,0.0,1.7,0.3,0,732.3,0.608
-COD,Mumbunda,Haut-Katanga,264460,66.2,0.0,3.4,0.3,0,919.9,0.689
-COD,Mungindu,Kwilu,211104,80.5,0.0,1.9,0.3,0,630.0,0.725
-COD,Mushenge,Kasai,148103,22.5,0.0,1.7,0.3,0,780.5,0.451
-COD,Mushie,Mai-Ndombe,255062,21.5,0.1,1.7,0.3,0,732.3,0.554
-COD,Musienene,Nord-Kivu,249370,83.4,0.0,2.4,1.7,39,744.9,0.843
-COD,Mutena,Kasai,232408,54.0,0.2,1.9,0.3,0,963.2,0.48
-COD,Mutoto,Central Kasai,130708,78.8,0.0,1.8,0.3,0,906.0,0.446
-COD,Mutshatsha,Lualaba,75425,3.1,0.0,2.1,0.3,0,739.8,0.689
-COD,Mutwanga,Nord-Kivu,274930,133.8,0.6,2.7,1.0,18,888.0,0.725
-COD,Muya,Kasai-Oriental,366827,16945.1,88.8,2.4,0.3,0,2043.8,0.683
-COD,Mwana,Sud-Kivu,226018,483.8,0.4,2.4,0.3,0,1086.5,0.591
-COD,Mweka,Kasai,285068,88.2,0.2,1.7,0.3,0,787.8,0.448
-COD,Mwela Lembwa,Kwango,230919,32.6,0.0,1.7,0.3,0,798.7,0.725
-COD,Mwene Ditu,Lomami,430700,798.8,4.7,1.8,0.3,1,1021.5,0.762
-COD,Mwenga,Sud-Kivu,133454,52.3,0.0,2.1,0.3,4,877.3,0.602
-COD,Mweso,Nord-Kivu,391699,256.8,0.1,2.5,0.5,6,917.3,0.826
-COD,Ndage,Sud-Ubangi,126818,69.1,0.0,1.7,0.3,0,673.4,0.421
-COD,Ndekesha,Central Kasai,224366,56.4,0.1,1.7,0.3,0,780.7,0.442
-COD,Ndesha,Central Kasai,173310,1685.4,10.4,2.0,1.2,1,2329.1,0.442
-COD,Ndjili,Kinshasa,350441,28832.1,97.9,3.9,676.2,51,2316.0,0.595
-COD,Ndjoko-Mpunda,Kasai,195783,69.0,0.1,1.7,0.3,0,676.0,0.45
-COD,Ngaba,Kinshasa,198005,34842.9,100.0,4.2,559.0,13,2316.0,0.571
-COD,Ngandajika,Lomami,317135,262.8,1.7,1.7,0.4,3,723.4,0.837
-COD,Ngidinga,Kongo-Central,134630,47.3,0.0,2.0,0.3,0,873.0,0.61
-COD,Ngiri-Ngiri,Kinshasa,176547,33249.8,100.0,4.4,1109.1,28,2318.7,0.558
-COD,Nia-Nia,Ituri,85262,12.7,0.1,1.9,0.3,1,651.1,0.755
-COD,Niangara,Haut-Uele,182939,19.6,0.0,1.7,0.3,0,675.9,0.596
-COD,Nioki,Mai-Ndombe,334534,36.5,0.2,1.8,0.3,1,670.7,0.567
-COD,Nizi,Ituri,146118,612.7,0.9,2.7,2.0,4,838.3,0.779
-COD,Nsele,Kinshasa,841104,1023.3,8.3,3.6,2.6,18,2313.9,0.637
-COD,Nselo,Kongo-Central,139724,43.3,0.1,2.2,0.3,0,821.7,0.616
-COD,Nsona-Mpangu,Kongo-Central,381146,84.9,0.2,3.2,0.3,2,1111.9,0.602
-COD,Ntandembelo,Mai-Ndombe,135248,39.3,0.2,1.7,0.3,0,758.4,0.484
-COD,Ntondo,Équateur,66721,15.9,0.0,1.7,0.3,2,660.8,0.36
-COD,Nundu,Sud-Kivu,192807,78.3,0.0,1.3,0.5,7,1372.1,0.609
-COD,Nyakunde,Ituri,97949,109.7,0.0,2.0,0.3,2,680.3,0.782
-COD,Nyanga,Kasai,151788,63.5,0.1,1.9,0.3,0,866.7,0.475
-COD,Nyangezi,Sud-Kivu,146127,608.9,1.4,2.1,0.3,0,1358.7,0.506
-COD,Nyantende,Sud-Kivu,124424,1672.6,0.6,2.6,0.3,0,1363.6,0.536
-COD,Nyarambe,Ituri,247247,431.6,0.4,3.6,0.3,1,997.4,0.665
-COD,Nyemba,Tanganyika,379939,33.4,0.1,2.4,0.3,9,1235.0,0.76
-COD,Nyiragongo,Nord-Kivu,614858,164.0,0.5,4.3,2.3,8,1901.7,0.608
-COD,Nyunzu,Tanganyika,256807,16.2,0.1,1.8,0.3,0,690.6,0.762
-COD,Nzaba,Kasai-Oriental,311526,9642.0,69.5,2.4,0.3,0,1553.8,0.675
-COD,Nzanza,Kongo-Central,144567,119.3,0.1,3.6,0.3,0,1703.9,0.6
-COD,Obokote,Maniema,81384,5.6,0.0,2.0,0.3,0,649.7,0.578
-COD,Oicha,Nord-Kivu,336160,214.2,1.3,2.5,1.5,16,1113.1,0.812
-COD,Omendjadi,Sankuru,134386,35.8,0.0,1.7,0.3,0,761.3,0
-COD,Opala,Tshopo,199516,11.2,0.0,1.7,0.3,0,685.2,0.728
-COD,Opienge,Tshopo,60387,2.3,0.0,1.7,0.3,1,685.2,0.825
-COD,Oshwe,Mai-Ndombe,187089,11.9,0.0,1.7,0.3,0,637.6,0.552
-COD,Ototo,Sankuru,133041,31.1,0.1,1.7,0.3,0,838.9,0
-COD,Panda,Haut-Katanga,88159,5.3,0.0,2.6,0.3,0,590.0,0.722
-COD,Pangi,Maniema,94024,17.1,0.0,1.7,0.3,0,679.0,0.523
-COD,Pania Mutombo,Sankuru,81712,16.8,0.0,1.7,0.3,0,849.9,0.671
-COD,Panzi,Kwango,260881,28.6,0.0,1.7,0.3,0,635.5,0
-COD,Pawa,Haut-Uele,269053,175.6,0.1,1.7,0.3,0,656.0,0.601
-COD,Pay Kongila,Kwilu,152159,104.5,0.2,1.8,0.3,0,789.1,0.725
-COD,Penjwa,Mai-Ndombe,95743,21.2,0.0,1.7,0.5,20,688.7,0.421
-COD,Pimu,Mongala,245737,41.3,0.0,1.7,0.3,0,971.0,0.308
-COD,Pinga,Nord-Kivu,151095,8.7,0.0,1.9,0.3,0,720.9,0.842
-COD,Poko,Bas-Uele,262899,14.8,0.0,1.7,0.3,0,718.0,0.83
-COD,Police,Kinshasa,139093,25149.9,100.0,4.6,1443.4,1,2316.0,0.551
-COD,Popokabaka,Kwango,288476,46.4,0.0,1.7,0.3,2,776.9,0.6
-COD,Punia,Maniema,172947,14.1,0.0,1.9,0.3,0,676.6,0.535
-COD,Pweto,Haut-Katanga,252652,14.1,0.0,2.4,0.3,2,851.9,0.709
-COD,Rethy,Ituri,283946,427.2,0.5,2.5,0.3,0,858.0,0.725
-COD,Rimba,Ituri,211373,471.5,0.1,2.4,0.3,0,949.9,0.776
-COD,Rungu,Haut-Uele,193018,39.0,0.0,1.7,0.3,0,755.6,0.599
-COD,Rutshuru,Nord-Kivu,433911,420.8,0.9,3.7,0.6,5,866.0,0.697
-COD,Ruzizi,Sud-Kivu,223134,416.9,0.9,1.3,0.3,0,798.7,0.498
-COD,Rwampara,Ituri,134068,131.2,0.0,2.3,0.3,0,697.1,0.774
-COD,Rwanguba,Nord-Kivu,260356,471.1,0.2,3.9,2.2,9,996.1,0.616
-COD,Rwashi,Haut-Katanga,364847,33.0,0.1,3.0,0.3,0,1053.0,0.717
-COD,Sakania,Haut-Katanga,358562,17.3,0.2,3.1,0.3,0,1656.7,0.656
-COD,Samba,Maniema,156289,21.5,0.1,1.7,0.3,0,616.0,0.524
-COD,Sandoa,Lualaba,217323,11.0,0.1,1.8,0.3,0,796.1,0.694
-COD,Saramabila,Maniema,256967,58.9,0.2,1.7,0.3,0,558.2,0.526
-COD,Seke-Banza,Kongo-Central,285668,160.7,0.3,2.7,0.3,0,675.6,0.593
-COD,Selembao,Kinshasa,477946,23827.2,99.5,4.3,232.3,39,2317.9,0.559
-COD,Shabunda,Sud-Kivu,242191,52.4,0.1,1.7,0.3,0,728.0,0.592
-COD,Sia,Kwilu,188296,70.3,0.2,1.7,0.3,0,701.1,0.686
-COD,Sona-Bata,Kongo-Central,155127,48.2,0.0,2.8,0.3,0,871.1,0.601
-COD,Songa,Haut-Lomami,278088,16.7,0.1,2.0,0.3,1,614.7,0.707
-COD,Tandala,Sud-Ubangi,318028,173.3,0.2,1.7,0.3,0,512.7,0.547
-COD,Tchomia,Ituri,110386,69.4,0.0,2.7,0.9,7,828.0,0.651
-COD,Tembo,Kwango,122426,20.6,0.1,4.0,0.3,0,1404.6,0
-COD,Titule,Bas-Uele,77453,9.6,0.0,1.7,0.3,0,592.5,0
-COD,Tshamilemba,Haut-Katanga,232331,758.6,8.5,3.3,7.0,18,1458.5,0.708
-COD,Tshela,Kongo-Central,90394,123.0,0.0,5.4,0.3,0,1224.8,0.646
-COD,Tshibala,Central Kasai,247221,81.2,0.1,1.7,0.3,0,777.7,0.449
-COD,Tshikaji,Central Kasai,121476,276.3,1.0,1.9,0.3,0,1971.3,0.442
-COD,Tshikapa,Kasai,400375,178.2,0.5,2.3,0.3,4,878.2,0.453
-COD,Tshikula,Central Kasai,203509,82.4,0.0,1.8,0.3,0,1109.8,0.459
-COD,Tshilenge,Kasai-Oriental,312177,485.9,8.6,2.5,0.3,0,992.0,0.716
-COD,Tshishimbi,Kasai-Oriental,201193,288.5,4.7,2.5,0.3,1,1315.1,0.682
-COD,Tshitenge,Kasai-Oriental,242936,773.8,6.4,2.4,0.5,1,1151.0,0.698
-COD,Tshofa,Lomami,156306,27.2,0.0,1.7,0.3,0,666.5,0.845
-COD,Tshopo,Tshopo,133113,56.3,0.0,2.6,0.3,0,1439.3,0.83
-COD,Tshudi Loto,Sankuru,92898,6.3,0.0,1.7,0.3,0,947.1,0.212
-COD,Tshumbe,Sankuru,100051,17.1,0.0,1.7,0.3,0,785.6,0.528
-COD,Tunda,Maniema,84880,5.9,0.0,1.7,0.3,0,704.9,0.52
-COD,Ubundu,Tshopo,184612,15.1,0.0,1.9,0.3,0,903.5,0.83
-COD,Uvira,Sud-Kivu,468546,829.5,2.4,1.3,0.8,4,802.0,0.555
-COD,Vaku,Kongo-Central,238717,273.4,0.1,3.4,0.3,0,966.8,0.612
-COD,Vanga,Kwilu,431330,201.5,0.3,1.7,0.3,2,787.4,0.725
-COD,Vanga Kete,Sankuru,285707,49.3,0.4,1.7,0.3,0,713.4,0
-COD,Vangu,Haut-Katanga,138140,13006.8,100.0,3.3,0.3,0,1661.0,0.704
-COD,Viadana,Bas-Uele,148039,35.7,0.0,1.7,0.3,1,719.7,0.596
-COD,Vuhovi,Nord-Kivu,256878,324.7,0.1,2.7,5.1,34,877.0,0.822
-COD,Walikale,Nord-Kivu,157331,18.8,0.0,2.2,0.3,0,687.7,0.798
-COD,Walungu,Sud-Kivu,487704,942.5,0.0,2.6,0.3,0,1244.0,0.584
-COD,Wamba,Haut-Uele,234178,34.1,0.1,1.7,0.3,0,657.4,0.643
-COD,Wamba Lwadi,Kwango,323503,57.6,0.0,1.7,0.3,0,632.2,0
-COD,Wangata,Équateur,241085,3750.0,17.5,2.0,63.2,34,1330.3,0.318
-COD,Wanierukula,Tshopo,129717,9.1,0.0,1.9,0.3,0,902.0,0.821
-COD,Wapinda,Nord-Ubangi,79993,44.4,0.1,1.7,0.3,0,684.6,0.313
-COD,Wasolo,Nord-Ubangi,201817,32.3,0.1,1.6,0.3,0,682.0,0.313
-COD,Watsa,Haut-Uele,487954,80.6,0.3,2.3,0.3,0,526.5,0.601
-COD,Wema,Tshuapa,125341,15.7,0.0,1.7,0.3,0,765.2,0.212
-COD,Wembo Nyama,Sankuru,168477,43.4,0.1,1.7,0.3,0,932.4,0.509
-COD,Wikong,Lomami,120879,151.9,1.9,1.7,0.3,0,675.9,0.729
-COD,Yabaondo,Tshopo,250442,52.6,0.1,1.7,0.3,0,680.5,0.83
-COD,Yahisuli,Tshopo,137031,42.1,0.0,1.7,0.3,0,679.4,0.822
-COD,Yahuma,Tshopo,249941,11.6,0.0,1.8,0.3,0,639.4,0.75
-COD,Yakoma,Nord-Ubangi,184784,90.3,0.4,1.3,0.3,0,667.2,0.313
-COD,Yakusu,Tshopo,160042,44.4,0.1,1.7,0.3,0,744.8,0.83
-COD,Yaleko,Tshopo,187617,21.8,0.0,1.7,0.3,0,690.0,0.83
-COD,Yalifafo,Tshuapa,164768,17.7,0.0,1.7,0.3,0,633.2,0.212
-COD,Yalimbongo,Tshopo,173584,18.4,0.0,1.8,0.3,5,668.0,0.794
-COD,Yamaluka,Mongala,664492,157.2,0.6,2.1,0.3,0,614.3,0.361
-COD,Yambuku,Mongala,288329,50.0,0.0,1.7,0.3,0,616.5,0.309
-COD,Yamongili,Mongala,133977,28.4,0.0,1.9,0.3,0,610.4,0.376
-COD,Yangala,Central Kasai,170274,29.7,0.1,1.8,0.3,0,738.8,0.579
-COD,Yasa-Bonga,Kwilu,400316,142.3,0.1,1.7,0.3,0,633.1,0.725
-COD,Yumbi,Mai-Ndombe,157950,130.2,0.7,2.5,0.3,1,700.1,0.401
-COD,Zongo,Sud-Ubangi,112640,147.9,0.7,2.5,0.3,0,1293.4,0.589
-UGA,Kampala,Kampala,1750000,9200.0,100,12.5,18.0,120,0,0
-UGA,Kisoro,Kisoro,315000,421.0,14,2.1,6.0,18,0,0
-UGA,Kanungu,Kanungu,270000,203.0,9,1.8,5.2,15,0,0
-UGA,Arua,Arua,820000,175.0,31,3.0,7.0,35,0,0
-UGA,Bundibugyo,Bundibugyo,245000,288.0,16,1.5,4.8,11,0,0
+country,region,province,population,population_density,urban_pct,doctors_per_100k,beds_per_10k,health_sites
+COD,Aba,Haut-Uele,191373,74.6,0.0,1.5,0.3,0
+COD,Abuzi,Nord-Ubangi,76682,6.2,0.0,1.7,0.3,0
+COD,Adi,Ituri,291035,259.6,0.1,1.7,0.3,0
+COD,Adja,Ituri,171376,149.7,0.0,2.0,0.3,0
+COD,Aketi,Bas-Uele,168220,11.8,0.0,1.7,0.3,0
+COD,Alimbongo,Nord-Kivu,326610,153.9,0.1,2.3,1.0,17
+COD,Alunguli,Maniema,80008,1103.5,9.1,1.7,0.3,0
+COD,Ango,Bas-Uele,161144,4.7,0.0,1.6,0.3,0
+COD,Angumu,Ituri,164109,132.3,0.0,3.3,0.3,0
+COD,Ankoro,Tanganyika,253911,29.0,0.0,1.7,0.3,1
+COD,Ariwara,Ituri,301519,468.6,1.3,2.5,4.3,23
+COD,Aru,Ituri,307811,358.2,1.0,2.5,0.3,0
+COD,Aungba,Ituri,229697,175.5,0.0,2.2,0.3,0
+COD,Bafwagbogbo,Tshopo,68898,6.3,0.0,1.7,0.3,1
+COD,Bafwasende,Tshopo,153666,8.9,0.0,1.8,0.3,0
+COD,Bagata,Kwilu,380223,45.5,0.1,1.8,0.3,0
+COD,Bagira,Sud-Kivu,243663,7546.0,11.5,2.8,44.4,12
+COD,Baka,Haut-Lomami,206722,29.0,0.2,2.1,0.3,1
+COD,Bambo,Nord-Kivu,152279,172.2,0.1,3.3,0.8,6
+COD,Bambu,Ituri,148752,305.1,0.0,2.4,3.1,12
+COD,Banalia,Tshopo,191745,11.2,0.0,1.7,0.3,1
+COD,Bandalungwa,Kinshasa,197743,30886.7,100.0,4.5,548.6,27
+COD,Bandundu,Kwilu,298235,823.8,6.0,2.6,4.0,12
+COD,Banga Lubaka,Kasai,158486,23.9,0.0,1.7,0.3,0
+COD,Bangabola,Sud-Ubangi,165747,66.8,0.0,1.7,0.3,0
+COD,Banjow Moke,Mai-Ndombe,177449,30.7,0.1,1.7,0.3,0
+COD,Barumbu,Kinshasa,165261,27678.3,100.0,4.4,454.3,16
+COD,Basali,Tshopo,84235,5.8,0.0,1.7,0.3,0
+COD,Basankusu,Équateur,254057,19.5,0.1,1.7,0.3,0
+COD,Basoko,Tshopo,163032,100.4,0.3,2.2,0.3,0
+COD,Befale,Tshuapa,183661,14.3,0.0,1.7,0.3,0
+COD,Bena Dibele,Sankuru,238535,17.7,0.0,1.7,0.3,0
+COD,Bena Leka,Central Kasai,297894,69.4,0.1,1.7,0.3,0
+COD,Bena Tshiadi,Central Kasai,115772,33.7,0.0,1.7,0.3,0
+COD,Bengamisa,Tshopo,195050,30.2,0.0,2.2,0.3,0
+COD,Beni,Nord-Kivu,382409,9070.5,80.2,2.6,378.3,81
+COD,Bibanga,Kasai-Oriental,204771,106.7,0.2,2.2,0.3,3
+COD,Biena,Nord-Kivu,118805,121.8,0.1,2.1,0.3,0
+COD,Bikoro,Équateur,174082,37.1,0.0,1.7,0.5,19
+COD,Bili,Bas-Uele,64624,0.0,12,14.0,0.3,0
+COD,Bilomba,Central Kasai,133996,106.1,0.2,1.7,0.3,0
+COD,Binga,Mongala,267907,37.6,0.0,1.8,0.3,0
+COD,Binza,Nord-Kivu,191411,150.8,0.5,3.5,0.3,0
+COD,Binza Meteo,Kinshasa,1000233,20965.7,83.9,4.5,120.2,48
+COD,Binza Ozone,Kinshasa,434109,20707.4,80.9,4.6,125.4,22
+COD,Bipemba,Kasai-Oriental,377834,12096.0,71.4,2.3,0.3,0
+COD,Birambizo,Nord-Kivu,385710,334.1,0.3,2.9,0.3,1
+COD,Biringi,Ituri,141867,75.7,0.0,1.9,0.3,0
+COD,Biyela,Kinshasa,321186,3613.1,22.0,3.7,26.9,20
+COD,Bobozo,Central Kasai,45546,95.2,0.0,1.9,0.3,0
+COD,Boende,Tshuapa,352878,34.2,0.0,1.9,0.3,3
+COD,Boga,Ituri,73524,67.8,0.0,2.4,1.3,12
+COD,Bogosenubia,Sud-Ubangi,143364,31.3,0.0,1.7,0.3,0
+COD,Boko,Kwango,350586,37.8,0.0,1.7,0.3,0
+COD,Boko-Kivulu,Kongo-Central,524081,264.6,0.4,2.8,0.3,2
+COD,Bokonzi,Sud-Ubangi,215776,25.5,0.0,2.1,0.3,0
+COD,Bokoro,Mai-Ndombe,414436,43.8,0.3,1.7,0.3,0
+COD,Bokungu,Tshuapa,232882,29.8,0.0,1.7,0.3,0
+COD,Bolenge,Équateur,84416,61.7,0.1,1.9,1.0,9
+COD,Bolobo,Mai-Ndombe,185526,45.1,0.2,2.7,0.3,0
+COD,Bolomba,Équateur,272361,18.0,0.0,1.7,0.3,1
+COD,Boma,Kongo-Central,416172,2992.7,12.5,3.6,0.9,1
+COD,Boma Bungu,Kongo-Central,82994,32.0,0.0,3.0,0.3,1
+COD,Boma-Mangbetu,Haut-Uele,254167,178.6,0.1,1.7,0.3,0
+COD,Bominenge,Sud-Ubangi,195432,85.9,0.0,1.7,0.3,0
+COD,Bomongo,Équateur,114364,10.6,0.0,1.9,0.3,0
+COD,Bondo,Bas-Uele,271684,30.8,0.1,1.7,0.3,0
+COD,Bongandanga,Mongala,140374,9.1,0.0,1.7,0.3,0
+COD,Bonzola,Kasai-Oriental,369052,12538.4,63.0,2.4,8.1,2
+COD,Bosanga,Tshuapa,222117,21.1,0.0,1.7,0.3,0
+COD,Boso Manzi,Mongala,179435,31.2,0.0,1.7,0.3,1
+COD,Boso Mondanda,Mongala,147938,36.1,0.0,1.7,0.3,0
+COD,Bosobe,Mai-Ndombe,126881,14.0,0.0,1.7,0.3,0
+COD,Bosobolo,Nord-Ubangi,199871,28.6,0.0,1.6,0.3,0
+COD,Bosondjo,Mongala,205140,28.2,0.0,1.8,0.3,0
+COD,Boto,Sud-Ubangi,146310,102.8,0.1,1.9,0.3,0
+COD,Budjala,Sud-Ubangi,214656,47.2,0.1,1.7,0.3,0
+COD,Bukama,Haut-Lomami,350446,51.5,0.1,2.1,0.4,18
+COD,Bulape,Kasai,179204,44.9,0.1,1.7,0.3,0
+COD,Bulu,Sud-Ubangi,178348,98.0,0.1,1.7,0.3,0
+COD,Bulungu,Kwilu,431715,145.8,0.3,1.7,0.3,0
+COD,Bumba,Mongala,211816,79.1,0.4,2.2,0.3,0
+COD,Bumbu,Kinshasa,450907,33316.3,100.0,4.4,798.7,29
+COD,Bunia,Ituri,715168,1950.6,6.2,2.5,18.6,57
+COD,Bunkeya,Lualaba,62923,18.4,0.1,2.2,0.3,0
+COD,Bunkonde,Central Kasai,115234,55.2,0.0,1.7,0.3,0
+COD,Bunyakiri,Sud-Kivu,209555,49.6,0.0,2.1,0.3,0
+COD,Businga,Nord-Ubangi,128857,19.1,0.0,1.7,0.3,0
+COD,Buta,Bas-Uele,277007,25.5,0.1,1.7,0.3,0
+COD,Butembo,Nord-Kivu,316182,3851.8,20.5,2.6,65.7,41
+COD,Butumba,Haut-Lomami,195533,17.7,0.0,1.7,0.3,3
+COD,Bwamanda,Sud-Ubangi,393985,116.9,0.1,1.7,0.3,0
+COD,Cilundu,Kasai-Oriental,210624,169.9,0.3,2.4,0.3,0
+COD,Damas,Ituri,116731,49.4,0.0,1.9,0.3,0
+COD,Dekese,Kasai,177566,6.9,0.0,1.7,0.3,0
+COD,Demba,Central Kasai,328690,86.9,0.3,2.0,0.3,0
+COD,Dibaya,Central Kasai,163014,115.6,0.3,1.8,0.3,0
+COD,Dibindi,Kasai-Oriental,279888,31689.3,100.0,2.4,25.5,1
+COD,Dikungu,Sankuru,145449,41.2,0.2,1.7,0.3,1
+COD,Dilala,Lualaba,295769,18.9,0.1,3.0,0.3,0
+COD,Dilolo,Lualaba,186853,19.9,0.1,5.0,0.3,2
+COD,Diulu,Kasai-Oriental,391935,22655.2,94.9,2.4,0.3,0
+COD,Djalo Djeka,Sankuru,353287,24.2,0.0,1.7,0.3,0
+COD,Djolu,Tshuapa,362638,34.1,0.0,1.7,0.3,0
+COD,Djombo,Équateur,113789,16.3,0.0,1.7,0.3,0
+COD,Djuma,Kwilu,386424,131.7,0.1,1.7,0.3,0
+COD,Doruma,Haut-Uele,73656,5.0,0.0,1.2,0.3,0
+COD,Drodro,Ituri,210812,324.8,0.1,2.5,1.1,6
+COD,Dungu,Haut-Uele,305065,16.0,0.1,1.7,0.3,0
+COD,Faradje,Haut-Uele,199096,30.7,0.0,2.2,0.3,0
+COD,Fataki,Ituri,150054,381.9,0.6,2.4,0.3,0
+COD,Ferekeni,Maniema,71818,8.1,0.0,1.8,0.3,0
+COD,Feshi,Kwango,154950,22.6,0.0,1.7,0.3,0
+COD,Fizi,Sud-Kivu,620550,75.4,0.1,1.8,1.3,89
+COD,Fungurume,Lualaba,399238,112.7,0.7,2.8,0.3,0
+COD,Ganga,Bas-Uele,245787,24.9,0.0,1.7,0.3,0
+COD,Gbadolite,Nord-Ubangi,182242,145.5,0.9,2.4,0.3,0
+COD,Gemena,Sud-Ubangi,550895,310.0,1.1,1.7,0.3,0
+COD,Gethy,Ituri,186541,84.2,0.0,2.2,0.6,10
+COD,Goma,Nord-Kivu,277156,10628.9,54.8,4.3,164.9,36
+COD,Gombari,Haut-Uele,137969,13.3,0.0,1.9,0.3,0
+COD,Gombe,Kinshasa,245307,19432.1,94.8,4.6,350.2,37
+COD,Gombe-Matadi,Kongo-Central,177116,64.0,0.0,3.0,0.3,0
+COD,Gungu,Kwilu,394248,67.4,0.0,1.9,0.3,0
+COD,Hauts-Plateaux,Sud-Kivu,188187,107.9,0.0,1.6,0.3,0
+COD,Ibanda,Sud-Kivu,429737,15710.3,53.9,2.7,179.1,41
+COD,Iboko,Équateur,102724,35.5,0.0,1.7,0.3,6
+COD,Idiofa,Kwilu,681929,113.2,0.4,1.7,0.3,0
+COD,Idjwi,Sud-Kivu,358506,208.8,0.0,3.7,1.5,21
+COD,Ikela,Tshuapa,160388,11.0,0.0,1.7,0.3,0
+COD,Ilebo,Kasai,252101,176.8,0.7,2.1,0.3,0
+COD,Inga,Kongo-Central,210689,116.5,0.2,2.8,0.3,0
+COD,Ingende,Équateur,150415,35.8,0.0,1.8,0.3,1
+COD,Inongo,Mai-Ndombe,230637,15.6,0.0,1.7,0.3,16
+COD,Ipamu,Kwilu,376759,136.0,0.6,1.7,0.3,0
+COD,Irebu,Équateur,35783,21.8,0.2,1.8,0.3,0
+COD,Isangi,Tshopo,211493,98.5,0.2,1.7,0.3,0
+COD,Isiro,Haut-Uele,517113,116.7,0.4,1.7,0.3,1
+COD,Itebero,Nord-Kivu,178038,20.8,0.0,1.8,0.3,0
+COD,Itombwe,Sud-Kivu,118705,35.8,0.0,1.9,0.3,0
+COD,Jiba,Ituri,137046,97.8,0.1,2.3,0.3,0
+COD,Kabalo,Tanganyika,295806,20.3,0.0,1.7,0.3,0
+COD,Kabambare,Maniema,116783,10.1,0.0,1.7,0.3,3
+COD,Kabare,Sud-Kivu,320337,555.7,0.0,2.8,0.3,0
+COD,Kabeya Kamuanga,Kasai-Oriental,220205,101.2,0.4,2.0,0.3,0
+COD,Kabinda,Lomami,355815,65.2,0.2,1.7,0.3,2
+COD,Kabondo,Tshopo,176621,18.6,0.0,2.4,0.3,0
+COD,Kabondo Dianda,Haut-Lomami,271621,43.0,0.1,1.9,0.3,1
+COD,Kabongo,Haut-Lomami,451684,44.3,0.2,1.8,0.3,0
+COD,Kadutu,Sud-Kivu,337413,16677.9,52.6,2.7,133.4,19
+COD,Kafakumba,Lualaba,124487,10.0,0.0,1.7,0.3,0
+COD,Kafubu,Haut-Katanga,96145,20.5,0.2,2.9,0.3,0
+COD,Kahemba,Kwango,246131,18.6,0.0,1.9,0.3,0
+COD,Kailo,Maniema,178737,7.8,0.0,1.7,0.3,0
+COD,Kajiji,Kwango,148107,13.7,0.0,2.0,0.3,0
+COD,Kakenge,Kasai,149498,25.2,0.1,1.7,0.3,0
+COD,Kalamba,Lualaba,106698,8.9,0.1,1.7,0.3,0
+COD,Kalambayi Kabanga,Lomami,159486,40.6,0.2,1.7,0.3,1
+COD,Kalamu I,Kinshasa,158720,29914.6,100.0,4.3,511.9,15
+COD,Kalamu II,Kinshasa,141665,28727.8,100.0,4.4,584.8,12
+COD,Kalehe,Sud-Kivu,266738,226.2,0.0,2.7,0.3,0
+COD,Kalemie,Tanganyika,342190,23.4,0.1,2.2,0.3,22
+COD,Kalenda,Lomami,223277,54.8,0.4,1.8,0.3,0
+COD,Kalima,Maniema,209205,52.7,0.2,2.0,0.3,0
+COD,Kalole,Sud-Kivu,177354,22.6,0.0,1.7,0.3,0
+COD,Kalomba,Central Kasai,152881,78.0,0.2,1.7,0.3,0
+COD,Kalonda Est,Lomami,230909,32.2,0.0,1.7,0.3,0
+COD,Kalonda Ouest,Kasai,414522,91.1,0.2,2.3,1.1,28
+COD,Kalonge,Sud-Kivu,157437,159.1,0.0,2.4,0.3,0
+COD,Kalunguta,Nord-Kivu,254340,243.7,1.4,2.6,6.3,55
+COD,Kamalondo,Haut-Katanga,63116,55.8,0.0,3.3,0.3,0
+COD,Kamana,Lomami,193055,17.3,0.0,1.7,0.3,0
+COD,Kamango,Nord-Kivu,105654,119.1,0.1,2.9,0.9,4
+COD,Kambala,Ituri,132027,96.5,0.0,2.1,0.3,0
+COD,Kambove,Haut-Katanga,314169,78.5,0.5,2.9,0.3,0
+COD,Kamiji,Lomami,98868,65.7,0.1,1.8,0.3,0
+COD,Kamina,Haut-Lomami,316517,315.6,0.6,2.1,0.3,0
+COD,Kamituga,Sud-Kivu,189313,80.2,0.2,2.1,1.2,22
+COD,Kamonia,Kasai,327156,48.2,0.2,3.7,0.3,10
+COD,Kampemba,Haut-Katanga,398990,15.9,0.0,3.0,0.3,0
+COD,Kampene,Maniema,224613,37.9,0.1,1.7,0.3,0
+COD,Kamwesha,Kasai,392581,84.8,0.2,2.0,0.3,10
+COD,Kananga,Central Kasai,276101,4080.8,28.0,2.0,0.3,0
+COD,Kanda Kanda,Lomami,237492,74.9,0.2,1.7,0.3,0
+COD,Kangu,Kongo-Central,289321,215.3,0.1,3.1,0.3,0
+COD,Kaniama,Haut-Lomami,285224,20.9,0.1,1.7,0.3,0
+COD,Kaniola,Sud-Kivu,165719,66.7,0.0,2.2,0.3,0
+COD,Kansele,Kasai-Oriental,267447,33482.5,100.0,2.4,0.3,0
+COD,Kansimba,Tanganyika,160746,3.9,0.0,1.8,0.3,0
+COD,Kanzala,Kasai,268939,1194.7,4.2,2.4,1.6,3
+COD,Kanzenze,Lualaba,98122,4.7,0.0,2.2,0.3,0
+COD,Kapanga,Lualaba,176364,13.7,0.1,2.1,0.3,0
+COD,Kapolowe,Haut-Katanga,163588,35.0,0.4,2.8,0.3,0
+COD,Karawa,Nord-Ubangi,371086,93.0,0.1,1.7,0.3,0
+COD,Karisimbi,Nord-Kivu,583593,8309.4,42.0,4.4,183.7,108
+COD,Kasa-Vubu,Kinshasa,144580,26913.9,100.0,4.4,726.8,23
+COD,Kasaji,Lualaba,263245,16.1,0.1,1.9,0.3,0
+COD,Kasansa,Kasai-Oriental,308120,232.7,1.1,2.1,0.3,0
+COD,Kasenga,Haut-Katanga,158275,24.0,0.1,3.1,0.3,0
+COD,Kashobwe,Haut-Katanga,143478,14.0,0.1,2.8,0.3,0
+COD,Kasongo,Maniema,510251,92.4,0.2,1.7,0.3,0
+COD,Kasongo Lunda,Kwango,170337,58.4,0.1,3.1,0.3,0
+COD,Katako Kombe,Sankuru,138538,16.5,0.0,1.7,0.3,0
+COD,Katana,Sud-Kivu,246937,794.7,1.2,3.1,0.8,2
+COD,Katende,Central Kasai,169548,55.1,0.2,1.7,0.3,0
+COD,Katoka,Central Kasai,278674,1987.6,10.9,2.0,0.3,0
+COD,Katoyi,Nord-Kivu,234381,378.5,0.1,2.3,1.9,10
+COD,Katuba,Haut-Katanga,249154,18.6,0.0,3.3,0.3,0
+COD,Katwa,Nord-Kivu,621980,6492.1,43.0,2.7,149.6,120
+COD,Kayamba,Haut-Lomami,156491,26.6,0.0,1.8,0.3,0
+COD,Kayna,Nord-Kivu,428885,142.6,0.3,2.2,1.0,24
+COD,Kaziba,Sud-Kivu,119173,426.9,0.0,2.3,0.3,0
+COD,Kenge,Kwango,444536,87.7,0.2,1.7,0.3,0
+COD,Kenya,Haut-Katanga,263256,14.2,0.0,3.1,0.3,0
+COD,Kibirizi,Nord-Kivu,321011,152.1,2.1,2.4,0.4,5
+COD,Kibombo,Maniema,150614,12.0,0.0,1.7,0.3,15
+COD,Kibua,Nord-Kivu,135300,33.9,0.0,1.8,0.3,4
+COD,Kibunzi,Kongo-Central,82600,37.9,0.0,2.1,0.3,0
+COD,Kikimi,Kinshasa,279722,1543.3,10.3,3.6,8.9,11
+COD,Kikongo,Kwilu,259092,41.8,0.1,1.7,0.3,0
+COD,Kikula,Haut-Katanga,234550,18.8,0.1,2.4,0.3,0
+COD,Kikwit-Nord,Kwilu,433464,4574.9,23.4,1.9,1.3,1
+COD,Kikwit-Sud,Kwilu,296477,5003.0,24.7,2.0,0.3,0
+COD,Kilela Balanda,Haut-Katanga,69634,6.1,0.0,2.6,0.3,0
+COD,Kilo,Ituri,55902,112.3,0.0,2.4,3.5,10
+COD,Kilwa,Haut-Katanga,316511,17.7,0.1,2.2,0.3,0
+COD,Kimbanseke,Kinshasa,306115,15173.0,59.5,3.8,175.4,26
+COD,Kimbau,Kwango,194329,46.6,0.0,1.7,0.3,0
+COD,Kimbi Lulenge,Sud-Kivu,185491,48.9,0.1,2.0,0.3,11
+COD,Kimpangu,Kongo-Central,152040,103.0,0.4,3.0,0.3,0
+COD,Kimpese,Kongo-Central,362464,102.2,0.3,2.7,0.3,0
+COD,Kimputu,Kwilu,244623,93.2,0.2,1.7,0.3,0
+COD,Kimvula,Kongo-Central,160870,41.9,0.0,1.9,0.3,1
+COD,Kinda,Haut-Lomami,89291,5.1,0.0,1.9,0.3,0
+COD,Kindu,Maniema,380316,1565.9,10.5,1.7,0.5,1
+COD,Kingabwa,Kinshasa,228172,12522.3,61.9,4.2,394.9,57
+COD,Kingandu,Kwilu,119308,45.4,0.0,1.8,0.3,6
+COD,Kingasani,Kinshasa,289584,30978.7,100.0,3.8,357.9,28
+COD,Kinkondja,Haut-Lomami,250502,25.3,0.0,1.9,0.3,0
+COD,Kinkonzi,Kongo-Central,112829,105.9,0.0,2.8,0.3,0
+COD,Kinshasa,Kinshasa,182137,32002.5,100.0,4.5,676.7,17
+COD,Kintambo,Kinshasa,127378,32030.5,100.0,4.6,330.5,11
+COD,Kipushi,Haut-Katanga,374051,177.7,1.6,3.3,0.3,2
+COD,Kiri,Mai-Ndombe,139869,16.8,0.0,1.7,0.3,0
+COD,Kirotshe,Nord-Kivu,510671,572.6,0.6,3.0,15.1,113
+COD,Kisanga,Haut-Katanga,234352,39.4,0.0,3.5,0.3,0
+COD,Kisanji,Kwango,114432,23.4,0.0,1.7,0.3,0
+COD,Kisantu,Kongo-Central,430365,250.9,0.4,2.9,0.3,0
+COD,Kisenso,Kinshasa,471267,25155.0,99.1,4.0,438.5,57
+COD,Kitangwa,Kasai,246979,18.9,0.0,1.7,0.3,0
+COD,Kitenda,Kwango,148015,23.1,0.0,2.2,0.3,0
+COD,Kitenge,Haut-Lomami,279110,21.6,0.0,1.7,0.3,0
+COD,Kitona,Kongo-Central,98593,239.6,0.7,6.6,0.3,0
+COD,Kitutu,Sud-Kivu,145114,47.1,0.2,2.0,0.3,0
+COD,Kiyambi,Tanganyika,164535,7.2,0.0,1.8,0.3,1
+COD,Kizu,Kongo-Central,135348,421.2,0.2,4.1,0.3,0
+COD,Kokolo,Kinshasa,291697,25379.2,100.0,4.5,190.4,2
+COD,Kole,Sankuru,90428,20.6,0.0,1.7,0.3,0
+COD,Komanda,Ituri,222354,69.7,0.1,1.9,0.3,3
+COD,Kongolo,Tanganyika,383213,74.1,0.1,1.7,0.3,0
+COD,Koshibanda,Kwilu,357238,71.4,0.1,1.7,0.3,0
+COD,Kowe,Haut-Katanga,35959,13945.0,100.0,3.3,0.3,0
+COD,Kuimba,Kongo-Central,150209,232.9,0.0,5.1,0.3,0
+COD,Kunda,Maniema,267171,40.6,0.1,1.7,0.3,0
+COD,Kungu,Sud-Ubangi,403887,93.3,0.0,1.7,0.3,0
+COD,Kwamouth,Mai-Ndombe,196222,13.5,0.0,2.1,0.3,0
+COD,Kwilu-Ngongo,Kongo-Central,329452,159.0,1.2,2.8,0.3,0
+COD,Kyondo,Nord-Kivu,493964,486.5,0.8,2.7,5.8,49
+COD,Laybo,Ituri,183193,142.4,0.0,2.0,0.3,0
+COD,Lemba,Kinshasa,350421,25224.4,96.5,4.1,417.3,48
+COD,Lemera,Sud-Kivu,190565,277.7,2.8,1.5,0.3,1
+COD,Libenge,Sud-Ubangi,303035,33.3,0.0,1.8,0.3,0
+COD,Likasi,Haut-Katanga,435159,1615.1,20.8,3.0,0.3,0
+COD,Likati,Bas-Uele,165900,12.7,0.0,1.7,0.3,0
+COD,Lilanga Bobangi,Équateur,81435,5.3,0.0,2.1,0.3,0
+COD,Limete,Kinshasa,275017,22249.9,100.0,4.3,377.0,39
+COD,Linga,Ituri,147492,183.6,0.0,2.4,0.3,0
+COD,Lingomo,Tshuapa,187335,22.8,0.0,1.7,0.3,0
+COD,Lingwala,Kinshasa,93616,30060.6,100.0,4.5,502.4,11
+COD,Lisala,Mongala,390628,70.2,0.2,1.7,0.3,0
+COD,Lita,Ituri,128175,212.4,0.0,2.6,0.3,1
+COD,Lodja,Sankuru,485365,148.4,0.4,1.7,0.3,0
+COD,Logo,Ituri,240552,577.9,0.5,2.9,0.3,0
+COD,Loko,Nord-Ubangi,129292,25.7,0.0,1.7,0.3,0
+COD,Lolanga Mampoko,Équateur,91049,12.8,0.0,1.7,0.3,2
+COD,Lolo,Mongala,186170,67.2,0.1,1.9,0.3,0
+COD,Lolwa,Ituri,45779,4.0,0.0,1.7,0.3,8
+COD,Lomela,Sankuru,136051,9.4,0.1,1.7,0.3,0
+COD,Lotumbe,Équateur,106294,9.0,0.0,1.7,0.3,0
+COD,Lowa,Tshopo,127609,6.1,0.0,1.7,0.3,0
+COD,Lualaba,Lualaba,1058500,139.9,1.4,3.1,0.3,0
+COD,Luambo,Central Kasai,276396,61.3,0.2,2.1,0.3,0
+COD,Lubao,Lomami,210304,22.0,0.1,1.7,0.3,0
+COD,Lubero,Nord-Kivu,272813,153.6,0.3,2.5,2.8,41
+COD,Lubilanji,Kasai-Oriental,275215,34711.5,100.0,2.4,0.3,0
+COD,Lubondaie,Central Kasai,152399,61.3,0.0,1.7,0.3,0
+COD,Lubudi,Lualaba,108618,14.2,0.0,2.1,0.3,1
+COD,Lubumbashi,Haut-Katanga,1880027,3934.0,39.0,3.3,15.5,62
+COD,Lubunga,Tshopo,158178,0.0,12,14.0,0.3,0
+COD,Lubutu,Maniema,181487,17.2,0.0,1.7,0.3,0
+COD,Ludimbi Lukula,Lomami,155414,25.3,0.0,1.7,0.3,0
+COD,Luebo,Kasai,304486,48.9,0.1,1.7,0.3,0
+COD,Luiza,Central Kasai,281997,82.6,0.2,1.8,0.3,0
+COD,Lukafu,Haut-Katanga,88161,11.7,0.0,2.2,0.3,1
+COD,Lukelenge,Kasai-Oriental,287611,11225.9,65.8,2.4,0.3,0
+COD,Lukolela,Équateur,209390,28.0,0.1,2.0,0.3,0
+COD,Lukonga,Central Kasai,275712,2672.4,16.8,2.0,1.3,1
+COD,Lukula,Kongo-Central,365163,163.3,0.2,2.9,0.3,0
+COD,Lulingu,Sud-Kivu,162584,23.5,0.0,1.7,0.3,0
+COD,Luozi,Kongo-Central,212008,77.1,0.1,2.0,0.3,0
+COD,Luputa,Lomami,315091,98.5,0.6,1.7,0.3,1
+COD,Lusambo,Sankuru,93220,21.6,0.0,1.7,0.3,0
+COD,Lusanga,Kwilu,392516,109.0,0.1,1.9,0.3,0
+COD,Lusangi,Maniema,170540,34.0,0.0,1.7,0.3,0
+COD,Lwamba,Haut-Lomami,332940,175.9,0.5,2.1,0.3,0
+COD,Mabalako,Nord-Kivu,253372,193.0,0.8,2.6,2.1,23
+COD,Mahagi,Ituri,339666,603.9,0.3,3.1,0.3,0
+COD,Makala,Kinshasa,334674,30397.9,100.0,4.3,348.7,15
+COD,Makanza,Équateur,129676,18.4,0.1,1.7,0.3,0
+COD,Makiso-Kisangani,Tshopo,1141442,2279.9,11.5,2.5,1.7,7
+COD,Makoro,Haut-Uele,197226,54.7,0.0,2.1,0.3,0
+COD,Makota,Lomami,239015,1781.7,12.0,1.8,5.6,3
+COD,Malemba,Haut-Lomami,285915,65.2,0.3,1.8,0.3,0
+COD,Maluku I,Kinshasa,195736,36.2,0.0,2.1,0.4,20
+COD,Maluku II,Kinshasa,378500,113.3,0.6,3.2,0.9,25
+COD,Mambasa,Ituri,164108,9.2,0.0,1.8,0.3,4
+COD,Mandima,Ituri,274950,145.1,0.3,2.4,1.4,23
+COD,Mangala,Ituri,92662,131.4,0.0,2.4,0.3,0
+COD,Mangembo,Kongo-Central,139668,60.3,0.0,2.5,0.3,0
+COD,Mangobo,Tshopo,193112,42.0,0.0,2.4,0.3,0
+COD,Manguredjipa,Nord-Kivu,72437,10.8,0.0,1.8,0.3,4
+COD,Manika,Haut-Katanga,465774,2.4,0.0,2.4,0.3,0
+COD,Manono,Tanganyika,343601,36.7,0.1,2.0,0.3,0
+COD,Masa,Kongo-Central,159661,300.5,0.6,3.6,0.3,0
+COD,Masereka,Nord-Kivu,177664,189.4,0.3,2.6,2.5,16
+COD,Masi-Manimba,Kwilu,347696,105.0,0.2,1.7,0.3,0
+COD,Masina I,Kinshasa,363551,8756.6,30.9,3.8,115.9,14
+COD,Masina II,Kinshasa,300224,8039.8,31.2,4.0,150.2,42
+COD,Masisi,Nord-Kivu,409779,312.3,0.2,2.0,2.0,16
+COD,Masuika,Central Kasai,303881,133.7,0.6,1.7,0.3,1
+COD,Matadi,Kongo-Central,562001,8772.2,38.6,3.8,5.6,3
+COD,Matete,Kinshasa,313812,30106.1,98.9,4.1,787.3,31
+COD,Mawuya,Sud-Ubangi,156833,43.8,0.0,2.2,0.3,0
+COD,Mbandaka,Équateur,237892,208.6,1.1,2.0,1.4,13
+COD,Mbanza-Ngungu,Kongo-Central,202473,477.9,1.1,2.9,1.7,6
+COD,Mbaya,Sud-Ubangi,136799,48.8,0.0,1.7,0.3,0
+COD,Mbulula,Tanganyika,268282,34.0,0.1,1.7,0.3,1
+COD,Miabi,Kasai-Oriental,172074,385.0,2.6,2.5,0.3,1
+COD,Mikalayi,Central Kasai,286054,87.6,0.1,1.8,0.3,0
+COD,Mikope,Kasai,226662,19.7,0.0,1.7,0.3,0
+COD,Mimia,Mai-Ndombe,55138,2.6,0.0,1.7,0.3,0
+COD,Minembwe,Sud-Kivu,81204,33.5,0.0,1.8,0.3,0
+COD,Minga,Sankuru,164596,20.8,0.0,1.7,0.3,2
+COD,Minova,Sud-Kivu,342770,595.4,0.3,3.2,1.2,6
+COD,Miti-Murhesa,Sud-Kivu,265958,1017.0,0.1,3.0,0.9,2
+COD,Mitwaba,Haut-Katanga,132172,9.5,0.0,1.8,0.3,0
+COD,Moanda,Kongo-Central,483746,396.0,1.7,6.9,0.3,1
+COD,Moanza,Kwilu,415778,63.2,0.1,1.7,0.3,1
+COD,Moba,Tanganyika,656414,34.3,0.1,2.1,0.3,0
+COD,Mobayi Mbongo,Nord-Ubangi,173991,20.3,0.1,2.0,0.3,0
+COD,Mokala,Kwilu,241198,88.1,0.3,1.7,0.3,1
+COD,Mompono,Tshuapa,134619,20.8,0.0,1.7,0.3,0
+COD,Mondombe,Tshuapa,240323,31.1,0.0,1.7,0.3,0
+COD,Monga,Bas-Uele,129589,16.8,0.0,1.6,0.3,0
+COD,Mongbalu,Ituri,159146,117.0,0.2,2.0,0.3,2
+COD,Monieka,Équateur,80241,8.3,0.0,1.7,0.3,0
+COD,Monkoto,Tshuapa,209462,5.9,0.0,1.7,0.3,0
+COD,Mont Ngafula I,Kinshasa,836440,2093.7,9.2,4.0,10.5,35
+COD,Mont Ngafula II,Kinshasa,564790,4391.5,20.2,4.3,38.1,41
+COD,Mosango,Kwilu,159752,95.7,0.2,1.7,0.3,0
+COD,Mpokolo,Kasai-Oriental,321312,3959.8,34.7,2.3,0.3,0
+COD,Mubumbano,Sud-Kivu,285896,403.3,0.0,2.4,0.3,0
+COD,Muetshi,Central Kasai,150037,43.4,0.0,1.7,0.3,0
+COD,Mufunga Sampwe,Haut-Katanga,175986,9.0,0.0,1.7,0.3,0
+COD,Mukanga,Haut-Lomami,216220,36.2,0.2,1.9,0.3,0
+COD,Mukedi,Kwilu,279913,75.5,0.0,1.7,0.3,0
+COD,Mukumbi,Kasai-Oriental,186124,125.1,0.1,2.0,0.3,1
+COD,Mulongo,Haut-Lomami,287662,69.6,0.2,2.2,0.3,2
+COD,Mulumba,Lomami,292626,280.2,2.0,1.9,0.3,0
+COD,Mulungu,Sud-Kivu,151768,17.7,0.0,1.7,0.3,0
+COD,Mumbunda,Haut-Katanga,264460,66.2,0.0,3.4,0.3,0
+COD,Mungindu,Kwilu,211104,80.5,0.0,1.9,0.3,0
+COD,Mushenge,Kasai,148103,22.5,0.0,1.7,0.3,0
+COD,Mushie,Mai-Ndombe,255062,21.5,0.1,1.7,0.3,0
+COD,Musienene,Nord-Kivu,249370,83.4,0.0,2.4,1.7,39
+COD,Mutena,Kasai,232408,54.0,0.2,1.9,0.3,0
+COD,Mutoto,Central Kasai,130708,78.8,0.0,1.8,0.3,0
+COD,Mutshatsha,Lualaba,75425,3.1,0.0,2.1,0.3,0
+COD,Mutwanga,Nord-Kivu,274930,133.8,0.6,2.7,1.0,18
+COD,Muya,Kasai-Oriental,366827,16945.1,88.8,2.4,0.3,0
+COD,Mwana,Sud-Kivu,226018,483.8,0.4,2.4,0.3,0
+COD,Mweka,Kasai,285068,88.2,0.2,1.7,0.3,0
+COD,Mwela Lembwa,Kwango,230919,32.6,0.0,1.7,0.3,0
+COD,Mwene Ditu,Lomami,430700,798.8,4.7,1.8,0.3,1
+COD,Mwenga,Sud-Kivu,133454,52.3,0.0,2.1,0.3,4
+COD,Mweso,Nord-Kivu,391699,256.8,0.1,2.5,0.5,6
+COD,Ndage,Sud-Ubangi,126818,69.1,0.0,1.7,0.3,0
+COD,Ndekesha,Central Kasai,224366,56.4,0.1,1.7,0.3,0
+COD,Ndesha,Central Kasai,173310,1685.4,10.4,2.0,1.2,1
+COD,Ndjili,Kinshasa,350441,28832.1,97.9,3.9,676.2,51
+COD,Ndjoko-Mpunda,Kasai,195783,69.0,0.1,1.7,0.3,0
+COD,Ngaba,Kinshasa,198005,34842.9,100.0,4.2,559.0,13
+COD,Ngandajika,Lomami,317135,262.8,1.7,1.7,0.4,3
+COD,Ngidinga,Kongo-Central,134630,47.3,0.0,2.0,0.3,0
+COD,Ngiri-Ngiri,Kinshasa,176547,33249.8,100.0,4.4,1109.1,28
+COD,Nia-Nia,Ituri,85262,12.7,0.1,1.9,0.3,1
+COD,Niangara,Haut-Uele,182939,19.6,0.0,1.7,0.3,0
+COD,Nioki,Mai-Ndombe,334534,36.5,0.2,1.8,0.3,1
+COD,Nizi,Ituri,146118,612.7,0.9,2.7,2.0,4
+COD,Nsele,Kinshasa,841104,1023.3,8.3,3.6,2.6,18
+COD,Nselo,Kongo-Central,139724,43.3,0.1,2.2,0.3,0
+COD,Nsona-Mpangu,Kongo-Central,381146,84.9,0.2,3.2,0.3,2
+COD,Ntandembelo,Mai-Ndombe,135248,39.3,0.2,1.7,0.3,0
+COD,Ntondo,Équateur,66721,15.9,0.0,1.7,0.3,2
+COD,Nundu,Sud-Kivu,192807,78.3,0.0,1.3,0.5,7
+COD,Nyakunde,Ituri,97949,109.7,0.0,2.0,0.3,2
+COD,Nyanga,Kasai,151788,63.5,0.1,1.9,0.3,0
+COD,Nyangezi,Sud-Kivu,146127,608.9,1.4,2.1,0.3,0
+COD,Nyantende,Sud-Kivu,124424,1672.6,0.6,2.6,0.3,0
+COD,Nyarambe,Ituri,247247,431.6,0.4,3.6,0.3,1
+COD,Nyemba,Tanganyika,379939,33.4,0.1,2.4,0.3,9
+COD,Nyiragongo,Nord-Kivu,614858,164.0,0.5,4.3,2.3,8
+COD,Nyunzu,Tanganyika,256807,16.2,0.1,1.8,0.3,0
+COD,Nzaba,Kasai-Oriental,311526,9642.0,69.5,2.4,0.3,0
+COD,Nzanza,Kongo-Central,144567,119.3,0.1,3.6,0.3,0
+COD,Obokote,Maniema,81384,5.6,0.0,2.0,0.3,0
+COD,Oicha,Nord-Kivu,336160,214.2,1.3,2.5,1.5,16
+COD,Omendjadi,Sankuru,134386,35.8,0.0,1.7,0.3,0
+COD,Opala,Tshopo,199516,11.2,0.0,1.7,0.3,0
+COD,Opienge,Tshopo,60387,2.3,0.0,1.7,0.3,1
+COD,Oshwe,Mai-Ndombe,187089,11.9,0.0,1.7,0.3,0
+COD,Ototo,Sankuru,133041,31.1,0.1,1.7,0.3,0
+COD,Panda,Haut-Katanga,88159,5.3,0.0,2.6,0.3,0
+COD,Pangi,Maniema,94024,17.1,0.0,1.7,0.3,0
+COD,Pania Mutombo,Sankuru,81712,16.8,0.0,1.7,0.3,0
+COD,Panzi,Kwango,260881,28.6,0.0,1.7,0.3,0
+COD,Pawa,Haut-Uele,269053,175.6,0.1,1.7,0.3,0
+COD,Pay Kongila,Kwilu,152159,104.5,0.2,1.8,0.3,0
+COD,Penjwa,Mai-Ndombe,95743,21.2,0.0,1.7,0.5,20
+COD,Pimu,Mongala,245737,41.3,0.0,1.7,0.3,0
+COD,Pinga,Nord-Kivu,151095,8.7,0.0,1.9,0.3,0
+COD,Poko,Bas-Uele,262899,14.8,0.0,1.7,0.3,0
+COD,Police,Kinshasa,139093,25149.9,100.0,4.6,1443.4,1
+COD,Popokabaka,Kwango,288476,46.4,0.0,1.7,0.3,2
+COD,Punia,Maniema,172947,14.1,0.0,1.9,0.3,0
+COD,Pweto,Haut-Katanga,252652,14.1,0.0,2.4,0.3,2
+COD,Rethy,Ituri,283946,427.2,0.5,2.5,0.3,0
+COD,Rimba,Ituri,211373,471.5,0.1,2.4,0.3,0
+COD,Rungu,Haut-Uele,193018,39.0,0.0,1.7,0.3,0
+COD,Rutshuru,Nord-Kivu,433911,420.8,0.9,3.7,0.6,5
+COD,Ruzizi,Sud-Kivu,223134,416.9,0.9,1.3,0.3,0
+COD,Rwampara,Ituri,134068,131.2,0.0,2.3,0.3,0
+COD,Rwanguba,Nord-Kivu,260356,471.1,0.2,3.9,2.2,9
+COD,Rwashi,Haut-Katanga,364847,33.0,0.1,3.0,0.3,0
+COD,Sakania,Haut-Katanga,358562,17.3,0.2,3.1,0.3,0
+COD,Samba,Maniema,156289,21.5,0.1,1.7,0.3,0
+COD,Sandoa,Lualaba,217323,11.0,0.1,1.8,0.3,0
+COD,Saramabila,Maniema,256967,58.9,0.2,1.7,0.3,0
+COD,Seke-Banza,Kongo-Central,285668,160.7,0.3,2.7,0.3,0
+COD,Selembao,Kinshasa,477946,23827.2,99.5,4.3,232.3,39
+COD,Shabunda,Sud-Kivu,242191,52.4,0.1,1.7,0.3,0
+COD,Sia,Kwilu,188296,70.3,0.2,1.7,0.3,0
+COD,Sona-Bata,Kongo-Central,155127,48.2,0.0,2.8,0.3,0
+COD,Songa,Haut-Lomami,278088,16.7,0.1,2.0,0.3,1
+COD,Tandala,Sud-Ubangi,318028,173.3,0.2,1.7,0.3,0
+COD,Tchomia,Ituri,110386,69.4,0.0,2.7,0.9,7
+COD,Tembo,Kwango,122426,20.6,0.1,4.0,0.3,0
+COD,Titule,Bas-Uele,77453,9.6,0.0,1.7,0.3,0
+COD,Tshamilemba,Haut-Katanga,232331,758.6,8.5,3.3,7.0,18
+COD,Tshela,Kongo-Central,90394,123.0,0.0,5.4,0.3,0
+COD,Tshibala,Central Kasai,247221,81.2,0.1,1.7,0.3,0
+COD,Tshikaji,Central Kasai,121476,276.3,1.0,1.9,0.3,0
+COD,Tshikapa,Kasai,400375,178.2,0.5,2.3,0.3,4
+COD,Tshikula,Central Kasai,203509,82.4,0.0,1.8,0.3,0
+COD,Tshilenge,Kasai-Oriental,312177,485.9,8.6,2.5,0.3,0
+COD,Tshishimbi,Kasai-Oriental,201193,288.5,4.7,2.5,0.3,1
+COD,Tshitenge,Kasai-Oriental,242936,773.8,6.4,2.4,0.5,1
+COD,Tshofa,Lomami,156306,27.2,0.0,1.7,0.3,0
+COD,Tshopo,Tshopo,133113,56.3,0.0,2.6,0.3,0
+COD,Tshudi Loto,Sankuru,92898,6.3,0.0,1.7,0.3,0
+COD,Tshumbe,Sankuru,100051,17.1,0.0,1.7,0.3,0
+COD,Tunda,Maniema,84880,5.9,0.0,1.7,0.3,0
+COD,Ubundu,Tshopo,184612,15.1,0.0,1.9,0.3,0
+COD,Uvira,Sud-Kivu,468546,829.5,2.4,1.3,0.8,4
+COD,Vaku,Kongo-Central,238717,273.4,0.1,3.4,0.3,0
+COD,Vanga,Kwilu,431330,201.5,0.3,1.7,0.3,2
+COD,Vanga Kete,Sankuru,285707,49.3,0.4,1.7,0.3,0
+COD,Vangu,Haut-Katanga,138140,13006.8,100.0,3.3,0.3,0
+COD,Viadana,Bas-Uele,148039,35.7,0.0,1.7,0.3,1
+COD,Vuhovi,Nord-Kivu,256878,324.7,0.1,2.7,5.1,34
+COD,Walikale,Nord-Kivu,157331,18.8,0.0,2.2,0.3,0
+COD,Walungu,Sud-Kivu,487704,942.5,0.0,2.6,0.3,0
+COD,Wamba,Haut-Uele,234178,34.1,0.1,1.7,0.3,0
+COD,Wamba Lwadi,Kwango,323503,57.6,0.0,1.7,0.3,0
+COD,Wangata,Équateur,241085,3750.0,17.5,2.0,63.2,34
+COD,Wanierukula,Tshopo,129717,9.1,0.0,1.9,0.3,0
+COD,Wapinda,Nord-Ubangi,79993,44.4,0.1,1.7,0.3,0
+COD,Wasolo,Nord-Ubangi,201817,32.3,0.1,1.6,0.3,0
+COD,Watsa,Haut-Uele,487954,80.6,0.3,2.3,0.3,0
+COD,Wema,Tshuapa,125341,15.7,0.0,1.7,0.3,0
+COD,Wembo Nyama,Sankuru,168477,43.4,0.1,1.7,0.3,0
+COD,Wikong,Lomami,120879,151.9,1.9,1.7,0.3,0
+COD,Yabaondo,Tshopo,250442,52.6,0.1,1.7,0.3,0
+COD,Yahisuli,Tshopo,137031,42.1,0.0,1.7,0.3,0
+COD,Yahuma,Tshopo,249941,11.6,0.0,1.8,0.3,0
+COD,Yakoma,Nord-Ubangi,184784,90.3,0.4,1.3,0.3,0
+COD,Yakusu,Tshopo,160042,44.4,0.1,1.7,0.3,0
+COD,Yaleko,Tshopo,187617,21.8,0.0,1.7,0.3,0
+COD,Yalifafo,Tshuapa,164768,17.7,0.0,1.7,0.3,0
+COD,Yalimbongo,Tshopo,173584,18.4,0.0,1.8,0.3,5
+COD,Yamaluka,Mongala,664492,157.2,0.6,2.1,0.3,0
+COD,Yambuku,Mongala,288329,50.0,0.0,1.7,0.3,0
+COD,Yamongili,Mongala,133977,28.4,0.0,1.9,0.3,0
+COD,Yangala,Central Kasai,170274,29.7,0.1,1.8,0.3,0
+COD,Yasa-Bonga,Kwilu,400316,142.3,0.1,1.7,0.3,0
+COD,Yumbi,Mai-Ndombe,157950,130.2,0.7,2.5,0.3,1
+COD,Zongo,Sud-Ubangi,112640,147.9,0.7,2.5,0.3,0
+UGA,Kampala,Kampala,1750000,9200.0,100,12.5,18.0,120
+UGA,Kisoro,Kisoro,315000,421.0,14,2.1,6.0,18
+UGA,Kanungu,Kanungu,270000,203.0,9,1.8,5.2,15
+UGA,Arua,Arua,820000,175.0,31,3.0,7.0,35
+UGA,Bundibugyo,Bundibugyo,245000,288.0,16,1.5,4.8,11

@@ -177,12 +177,13 @@ EbolaViz2026/
 
 | 数据集 | 来源 | 许可 |
 |--------|------|------|
-| 病例数据 | [WHO AFRO Weekly SitReps](https://www.afro.who.int/) + [kraemer-lab/Ebola_DRC_2026](https://github.com/kraemer-lab/Ebola_DRC_2026) | WHO Open Access / CC BY 4.0 |
-| 人口地理 | [World Bank Open Data](https://data.worldbank.org/) + [HDX](https://data.humdata.org/) | CC BY 4.0 |
-| 行政区划 | [geoBoundaries](https://www.geoboundaries.org/) | CC BY 4.0 |
-| 医疗资源 | [WHO GHO](https://www.who.int/data/gho) + [GRID3](https://data.grid3.org/) | CC BY 4.0 |
-| 政策事件 | [WHO DON 605](https://www.who.int/emergencies/disease-outbreak-news) + [ReliefWeb](https://reliefweb.int/) | CC BY 4.0 |
-| 边境口岸 | [kraemer-lab/Ebola_DRC_2026](https://github.com/kraemer-lab/Ebola_DRC_2026) (OSM) | ODbL |
+| 病例数据 (151 条) | [INRB-UMIE/Ebola_DRC_2026](https://github.com/INRB-UMIE/Ebola_DRC_2026) INSP 逐日疫情报告 | CC BY 4.0 |
+| 人口/城乡 (522 区) | [WorldPop](https://www.worldpop.org/) + [FAO LCCS](https://www.fao.org/) | CC BY 4.0 |
+| 行政区划 (30 多边形) | [geoBoundaries](https://www.geoboundaries.org/) | CC BY 4.0 |
+| 卫生区边界 (519 区) | [INRB-UMIE DRC shapefile](https://github.com/INRB-UMIE/Ebola_DRC_2026) (MoH zones de santé) | CC BY 4.0 |
+| 医疗机构 (522 区) | [healthsites.io](https://healthsites.io/) + [WHO GHO](https://www.who.int/data/gho) | CC BY 4.0 |
+| 政策事件 (16 条) | [WHO DON 605](https://www.who.int/emergencies/disease-outbreak-news) + [ReliefWeb](https://reliefweb.int/) | CC BY 4.0 |
+| 边境口岸 (7 个) | [INRB-UMIE cross-border-movements](https://github.com/INRB-UMIE/Ebola_DRC_2026) (OSM) | ODbL |
 
 ---
 

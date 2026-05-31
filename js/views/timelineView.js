@@ -91,9 +91,10 @@ export function initTimeline(dom, store, data) {
 
     // Only show legend in detail mode
     const legend = overviewMode ? { show: false } : {
-      type: 'scroll', bottom: 28,
+      type: 'scroll', bottom: 32,
       textStyle: { fontSize: 9 },
       pageTextStyle: { fontSize: 9 },
+      itemGap: 6,
     };
 
     // DO NOT include start/end in dataZoom config — ECharts manages
@@ -101,7 +102,7 @@ export function initTimeline(dom, store, data) {
     // render creates a feedback loop: drag → dispatch → render →
     // slider snaps back to full range.
     // Match grid margins so slider labels don't overflow the container
-    const dzConfig = [{ type: 'slider', height: 20, bottom: 6, left: 48, right: 16 }, { type: 'inside' }];
+    const dzConfig = [{ type: 'slider', height: 18, bottom: 8, left: 48, right: 16 }, { type: 'inside' }];
 
     // On RESET_ALL: force dataZoom back to full range
     if (needsReset) {
@@ -126,7 +127,7 @@ export function initTimeline(dom, store, data) {
         },
       },
       legend,
-      grid: { top: 8, right: 16, bottom: 55, left: 48 },
+      grid: { top: 8, right: 16, bottom: 65, left: 48 },
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 9, rotate: 30 },

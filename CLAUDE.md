@@ -42,6 +42,8 @@ node tests/smoke.test.js                           # Automated smoke test: all 5
 #   - Click province on heatmap → province selected, right panel shows zoomed province + zone markers
 #   - Click zone marker on right panel → individual zone toggle
 #   - dataZoom brush → other views update
+#   - Click line in parallel coords → zone toggled, heatmap detail panel opens
+#   - Click bar in detail panel → zone toggled
 #   - Press Space → animation plays
 #   - Press R → all filters reset
 
@@ -116,7 +118,7 @@ Every view exports `init(domElement, store, data)` → `{ render, resize, destro
 ### Coordination (Brushing & Linking)
 
 All views follow the same pattern:
-1. User interaction → `chart.on('click'|'datazoom'|'brushselected', ...)` → `store.dispatch(action)`
+1. User interaction → `chart.on('click'|'datazoom', ...)` → `store.dispatch(action)`
 2. Store reducer produces new state
 3. Store notifies all subscribers → each view calls `render(newState)`
 
@@ -125,9 +127,10 @@ All views follow the same pattern:
 | dataZoom brush | `SET_TIME_RANGE` | heatmap, parallel, policy, detail |
 | Click province on map | `SET_SELECTED_REGIONS` | heatmap (detail panel), timeline, parallel, policy, detail |
 | Click zone marker in detail | `SET_SELECTED_REGIONS` | heatmap (both panels), timeline, parallel, detail |
+| Click parallel line | `SET_SELECTED_REGIONS` | heatmap (detail panel), timeline, policy, detail |
+| Click detail bar chart | `SET_SELECTED_REGIONS` | heatmap, timeline, parallel, policy |
 | Hover province on map | `SET_HIGHLIGHTED_REGIONS` | heatmap (overlay border), timeline (line width) |
-| Brush parallel axes | `SET_PARALLEL_AXES_FILTER` | heatmap, timeline, policy, detail |
-| Click policy marker | `SET_SELECTED_POLICY_IDS` | heatmap (markLines), detail |
+| Click policy marker | `SET_SELECTED_POLICY_IDS` | policy (markLines), detail |
 | Play/Pause/Reset | `SET_ANIMATING_DATE` / `SET_IS_PLAYING` / `RESET_ALL` | all views |
 
 ## File responsibilities
@@ -141,9 +144,9 @@ All views follow the same pattern:
 | `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~100 lines |
 | `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()` | ~100 lines |
 | `js/utils/colors.js` | Color constants (HEATMAP, TABLEAU, POLICY), `getRegionColor()`, `heatmapColor()` | ~50 lines |
-| `js/views/heatmapView.js` | Choropleth (two-series border overlay) + split layout + province zoom detail with zone markers | ~620 lines |
+| `js/views/heatmapView.js` | Choropleth (two-series overlay) + split layout + province detail with real- coordinate zone markers + roam zoom | ~700 lines |
 | `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~80 lines |
-| `js/views/parallelView.js` | Parallel coordinates, brush → `SET_PARALLEL_AXES_FILTER` | ~90 lines |
+| `js/views/parallelView.js` | Parallel coordinates, click-to-select + clear button | ~220 lines |
 | `js/views/policyView.js` | Scatter markers + case trend background | ~100 lines |
 | `js/views/detailView.js` | HTML panel: stats cards + region table | ~100 lines |
 | `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~170 lines |
@@ -189,7 +192,7 @@ For automated checks, verify:
 2. **selectedRegions vs highlightedRegions**: Persistent filter vs transient highlight — prevents unnecessary re-rendering
 3. **dataZoom as sole time filter**: Removed redundant titlebar slider — ECharts dataZoom is the single source of truth
 4. **Pure frontend static deploy**: No backend — TA can run it in 15 minutes with just Python 3
-5. **Real data with extrapolation**: Core epidemiological data is real; healthcare data extrapolated from national to provincial level with documented formulas
+5. **Real data with SEIR extrapolation**: 159 real INSP records (5/14–5/28); 10,557 total records generated via SEIR compartmental model + gravity-model spatial diffusion (5/29–8/15, documented in §2.6)
 6. **Two-series choropleth overlay**: Base layer (uniform thin borders) + transparent overlay (thick selection borders) — solves ECharts single-series shared-edge border clipping
 7. **Province detail panel with zone scatter**: ADM1 choropleth at province level, health zone selection via zoomed scatter markers — bridges the geographic granularity gap without requiring health-zone GeoJSON boundaries
 8. **Health-zone mortality color in parallel coordinates**: Each line = one health zone, color encoded by zone mortality rate (green→red), selection shown via line width/opacity — preserves data encoding even when filtered

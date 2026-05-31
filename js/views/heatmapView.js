@@ -101,23 +101,6 @@ function computeCentroid(geometry) {
   return [sumX / coords.length, sumY / coords.length];
 }
 
-/**
- * Spread N points evenly in a circle around a center.
- * Returns array of [lon, lat] positions.
- */
-function spreadZonePositions(center, count, radius) {
-  const positions = [];
-  if (count === 1) return [[center[0], center[1]]];
-  for (let i = 0; i < count; i++) {
-    const angle = (2 * Math.PI * i) / count - Math.PI / 2;
-    positions.push([
-      parseFloat((center[0] + radius * Math.cos(angle)).toFixed(4)),
-      parseFloat((center[1] + radius * Math.sin(angle)).toFixed(4)),
-    ]);
-  }
-  return positions;
-}
-
 // Zone marker colors (for province detail scatter)
 const ZONE_MARKER_COLORS = [
   '#e6194b', '#3cb44b', '#4363d8', '#f58231',

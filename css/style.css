@@ -3,9 +3,10 @@
 html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif; background: #f5f7fa; color: #333; overflow-y: auto; overflow-x: hidden; }
 
 /* ── CSS Grid Layout ── */
-/*    Row 1 (500px): Heatmap + Timeline — spatiotemporal pairing (分析任务1)
-      Row 2 (420px): Parallel coords full-width — needs room for 500+ lines (分析任务2)
-      Row 3 (380px): Policy + Detail bar chart — intervention + stats (分析任务3+4)
+/*    Row 1 (auto):       Title bar
+      Row 2 (500px):      Heatmap + Timeline — spatiotemporal pairing (分析任务1)
+      Row 3 (420px):      Parallel coords full-width — room for 500+ lines (分析任务2)
+      Row 4 (380px):      Policy + Detail bar chart — intervention + stats (分析任务3+4)
       Page scrolls if total exceeds viewport. */
 #app {
   display: grid;
@@ -91,21 +92,6 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 
 /* ── Detail Panel ── */
 #chart-detail { padding: 8px; font-size: 0.8rem; line-height: 1.7; }
-#chart-detail .stat-value { font-weight: bold; font-size: 1.05rem; }
-#chart-detail .stat-label { color: #888; }
-#chart-detail table { width: 100%; border-collapse: collapse; font-size: 0.75rem; margin-top: 8px; }
-#chart-detail th, #chart-detail td { padding: 2px 6px; border-bottom: 1px solid #f0f0f0; }
-#chart-detail th { text-align: left; color: #666; font-weight: 600; }
-#chart-detail td { text-align: right; }
-#chart-detail td:first-child { text-align: left; }
-#chart-detail .region-high { color: #d32f2f; font-weight: bold; }
-
-/* ── Policy type colors ── */
-.policy-lockdown { color: #d32f2f; }
-.policy-vaccination { color: #2e7d32; }
-.policy-aid { color: #1565c0; }
-.policy-surveillance { color: #f57c00; }
-.policy-health_response { color: #7b1fa2; }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {

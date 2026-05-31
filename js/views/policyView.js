@@ -45,9 +45,12 @@ export function initPolicy(dom, store, data) {
       policyIndex: i,
     }));
 
-    // Selected policy vertical lines
+    // Selected policy vertical lines — use UNFILTERED data.policies so
+    // markLines for selected policies don't silently disappear when time
+    // range or region filter excludes the policy's date/region.
+    const allPolicies = data.policies || [];
     const markLines = state.selectedPolicyIds.map(pid => {
-      const p = policies.find(ev => ev.id === pid);
+      const p = allPolicies.find(ev => ev.id === pid);
       if (!p) return null;
       return { xAxis: p.date, label: { show: true, formatter: p.title.slice(0, 12) + '…', fontSize: 8 }, lineStyle: { color: POLICY[p.type] || '#999', type: 'dashed', width: 1 } };
     }).filter(Boolean);

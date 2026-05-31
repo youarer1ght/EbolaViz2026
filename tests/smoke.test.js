@@ -81,6 +81,7 @@ const data = {
   borderPoE:           load('borderPoE',           'data/border_poe.json'),
   geoOutbreak:         load('geoOutbreak',         'data/geo/outbreak_region.geojson'),
   ugaDistrictRegion:   load('ugaDistrictRegion',   'data/geo/uga_district_region_map.json'),
+  zoneCoords:          load('zoneCoords',          'data/zone_coords.json'),
 };
 
 // ── Bootstrap Store ──

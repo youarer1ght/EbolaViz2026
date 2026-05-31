@@ -5,8 +5,7 @@
  * 3. Initialize all 5 views
  * 4. Wire up playback controls
  *
- * Team members: Fill in views by editing js/views/*.js
- * Add GeoJSON to data/geo/ to upgrade heatmap from scatter → choropleth
+ * Choropleth mode is default (GeoJSON loaded from data/geo/outbreak_region.geojson).
  */
 import { createStore, reducer, getInitialState } from './store.js';
 import {

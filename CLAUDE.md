@@ -98,8 +98,7 @@ Single global Store (~50 lines, hand-written observer pattern). All filter state
 ```javascript
 store = {
   timeRange, animatingDate, isPlaying,     // Time
-  selectedRegions, highlightedRegions,      // Space (separate: filter vs highlight)
-  parallelAxesFilter,                       // Multi-dimension
+  selectedRegions, highlightedRegions,      // Space (filter vs highlight)
   selectedPolicyIds,                        // Policy
 }
 ```
@@ -140,7 +139,7 @@ All views follow the same pattern:
 | `index.html` | SPA shell, 6 container divs (heatmap split layout), ECharts CDN, titlebar controls | ~60 lines |
 | `css/style.css` | CSS Grid layout (5-view), heatmap split flexbox, detail overlay, policy type colors | ~115 lines |
 | `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~75 lines |
-| `js/actions.js` | 9 action creator functions (pure) | ~15 lines |
+| `js/actions.js` | 7 action creator functions (pure) | ~12 lines |
 | `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~100 lines |
 | `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()` | ~100 lines |
 | `js/utils/colors.js` | Color constants (HEATMAP, TABLEAU, POLICY), `getRegionColor()`, `heatmapColor()` | ~50 lines |
@@ -148,7 +147,7 @@ All views follow the same pattern:
 | `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~80 lines |
 | `js/views/parallelView.js` | Parallel coordinates, click-to-select + clear button | ~220 lines |
 | `js/views/policyView.js` | Scatter markers + case trend background | ~100 lines |
-| `js/views/detailView.js` | HTML panel: stats cards + region table | ~100 lines |
+| `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~240 lines |
 | `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~170 lines |
 
 ## Testing approach

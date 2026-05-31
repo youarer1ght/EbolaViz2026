@@ -652,31 +652,56 @@ export function initHeatmap(dom, store, data) {
     // Update overview map
     chart.setOption(buildOption(state), true);
 
-    // Update province detail panel
-    if (detailChart && activeDetailProvince) {
+    // ── Determine which province's detail panel to show ──
+    // Priority: keep current activeDetailProvince if it still has selected zones;
+    // otherwise pick the province with the most selected zones (for cross-view selection).
+    if (activeDetailProvince && detailChart) {
       const zones = provinceToZones[activeDetailProvince];
       const selectedSet = new Set(state.selectedRegions);
-
-      // If all zones in the active province are deselected, hide the detail panel
-      if (zones && zones.length > 0 && zones.every(z => !selectedSet.has(z))) {
-        // All zones deselected → hide detail
+      if (zones && zones.every(z => !selectedSet.has(z))) {
+        // All zones in the active province are deselected → switch to another province
         activeDetailProvince = null;
-        hideDetailPanel();
-        // Clear detail chart
-        detailChart.setOption({
-          backgroundColor: '#fff',
-          title: { text: '', left: 'center', top: '40%' },
-          geo: undefined,
-          series: [],
-        }, true);
-      } else if (zones && zones.length > 0) {
-        // Still has selected zones → update detail
+      }
+    }
+
+    // Auto-derive province from selected regions (cross-view selection from
+    // parallel coords / timeline / detail table — not from heatmap click)
+    if (!activeDetailProvince && state.selectedRegions.length > 0 && detailChart) {
+      // Pick the province that has the most selected zones
+      const provVotes = {};
+      for (const r of state.selectedRegions) {
+        const prov = zoneToProvince[r];
+        if (prov) provVotes[prov] = (provVotes[prov] || 0) + 1;
+      }
+      let bestProv = null, bestCount = 0;
+      for (const [prov, count] of Object.entries(provVotes)) {
+        if (count > bestCount) { bestProv = prov; bestCount = count; }
+      }
+      if (bestProv) activeDetailProvince = bestProv;
+    }
+
+    // No selected regions at all → hide detail
+    if (state.selectedRegions.length === 0 && activeDetailProvince) {
+      activeDetailProvince = null;
+    }
+
+    // ── Render province detail panel ──
+    if (detailChart && activeDetailProvince) {
+      const zones = provinceToZones[activeDetailProvince];
+      if (zones && zones.length > 0) {
         showDetailPanel(activeDetailProvince);
         detailChart.setOption(buildProvinceDetailOption(activeDetailProvince, state), true);
       } else {
-        // No zones for this province (shouldn't happen)
         hideDetailPanel();
       }
+    } else if (detailChart && !activeDetailProvince) {
+      hideDetailPanel();
+      detailChart.setOption({
+        backgroundColor: '#fff',
+        title: { text: '', left: 'center', top: '40%' },
+        geo: undefined,
+        series: [],
+      }, true);
     }
   }
 

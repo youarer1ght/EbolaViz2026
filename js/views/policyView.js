@@ -49,10 +49,47 @@ export function initPolicy(dom, store, data) {
     // markLines for selected policies don't silently disappear when time
     // range or region filter excludes the policy's date/region.
     const allPolicies = data.policies || [];
+    // Stagger markLine labels by date proximity to avoid overlap:
+    // sort by date, cluster within 2-day windows, cycle top→center→bottom.
+    const sortedIds = [...state.selectedPolicyIds].sort((a, b) => {
+      const pa = allPolicies.find(p => p.id === a);
+      const pb = allPolicies.find(p => p.id === b);
+      return (pa?.date || '').localeCompare(pb?.date || '');
+    });
+
+    const POSITIONS = ['end', 'middle', 'start'];  // top, center, bottom
+    const posMap = {};
+    let clusterIdx = 0;
+    let prevDate = null;
+    for (const pid of sortedIds) {
+      const p = allPolicies.find(ev => ev.id === pid);
+      const curDate = p?.date || '';
+      if (prevDate && (new Date(curDate) - new Date(prevDate)) / 864e5 > 2) {
+        clusterIdx = 0;
+      }
+      posMap[pid] = POSITIONS[clusterIdx % POSITIONS.length];
+      clusterIdx++;
+      prevDate = curDate;
+    }
+
+    // Build markLines: fixed-width labels with word-wrap so long names
+    // become tall+narrow instead of short+wide → much less horizontal overlap.
     const markLines = state.selectedPolicyIds.map(pid => {
       const p = allPolicies.find(ev => ev.id === pid);
       if (!p) return null;
-      return { xAxis: p.date, label: { show: true, formatter: p.title.slice(0, 12) + '…', fontSize: 8 }, lineStyle: { color: POLICY[p.type] || '#999', type: 'dashed', width: 1 } };
+      return {
+        xAxis: p.date,
+        label: {
+          show: true,
+          formatter: p.title,
+          fontSize: 7,
+          width: 64,
+          overflow: 'break',
+          position: posMap[pid],
+          distance: 4,
+        },
+        lineStyle: { color: POLICY[p.type] || '#999', type: 'dashed', width: 1 },
+      };
     }).filter(Boolean);
 
     return {
@@ -72,7 +109,7 @@ export function initPolicy(dom, store, data) {
           return `${params.value[0]}<br/>病例: ${params.value[1]}`;
         },
       },
-      grid: { top: 8, right: 16, bottom: 28, left: 48 },
+      grid: { top: 46, right: 16, bottom: 28, left: 48 },
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 8, rotate: 25 },

@@ -115,11 +115,28 @@ export function initParallel(dom, store, data) {
             床位: ${v[4]} 张/万人`;
         },
       },
-      // Brush removed — ECharts parallel brush has a hardcoded blue fill
-      // that cannot be made fully transparent (rgba color is ignored).
-      // Instead, click on any line to select/deselect that region.
-      // Selected lines = thick + full opacity; unselected = thin + faded.
-      // Mortality-based green→red gradient always preserved.
+      // ── Per-axis brush for range filtering ──
+      //     Drag on an axis to select a value range; drag on another axis
+      //     to add a second AND-filter.  brushMode:'multiple' + removeOnClick
+      //     lets the user manage each axis brush independently (click a brush
+      //     area to remove just that one).  Styling uses gray instead of
+      //     ECharts default blue to keep the visual clean.
+      brush: {
+        toolbox: ['clear'],
+        parallelAxisIndex: [0, 1, 2, 3, 4],
+        seriesIndex: 0,
+        brushMode: 'multiple',
+        removeOnClick: true,
+        throttleType: 'debounce',
+        throttleDelay: 300,
+        outOfBrush: { colorAlpha: 0.08 },
+        brushStyle: {
+          borderWidth: 1.5,
+          color: 'rgba(150,150,150,0.1)',
+          borderColor: '#999',
+        },
+        transformable: true,
+      },
       // ── Header row: graphic text above the parallel area ──
       //     Positions in pixels, matching parallel.left:70 + even spacing.
       //     First axis at 70px, last at containerWidth-70px, 3 middle spaced evenly.
@@ -151,7 +168,7 @@ export function initParallel(dom, store, data) {
           top: 35,
           z: 100,
           style: {
-            text: '🎨 色=省份  |  浓淡=死亡率  |  点击线条选中/取消  |  悬停查看数据  |  ✕ 清除',
+            text: '🎨 色=省份  |  浓淡=死亡率  |  拖拽轴线框选范围  |  点击框选区取消  |  点击线条选中  |  R 重置  |  ✕ 清除',
             fontSize: 10, fill: '#aaa',
             fontFamily: '-apple-system, "Noto Sans SC", sans-serif',
           },
@@ -234,11 +251,24 @@ export function initParallel(dom, store, data) {
 
   clearBtn.addEventListener('click', (e) => {
     e.stopPropagation();
+    // Clear both line selections and brush areas
+    chart.dispatchAction({ type: 'brush', command: 'clear', areas: [] });
     store.dispatch(setSelectedRegions([]));
   });
 
+  // Track previous selection state so we can clear ECharts brush areas
+  // when the user resets all filters (R key or ✕清除).
+  let _prevHadSelection = false;
+
   // ── Store → render ──
   function render(state) {
+    const hasSelection = state.selectedRegions.length > 0 || state.selectedPolicyIds.length > 0;
+    // On full reset (R key): clear any active ECharts brush areas
+    if (_prevHadSelection && !hasSelection) {
+      chart.dispatchAction({ type: 'brush', command: 'clear', areas: [] });
+    }
+    _prevHadSelection = hasSelection;
+
     // replaceMerge: replace series data when time range changes
     // (old zones outside the new time window are removed, not merged)
     chart.setOption(buildOption(state), { notMerge: false, replaceMerge: ['series'] });

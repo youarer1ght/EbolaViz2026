@@ -93,7 +93,7 @@ js/main.js                   — Create Store, init 5 views, wire controls
 
 ### State management (js/store.js)
 
-Single global Store (~50 lines, hand-written observer pattern). All filter state lives here:
+Single global Store (~75 lines, hand-written observer pattern). All filter state lives here:
 
 ```javascript
 store = {
@@ -123,11 +123,11 @@ All views follow the same pattern:
 
 | User action | Dispatches | Affected views |
 |-------------|-----------|----------------|
-| dataZoom brush | `SET_TIME_RANGE` | heatmap, parallel, policy, detail |
+| dataZoom brush | `SET_TIME_RANGE` | heatmap, timeline, parallel, policy, detail |
 | Click province on map | `SET_SELECTED_REGIONS` | heatmap (detail panel), timeline, parallel, policy, detail |
-| Click zone marker in detail | `SET_SELECTED_REGIONS` | heatmap (both panels), timeline, parallel, detail |
+| Click zone marker in heatmap detail | `SET_SELECTED_REGIONS` | heatmap (both panels), timeline, parallel, detail |
 | Click parallel line | `SET_SELECTED_REGIONS` | heatmap (detail panel), timeline, policy, detail |
-| Click detail bar chart | `SET_SELECTED_REGIONS` | heatmap, timeline, parallel, policy |
+| Click detail bar chart | `SET_SELECTED_REGIONS` | heatmap, timeline, parallel, policy, detail |
 | Hover province on map | `SET_HIGHLIGHTED_REGIONS` | heatmap (overlay border), timeline (line width) |
 | Click policy marker | `SET_SELECTED_POLICY_IDS` | policy (markLines), detail |
 | Play/Pause/Reset | `SET_ANIMATING_DATE` / `SET_IS_PLAYING` / `RESET_ALL` | all views |
@@ -141,14 +141,14 @@ All views follow the same pattern:
 | `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~75 lines |
 | `js/actions.js` | 7 action creator functions (pure) | ~12 lines |
 | `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~140 lines |
-| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()` | ~155 lines |
-| `js/utils/colors.js` | Color constants (HEATMAP, TABLEAU, POLICY), `getRegionColor()`, `heatmapColor()` | ~50 lines |
+| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()` | ~170 lines |
+| `js/utils/colors.js` | Color constants (TABLEAU, POLICY), `getRegionColor()` — choropleth uses its own 7-level palette | ~50 lines |
 | `js/views/heatmapView.js` | Choropleth (two-series overlay) + split layout + province detail with real- coordinate zone markers + roam zoom | ~700 lines |
-| `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~80 lines |
-| `js/views/parallelView.js` | Parallel coordinates, click-to-select + clear button | ~220 lines |
+| `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~200 lines |
+| `js/views/parallelView.js` | Parallel coordinates, click-to-select + clear button | ~255 lines |
 | `js/views/policyView.js` | Scatter markers + case trend background | ~130 lines |
 | `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~240 lines |
-| `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~170 lines |
+| `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~340 lines |
 
 ## Testing approach
 
@@ -194,4 +194,4 @@ For automated checks, verify:
 5. **Real data with SEIR extrapolation**: 159 real INSP records (5/14–5/28); 10,557 total records generated via SEIR compartmental model + gravity-model spatial diffusion (5/29–8/15, documented in §2.6)
 6. **Two-series choropleth overlay**: Base layer (uniform thin borders) + transparent overlay (thick selection borders) — solves ECharts single-series shared-edge border clipping
 7. **Province detail panel with zone scatter**: ADM1 choropleth at province level, health zone selection via zoomed scatter markers — bridges the geographic granularity gap without requiring health-zone GeoJSON boundaries
-8. **Health-zone mortality color in parallel coordinates**: Each line = one health zone, color encoded by zone mortality rate (green→red), selection shown via line width/opacity — preserves data encoding even when filtered
+8. **Province-color + mortality-opacity dual encoding in parallel coordinates**: Each line = one health zone, color = province (categorical 15-color palette), opacity = zone mortality rate (higher CFR → more opaque, 0.25–0.90), selection = gold (#ff8f00) thick line — dual-channel encoding preserves both dimensions under filtering

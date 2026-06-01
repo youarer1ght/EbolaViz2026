@@ -6,7 +6,7 @@
  * Fallback mode: scatter/bubble map when GeoJSON load fails.
  *
  * Coordination:
- *   Click province → select all child health zones → other views filter
+ *   Click province → show detail panel with zone scatter markers → click individual zones to select
  *   Hover province → highlight child zones (timeline line width, etc.)
  *
  * Province detail panel (right side):
@@ -326,6 +326,7 @@ export function initHeatmap(dom, store, data) {
         },
       },
       series: [{
+        id: 'detail-scatter',
         type: 'scatter',
         coordinateSystem: 'geo',
         data: scatterData,
@@ -498,6 +499,7 @@ export function initHeatmap(dom, store, data) {
       series: [
         // ── Series 1: Base choropleth (all provinces, uniform thin borders) ──
         {
+          id: 'base-series',
           type: 'map',
           map: 'outbreak-region',
           roam: true,
@@ -520,6 +522,7 @@ export function initHeatmap(dom, store, data) {
         },
         // ── Series 2: Selection border overlay (transparent fill, thick borders) ──
         {
+          id: 'overlay-series',
           type: 'map',
           map: 'outbreak-region',
           roam: false,           // zoom/pan handled by series 1
@@ -597,18 +600,15 @@ export function initHeatmap(dom, store, data) {
   chart.on('click', params => {
     if (hasGeo && params.componentType === 'series' && params.name) {
       const zones = provinceToZones[params.name] || [params.name];
-      const current = store.getState().selectedRegions;
-      const allSelected = zones.every(z => current.includes(z));
-      const next = allSelected
-        ? current.filter(r => !zones.includes(r))
-        : [...new Set([...current, ...zones])];
-
-      // Set active province BEFORE dispatch so render() updates correct detail
+      // Clicking a province now opens the detail panel WITHOUT auto-selecting
+      // all child health zones.  This gives the user precise control:
+      //   - Click province → right panel shows zone scatter markers
+      //   - Click individual zone markers → toggle that zone
+      //   - Click "☑ 全选" button → bulk-select all zones (convenience)
+      // This replaces the old all-or-nothing behaviour where a province click
+      // always selected every zone.
       activeDetailProvince = params.name;
-      store.dispatch(setSelectedRegions(next));
 
-      // Show province detail panel (render already called via dispatch, but
-      // we call setOption again to ensure the detail chart is fully synced)
       if (zones.length > 0 && detailChart) {
         showDetailPanel(params.name);
         detailChart.setOption(buildProvinceDetailOption(params.name, store.getState()), true);
@@ -665,26 +665,31 @@ export function initHeatmap(dom, store, data) {
   // Store → render
   // ═══════════════════════════════════════════════════════════════════════
 
+  // Track previous detail province so we only do a full replace when
+  // switching provinces (preserving zoom/roam within the same province).
+  let _prevDetailProvince = null;
+
   function render(state) {
-    // Update overview map
-    chart.setOption(buildOption(state), true);
+    // ── Overview map: preserve zoom/roam by using notMerge:false ──
+    // Strip zoom/center from series so ECharts keeps user's viewport
+    const ovOpt = buildOption(state);
+    if (ovOpt.series) {
+      ovOpt.series = ovOpt.series.map(s => {
+        const { zoom, center, ...rest } = s;
+        return rest;
+      });
+    }
+    chart.setOption(ovOpt, { notMerge: false, replaceMerge: ['base-series', 'overlay-series'] });
 
     // ── Determine which province's detail panel to show ──
-    // Priority: keep current activeDetailProvince if it still has selected zones;
-    // otherwise pick the province with the most selected zones (for cross-view selection).
-    if (activeDetailProvince && detailChart) {
-      const zones = provinceToZones[activeDetailProvince];
-      const selectedSet = new Set(state.selectedRegions);
-      if (zones && zones.every(z => !selectedSet.has(z))) {
-        // All zones in the active province are deselected → switch to another province
-        activeDetailProvince = null;
-      }
-    }
-
-    // Auto-derive province from selected regions (cross-view selection from
-    // parallel coords / timeline / detail table — not from heatmap click)
+    // activeDetailProvince persists until the user explicitly clicks empty
+    // space or a different province (set in click handler).  It is NOT
+    // cleared by zero-selection state because the user may be viewing a
+    // province before selecting any of its zones.
+    //
+    // Cross-view selection (parallel coords / timeline / detail bar chart)
+    // auto-derives the best province when no province is currently active.
     if (!activeDetailProvince && state.selectedRegions.length > 0 && detailChart) {
-      // Pick the province that has the most selected zones
       const provVotes = {};
       for (const r of state.selectedRegions) {
         const prov = zoneToProvince[r];
@@ -697,21 +702,29 @@ export function initHeatmap(dom, store, data) {
       if (bestProv) activeDetailProvince = bestProv;
     }
 
-    // No selected regions at all → hide detail
-    if (state.selectedRegions.length === 0 && activeDetailProvince) {
-      activeDetailProvince = null;
-    }
-
     // ── Render province detail panel ──
     if (detailChart && activeDetailProvince) {
       const zones = provinceToZones[activeDetailProvince];
       if (zones && zones.length > 0) {
         showDetailPanel(activeDetailProvince);
-        detailChart.setOption(buildProvinceDetailOption(activeDetailProvince, state), true);
+        const detailOpt = buildProvinceDetailOption(activeDetailProvince, state);
+        if (_prevDetailProvince !== activeDetailProvince) {
+          // Province switched → full replace (new geo, new scatter data)
+          detailChart.setOption(detailOpt, true);
+        } else {
+          // Same province → preserve zoom/roam, only replace scatter data.
+          // Strip zoom/center from geo so ECharts' notMerge keeps the user's
+          // current viewport instead of resetting to 1.0 / centroid.
+          const { zoom, center, ...geoRest } = detailOpt.geo || {};
+          const safeOpt = { ...detailOpt, geo: geoRest };
+          detailChart.setOption(safeOpt, { notMerge: false, replaceMerge: ['detail-scatter'] });
+        }
+        _prevDetailProvince = activeDetailProvince;
       } else {
         hideDetailPanel();
       }
     } else if (detailChart && !activeDetailProvince) {
+      _prevDetailProvince = null;
       hideDetailPanel();
       detailChart.setOption({
         backgroundColor: '#fff',

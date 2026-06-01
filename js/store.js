@@ -1,5 +1,5 @@
 /**
- * Minimal observable store — ~40 lines, zero dependencies.
+ * Minimal observable store — ~80 lines, zero dependencies.
  *
  *   const store = createStore(reducer, initialState);
  *   store.dispatch({ type: 'SET_TIME_RANGE', payload: [...] });

@@ -6,12 +6,12 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 /*    Row 1 (auto):       Title bar
       Row 2 (500px):      Heatmap + Timeline — spatiotemporal pairing (分析任务1)
       Row 3 (420px):      Parallel coords full-width — room for 500+ lines (分析任务2)
-      Row 4 (380px):      Policy + Detail bar chart — intervention + stats (分析任务3+4)
+      Row 4 (450px):      Policy + Detail bar chart — intervention + stats (分析任务3+4)
       Page scrolls if total exceeds viewport. */
 #app {
   display: grid;
   grid-template-columns: 55fr 45fr;
-  grid-template-rows: auto minmax(500px, auto) minmax(420px, auto) minmax(380px, auto);
+  grid-template-rows: auto minmax(500px, auto) minmax(420px, auto) minmax(450px, auto);
   grid-template-areas:
     "titlebar  titlebar"
     "heatmap   timeline"
@@ -97,7 +97,7 @@ html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, "Sego
 @media (max-width: 900px) {
   #app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(350px, auto) minmax(250px, auto) minmax(300px, auto) minmax(250px, auto) minmax(300px, auto);
+    grid-template-rows: auto minmax(350px, auto) minmax(250px, auto) minmax(300px, auto) minmax(280px, auto) minmax(300px, auto);
     grid-template-areas: "titlebar" "heatmap" "timeline" "parallel" "policy" "detail";
   }
   .heatmap-split { flex-direction: column; }

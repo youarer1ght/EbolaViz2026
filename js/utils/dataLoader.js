@@ -168,3 +168,27 @@ export function summarizeByProvince(cases, ugaDistrictRegion) {
   }
   return summary;
 }
+
+/**
+ * Shallow-compare named state keys.  Returns true iff all keys match
+ * between prev and next.  Used by views to skip re-rendering on state
+ * changes that don't affect them (e.g. SET_HIGHLIGHTED_REGIONS is ignored
+ * by parallelView, policyView, and detailView).
+ */
+export function stateKeysEqual(prev, next, keys) {
+  if (!prev) return false;
+  for (const k of keys) {
+    const pv = prev[k], nv = next[k];
+    if (pv === nv) continue;
+    // Fast array diff (selectedRegions, timeRange, selectedPolicyIds)
+    if (Array.isArray(pv) && Array.isArray(nv)) {
+      if (pv.length !== nv.length) return false;
+      for (let i = 0; i < pv.length; i++) {
+        if (pv[i] !== nv[i]) return false;
+      }
+      continue;
+    }
+    return false;
+  }
+  return true;
+}

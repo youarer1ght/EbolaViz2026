@@ -23,7 +23,7 @@
  * encoding and don't disappear.
  */
 import { setSelectedRegions, setHighlightedRegions } from '../actions.js';
-import { filterCases, summarizeByProvince, summarizeByRegion } from '../utils/dataLoader.js';
+import { filterCases, summarizeByProvince, summarizeByRegion, stateKeysEqual } from '../utils/dataLoader.js';
 import { getRegionColor } from '../utils/colors.js';
 
 // Approximate health zone coordinates (for scatter/bubble fallback)
@@ -380,23 +380,21 @@ export function initHeatmap(dom, store, data) {
       highlightedProvs.add(zoneToProvince[r] || r);
     }
 
-    // Build TWO data arrays — base (all provinces) + overlay (selection borders)
+    // Single-series approach: all styling in one data array.
+    // Selected/highlighted borders may be partially clipped by adjacent
+    // polygons (ECharts borders are centred on edges), but the performance
+    // gain (1 render pass instead of 2) eliminates drag stutter.
     const seenProvinces = new Set();
-    const baseData = [];
-    const overlayData = [];
+    const mapData = [];
 
-    // Affected provinces first (from colorSummary — includes all provinces with cases)
     for (const [prov, summary] of Object.entries(colorSummary)) {
       const isSelected = selectedProvs.has(prov);
       const isHighlighted = highlightedProvs.has(prov);
-      // Show partially-selected style when some but not all zones selected
       const zonesInProv = provinceToZones[prov] || [];
       const selectedZonesInProv = zonesInProv.filter(z => state.selectedRegions.includes(z));
       const isPartial = !isSelected && selectedZonesInProv.length > 0;
-      const needsOverlay = isSelected || isHighlighted || isPartial;
 
-      // ── Base layer: uniform thin border, selection via fill + shadow ──
-      baseData.push({
+      mapData.push({
         name: prov,
         value: summary.totalConfirmed,
         deaths: summary.totalDeaths,
@@ -405,10 +403,15 @@ export function initHeatmap(dom, store, data) {
           areaColor: isSelected ? '#ff8f00'
                      : isHighlighted ? '#ffd54f'
                      : choroplethColor(summary.totalConfirmed, globalMax),
-          borderColor: isSelected ? '#999'
-                       : isHighlighted ? '#aaa'
+          borderColor: isSelected ? '#222'
+                       : isHighlighted ? '#444'
+                       : isPartial ? '#d84315'
                        : '#d0d0d0',
-          borderWidth: 0.6,
+          borderWidth: isSelected ? 3.5
+                       : isHighlighted ? 2.5
+                       : isPartial ? 2.2
+                       : 0.6,
+          borderType: isPartial ? 'dashed' : 'solid',
           shadowBlur: isSelected ? 16
                       : isHighlighted ? 10
                       : 0,
@@ -421,31 +424,6 @@ export function initHeatmap(dom, store, data) {
           fontWeight: isSelected ? 'bold' : 'normal',
         },
       });
-
-      // ── Overlay layer: transparent fill, thick borders (no clipping!) ──
-      if (needsOverlay) {
-        overlayData.push({
-          name: prov,
-          value: summary.totalConfirmed,
-          itemStyle: {
-            areaColor: 'transparent',
-            borderColor: isSelected ? '#222'
-                         : isHighlighted ? '#444'
-                         : '#d84315',            // partial = dark orange
-            borderWidth: isSelected ? 3.5
-                         : isHighlighted ? 2.5
-                         : 2.2,                  // partial
-            borderType: isPartial ? 'dashed' : 'solid',
-            shadowBlur: isSelected ? 12
-                        : isHighlighted ? 6
-                        : 0,
-            shadowColor: 'rgba(0,0,0,0.3)',
-          },
-          label: { show: false },
-          // Prevent duplicate tooltip from overlay
-          silent: true,
-        });
-      }
       seenProvinces.add(prov);
     }
 
@@ -454,7 +432,7 @@ export function initHeatmap(dom, store, data) {
       const name = feat.properties.name || feat.properties.shapeName;
       if (!seenProvinces.has(name)) {
         const isHighlighted = highlightedProvs.has(name);
-        baseData.push({
+        mapData.push({
           name,
           value: 0, deaths: 0, suspected: 0,
           itemStyle: {
@@ -464,21 +442,6 @@ export function initHeatmap(dom, store, data) {
           },
           label: { show: false },
         });
-        if (isHighlighted) {
-          overlayData.push({
-            name,
-            value: 0,
-            itemStyle: {
-              areaColor: 'transparent',
-              borderColor: '#444',
-              borderWidth: 2.5,
-              shadowBlur: 6,
-              shadowColor: 'rgba(0,0,0,0.2)',
-            },
-            label: { show: false },
-            silent: true,
-          });
-        }
       }
     }
 
@@ -488,7 +451,6 @@ export function initHeatmap(dom, store, data) {
         trigger: 'item',
         confine: true,
         formatter: p => {
-          // Only the base series triggers tooltips (overlay items have silent:true)
           if (!p.name || p.value === undefined) return '';
           return `<b>${p.name}</b><br/>
             确诊: <b>${p.value}</b> | 死亡: <b>${p.data?.deaths ?? 0}</b><br/>
@@ -496,50 +458,28 @@ export function initHeatmap(dom, store, data) {
             <em>📌 点击选中省份 → 右侧查看卫生区详情</em>`;
         },
       },
-      series: [
-        // ── Series 1: Base choropleth (all provinces, uniform thin borders) ──
-        {
-          id: 'base-series',
-          type: 'map',
-          map: 'outbreak-region',
-          roam: 'scale',         // scroll-wheel zoom (drag-pan handled by custom handler below)
-          zoom: 2.5,
-          center: [29.8, 0.3],  // Focus on eastern DRC outbreak corridor (Ituri→Nord-Kivu→Sud-Kivu)
-          nameProperty: 'name',
-          label: { show: true, fontSize: 8, color: '#555' },
-          emphasis: {
-            label: { show: true, fontSize: 11, fontWeight: 'bold' },
-            itemStyle: {
-              areaColor: '#ffe082',
-              shadowBlur: 14,
-              shadowColor: 'rgba(0,0,0,0.35)',
-              borderColor: '#666',
-              borderWidth: 1.5,
-            },
-          },
-          selectedMode: false,
-          data: baseData,
-        },
-        // ── Series 2: Selection border overlay (transparent fill, thick borders) ──
-        {
-          id: 'overlay-series',
-          type: 'map',
-          map: 'outbreak-region',
-          roam: false,           // zoom/pan handled by series 1
-          silent: true,          // all events pass through to series 1
-          nameProperty: 'name',
-          label: { show: false },
-          emphasis: { label: { show: false }, itemStyle: { areaColor: 'transparent' } },
-          selectedMode: false,
-          // Default: invisible for non-selected provinces
+      series: [{
+        id: 'map-series',
+        type: 'map',
+        map: 'outbreak-region',
+        roam: true,
+        zoom: 2.5,
+        center: [29.8, 0.3],
+        nameProperty: 'name',
+        label: { show: true, fontSize: 8, color: '#555' },
+        emphasis: {
+          label: { show: true, fontSize: 11, fontWeight: 'bold' },
           itemStyle: {
-            areaColor: 'transparent',
-            borderColor: 'transparent',
-            borderWidth: 0,
+            areaColor: '#ffe082',
+            shadowBlur: 14,
+            shadowColor: 'rgba(0,0,0,0.35)',
+            borderColor: '#666',
+            borderWidth: 1.5,
           },
-          data: overlayData,
         },
-      ],
+        selectedMode: false,
+        data: mapData,
+      }],
     };
   }
 
@@ -597,73 +537,21 @@ export function initHeatmap(dom, store, data) {
   // Interactions — Overview map
   // ═══════════════════════════════════════════════════════════════════════
 
-  // ── Custom full-container drag-to-pan ──
-  //     ECharts series.map with roam:'move' only responds to mousedown on
-  //     map polygons.  We implement our own drag-to-pan on the zrender
-  //     (canvas) level so dragging works across the ENTIRE chart container.
-  //     roam:'scale' (scroll-wheel zoom) is left to ECharts — it works
-  //     everywhere already.
-  let _dragInfo = null;
-  const _MIN_DRAG_PX = 3;   // movement below this = click, not drag
-
-  chart.getZr().on('mousedown', e => {
-    if (e.event && e.event.button !== 0) return; // left button only
-    _dragInfo = { x: e.offsetX, y: e.offsetY, moved: false };
-  });
-
-  chart.getZr().on('mousemove', e => {
-    if (!_dragInfo) return;
-    if (!_dragInfo.moved
-        && Math.abs(e.offsetX - _dragInfo.x) < _MIN_DRAG_PX
-        && Math.abs(e.offsetY - _dragInfo.y) < _MIN_DRAG_PX) return;
-
-    _dragInfo.moved = true;
-
-    // Read current viewport from the base series
-    const opt = chart.getOption();
-    const ser = (opt.series || []).find(s => s.id === 'base-series') || {};
-    const zoom = ser.zoom || 1.4;
-    const center = ser.center ? [...ser.center] : [29.5, -0.2];
-    const w = chart.getWidth() || 600;
-    const h = chart.getHeight() || 400;
-
-    // Approximate conversion: at zoom=1.0 the mapped region covers
-    // ~20° lon × ~15° lat fitted into the chart container.
-    const degPerPxX = 20 / (w * zoom);
-    const degPerPxY = 15 / (h * zoom);
-
-    const dx = e.offsetX - _dragInfo.x;
-    const dy = e.offsetY - _dragInfo.y;
-
-    // Update reference for next mousemove delta
-    _dragInfo.x = e.offsetX;
-    _dragInfo.y = e.offsetY;
-
-    chart.setOption({
-      series: [{
-        id: 'base-series',
-        center: [center[0] - dx * degPerPxX, center[1] + dy * degPerPxY],
-      }],
-    });
-  });
-
-  const _endDrag = () => { _dragInfo = null; };
-  chart.getZr().on('mouseup', _endDrag);
-  chart.getZr().on('mouseleave', _endDrag);
+  // ── Drag detection: suppress hover events during ECharts native roam ──
+  //     When the user drags the map, the cursor passes over different
+  //     provinces, triggering mouseover → store.dispatch → 5-view re-render.
+  //     This chain runs filterCases + setOption on every frame and causes
+  //     visible stutter.  We detect drag via zrender and skip the dispatch.
+  let _mouseDown = false;
+  let _isDragging = false;
+  chart.getZr().on('mousedown', () => { _mouseDown = true; _isDragging = false; });
+  chart.getZr().on('mousemove', () => { if (_mouseDown) _isDragging = true; });
+  chart.getZr().on('mouseup', () => { _mouseDown = false; _isDragging = false; });
 
   chart.on('click', params => {
-    // After a drag, skip the click → don't dispatch province selection
-    if (_dragInfo && _dragInfo.moved) return;
-    _dragInfo = null;
+    if (_isDragging) return;  // don't select after a drag
     if (hasGeo && params.componentType === 'series' && params.name) {
       const zones = provinceToZones[params.name] || [params.name];
-      // Clicking a province now opens the detail panel WITHOUT auto-selecting
-      // all child health zones.  This gives the user precise control:
-      //   - Click province → right panel shows zone scatter markers
-      //   - Click individual zone markers → toggle that zone
-      //   - Click "☑ 全选" button → bulk-select all zones (convenience)
-      // This replaces the old all-or-nothing behaviour where a province click
-      // always selected every zone.
       activeDetailProvince = params.name;
 
       if (zones.length > 0 && detailChart) {
@@ -683,7 +571,6 @@ export function initHeatmap(dom, store, data) {
       return;
     }
     if (params.componentType === 'series' && !params.name) {
-      // Clicked empty space → deselect all & hide detail
       store.dispatch(setSelectedRegions([]));
       activeDetailProvince = null;
       hideDetailPanel();
@@ -691,12 +578,16 @@ export function initHeatmap(dom, store, data) {
   });
 
   chart.on('mouseover', params => {
+    if (_isDragging) return;
     if (params.componentType === 'series' && params.name) {
       const zones = provinceToZones[params.name] || [params.name];
       store.dispatch(setHighlightedRegions(zones));
     }
   });
-  chart.on('mouseout', () => store.dispatch(setHighlightedRegions([])));
+  chart.on('mouseout', () => {
+    if (_isDragging) return;
+    store.dispatch(setHighlightedRegions([]));
+  });
 
   // ═══════════════════════════════════════════════════════════════════════
   // Interactions — Province detail (zone markers)
@@ -734,7 +625,14 @@ export function initHeatmap(dom, store, data) {
   let _prevResetId = -1;
   let _needsViewportReset = true; // first render = reset to initial viewport
 
+  const _HEATMAP_KEYS = ['timeRange', 'animatingDate', 'selectedRegions', 'highlightedRegions', 'selectedPolicyIds', '_resetId'];
+  let _lastRendered = null;
+
   function render(state) {
+    // Skip re-render if relevant state hasn't changed (e.g. isPlaying toggle)
+    if (_lastRendered && stateKeysEqual(_lastRendered, state, _HEATMAP_KEYS)) return;
+    _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate, selectedRegions: state.selectedRegions, highlightedRegions: state.highlightedRegions, selectedPolicyIds: state.selectedPolicyIds, _resetId: state._resetId };
+
     // Detect RESET_ALL via _resetId increment (always changes, even on no-op resets)
     const resetId = state._resetId || 0;
     if (resetId !== _prevResetId && _prevResetId !== -1) {
@@ -750,7 +648,7 @@ export function initHeatmap(dom, store, data) {
       chart.setOption(ovOpt, true);
       // Explicitly re-apply zoom to ensure ECharts internal state is synced
       chart.setOption({
-        series: [{ id: 'base-series', zoom: 2.5, center: [29.8, 0.3] }],
+        series: [{ id: 'map-series', zoom: 2.5, center: [29.8, 0.3] }],
       });
       _needsViewportReset = false;
     } else {
@@ -761,7 +659,7 @@ export function initHeatmap(dom, store, data) {
           return rest;
         });
       }
-      chart.setOption(ovOpt, { notMerge: false, replaceMerge: ['base-series', 'overlay-series'] });
+      chart.setOption(ovOpt, { notMerge: false, replaceMerge: ['map-series'] });
     }
 
     // ── Determine which province's detail panel to show ──

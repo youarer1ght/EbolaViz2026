@@ -3,7 +3,7 @@
  * Click policy marker → dispatches SET_SELECTED_POLICY_IDS.
  */
 import { setSelectedPolicyIds } from '../actions.js';
-import { filterCases } from '../utils/dataLoader.js';
+import { filterCases, stateKeysEqual } from '../utils/dataLoader.js';
 import { POLICY } from '../utils/colors.js';
 
 export function initPolicy(dom, store, data) {
@@ -155,7 +155,13 @@ export function initPolicy(dom, store, data) {
     }
   });
 
+  const _POLICY_KEYS = ['timeRange', 'selectedRegions', 'selectedPolicyIds'];
+  let _lastRendered = null;
+
   function render(state) {
+    // Skip re-render if relevant state hasn't changed (e.g. hover, animation)
+    if (_lastRendered && stateKeysEqual(_lastRendered, state, _POLICY_KEYS)) return;
+    _lastRendered = { timeRange: state.timeRange, selectedRegions: state.selectedRegions, selectedPolicyIds: state.selectedPolicyIds };
     chart.setOption(buildOption(state), true);
   }
 

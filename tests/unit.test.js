@@ -346,6 +346,40 @@ assertDeepEq(dl.filterCases([], {}), [], 'filterCases empty → []');
   assertDeepEq(single, ['2026-05-14', '2026-05-14'], 'single date');
 }
 
+// 4r — stateKeysEqual (view render-skip gate — 5 views depend on this)
+{
+  // All keys same (including arrays) → true
+  const a = { ts: [1, 2], sel: ['a', 'b'], n: 3 };
+  const b = { ts: [1, 2], sel: ['a', 'b'], n: 3 };
+  assert(dl.stateKeysEqual(a, b, ['ts', 'sel', 'n']) === true, 'all same → true');
+
+  // Different array values → false
+  const c = { ts: [1, 2], sel: ['a', 'c'], n: 3 };
+  assert(dl.stateKeysEqual(a, c, ['ts', 'sel', 'n']) === false, 'different array value → false');
+
+  // Different primitive → false
+  assert(dl.stateKeysEqual(a, { ...a, n: 4 }, ['ts', 'sel', 'n']) === false, 'different primitive → false');
+
+  // Array length mismatch → false
+  assert(dl.stateKeysEqual(a, { ...a, sel: ['a'] }, ['ts', 'sel', 'n']) === false, 'array length mismatch → false');
+
+  // Empty arrays equal → true
+  assert(dl.stateKeysEqual({ sel: [] }, { sel: [] }, ['sel']) === true, 'empty arrays → true');
+
+  // Same array reference (identity) → true (fast path)
+  const arr = ['a', 'b'];
+  assert(dl.stateKeysEqual({ sel: arr }, { sel: arr }, ['sel']) === true, 'same ref → true');
+
+  // Null prev → false
+  assert(dl.stateKeysEqual(null, { sel: [] }, ['sel']) === false, 'null prev → false');
+
+  // Subset of keys compared (extra keys in objects ignored)
+  assert(dl.stateKeysEqual({ sel: [], x: 1 }, { sel: [], x: 2 }, ['sel']) === true, 'extra keys ignored → true');
+
+  // Different array order → false (element-by-element comparison)
+  assert(dl.stateKeysEqual({ sel: ['a', 'b'] }, { sel: ['b', 'a'] }, ['sel']) === false, 'different order → false');
+}
+
 // ══════════════════════════════════════════════════════════════════════════════
 // Report
 // ══════════════════════════════════════════════════════════════════════════════

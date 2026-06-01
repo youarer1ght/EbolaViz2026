@@ -9,7 +9,7 @@
  *   Click bar → toggle region → SET_SELECTED_REGIONS → all views
  */
 import { setSelectedRegions } from '../actions.js';
-import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
+import { filterCases, summarizeByRegion, stateKeysEqual } from '../utils/dataLoader.js';
 
 export function initDetail(dom, store, data) {
 
@@ -37,9 +37,7 @@ export function initDetail(dom, store, data) {
   }
 
   // ── Build stats cards HTML ──
-  function buildCardsHTML(state) {
-    const filtered = filterCases(data.cases, state);
-    const summary = summarizeByRegion(filtered);
+  function buildCardsHTML(state, filtered, summary) {
     const rows = Object.values(summary).sort((a, b) => b.totalConfirmed - a.totalConfirmed);
 
     let totalConfirmed = 0, totalDeaths = 0, totalSuspected = 0;
@@ -132,9 +130,7 @@ export function initDetail(dom, store, data) {
   }
 
   // ── Build ECharts bar chart option ──
-  function buildBarOption(state) {
-    const filtered = filterCases(data.cases, state);
-    const summary = summarizeByRegion(filtered);
+  function buildBarOption(state, filtered, summary) {
     const rows = Object.values(summary)
       .filter(r => r.totalConfirmed > 0)
       .sort((a, b) => b.totalConfirmed - a.totalConfirmed);
@@ -224,9 +220,18 @@ export function initDetail(dom, store, data) {
   });
 
   // ── Store → render ──
+  const _DETAIL_KEYS = ['timeRange', 'animatingDate', 'selectedRegions', 'selectedPolicyIds'];
+  let _lastRendered = null;
+
   function render(state) {
-    cardsDom.innerHTML = buildCardsHTML(state);
-    barChart.setOption(buildBarOption(state), true);
+    // Skip re-render if relevant state hasn't changed (e.g. hover)
+    if (_lastRendered && stateKeysEqual(_lastRendered, state, _DETAIL_KEYS)) return;
+    _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate, selectedRegions: state.selectedRegions, selectedPolicyIds: state.selectedPolicyIds };
+    // Compute filtered data once — shared by cards HTML and bar chart
+    const filtered = filterCases(data.cases, state);
+    const summary = summarizeByRegion(filtered);
+    cardsDom.innerHTML = buildCardsHTML(state, filtered, summary);
+    barChart.setOption(buildBarOption(state, filtered, summary), true);
   }
 
   const unsub = store.subscribe(render);

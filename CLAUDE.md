@@ -84,7 +84,7 @@ js/main.js                   — Create Store, init 5 views, wire controls
     ├── js/store.js           — createStore() + reducer (observer pattern)
     ├── js/actions.js         — Action creators (pure functions)
     └── js/views/
-        ├── heatmapView.js   — Choropleth (two-series overlay) + province zoom detail + zone selection
+        ├── heatmapView.js   — Choropleth + province zoom detail + zone selection
         ├── timelineView.js  — Multi-line chart + dataZoom
         ├── parallelView.js  — Parallel coordinates (province-color + mortality-opacity dual encoding)
         ├── policyView.js    — Policy event scatter markers
@@ -128,7 +128,7 @@ All views follow the same pattern:
 | Click zone marker in heatmap detail | `SET_SELECTED_REGIONS` | heatmap (both panels), timeline, parallel, detail |
 | Click parallel line | `SET_SELECTED_REGIONS` | heatmap (detail panel), timeline, policy, detail |
 | Click detail bar chart | `SET_SELECTED_REGIONS` | heatmap, timeline, parallel, policy, detail |
-| Hover province on map | `SET_HIGHLIGHTED_REGIONS` | heatmap (overlay border), timeline (line width) |
+| Hover province on map | `SET_HIGHLIGHTED_REGIONS` | heatmap (border), timeline (line width) |
 | Click policy marker | `SET_SELECTED_POLICY_IDS` | policy (markLines), detail |
 | Play/Pause/Reset | `SET_ANIMATING_DATE` / `SET_IS_PLAYING` / `RESET_ALL` | all views |
 
@@ -141,10 +141,10 @@ All views follow the same pattern:
 | `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~75 lines |
 | `js/actions.js` | 7 action creator functions (pure) | ~12 lines |
 | `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~140 lines |
-| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()` | ~170 lines |
+| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()`, `stateKeysEqual()` | ~194 lines |
 | `js/utils/colors.js` | Color constants (TABLEAU, POLICY), `getRegionColor()` — choropleth uses its own 7-level palette | ~50 lines |
-| `js/views/heatmapView.js` | Choropleth (two-series overlay) + split layout + province detail with real- coordinate zone markers + roam zoom | ~760 lines |
-| `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~200 lines |
+| `js/views/heatmapView.js` | Choropleth + split layout + province detail with real-coordinate zone markers + roam zoom | ~740 lines |
+| `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE`, overview mode (aggregate + faded component lines) | ~230 lines |
 | `js/views/parallelView.js` | Parallel coordinates, click-to-select + brush range filter + clear button | ~285 lines |
 | `js/views/policyView.js` | Scatter markers + case trend background + staggered markLine labels | ~170 lines |
 | `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~240 lines |
@@ -152,12 +152,12 @@ All views follow the same pattern:
 
 ## Testing approach
 
-5 套自动化测试，804 个断言，全部在 Node.js 运行，无需浏览器。
+5 套自动化测试，813 个断言，全部在 Node.js 运行，无需浏览器。
 
 ### 运行
 
 ```bash
-node tests/unit.test.js           #  86 — 纯逻辑：store + actions + colors + dataLoader
+node tests/unit.test.js           #  95 — 纯逻辑：store + actions + colors + dataLoader + stateKeysEqual
 node tests/data.test.js           # 602 — 数据完整性：JSON 字段 / 交叉校验 / GeoJSON 结构
 node tests/option.test.js         #  78 — 视图合约：5 视图 init→render→reset→destroy 全生命周期
 node tests/coordination.test.js   #  33 — 联动事件链：用户操作 → store.dispatch 验证
@@ -214,6 +214,6 @@ node tests/smoke.test.js          #   5 — 冒烟：5 视图 init/destroy（Moc
 3. **dataZoom as sole time filter**: Removed redundant titlebar slider — ECharts dataZoom is the single source of truth
 4. **Pure frontend static deploy**: No backend — TA can run it in 15 minutes with just Python 3
 5. **Real data with SEIR extrapolation**: 159 real INSP records (5/14–5/28); 10,557 total records generated via SEIR compartmental model + gravity-model spatial diffusion (5/29–8/15, documented in §2.6)
-6. **Two-series choropleth overlay**: Base layer (uniform thin borders) + transparent overlay (thick selection borders) — solves ECharts single-series shared-edge border clipping
+6. **Single-series choropleth with drag-optimised rendering**: Merged former two-series approach into one series — cuts map render passes from 2 to 1, eliminating drag stutter. Selection borders may clip at shared edges (ECharts borders are centred on polygon edges), but the performance win outweighs the visual trade-off. Additionally, mouseover is suppressed during roam-drag (detected via zrender mousedown/mousemove) to prevent expensive store.dispatch→render chains
 7. **Province detail panel with zone scatter**: ADM1 choropleth at province level, health zone selection via zoomed scatter markers — bridges the geographic granularity gap without requiring health-zone GeoJSON boundaries
 8. **Province-color + mortality-opacity dual encoding in parallel coordinates**: Each line = one health zone, color = province (categorical 15-color palette), opacity = zone mortality rate (higher CFR → more opaque, 0.25–0.90), selection = gold (#ff8f00) thick line — dual-channel encoding preserves both dimensions under filtering

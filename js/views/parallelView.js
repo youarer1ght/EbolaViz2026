@@ -13,7 +13,7 @@
  *   Selected lines turn gold regardless of province
  */
 import { setSelectedRegions } from '../actions.js';
-import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
+import { filterCases, summarizeByRegion, stateKeysEqual } from '../utils/dataLoader.js';
 
 // Province color palette — distinct hues for visual separation
 const PROVINCE_COLORS = [
@@ -261,7 +261,13 @@ export function initParallel(dom, store, data) {
   let _prevHadSelection = false;
 
   // ── Store → render ──
+  const _PARALLEL_KEYS = ['timeRange', 'animatingDate', 'selectedRegions'];
+  let _lastRendered = null;
+
   function render(state) {
+    // Skip re-render if relevant state hasn't changed (e.g. hover, policy clicks)
+    if (_lastRendered && stateKeysEqual(_lastRendered, state, _PARALLEL_KEYS)) return;
+    _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate, selectedRegions: state.selectedRegions };
     const hasSelection = state.selectedRegions.length > 0 || state.selectedPolicyIds.length > 0;
     // On full reset (R key): clear any active ECharts brush areas
     if (_prevHadSelection && !hasSelection) {

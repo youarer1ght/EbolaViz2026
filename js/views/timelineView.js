@@ -7,7 +7,7 @@
  *   Overview: single aggregate line = sum of all visible regions
  */
 import { setTimeRange } from '../actions.js';
-import { filterCases, aggregateByRegion, getTimeRange } from '../utils/dataLoader.js';
+import { filterCases, aggregateByRegion, getTimeRange, stateKeysEqual } from '../utils/dataLoader.js';
 import { getRegionColor } from '../utils/colors.js';
 
 export function initTimeline(dom, store, data) {
@@ -51,7 +51,7 @@ export function initTimeline(dom, store, data) {
     let series;
 
     if (overviewMode) {
-      // ── Overview: single aggregate line ──
+      // ── Overview: prominent aggregate line + faded individual curves ──
       const dateMap = {};
       for (const region of allRegions) {
         for (const d of (byRegion[region] || [])) {
@@ -63,16 +63,33 @@ export function initTimeline(dom, store, data) {
         .sort((a, b) => a[0].localeCompare(b[0]))
         .map(([date, val]) => [date, val]);
 
-      series = [{
-        name: '全部区域合计',
+      // Faded per-region curves — show contribution structure without noise
+      const faded = allRegions.map(region => ({
+        name: region,
         type: 'line',
-        data: aggData,
+        data: (byRegion[region] || []).map(d => [d.date, d.new_cases || d.suspected_cases || 0]),
         smooth: true,
-        symbol: 'circle', symbolSize: 5,
-        lineStyle: { width: 2.5, color: '#d32f2f' },
-        itemStyle: { color: '#d32f2f' },
-        areaStyle: { color: 'rgba(211,47,47,0.06)' },
-      }];
+        symbol: 'none',
+        lineStyle: { width: 0.8, opacity: 1 },
+        itemStyle: { color: getRegionColor(region) },
+        silent: true,           // tooltip + emphasis delegated to aggregate line
+        z: 1,
+      }));
+
+      series = [
+        ...faded,
+        {
+          name: '全部区域合计',
+          type: 'line',
+          data: aggData,
+          smooth: true,
+          symbol: 'circle', symbolSize: 5,
+          lineStyle: { width: 2.5, color: '#d32f2f' },
+          itemStyle: { color: '#d32f2f' },
+          areaStyle: { color: 'rgba(211,47,47,0.06)' },
+          z: 10,
+        },
+      ];
     } else {
       // ── Detail: one line per region ──
       series = allRegions.map(region => ({
@@ -165,10 +182,20 @@ export function initTimeline(dom, store, data) {
 
   const fullTimeRange = getTimeRange(data.cases);
   // Track previous state to avoid full series rebuild on hover-only changes
+  const _TIMELINE_KEYS = ['timeRange', 'animatingDate', 'selectedRegions', 'highlightedRegions', '_resetId'];
+  let _lastRendered = null;
   let prevSelKey = '';
   let prevTimeKey = '';
+  let prevOverview = false;
 
   function render(state) {
+    // Skip re-render if neither state nor overviewMode changed.
+    // overviewMode is a LOCAL variable (not in store state), so we track it
+    // separately in _lastRendered to avoid false-positive skips on toggle.
+    if (_lastRendered && _lastRendered._overview === overviewMode
+        && stateKeysEqual(_lastRendered, state, _TIMELINE_KEYS)) return;
+    _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate, selectedRegions: state.selectedRegions, highlightedRegions: state.highlightedRegions, _resetId: state._resetId, _overview: overviewMode };
+
     // Detect RESET_ALL
     if (state.timeRange[0] === fullTimeRange[0] && state.timeRange[1] === fullTimeRange[1]) {
       needsReset = true;
@@ -176,11 +203,14 @@ export function initTimeline(dom, store, data) {
     // Only use replaceMerge when series actually change (selection/time).
     // Hover only changes lineStyle.width — merge is sufficient and avoids
     // destroying/recreating all series on every mouse move.
-    const selKey = state.selectedRegions.sort().join(',');
+    // Also detect overviewMode toggle — series count changes (N → 1 or 1 → N),
+    // so we MUST replace series rather than merging.
+    const selKey = [...state.selectedRegions].sort().join(',');
     const timeKey = (state.timeRange || []).join('~');
-    const structuralChange = selKey !== prevSelKey || timeKey !== prevTimeKey;
+    const structuralChange = selKey !== prevSelKey || timeKey !== prevTimeKey || overviewMode !== prevOverview;
     prevSelKey = selKey;
     prevTimeKey = timeKey;
+    prevOverview = overviewMode;
 
     chart.setOption(buildOption(state),
       structuralChange

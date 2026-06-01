@@ -152,18 +152,40 @@ All views follow the same pattern:
 
 ## Testing approach
 
-This is a visual analytics system — testing is primarily manual verification:
+5 套自动化测试，804 个断言，全部在 Node.js 运行，无需浏览器。
+
+### 运行
+
+```bash
+node tests/unit.test.js           #  86 — 纯逻辑：store + actions + colors + dataLoader
+node tests/data.test.js           # 602 — 数据完整性：JSON 字段 / 交叉校验 / GeoJSON 结构
+node tests/option.test.js         #  78 — 视图合约：5 视图 init→render→reset→destroy 全生命周期
+node tests/coordination.test.js   #  33 — 联动事件链：用户操作 → store.dispatch 验证
+node tests/smoke.test.js          #   5 — 冒烟：5 视图 init/destroy（Mock ECharts + DOM）
+```
+
+### 各套件覆盖范围
+
+| 套件 | 能检测 | 不能检测 |
+|------|--------|---------|
+| unit | reducer 纯函数、action 结构、filterCases 过滤逻辑、memoization | 视图渲染 |
+| data | CSV 编辑错误、字段空缺、跨文件 region 不匹配、日期越界 | ECharts 配置 |
+| option | init/render/resize/destroy 抛异常、state 变更后 render 崩溃 | 图表实际画了什么 |
+| coordination | 交互逻辑断裂（删掉 click handler、改 dispatch type） | 视觉样式 |
+| smoke | import 失败、模块导出错误、destroy 未清理 | 全部运行时行为 |
+
+**修改视觉细节（颜色、大小、布局）不会触发任何测试失败**——这是刻意设计。测试只验证功能契约，不检查 ECharts option 的具体值。
+
+### 手动验证清单
+
+对于自动化测试覆盖不到的视觉部分：
 
 1. **Data integrity**: `python3 scripts/build_real_data.py` must complete without errors
 2. **View rendering**: Open `localhost:8080`, verify all 5 views render without console errors
-3. **Coordination matrix**: Test all 6 user-action rows in the coordination table above
+3. **Coordination matrix**: Test all user-action rows in the coordination table above
 4. **Edge cases**: Select 0 regions → all shown; select all regions → all shown; time range at boundaries
 5. **Performance**: Window resize → all views resize smoothly; animation at 800ms/frame is stable
-
-For automated checks, verify:
-- `store.js`: reducer is a pure function (same input → same output, no mutations)
-- `dataLoader.js`: filter functions handle null/empty inputs gracefully
-- All views: `destroy()` properly cleans up subscriptions and ECharts instances
+6. **Roam state**: Zoom/pan the heatmap → click a region or zone marker → zoom is preserved
 
 ## Conventions
 

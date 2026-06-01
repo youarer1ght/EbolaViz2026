@@ -9,7 +9,7 @@
 ```bash
 git clone https://github.com/youarer1ght/EbolaViz2026.git
 cd EbolaViz2026
-python3 -m http.server 8080
+python3 -m http.server 8080 -b localhost
 # 浏览器打开 http://localhost:8080
 ```
 
@@ -92,7 +92,7 @@ EbolaViz2026/
 
 ```bash
 # 开发服务器
-python3 -m http.server 8080
+python3 -m http.server 8080 -b localhost
 
 # 数据处理（需 conda activate EBOLAVIZ）
 python3 scripts/build_real_data.py      # CSV → JSON

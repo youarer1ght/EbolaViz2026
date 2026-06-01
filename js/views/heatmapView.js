@@ -708,7 +708,8 @@ export function initHeatmap(dom, store, data) {
       if (zones && zones.length > 0) {
         showDetailPanel(activeDetailProvince);
         const detailOpt = buildProvinceDetailOption(activeDetailProvince, state);
-        if (_prevDetailProvince !== activeDetailProvince) {
+        if (!detailOpt) { /* bubble fallback: no geo → skip detail render */ }
+        else if (_prevDetailProvince !== activeDetailProvince) {
           // Province switched → full replace (new geo, new scatter data)
           detailChart.setOption(detailOpt, true);
         } else {

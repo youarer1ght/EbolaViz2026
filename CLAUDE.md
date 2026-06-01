@@ -13,7 +13,7 @@ Data preprocessing is done offline with Python scripts (`scripts/`), producing s
 ```bash
 # Development
 cd /home/yin/EbolaViz2026
-python3 -m http.server 8080                     # Start dev server (Python 3 built-in)
+python3 -m http.server 8080 -b localhost        # Start dev server (Python 3 built-in)
 # or: npx serve .                                # Alternative dev server
 
 # Data

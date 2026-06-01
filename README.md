@@ -14,7 +14,28 @@ python3 -m http.server 8080 -b localhost
 ```
 
 > 看到 5 视图网格布局 + Console 输出 `✅ EbolaViz2026 ready.` 即成功。
-> 端口被占用时换一个即可（如 `8888`、`3000`），也可以用 `npx serve .`。
+> 端口被占用时换一个即可（如 `8888`、`3000`）。
+
+### 备选：npx serve
+
+如果机器上没有 Python 3，或者希望自动处理 CORS / SPA fallback / 端口冲突：
+
+```bash
+npx serve . -p 8080
+# 浏览器打开 http://localhost:8080
+```
+
+| | `python3 -m http.server` | `npx serve .` |
+|---|---|---|
+| 依赖 | Python 3（系统自带） | Node.js + npm（自动下载 `serve`） |
+| 首次启动 | 即时 | 需联网下载 `serve` 包（~2 MB），后续使用缓存即时 |
+| 端口指定 | `8080 -b localhost` | `-p 8080`，默认绑定 `localhost` |
+| CORS 头 | 无 | 默认带 CORS 头（可跨域调试） |
+| SPA fallback | 无（手动输入完整路径） | 自动将未知路径重定向到 `index.html` |
+| 目录列表 | 显示文件列表 | 默认显示文件列表，`-s` 启用 SPA 模式 |
+| 适用场景 | 快速预览，零配置 | 模拟静态部署环境（更接近 GitHub Pages） |
+
+`-b localhost` 确保终端输出 `http://localhost:8080` 而非无法点击的 `http://0.0.0.0:8080`。如果 Python 版本较旧不支持 `-b`，忽略即可，手动在浏览器输入 `localhost:8080`。
 
 ---
 
@@ -91,8 +112,9 @@ EbolaViz2026/
 ## 命令速查
 
 ```bash
-# 开发服务器
+# 开发服务器（任选其一）
 python3 -m http.server 8080 -b localhost
+npx serve . -p 8080                     # 备选：自动 CORS + SPA fallback
 
 # 数据处理（需 conda activate EBOLAVIZ）
 python3 scripts/build_real_data.py      # CSV → JSON

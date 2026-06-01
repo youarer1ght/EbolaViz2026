@@ -61,6 +61,7 @@ export function reducer(state, action) {
         selectedRegions: [],
         highlightedRegions: [],
         selectedPolicyIds: [],
+        _resetId: (state._resetId || 0) + 1,
       };
     default: return state;
   }
@@ -75,5 +76,6 @@ export function getInitialState(fullTimeRange) {
     selectedRegions: [],
     highlightedRegions: [],
     selectedPolicyIds: [],
+    _resetId: 0,          // increments on every RESET_ALL (viewport reset signal)
   };
 }

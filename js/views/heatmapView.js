@@ -313,7 +313,7 @@ export function initHeatmap(dom, store, data) {
         center: centroid,
         aspectScale: 0.85,
         layoutCenter: ['50%', '52%'],
-        layoutSize: '88%',
+        layoutSize: '95%',
         label: { show: false },
         itemStyle: {
           areaColor: '#fafafa',
@@ -502,9 +502,9 @@ export function initHeatmap(dom, store, data) {
           id: 'base-series',
           type: 'map',
           map: 'outbreak-region',
-          roam: true,
-          zoom: 1.4,
-          center: [29.5, -0.2],
+          roam: 'scale',         // scroll-wheel zoom (drag-pan handled by custom handler below)
+          zoom: 2.5,
+          center: [29.8, 0.3],  // Focus on eastern DRC outbreak corridor (Ituri→Nord-Kivu→Sud-Kivu)
           nameProperty: 'name',
           label: { show: true, fontSize: 8, color: '#555' },
           emphasis: {
@@ -597,7 +597,64 @@ export function initHeatmap(dom, store, data) {
   // Interactions — Overview map
   // ═══════════════════════════════════════════════════════════════════════
 
+  // ── Custom full-container drag-to-pan ──
+  //     ECharts series.map with roam:'move' only responds to mousedown on
+  //     map polygons.  We implement our own drag-to-pan on the zrender
+  //     (canvas) level so dragging works across the ENTIRE chart container.
+  //     roam:'scale' (scroll-wheel zoom) is left to ECharts — it works
+  //     everywhere already.
+  let _dragInfo = null;
+  const _MIN_DRAG_PX = 3;   // movement below this = click, not drag
+
+  chart.getZr().on('mousedown', e => {
+    if (e.event && e.event.button !== 0) return; // left button only
+    _dragInfo = { x: e.offsetX, y: e.offsetY, moved: false };
+  });
+
+  chart.getZr().on('mousemove', e => {
+    if (!_dragInfo) return;
+    if (!_dragInfo.moved
+        && Math.abs(e.offsetX - _dragInfo.x) < _MIN_DRAG_PX
+        && Math.abs(e.offsetY - _dragInfo.y) < _MIN_DRAG_PX) return;
+
+    _dragInfo.moved = true;
+
+    // Read current viewport from the base series
+    const opt = chart.getOption();
+    const ser = (opt.series || []).find(s => s.id === 'base-series') || {};
+    const zoom = ser.zoom || 1.4;
+    const center = ser.center ? [...ser.center] : [29.5, -0.2];
+    const w = chart.getWidth() || 600;
+    const h = chart.getHeight() || 400;
+
+    // Approximate conversion: at zoom=1.0 the mapped region covers
+    // ~20° lon × ~15° lat fitted into the chart container.
+    const degPerPxX = 20 / (w * zoom);
+    const degPerPxY = 15 / (h * zoom);
+
+    const dx = e.offsetX - _dragInfo.x;
+    const dy = e.offsetY - _dragInfo.y;
+
+    // Update reference for next mousemove delta
+    _dragInfo.x = e.offsetX;
+    _dragInfo.y = e.offsetY;
+
+    chart.setOption({
+      series: [{
+        id: 'base-series',
+        center: [center[0] - dx * degPerPxX, center[1] + dy * degPerPxY],
+      }],
+    });
+  });
+
+  const _endDrag = () => { _dragInfo = null; };
+  chart.getZr().on('mouseup', _endDrag);
+  chart.getZr().on('mouseleave', _endDrag);
+
   chart.on('click', params => {
+    // After a drag, skip the click → don't dispatch province selection
+    if (_dragInfo && _dragInfo.moved) return;
+    _dragInfo = null;
     if (hasGeo && params.componentType === 'series' && params.name) {
       const zones = provinceToZones[params.name] || [params.name];
       // Clicking a province now opens the detail panel WITHOUT auto-selecting
@@ -669,17 +726,43 @@ export function initHeatmap(dom, store, data) {
   // switching provinces (preserving zoom/roam within the same province).
   let _prevDetailProvince = null;
 
+  // Viewport reset tracking: the store's _resetId increments on every
+  // RESET_ALL dispatch (R key / ↺ button).  We detect the change and
+  // reset zoom/center to the outbreak-focused initial viewport.
+  // This works even when the user has no selections — _resetId changes
+  // guarantee the render function is called and we can detect the reset.
+  let _prevResetId = -1;
+  let _needsViewportReset = true; // first render = reset to initial viewport
+
   function render(state) {
-    // ── Overview map: preserve zoom/roam by using notMerge:false ──
-    // Strip zoom/center from series so ECharts keeps user's viewport
-    const ovOpt = buildOption(state);
-    if (ovOpt.series) {
-      ovOpt.series = ovOpt.series.map(s => {
-        const { zoom, center, ...rest } = s;
-        return rest;
-      });
+    // Detect RESET_ALL via _resetId increment (always changes, even on no-op resets)
+    const resetId = state._resetId || 0;
+    if (resetId !== _prevResetId && _prevResetId !== -1) {
+      _needsViewportReset = true;
     }
-    chart.setOption(ovOpt, { notMerge: false, replaceMerge: ['base-series', 'overlay-series'] });
+    _prevResetId = resetId;
+
+    // ── Overview map ──
+    const ovOpt = buildOption(state);
+
+    if (_needsViewportReset) {
+      // Full replace with initial zoom/center — restores outbreak-focused view
+      chart.setOption(ovOpt, true);
+      // Explicitly re-apply zoom to ensure ECharts internal state is synced
+      chart.setOption({
+        series: [{ id: 'base-series', zoom: 2.5, center: [29.8, 0.3] }],
+      });
+      _needsViewportReset = false;
+    } else {
+      // Preserve zoom/roam by stripping zoom/center and using notMerge:false
+      if (ovOpt.series) {
+        ovOpt.series = ovOpt.series.map(s => {
+          const { zoom, center, ...rest } = s;
+          return rest;
+        });
+      }
+      chart.setOption(ovOpt, { notMerge: false, replaceMerge: ['base-series', 'overlay-series'] });
+    }
 
     // ── Determine which province's detail panel to show ──
     // activeDetailProvince persists until the user explicitly clicks empty

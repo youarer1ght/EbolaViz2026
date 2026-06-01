@@ -38,6 +38,10 @@ globalThis.echarts = {
     dispose: () => {},
     getModel: () => ({}),
     dispatchAction: () => {},
+    getZr: () => ({ on: () => {} }),
+    getWidth: () => 600,
+    getHeight: () => 450,
+    getOption: () => ({ series: [{ id: 'base-series', center: [29.5, -0.2], zoom: 1.4 }] }),
   }),
   registerMap: () => {},
 };

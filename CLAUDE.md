@@ -86,7 +86,7 @@ js/main.js                   — Create Store, init 5 views, wire controls
     └── js/views/
         ├── heatmapView.js   — Choropleth (two-series overlay) + province zoom detail + zone selection
         ├── timelineView.js  — Multi-line chart + dataZoom
-        ├── parallelView.js  — Parallel coordinates (per-zone mortality color)
+        ├── parallelView.js  — Parallel coordinates (province-color + mortality-opacity dual encoding)
         ├── policyView.js    — Policy event scatter markers
         └── detailView.js    — HTML summary panel
 ```
@@ -137,16 +137,16 @@ All views follow the same pattern:
 | File | Responsibility | Size |
 |------|---------------|------|
 | `index.html` | SPA shell, 6 container divs (heatmap split layout), ECharts CDN, titlebar controls | ~60 lines |
-| `css/style.css` | CSS Grid layout (5-view), heatmap split flexbox, detail overlay, policy type colors | ~115 lines |
+| `css/style.css` | CSS Grid layout (5-view), heatmap split flexbox, detail overlay, policy type colors | ~105 lines |
 | `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~75 lines |
 | `js/actions.js` | 7 action creator functions (pure) | ~12 lines |
 | `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~140 lines |
 | `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()` | ~170 lines |
 | `js/utils/colors.js` | Color constants (TABLEAU, POLICY), `getRegionColor()` — choropleth uses its own 7-level palette | ~50 lines |
-| `js/views/heatmapView.js` | Choropleth (two-series overlay) + split layout + province detail with real- coordinate zone markers + roam zoom | ~700 lines |
+| `js/views/heatmapView.js` | Choropleth (two-series overlay) + split layout + province detail with real- coordinate zone markers + roam zoom | ~760 lines |
 | `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE` | ~200 lines |
-| `js/views/parallelView.js` | Parallel coordinates, click-to-select + clear button | ~255 lines |
-| `js/views/policyView.js` | Scatter markers + case trend background | ~130 lines |
+| `js/views/parallelView.js` | Parallel coordinates, click-to-select + brush range filter + clear button | ~285 lines |
+| `js/views/policyView.js` | Scatter markers + case trend background + staggered markLine labels | ~170 lines |
 | `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~240 lines |
 | `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~340 lines |
 

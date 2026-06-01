@@ -100,7 +100,11 @@ EbolaViz2026/
 │   ├── extrapolate_cases.py          # SEIR + 重力模型数据外推
 │   └── merge_geojson.py              # 合并 DRC+UGA GeoJSON
 ├── tests/
-│   └── smoke.test.js                 # 冒烟测试：5 视图 init/destroy
+│   ├── unit.test.js                  # 86 断言 — Store/Actions/Colors/DataLoader 纯逻辑
+│   ├── data.test.js                  # 602 断言 — JSON 字段/交叉校验/GeoJSON 结构
+│   ├── option.test.js                # 78 断言 — 5 视图 init→render→reset→destroy 合约
+│   ├── coordination.test.js          # 33 断言 — 联动事件链验证
+│   └── smoke.test.js                 # 5 断言 — Mock ECharts + DOM 冒烟
 └── docs/
     ├── 系统文档.md / .pdf
     ├── 中期文档.md / .pdf
@@ -120,8 +124,12 @@ npx serve . -p 8080                     # 备选：自动 CORS + SPA fallback
 python3 scripts/build_real_data.py      # CSV → JSON
 python3 scripts/extrapolate_cases.py    # 时间序列外推
 
-# 冒烟测试
-node tests/smoke.test.js
+# 测试（共 5 套，804 断言）
+node tests/unit.test.js               # 86 — 纯逻辑：Store + Actions + Colors + DataLoader
+node tests/data.test.js               # 602 — 数据完整性
+node tests/option.test.js             # 78 — 视图合约
+node tests/coordination.test.js       # 33 — 联动事件链
+node tests/smoke.test.js              # 5 — 冒烟
 
 # 推送
 git push origin main

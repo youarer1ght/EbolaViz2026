@@ -49,7 +49,7 @@ globalThis.echarts = {
       getZr: () => ({ on: () => {} }),
       getWidth: () => 600,
       getHeight: () => 450,
-      getOption: () => ({ series: [{ id: 'base-series', center: [29.5, -0.2], zoom: 1.4 }] }),
+      getOption: () => ({ series: [{ id: 'map-series', center: [29.8, 0.3], zoom: 2.5 }] }),
       _lastAction: null,
     };
     chartInstances.push(inst);

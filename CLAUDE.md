@@ -93,7 +93,7 @@ scripts/build_real_data.py   — Python: clean, merge, output
 data/*.json                  — Static files, loaded via fetch()
     │
     ▼
-js/utils/dataLoader.js       — loadAllData() + filter helpers
+js/utils/dataLoader.js       — loadAllData() + filter helpers + stateKeysEqual()
     │
     ▼
 js/main.js                   — Create Store, init 5 views, wire controls
@@ -152,18 +152,18 @@ All views follow the same pattern:
 
 | File | Responsibility | Size |
 |------|---------------|------|
-| `index.html` | SPA shell, 6 container divs (heatmap split layout), ECharts CDN, titlebar controls | ~60 lines |
-| `css/style.css` | CSS Grid layout (5-view), heatmap split flexbox, detail overlay, policy type colors | ~105 lines |
-| `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~75 lines |
-| `js/actions.js` | 7 action creator functions (pure) | ~12 lines |
-| `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~140 lines |
+| `index.html` | SPA shell, 6 container divs (heatmap split layout), ECharts CDN, titlebar controls | ~66 lines |
+| `css/style.css` | CSS Grid layout (5-view), heatmap split flexbox, detail overlay, policy type colors | ~106 lines |
+| `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~81 lines |
+| `js/actions.js` | 7 action creator functions (pure) | ~10 lines |
+| `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~141 lines |
 | `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()`, `stateKeysEqual()` | ~194 lines |
-| `js/utils/colors.js` | Color constants (TABLEAU, POLICY), `getRegionColor()` — choropleth uses its own 7-level palette | ~50 lines |
+| `js/utils/colors.js` | Color constants (TABLEAU, POLICY), `getRegionColor()` — choropleth uses its own 7-level palette | ~52 lines |
 | `js/views/heatmapView.js` | Choropleth + split layout + province detail with real-coordinate zone markers + roam zoom | ~740 lines |
-| `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE`, overview mode (aggregate + faded component lines) | ~230 lines |
-| `js/views/parallelView.js` | Parallel coordinates, click-to-select + brush range filter + clear button | ~285 lines |
-| `js/views/policyView.js` | Scatter markers + case trend background + staggered markLine labels | ~170 lines |
-| `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~240 lines |
+| `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE`, overview mode (aggregate + faded component lines) | ~220 lines |
+| `js/views/parallelView.js` | Parallel coordinates, click-to-select + brush range filter + clear button | ~292 lines |
+| `js/views/policyView.js` | Scatter markers + case trend background + staggered markLine labels | ~176 lines |
+| `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~245 lines |
 | `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~340 lines |
 
 ## Testing approach

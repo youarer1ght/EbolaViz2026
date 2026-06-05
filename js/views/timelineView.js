@@ -182,42 +182,31 @@ export function initTimeline(dom, store, data) {
   });
 
   const fullTimeRange = getTimeRange(data.cases);
-  // Track previous state to avoid full series rebuild on hover-only changes
+
   const _TIMELINE_KEYS = ['timeRange', 'animatingDate', 'selectedRegions', 'highlightedRegions', '_resetId'];
   let _lastRendered = null;
-  let prevSelKey = '';
-  let prevTimeKey = '';
-  let prevOverview = false;
+  let _prevOverview = false;
 
   function render(state) {
-    // Skip re-render if neither state nor overviewMode changed.
-    // overviewMode is a LOCAL variable (not in store state), so we track it
-    // separately in _lastRendered to avoid false-positive skips on toggle.
-    if (_lastRendered && _lastRendered._overview === overviewMode
+    const modeChanged = overviewMode !== _prevOverview;
+    _prevOverview = overviewMode;
+
+    // Skip re-render when nothing relevant changed
+    if (!modeChanged && _lastRendered && _lastRendered._overview === overviewMode
         && stateKeysEqual(_lastRendered, state, _TIMELINE_KEYS)) return;
-    _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate, selectedRegions: state.selectedRegions, highlightedRegions: state.highlightedRegions, _resetId: state._resetId, _overview: overviewMode };
+    _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate,
+      selectedRegions: state.selectedRegions, highlightedRegions: state.highlightedRegions,
+      _resetId: state._resetId, _overview: overviewMode };
 
     // Detect RESET_ALL
     if (state.timeRange[0] === fullTimeRange[0] && state.timeRange[1] === fullTimeRange[1]) {
       needsReset = true;
     }
-    // Only use replaceMerge when series actually change (selection/time).
-    // Hover only changes lineStyle.width — merge is sufficient and avoids
-    // destroying/recreating all series on every mouse move.
-    // Also detect overviewMode toggle — series count changes (N → 1 or 1 → N),
-    // so we MUST replace series rather than merging.
-    const selKey = [...state.selectedRegions].sort().join(',');
-    const timeKey = (state.timeRange || []).join('~');
-    const structuralChange = selKey !== prevSelKey || timeKey !== prevTimeKey || overviewMode !== prevOverview;
-    prevSelKey = selKey;
-    prevTimeKey = timeKey;
-    prevOverview = overviewMode;
 
-    chart.setOption(buildOption(state),
-      structuralChange
-        ? { notMerge: false, replaceMerge: ['series'] }
-        : false  // merge only — no series destroyed, just line width updated
-    );
+    // Always full replace — prevents stale series from persisting across
+    // mode switches and region selections.  replaceMerge is too fragile
+    // when series count and data scale change.
+    chart.setOption(buildOption(state), true);
   }
 
   const unsub = store.subscribe(render);

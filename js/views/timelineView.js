@@ -136,8 +136,9 @@ export function initTimeline(dom, store, data) {
         formatter: params => {
           if (!params || params.length === 0) return '';
           if (overviewMode) {
-            const p = params[0];
-            return `<b>${p.value[0]}</b><br/>合计: <b style="color:#d32f2f;">${p.value[1]}</b> 例`;
+            const agg = params.find(p => p.seriesName === '全部区域合计');
+            if (!agg) return '';
+            return `<b>${agg.value[0]}</b><br/>合计: <b style="color:#d32f2f;">${agg.value[1]}</b> 例`;
           }
           return params.map(p =>
             `<span style="color:${p.color}">●</span> ${p.seriesName}: <b>${p.value[1]}</b> 例`

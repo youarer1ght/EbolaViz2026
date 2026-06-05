@@ -28,12 +28,28 @@ python3 scripts/build_real_data.py                # Regenerate analysis datasets
 #   data/border_poe.csv      — 7 Uganda-DRC border crossings
 #
 # Data sources (all CC BY 4.0):
-#   INRB-UMIE/Ebola_DRC_2026 — primary: INSP daily cases, health zone shapefile, PoE
-#   WorldPop — population counts & density per health zone
-#   healthsites.io — health facility counts per health zone
-#   FAO LCCS — satellite-derived urban fraction per health zone
-#   CCVI — socioeconomic deprivation index
-#   geoBoundaries — ADM1 province GeoJSON (DRC 26 + Uganda 4)
+#
+#   B.1 HDX — 2026 DRC/Uganda Bundibugyo Ebola official dataset (INSP daily cases)
+#       https://data.humdata.org/event/crisis-ebola-bundibugyo-virus-disease
+#   B.2 WHO — Disease Outbreak News (outbreak milestones, cross-border events, response)
+#       https://www.who.int/emergencies/disease-outbreak-news
+#   B.3 World Bank / HDX — admin boundaries, population, density, urban/rural, border PoE
+#       https://data.worldbank.org/
+#   B.4 WHO GHW / World Bank Health — beds, doctors/100k, health facility density
+#       https://data.worldbank.org/topic/8
+#   B.5 ReliefWeb — policy, lockdown, border screening, international aid events
+#       https://reliefweb.int/
+#   B.6 HDX Ebola archive — historical Ebola data for comparative analysis (optional)
+#       https://data.humdata.org/ebola
+#   B.7 License — all data CC BY 4.0, non-commercial academic use, fully attributable
+#
+#   Detailed sources:
+#     INRB-UMIE/Ebola_DRC_2026 — primary: INSP daily cases, health zone shapefile, PoE
+#     WorldPop — population counts & density per health zone
+#     healthsites.io — health facility counts per health zone
+#     FAO LCCS — satellite-derived urban fraction per health zone
+#     CCVI — socioeconomic deprivation index
+#     geoBoundaries — ADM1 province GeoJSON (DRC 26 + Uganda 4)
 
 # Testing
 node tests/smoke.test.js                           # Automated smoke test: all 5 views init + destroy OK

@@ -81,7 +81,7 @@ EbolaViz2026/
 │   ├── store.js                       # createStore() + reducer (~75行)
 │   ├── actions.js                     # Action creators
 │   ├── views/
-│   │   ├── heatmapView.js            # ① 时空热力图（双 Series 边框叠加 + 分栏 + 卫生区散点）
+│   │   ├── heatmapView.js            # ① 时空热力图（单 Series choropleth + 分栏 + 卫生区散点）
 │   │   ├── timelineView.js           # ② 时序趋势图 + dataZoom
 │   │   ├── parallelView.js           # ③ 平行坐标图（多因素关联）
 │   │   ├── policyView.js             # ④ 防控政策时间轴
@@ -100,7 +100,7 @@ EbolaViz2026/
 │   ├── extrapolate_cases.py          # SEIR + 重力模型数据外推
 │   └── merge_geojson.py              # 合并 DRC+UGA GeoJSON
 ├── tests/
-│   ├── unit.test.js                  # 86 断言 — Store/Actions/Colors/DataLoader 纯逻辑
+│   ├── unit.test.js                  # 95 断言 — Store/Actions/Colors/DataLoader/stateKeysEqual 纯逻辑
 │   ├── data.test.js                  # 602 断言 — JSON 字段/交叉校验/GeoJSON 结构
 │   ├── option.test.js                # 78 断言 — 5 视图 init→render→reset→destroy 合约
 │   ├── coordination.test.js          # 33 断言 — 联动事件链验证
@@ -124,8 +124,8 @@ npx serve . -p 8080                     # 备选：自动 CORS + SPA fallback
 python3 scripts/build_real_data.py      # CSV → JSON
 python3 scripts/extrapolate_cases.py    # 时间序列外推
 
-# 测试（共 5 套，804 断言）
-node tests/unit.test.js               # 86 — 纯逻辑：Store + Actions + Colors + DataLoader
+# 测试（共 5 套，813 断言）
+node tests/unit.test.js               # 95 — 纯逻辑：Store + Actions + Colors + DataLoader + stateKeysEqual
 node tests/data.test.js               # 602 — 数据完整性
 node tests/option.test.js             # 78 — 视图合约
 node tests/coordination.test.js       # 33 — 联动事件链

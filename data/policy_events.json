@@ -150,6 +150,16 @@
     "source": "Uganda Press & Publications Centre"
   },
   {
+    "id": "P017",
+    "date": "2026-05-28",
+    "type": "aid",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "IsraAID launches emergency Ebola response",
+    "description": "Working at Nyakabande Transit Centre (Congolese refugees >200% capacity) and Nakivale Refugee Settlement. Providing PPE, hygiene supplies, psychosocial support. As of 5/28: 1198 cases, >250 deaths in DRC; 7 cases, 1 death in Uganda.",
+    "source": "IsraAID / ReliefWeb"
+  },
+  {
     "id": "P016",
     "date": "2026-05-29",
     "type": "surveillance",
@@ -158,5 +168,85 @@
     "title": "Cases near 1,000 as containment efforts intensify",
     "description": "DRC reports 977+ suspected cases, 228+ suspected deaths (CFR ~14.3%). Four treatment centers attacked in Ituri.",
     "source": "One Health Society / Reuters"
+  },
+  {
+    "id": "P018",
+    "date": "2026-05-31",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Kinshasa",
+    "title": "EAC convenes emergency health ministers meeting",
+    "description": "Extraordinary virtual meeting (1-2 June) of East African Community health ministers to coordinate regional response. 9 mobile laboratories deployed at border points, 180+ rapid response experts activated.",
+    "source": "EAC / china.org.cn"
+  },
+  {
+    "id": "P019",
+    "date": "2026-06-02",
+    "type": "surveillance",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "IOM publishes Multi-Country Situation Report No. 3",
+    "description": "Covers 26 May-2 June. DRC: 321 confirmed, 116 suspected, 48 deaths. Uganda: 9-15 confirmed. 3.6M IDPs in DRC, 922K in Ituri. Flow monitoring at 8 PoEs shows continued cross-border movement via informal routes.",
+    "source": "IOM / ReliefWeb"
+  },
+  {
+    "id": "P020",
+    "date": "2026-06-02",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "IOM warns Ebola response must cross borders faster than virus",
+    "description": "Deputy DG Ugochi Daniels: border closures reduce visibility of population movements, undermining screening and surveillance. Calls for mobility-informed response and strengthened cross-border coordination.",
+    "source": "IOM / ReliefWeb"
+  },
+  {
+    "id": "P021",
+    "date": "2026-06-02",
+    "type": "aid",
+    "country": "COD",
+    "region": "Kinshasa",
+    "title": "CEPI commits $60M for Bundibugyo vaccine development",
+    "description": "Funding to three developers: Moderna, University of Oxford, and Serum Institute of India. Currently in preclinical/early clinical trial stages. No licensed vaccine exists for Bundibugyo strain.",
+    "source": "CEPI"
+  },
+  {
+    "id": "P022",
+    "date": "2026-06-04",
+    "type": "aid",
+    "country": "COD",
+    "region": "Kinshasa",
+    "title": "Pandemic Fund mobilizes $220.6M emergency financing",
+    "description": "$175.7M reprogrammed for 9 countries (DRC, South Sudan, Rwanda, Burundi, Tanzania, Zambia, Angola, Kenya, Ethiopia); $44.9M expedited for Uganda, CAR, Republic of Congo. World Bank-hosted fund activation.",
+    "source": "Africa CDC / Pandemic Fund / AllAfrica"
+  },
+  {
+    "id": "P023",
+    "date": "2026-06-05",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Kinshasa",
+    "title": "Africa CDC & WHO launch Continental Strategic Plan ($518M)",
+    "description": "Six-month plan (June-November) under One Response approach: one plan, one budget, one team. Covers emergency coordination, surveillance, lab testing, IPC, clinical care, community engagement, logistics.",
+    "source": "Africa CDC / WHO"
+  },
+  {
+    "id": "P024",
+    "date": "2026-06-05",
+    "type": "surveillance",
+    "country": "UGA",
+    "region": "Kampala",
+    "title": "Uganda confirms 15 total cases, 4 recoveries",
+    "description": "DRC: 363 confirmed cases, 62 deaths, 6 discharged. Uganda: 15 confirmed, 1 death, 4 recoveries. 620 contacts monitored, 270 completed 21-day observation. Lab results within ~4 hours.",
+    "source": "Africa CDC / China.org.cn / African News Agency"
+  },
+  {
+    "id": "P025",
+    "date": "2026-06-05",
+    "type": "health_response",
+    "country": "COD",
+    "region": "Ituri",
+    "title": "WHO Director warns of disinformation as second outbreak",
+    "description": "Dr. Mohamed Janabi: Fighting two outbreaks — Ebola itself and disinformation. Criticized blanket travel restrictions and border closures. Urged screening at official crossings rather than pushing movement to informal routes.",
+    "source": "WHO / Africa CDC"
   }
 ]

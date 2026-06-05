@@ -111,7 +111,7 @@ ok(codRegions.length > 0, `${codRegions.length} DRC regions verified`);
 section('4. Policies');
 
 ok(Array.isArray(POLICIES) && POLICIES.length > 0, 'policies is non-empty array');
-eq(POLICIES.length, 16, 'policies = 16 events');
+eq(POLICIES.length, 25, 'policies = 25 events');
 
 const policyFields = ['id', 'date', 'title', 'type', 'description', 'source'];
 const policyTypes = new Set();

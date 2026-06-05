@@ -24,7 +24,7 @@ python3 scripts/build_real_data.py                # Regenerate analysis datasets
 # Data CSV files (editable by Role A — Excel / VS Code / any spreadsheet)
 #   data/cases.csv           — case data: 159 real INSP records (5/14–5/28) + SEIR extrapolation (5/29–8/15), 10,557 total
 #   data/demographics.csv    — 522 health zones: population, density, urban%, health sites
-#   data/policy_events.csv   — 16 policy/humanitarian events
+#   data/policy_events.csv   — 25 policy/humanitarian events (web-scraped from WHO/ReliefWeb/Africa CDC/news)
 #   data/border_poe.csv      — 7 Uganda-DRC border crossings
 #
 # Data sources (all CC BY 4.0):

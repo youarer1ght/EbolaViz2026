@@ -126,7 +126,7 @@ python3 scripts/extrapolate_cases.py    # 时间序列外推
 
 # 测试（共 5 套，885 断言）
 node tests/unit.test.js               # 95 — 纯逻辑：Store + Actions + Colors + DataLoader + stateKeysEqual
-node tests/data.test.js               # 602 — 数据完整性
+node tests/data.test.js               # 674 — 数据完整性 + 政策事件校验
 node tests/option.test.js             # 78 — 视图合约
 node tests/coordination.test.js       # 33 — 联动事件链
 node tests/smoke.test.js              # 5 — 冒烟

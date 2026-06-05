@@ -174,7 +174,7 @@ All views follow the same pattern:
 
 ```bash
 node tests/unit.test.js           #  95 — 纯逻辑：store + actions + colors + dataLoader + stateKeysEqual
-node tests/data.test.js           # 602 — 数据完整性：JSON 字段 / 交叉校验 / GeoJSON 结构
+node tests/data.test.js           # 674 — 数据完整性：JSON 字段 / 交叉校验 / GeoJSON 结构 / 政策事件
 node tests/option.test.js         #  78 — 视图合约：5 视图 init→render→reset→destroy 全生命周期
 node tests/coordination.test.js   #  33 — 联动事件链：用户操作 → store.dispatch 验证
 node tests/smoke.test.js          #   5 — 冒烟：5 视图 init/destroy（Mock ECharts + DOM）

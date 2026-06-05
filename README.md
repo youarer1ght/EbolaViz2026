@@ -124,7 +124,7 @@ npx serve . -p 8080                     # 备选：自动 CORS + SPA fallback
 python3 scripts/build_real_data.py      # CSV → JSON
 python3 scripts/extrapolate_cases.py    # 时间序列外推
 
-# 测试（共 5 套，813 断言）
+# 测试（共 5 套，885 断言）
 node tests/unit.test.js               # 95 — 纯逻辑：Store + Actions + Colors + DataLoader + stateKeysEqual
 node tests/data.test.js               # 602 — 数据完整性
 node tests/option.test.js             # 78 — 视图合约

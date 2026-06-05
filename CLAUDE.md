@@ -109,7 +109,7 @@ js/main.js                   — Create Store, init 5 views, wire controls
 
 ### State management (js/store.js)
 
-Single global Store (~75 lines, hand-written observer pattern). All filter state lives here:
+Single global Store (~81 lines, hand-written observer pattern). All filter state lives here:
 
 ```javascript
 store = {
@@ -168,7 +168,7 @@ All views follow the same pattern:
 
 ## Testing approach
 
-5 套自动化测试，813 个断言，全部在 Node.js 运行，无需浏览器。
+5 套自动化测试，885 个断言，全部在 Node.js 运行，无需浏览器。
 
 ### 运行
 

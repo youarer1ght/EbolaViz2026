@@ -666,15 +666,10 @@ export function initHeatmap(dom, store, data) {
       }
     }
 
-    // ── Determine which province's detail panel to show ──
-    // activeDetailProvince persists until the user explicitly clicks empty
-    // space or a different province (set in click handler).  It is NOT
-    // cleared by zero-selection state because the user may be viewing a
-    // province before selecting any of its zones.
-    //
-    // Cross-view selection (parallel coords / timeline / detail bar chart)
-    // auto-derives the best province when no province is currently active.
-    if (!activeDetailProvince && state.selectedRegions.length > 0 && detailChart) {
+    // ── Auto-derive best province from current selection ──
+    // Always recompute so cross-view selections (detail bar, parallel,
+    // timeline) switch the right panel to the most relevant province.
+    if (state.selectedRegions.length > 0 && detailChart) {
       const provVotes = {};
       for (const r of state.selectedRegions) {
         const prov = zoneToProvince[r];
@@ -695,15 +690,22 @@ export function initHeatmap(dom, store, data) {
         const detailOpt = buildProvinceDetailOption(activeDetailProvince, state);
         if (!detailOpt) { /* bubble fallback: no geo → skip detail render */ }
         else if (_prevDetailProvince !== activeDetailProvince) {
-          // Province switched → full replace (new geo, new scatter data)
           detailChart.setOption(detailOpt, true);
         } else {
-          // Same province → preserve zoom/roam, only replace scatter data.
-          // Strip zoom/center from geo so ECharts' notMerge keeps the user's
-          // current viewport instead of resetting to 1.0 / centroid.
-          const { zoom, center, ...geoRest } = detailOpt.geo || {};
-          const safeOpt = { ...detailOpt, geo: geoRest };
-          detailChart.setOption(safeOpt, { notMerge: false, replaceMerge: ['detail-scatter'] });
+          // Same province → full replace to sync scatter marker selection
+          // state.  Preserve zoom/roam by reading before replace.
+          const curDetailOpt = detailChart.getOption();
+          const curGeo = (curDetailOpt || {}).geo || {};
+          const curDetailZoom = curGeo.zoom;
+          const curDetailCenter = curGeo.center;
+
+          detailChart.setOption(detailOpt, true);
+
+          if (curDetailZoom != null) {
+            detailChart.setOption({
+              geo: { zoom: curDetailZoom, center: curDetailCenter },
+            });
+          }
         }
         _prevDetailProvince = activeDetailProvince;
       } else {

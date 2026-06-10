@@ -23,7 +23,7 @@
  * encoding and don't disappear.
  */
 import { setSelectedRegions, setHighlightedRegions } from '../actions.js';
-import { filterCases, summarizeByProvince, summarizeByRegion, stateKeysEqual } from '../utils/dataLoader.js';
+import { filterCases, summarizeByProvince, summarizeByRegion, stateKeysEqual, resolveAdm1 } from '../utils/dataLoader.js';
 import { getRegionColor } from '../utils/colors.js';
 
 // Approximate health zone coordinates (for scatter/bubble fallback)
@@ -62,14 +62,6 @@ function choroplethColor(value, max) {
 }
 
 // ── Helpers ──
-
-/** Resolve health zone/demographic → ADM1 province name. */
-function resolveAdm1(d, ugaMap) {
-  if (d.country === 'UGA' && ugaMap && ugaMap[d.region]) {
-    return ugaMap[d.region];
-  }
-  return d.province || d.region;
-}
 
 /**
  * Compute approximate centroid of a GeoJSON Polygon or MultiPolygon.
@@ -628,6 +620,30 @@ export function initHeatmap(dom, store, data) {
   const _HEATMAP_KEYS = ['timeRange', 'animatingDate', 'selectedRegions', 'highlightedRegions', 'selectedPolicyIds', '_resetId'];
   let _lastRendered = null;
 
+  /** Set map-series option preserving user's roam zoom/center. */
+  function setMapOptionKeepViewport(chartInst, option, seriesId) {
+    const curOpt = chartInst.getOption();
+    const curSer = (curOpt.series || []).find(s => s.id === seriesId) || {};
+    const curZoom = curSer.zoom;
+    const curCenter = curSer.center;
+    chartInst.setOption(option, true);
+    if (curZoom != null) {
+      chartInst.setOption({ series: [{ id: seriesId, zoom: curZoom, center: curCenter }] });
+    }
+  }
+
+  /** Set geo option preserving user's roam zoom/center. */
+  function setGeoOptionKeepViewport(chartInst, option) {
+    const curOpt = chartInst.getOption();
+    const curGeo = (curOpt || {}).geo || {};
+    const curZoom = curGeo.zoom;
+    const curCenter = curGeo.center;
+    chartInst.setOption(option, true);
+    if (curZoom != null) {
+      chartInst.setOption({ geo: { zoom: curZoom, center: curCenter } });
+    }
+  }
+
   function render(state) {
     // Skip re-render if relevant state hasn't changed (e.g. isPlaying toggle)
     if (_lastRendered && stateKeysEqual(_lastRendered, state, _HEATMAP_KEYS)) return;
@@ -650,20 +666,7 @@ export function initHeatmap(dom, store, data) {
       });
       _needsViewportReset = false;
     } else {
-      // Full replace — avoids stale-series bug that replaceMerge causes.
-      // Preserve user's current zoom/center by reading before replace.
-      const curOpt = chart.getOption();
-      const curSer = (curOpt.series || []).find(s => s.id === 'map-series') || {};
-      const curZoom = curSer.zoom;
-      const curCenter = curSer.center;
-
-      chart.setOption(ovOpt, true);
-
-      if (curZoom != null) {
-        chart.setOption({
-          series: [{ id: 'map-series', zoom: curZoom, center: curCenter }],
-        });
-      }
+      setMapOptionKeepViewport(chart, ovOpt, 'map-series');
     }
 
     // ── Auto-derive best province from current selection ──
@@ -693,19 +696,8 @@ export function initHeatmap(dom, store, data) {
           detailChart.setOption(detailOpt, true);
         } else {
           // Same province → full replace to sync scatter marker selection
-          // state.  Preserve zoom/roam by reading before replace.
-          const curDetailOpt = detailChart.getOption();
-          const curGeo = (curDetailOpt || {}).geo || {};
-          const curDetailZoom = curGeo.zoom;
-          const curDetailCenter = curGeo.center;
-
-          detailChart.setOption(detailOpt, true);
-
-          if (curDetailZoom != null) {
-            detailChart.setOption({
-              geo: { zoom: curDetailZoom, center: curDetailCenter },
-            });
-          }
+          // state while preserving user's zoom/roam.
+          setGeoOptionKeepViewport(detailChart, detailOpt);
         }
         _prevDetailProvince = activeDetailProvince;
       } else {

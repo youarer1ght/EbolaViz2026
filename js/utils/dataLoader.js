@@ -170,6 +170,18 @@ export function summarizeByProvince(cases, ugaDistrictRegion) {
 }
 
 /**
+ * Resolve a health zone / demographic record to its ADM1 province name.
+ * DRC records carry a `province` field; Uganda district names are mapped
+ * via `ugaDistrictRegion` (loaded from data/geo/uga_district_region_map.json).
+ */
+export function resolveAdm1(d, ugaMap) {
+  if (d.country === 'UGA' && ugaMap && ugaMap[d.region]) {
+    return ugaMap[d.region];
+  }
+  return d.province || d.region;
+}
+
+/**
  * Shallow-compare named state keys.  Returns true iff all keys match
  * between prev and next.  Used by views to skip re-rendering on state
  * changes that don't affect them (e.g. SET_HIGHLIGHTED_REGIONS is ignored

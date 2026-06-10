@@ -275,9 +275,8 @@ export function initParallel(dom, store, data) {
     }
     _prevHadSelection = hasSelection;
 
-    // replaceMerge: replace series data when time range changes
-    // (old zones outside the new time window are removed, not merged)
-    chart.setOption(buildOption(state), { notMerge: false, replaceMerge: ['series'] });
+    // Always full replace — consistent with all other views.
+    chart.setOption(buildOption(state), true);
     updateClearBtn(state);
   }
 

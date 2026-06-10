@@ -9,15 +9,9 @@
  *   Click bar → toggle region → SET_SELECTED_REGIONS → all views
  */
 import { setSelectedRegions } from '../actions.js';
-import { filterCases, summarizeByRegion, stateKeysEqual } from '../utils/dataLoader.js';
+import { filterCases, summarizeByRegion, stateKeysEqual, resolveAdm1 } from '../utils/dataLoader.js';
 
 export function initDetail(dom, store, data) {
-
-  // ── Helper: resolve ADM1 province ──
-  function resolveAdm1(d, ugaMap) {
-    if (d.country === 'UGA' && ugaMap && ugaMap[d.region]) return ugaMap[d.region];
-    return d.province || d.region;
-  }
 
   // ── Split dom: top half HTML cards, bottom half ECharts bar chart ──
   dom.innerHTML = `

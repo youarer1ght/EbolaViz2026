@@ -20,6 +20,7 @@ python3 -m http.server 8080 -b localhost        # Start dev server (Python 3 bui
 conda activate EBOLAVIZ                           # Activate Python env
 python3 scripts/build_real_data.py                # Regenerate analysis datasets from CSV sources
 # → Reads data/*.csv → validates consistency → outputs data/*.json
+python3 scripts/fetch_who_sitrep.py --dry-run     # Fetch WHO AFRO SitRep PDFs (semi-automated)
 
 # Data CSV files (editable by Role A — Excel / VS Code / any spreadsheet)
 #   data/cases.csv           — case data: 159 real INSP records (5/14–5/28) + SEIR extrapolation (5/29–8/15), 10,557 total

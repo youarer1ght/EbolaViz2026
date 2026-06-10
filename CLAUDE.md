@@ -94,7 +94,7 @@ scripts/build_real_data.py   — Python: clean, merge, output
 data/*.json                  — Static files, loaded via fetch()
     │
     ▼
-js/utils/dataLoader.js       — loadAllData() + filter helpers + stateKeysEqual()
+js/utils/dataLoader.js       — loadAllData() + filter helpers + stateKeysEqual() + resolveAdm1()
     │
     ▼
 js/main.js                   — Create Store, init 5 views, wire controls
@@ -158,13 +158,13 @@ All views follow the same pattern:
 | `js/store.js` | `createStore()`, reducer, action type constants, `getInitialState()` | ~81 lines |
 | `js/actions.js` | 7 action creator functions (pure) | ~10 lines |
 | `js/main.js` | Entry: load data → init Store → init 5 views → playback + keyboard | ~141 lines |
-| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()`, `stateKeysEqual()` | ~194 lines |
+| `js/utils/dataLoader.js` | `loadAllData()`, `filterCases()`, `aggregateByRegion()`, `summarizeByRegion()`, `summarizeByProvince()`, `getTimeRange()`, `stateKeysEqual()`, `resolveAdm1()` | ~206 lines |
 | `js/utils/colors.js` | Color constants (TABLEAU, POLICY), `getRegionColor()` — choropleth uses its own 7-level palette | ~52 lines |
-| `js/views/heatmapView.js` | Choropleth + split layout + province detail with real-coordinate zone markers + roam zoom | ~740 lines |
+| `js/views/heatmapView.js` | Choropleth + split layout + province detail with real-coordinate zone markers + roam zoom + viewport-preserving helpers | ~738 lines |
 | `js/views/timelineView.js` | Multi-line chart, dataZoom → `SET_TIME_RANGE`, overview mode (aggregate + faded component lines) | ~220 lines |
-| `js/views/parallelView.js` | Parallel coordinates, click-to-select + brush range filter + clear button | ~292 lines |
+| `js/views/parallelView.js` | Parallel coordinates, click-to-select + brush range filter + clear button | ~291 lines |
 | `js/views/policyView.js` | Scatter markers + case trend background + staggered markLine labels | ~176 lines |
-| `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~245 lines |
+| `js/views/detailView.js` | Stats cards (HTML) + region ranking bar chart (ECharts) | ~239 lines |
 | `scripts/build_real_data.py` | Assembles real data from WHO/World Bank/ReliefWeb sources | ~340 lines |
 
 ## Testing approach

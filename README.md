@@ -78,7 +78,7 @@ EbolaViz2026/
 ├── css/style.css                      # CSS Grid 布局
 ├── js/
 │   ├── main.js                        # 入口：加载数据 → Store → 5 视图 → 播放/键盘
-│   ├── store.js                       # createStore() + reducer (~75行)
+│   ├── store.js                       # createStore() + reducer (~81行)
 │   ├── actions.js                     # Action creators
 │   ├── views/
 │   │   ├── heatmapView.js            # ① 时空热力图（单 Series choropleth + 分栏 + 卫生区散点）

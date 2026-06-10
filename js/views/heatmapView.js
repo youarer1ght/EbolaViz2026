@@ -644,22 +644,26 @@ export function initHeatmap(dom, store, data) {
     const ovOpt = buildOption(state);
 
     if (_needsViewportReset) {
-      // Full replace with initial zoom/center — restores outbreak-focused view
       chart.setOption(ovOpt, true);
-      // Explicitly re-apply zoom to ensure ECharts internal state is synced
       chart.setOption({
         series: [{ id: 'map-series', zoom: 2.5, center: [29.8, 0.3] }],
       });
       _needsViewportReset = false;
     } else {
-      // Preserve zoom/roam by stripping zoom/center and using notMerge:false
-      if (ovOpt.series) {
-        ovOpt.series = ovOpt.series.map(s => {
-          const { zoom, center, ...rest } = s;
-          return rest;
+      // Full replace — avoids stale-series bug that replaceMerge causes.
+      // Preserve user's current zoom/center by reading before replace.
+      const curOpt = chart.getOption();
+      const curSer = (curOpt.series || []).find(s => s.id === 'map-series') || {};
+      const curZoom = curSer.zoom;
+      const curCenter = curSer.center;
+
+      chart.setOption(ovOpt, true);
+
+      if (curZoom != null) {
+        chart.setOption({
+          series: [{ id: 'map-series', zoom: curZoom, center: curCenter }],
         });
       }
-      chart.setOption(ovOpt, { notMerge: false, replaceMerge: ['map-series'] });
     }
 
     // ── Determine which province's detail panel to show ──

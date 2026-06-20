@@ -41,7 +41,8 @@ export function initTimeline(dom, store, data) {
   // Track whether we need to reset dataZoom (e.g. on RESET_ALL)
   let needsReset = true;
   function buildOption(state) {
-    const filtered = filterCases(data.cases, state);
+    const filterState = { ...state, animatingDate: null };
+    const filtered = filterCases(data.cases, filterState);
     const byRegion = aggregateByRegion(filtered);
 
     const allRegions = state.selectedRegions.length > 0

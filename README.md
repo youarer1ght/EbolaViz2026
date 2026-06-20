@@ -10,7 +10,7 @@
 git clone https://github.com/youarer1ght/EbolaViz2026.git
 cd EbolaViz2026
 python3 -m http.server 8080 -b localhost
-# 浏览器打开 http://localhost:8080
+# 浏览器打开 http://localhost:8082
 ```
 
 > 看到 5 视图网格布局 + Console 输出 `✅ EbolaViz2026 ready.` 即成功。
@@ -22,7 +22,7 @@ python3 -m http.server 8080 -b localhost
 
 ```bash
 npx serve . -p 8080
-# 浏览器打开 http://localhost:8080
+# 浏览器打开 http://localhost:8082
 ```
 
 | | `python3 -m http.server` | `npx serve .` |
@@ -35,7 +35,7 @@ npx serve . -p 8080
 | 目录列表 | 显示文件列表 | 默认显示文件列表，`-s` 启用 SPA 模式 |
 | 适用场景 | 快速预览，零配置 | 模拟静态部署环境（更接近 GitHub Pages） |
 
-`-b localhost` 确保终端输出 `http://localhost:8080` 而非无法点击的 `http://0.0.0.0:8080`。如果 Python 版本较旧不支持 `-b`，忽略即可，手动在浏览器输入 `localhost:8080`。
+`-b localhost` 确保终端输出 `http://localhost:8082` 而非无法点击的 `http://0.0.0.0:8080`。如果 Python 版本较旧不支持 `-b`，忽略即可，手动在浏览器输入 `localhost:8082`。
 
 ---
 

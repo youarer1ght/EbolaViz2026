@@ -54,7 +54,7 @@ python3 scripts/fetch_who_sitrep.py --dry-run     # Fetch WHO AFRO SitRep PDFs (
 
 # Testing
 node tests/smoke.test.js                           # Automated smoke test: all 5 views init + destroy OK
-# Open http://localhost:8080 and verify:
+# Open http://localhost:8082 and verify:
 #   - All 5 views render; heatmap shows split layout (left overview + right placeholder)
 #   - Click province on heatmap → province selected, right panel shows zoomed province + zone markers
 #   - Click zone marker on right panel → individual zone toggle
@@ -198,7 +198,7 @@ node tests/smoke.test.js          #   5 — 冒烟：5 视图 init/destroy（Moc
 对于自动化测试覆盖不到的视觉部分：
 
 1. **Data integrity**: `python3 scripts/build_real_data.py` must complete without errors
-2. **View rendering**: Open `localhost:8080`, verify all 5 views render without console errors
+2. **View rendering**: Open `localhost:8082`, verify all 5 views render without console errors
 3. **Coordination matrix**: Test all user-action rows in the coordination table above
 4. **Edge cases**: Select 0 regions → all shown; select all regions → all shown; time range at boundaries
 5. **Performance**: Window resize → all views resize smoothly; animation at 800ms/frame is stable

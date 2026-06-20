@@ -13,27 +13,10 @@
  *   Selected lines turn gold regardless of province
  */
 import { setSelectedRegions } from '../actions.js';
-import { filterCases, summarizeByRegion, stateKeysEqual } from '../utils/dataLoader.js';
-
-// Province color palette — distinct hues for visual separation
-const PROVINCE_COLORS = [
-  '#e6194b', '#3cb44b', '#4363d8', '#f58231', '#911eb4',
-  '#42d4f4', '#f032e6', '#bfef45', '#fabed4', '#469990',
-  '#dcbeff', '#9a6324', '#800000', '#000075', '#aaffc3',
-];
+import { getRegionColor } from '../utils/colors.js';
+import { filterCases, summarizeByRegion } from '../utils/dataLoader.js';
 
 export function initParallel(dom, store, data) {
-
-  // ── Build province → color index mapping (stable across renders) ──
-  const provColorMap = {};
-  let nextColor = 0;
-  function getProvinceColor(province) {
-    if (!provColorMap[province]) {
-      provColorMap[province] = PROVINCE_COLORS[nextColor % PROVINCE_COLORS.length];
-      nextColor++;
-    }
-    return provColorMap[province];
-  }
 
   // ── Build merged rows: one per region, all 5 dimensions ──
   function buildMerged(cases) {
@@ -51,9 +34,9 @@ export function initParallel(dom, store, data) {
           values: [
             demo.population_density || 0,
             demo.doctors_per_100k || 0,
+            demo.beds_per_10k || 0,
             s.totalConfirmed,
             mortality,
-            demo.beds_per_10k || 0,
           ],
         };
       });
@@ -69,9 +52,9 @@ export function initParallel(dom, store, data) {
    *   Unselected → province color, thin, opacity from mortality */
   function lineStyle(row, selectedSet) {
     if (selectedSet.has(row.region)) {
-      return { color: '#ff8f00', width: 3.5, opacity: 1 };
+      return { color: getRegionColor(row.region), width: 3.5, opacity: 1 };
     }
-    const provColor = getProvinceColor(row.province);
+    const provColor = getRegionColor(row.region);
     return { color: provColor, width: 1, opacity: mortalityOpacity(row.values[3]) };
   }
 
@@ -84,7 +67,12 @@ export function initParallel(dom, store, data) {
     const timeFiltered = filterCases(data.cases, {
       ...state, selectedRegions: [], highlightedRegions: [],
     });
-    const merged = buildMerged(timeFiltered);
+        let merged = buildMerged(timeFiltered);
+    // When regions are selected, only show those lines
+    if (state.selectedRegions.length > 0) {
+      const selSet = new Set(state.selectedRegions);
+      merged = merged.filter(row => selSet.has(row.region));
+    }
     const selectedSet = new Set(state.selectedRegions);
 
     // Per-axis max
@@ -110,9 +98,9 @@ export function initParallel(dom, store, data) {
           return `<b>${p.name}</b> <span style="color:#888;font-size:0.85em;">${prov}</span><br/>
             人口密度: ${v[0]} 人/km²<br/>
             医生: ${v[1]} 人/10万<br/>
-            确诊: ${v[2]} 例<br/>
-            死亡率: ${v[3]}%<br/>
-            床位: ${v[4]} 张/万人`;
+            床位: ${v[2]} 张/万人<br/>
+            确诊: ${v[3]} 例<br/>
+            死亡率: ${v[4]}%`;
         },
       },
       // ── Per-axis brush for range filtering ──
@@ -142,7 +130,7 @@ export function initParallel(dom, store, data) {
       //     First axis at 70px, last at containerWidth-70px, 3 middle spaced evenly.
       //     Use 'center' + offset for middle axes to handle variable width.
       graphic: (() => {
-        const LABELS = ['人口密度 (人/km²)', '医生 (人/10万)', '确诊数 (例)', '死亡率 (%)', '床位 (张/万人)'];
+        const LABELS = ['人口密度 (人/km²)', '医生 (人/10万)', '床位 (张/万人)', '确诊数 (例)', '死亡率 (%)'];
         // Positions match parallel grid: left=70px (~8.75% of ~800px chart), right=70px (~91.25%).
         // 5 axes evenly distributed between 8.75% and 91.25%.
         const positions = ['8.75%', '29.4%', '50%', '70.6%', '91.25%'];
@@ -266,7 +254,6 @@ export function initParallel(dom, store, data) {
 
   function render(state) {
     // Skip re-render if relevant state hasn't changed (e.g. hover, policy clicks)
-    if (_lastRendered && stateKeysEqual(_lastRendered, state, _PARALLEL_KEYS)) return;
     _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate, selectedRegions: state.selectedRegions };
     const hasSelection = state.selectedRegions.length > 0 || state.selectedPolicyIds.length > 0;
     // On full reset (R key): clear any active ECharts brush areas

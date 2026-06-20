@@ -1279,7 +1279,7 @@ cd /home/yin/EbolaViz2026 && python3 -m http.server 8080
 
 - [ ] **Step 2: Verify each linkage manually**
 
-Open `http://localhost:8080` in browser and check:
+Open `http://localhost:8082` in browser and check:
 
 | # | Action | Expected result | Check |
 |---|--------|----------------|:-----:|

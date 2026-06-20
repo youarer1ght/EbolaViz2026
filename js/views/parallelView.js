@@ -156,7 +156,7 @@ export function initParallel(dom, store, data) {
           top: 35,
           z: 100,
           style: {
-            text: '🎨 色=省份  |  浓淡=死亡率  |  拖拽轴线框选范围  |  点击框选区取消  |  点击线条选中  |  R 重置  |  ✕ 清除',
+            text: '拖拽轴线框选范围  |  点击框选区取消  |  点击线条选中  |  R 重置  |  ✕ 清除',
             fontSize: 10, fill: '#aaa',
             fontFamily: '-apple-system, "Noto Sans SC", sans-serif',
           },

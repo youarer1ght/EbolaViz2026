@@ -2,6 +2,9 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026 年埃博拉疫情时空可视化分析系统</title>
   <link rel="stylesheet" href="css/style.css">
@@ -15,7 +18,10 @@
       <div id="controls">
         <button id="btn-play" title="播放动画">▶ 播放</button>
         <button id="btn-pause" disabled title="暂停">⏸ 暂停</button>
+        <button id="btn-prev" title="上一天" disabled>◀ 上一天</button>
+        <button id="btn-next" title="下一天" disabled>▶ 下一天</button>
         <button id="btn-reset" title="重置所有筛选">↺ 重置</button>
+        <input type="date" id="date-picker" title="跳转到指定日期" style="padding:3px 6px;font-size:0.8rem;border:1px solid #ccc;border-radius:4px;background:#fff;">
         <span id="current-date"></span>
         <span id="data-source" style="font-size:0.7rem;color:#999;margin-left:8px;"></span>
       </div>
@@ -38,7 +44,7 @@
 
     <!-- View 2: Timeline -->
     <section id="view-timeline" class="chart-container">
-      <h2>② 时序趋势图 <span style="font-size:0.7rem;color:#999;">(dataZoom 刷选时间段)</span></h2>
+      <h2>② 时序趋势图</h2>
       <div id="chart-timeline" class="chart"></div>
     </section>
 
@@ -61,6 +67,6 @@
     </section>
   </div>
 
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/main.js?t=20260620"></script>
 </body>
 </html>

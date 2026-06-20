@@ -13,7 +13,7 @@ import {
 } from './actions.js';
 import { loadAllData, getTimeRange } from './utils/dataLoader.js';
 import { initHeatmap }  from './views/heatmapView.js';
-import { initTimeline } from './views/timelineView.js';
+import { initTimeline } from './views/timelineView.js?v=20260620';
 import { initParallel } from './views/parallelView.js';
 import { initPolicy }   from './views/policyView.js';
 import { initDetail }   from './views/detailView.js';
@@ -57,7 +57,10 @@ async function main() {
   let animTimer = null;
   const btnPlay  = document.getElementById('btn-play');
   const btnPause = document.getElementById('btn-pause');
+  const btnPrev  = document.getElementById('btn-prev');
+  const btnNext  = document.getElementById('btn-next');
   const btnReset = document.getElementById('btn-reset');
+  const datePicker = document.getElementById('date-picker');
   const dateDisplay = document.getElementById('current-date');
 
   function getUniqueDates() {
@@ -65,8 +68,20 @@ async function main() {
     return [...new Set(data.cases.map(c => c.date))].sort();
   }
 
+  const allDates = getUniqueDates();
+  if (datePicker) {
+    datePicker.min = allDates[0];
+    datePicker.max = allDates[allDates.length - 1];
+  }
+
   function stopAnimation() {
     if (animTimer) { clearInterval(animTimer); animTimer = null; }
+  }
+
+  function navigateTo(date) {
+    stopAnimation();
+    if (store.getState().isPlaying) store.dispatch(setIsPlaying(false));
+    store.dispatch(setAnimatingDate(date));
   }
 
   btnPlay.addEventListener('click', () => {
@@ -101,14 +116,39 @@ async function main() {
     store.dispatch(resetAll(fullTimeRange));
   });
 
-  // Update button states
+  // ── Navigation buttons ──
+  btnPrev.addEventListener('click', () => {
+    const cur = store.getState().animatingDate;
+    if (!cur) return;
+    const idx = allDates.indexOf(cur);
+    if (idx > 0) navigateTo(allDates[idx - 1]);
+  });
+
+  btnNext.addEventListener('click', () => {
+    const cur = store.getState().animatingDate;
+    const idx = cur ? allDates.indexOf(cur) : -1;
+    const nextIdx = idx >= 0 ? idx + 1 : 0;
+    if (nextIdx < allDates.length) navigateTo(allDates[nextIdx]);
+  });
+
+  datePicker.addEventListener('change', () => {
+    if (datePicker.value) navigateTo(datePicker.value);
+  });
+
+  // Update button states and date display
   store.subscribe(state => {
     if (btnPlay)  btnPlay.disabled  = state.isPlaying;
     if (btnPause) btnPause.disabled = !state.isPlaying;
+    const hasDate = !!state.animatingDate;
+    if (btnPrev) btnPrev.disabled = !hasDate;
+    if (btnNext) btnNext.disabled = !hasDate;
     if (dateDisplay) {
-      dateDisplay.textContent = state.animatingDate
+      dateDisplay.textContent = hasDate
         ? `📍 当前: ${state.animatingDate}`
         : (state.isPlaying ? '▶ 播放中...' : '');
+    }
+    if (datePicker && state.animatingDate && datePicker.value !== state.animatingDate) {
+      datePicker.value = state.animatingDate;
     }
   });
 
@@ -127,6 +167,14 @@ async function main() {
         if (store.getState().isPlaying) btnPause.click();
         else btnPlay.click();
         break;
+      case 'ArrowLeft': // ← previous day
+        e.preventDefault();
+        if (btnPrev && !btnPrev.disabled) btnPrev.click();
+        break;
+      case 'ArrowRight': // → next day
+        e.preventDefault();
+        if (btnNext && !btnNext.disabled) btnNext.click();
+        break;
       case 'r': case 'R': // R = reset
         if (!e.ctrlKey && !e.metaKey) btnReset.click();
         break;
@@ -134,7 +182,7 @@ async function main() {
   });
 
   console.log('✅ EbolaViz2026 ready.');
-  console.log('   💡 空格键播放/暂停 | R键重置 | dataZoom刷选时间段 | 点击地图区域筛选');
+  console.log('   💡 空格键播放/暂停 | ←→ 上/下一天 | R键重置 | dataZoom刷选时间段 | 点击地图区域筛选');
   console.log('   🔧 调试: window.__store.getState() | window.__data');
 }
 

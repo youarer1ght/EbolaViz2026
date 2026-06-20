@@ -23,7 +23,7 @@
  * encoding and don't disappear.
  */
 import { setSelectedRegions, setHighlightedRegions } from '../actions.js';
-import { filterCases, summarizeByProvince, summarizeByRegion, stateKeysEqual, resolveAdm1 } from '../utils/dataLoader.js';
+import { filterCases, summarizeByProvince, summarizeByRegion, resolveAdm1, stateKeysEqual } from '../utils/dataLoader.js';
 import { getRegionColor } from '../utils/colors.js';
 
 // Approximate health zone coordinates (for scatter/bubble fallback)

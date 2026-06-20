@@ -7,7 +7,7 @@
  *   Overview: single aggregate line = sum of all visible regions
  */
 import { setTimeRange } from '../actions.js';
-import { filterCases, aggregateByRegion, getTimeRange, stateKeysEqual } from '../utils/dataLoader.js';
+import { filterCases, aggregateByRegion, getTimeRange } from '../utils/dataLoader.js';
 import { getRegionColor } from '../utils/colors.js';
 
 export function initTimeline(dom, store, data) {
@@ -193,8 +193,6 @@ export function initTimeline(dom, store, data) {
     _prevOverview = overviewMode;
 
     // Skip re-render when nothing relevant changed
-    if (!modeChanged && _lastRendered && _lastRendered._overview === overviewMode
-        && stateKeysEqual(_lastRendered, state, _TIMELINE_KEYS)) return;
     _lastRendered = { timeRange: state.timeRange, animatingDate: state.animatingDate,
       selectedRegions: state.selectedRegions, highlightedRegions: state.highlightedRegions,
       _resetId: state._resetId, _overview: overviewMode };

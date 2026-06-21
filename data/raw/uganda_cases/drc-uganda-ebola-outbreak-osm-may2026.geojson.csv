@@ -1,0 +1,120 @@
+Field,Label,Value
+id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+title,Title of Dataset,DRC & Uganda - Ebola Outbreak - 2026 - OpenStreetMap Data
+name,Dataset URL,drc-uganda-ebola-outbreak-osm-may-2026
+notes,Description,"This dataset contains OpenStreetMap data exported from the HOTOSM disaster mapping response to the Ebola outbreak in Democratic Republic of the Congo and Uganda started in May 2026 - Glide number: EP-2026-000071-COD.  In May 2026, an epidemic of Ebola disease was reported in the Ituri Province of the Democratic Republic of the Congo (DRC). On 15 May 2026, the Ministry of Public Health, Hygiene and Social Welfare, DRC, officially declared the 17th Ebola Disease outbreak in DRC. Imported cases from Ituri have been reported in the capital city of Kinshasa and its North Kivu Province, as well as in Uganda's capital city of Kampala.  The data has been contributed by volunteers through the Humanitarian OpenStreetMap Team's Tasking Manager and represents <strong>buildings, roads, residential areas and settlement points (i.e. place) in the affected area</strong>. It is updated every week or more frequently as mapping progresses. Subscribe to this dataset to be notified of any new updates.  HOT worked closely with Médecins Sans Frontières <a href=""https://www.msf.org/"">(MSF)</a> to define priority areas and features.  Tasking Manager Projects can be found <a href=""https://tasks.hotosm.org/explore?campaign=DRC+Ebola+2026&amp;omitMapResults=1&amp;status=PUBLISHED%2CARCHIVED%2CDRAFT&amp;orderBy=id&amp;orderByType=DESC"">here</a>. See the HOTOSM activation page <a href=""https://wiki.openstreetmap.org/wiki/Humanitarian_OSM_Team/Open_Mapping_Hub_Eastern_and_Southern_Africa/DRC_Ebola_2026"">here</a> for more details.  As of 10th of June, 270 OSM contributors supported this activation."
+dataset_source,Source,OpenStreetMap contributors
+organization,Contributor,Humanitarian OpenStreetMap Team (HOT)
+dataset_date,Reference Period,[2026-05-21T00:00:00 TO 2026-06-10T23:59:59]
+last_modified,Updated,2026-06-10T14:45:29.973067
+data_update_frequency,Expected Update Frequency,Every week
+groups,Location,"Democratic Republic of the Congo, Uganda"
+license_title,License,Open Database License (ODC-ODbL)
+methodology,Methodology,Other
+methodology_other,Define Methodology,Crowdsourced disaster mapping.
+caveats,Caveats/Comments,
+tags,Tags,"crisis-ebola-bundibugyo-virus-disease, facilities-infrastructure, geodata, natural disasters, populated places-settlements, roads, transportation"
+resource_1_created,Created,2026-05-21T15:09:04.387961
+resource_1_description,Description,"Buildings (GeoJSON): OpenStreetMap buildings data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_1_format,File Format,GeoJSON
+resource_1_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/4d7fcf54-9aa5-4da4-abf6-eb8d909ccf0b/download/drc_uganda_ebola_buildings_10june2026_geojson.zip
+resource_1_id,Resource ID,4d7fcf54-9aa5-4da4-abf6-eb8d909ccf0b
+resource_1_last_modified,Updated,2026-06-10T14:45:05.169214
+resource_1_metadata_modified,Metadata Updated,2026-06-10T14:45:19.802759
+resource_1_microdata,Microdata,FALSE
+resource_1_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_1_resource_type,Resource Type,file.upload
+resource_1_name,Resource Name,DRC_Uganda_Ebola_Buildings_10June2026_geojson.zip
+resource_1_mimetype,MIME Type,application/zip
+resource_1_size,Size,50.6M
+resource_2_created,Created,2026-05-22T12:15:54.976462
+resource_2_description,Description,"Buildings (Shapefile): OpenStreetMap buildings data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_2_format,File Format,SHP
+resource_2_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/8dff808f-43ab-44c7-ad96-16c66d86f419/download/drc_uganda_ebola_buildings_10june2026_shp.zip
+resource_2_id,Resource ID,8dff808f-43ab-44c7-ad96-16c66d86f419
+resource_2_last_modified,Updated,2026-06-10T14:45:11.352299
+resource_2_metadata_modified,Metadata Updated,2026-06-10T14:45:32.219735
+resource_2_microdata,Microdata,FALSE
+resource_2_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_2_resource_type,Resource Type,file.upload
+resource_2_name,Resource Name,DRC_Uganda_Ebola_Buildings_10June2026_shp.zip
+resource_2_mimetype,MIME Type,application/zip
+resource_2_size,Size,95.7M
+resource_3_created,Created,2026-05-22T12:15:57.515800
+resource_3_description,Description,"Roads (GeoJSON): OpenStreetMap roads data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_3_format,File Format,GeoJSON
+resource_3_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/9cf25650-0f19-483d-ab4b-3bab02dba19c/download/drc_uganda_ebola_roads_10june2026_geojson.zip
+resource_3_id,Resource ID,9cf25650-0f19-483d-ab4b-3bab02dba19c
+resource_3_last_modified,Updated,2026-06-10T14:45:14.652669
+resource_3_metadata_modified,Metadata Updated,2026-06-10T14:45:23.714162
+resource_3_microdata,Microdata,FALSE
+resource_3_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_3_resource_type,Resource Type,file.upload
+resource_3_name,Resource Name,DRC_Uganda_Ebola_Roads_10June2026_geojson.zip
+resource_3_mimetype,MIME Type,application/zip
+resource_3_size,Size,7.7M
+resource_4_created,Created,2026-05-22T12:15:59.288578
+resource_4_description,Description,"Roads (Shapefile): OpenStreetMap roads data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_4_format,File Format,SHP
+resource_4_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/4168553d-651d-4161-96f8-b02933f3740d/download/drc_uganda_ebola_roads_10june2026_shp.zip
+resource_4_id,Resource ID,4168553d-651d-4161-96f8-b02933f3740d
+resource_4_last_modified,Updated,2026-06-10T14:45:17.374795
+resource_4_metadata_modified,Metadata Updated,2026-06-10T14:45:26.715692
+resource_4_microdata,Microdata,FALSE
+resource_4_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_4_resource_type,Resource Type,file.upload
+resource_4_name,Resource Name,DRC_Uganda_Ebola_Roads_10June2026_shp.zip
+resource_4_mimetype,MIME Type,application/zip
+resource_4_size,Size,13.3M
+resource_5_created,Created,2026-05-22T12:16:01.694697
+resource_5_description,Description,"Residential areas - Land use (GeoJSON): OpenStreetMap residential areas data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_5_format,File Format,GeoJSON
+resource_5_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/793aa4a1-ec6f-4fe5-ac85-a9ff4e8468b1/download/drc_uganda_ebola_residential_10june2026_geojson.zip
+resource_5_id,Resource ID,793aa4a1-ec6f-4fe5-ac85-a9ff4e8468b1
+resource_5_last_modified,Updated,2026-06-10T14:45:20.555272
+resource_5_metadata_modified,Metadata Updated,2026-06-10T14:45:29.338917
+resource_5_microdata,Microdata,FALSE
+resource_5_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_5_resource_type,Resource Type,file.upload
+resource_5_name,Resource Name,DRC_Uganda_Ebola_Residential_10June2026_geojson.zip
+resource_5_mimetype,MIME Type,application/zip
+resource_5_size,Size,4.6M
+resource_6_created,Created,2026-05-22T12:16:03.271345
+resource_6_description,Description,"Residential areas - Land use (Shapefile): OpenStreetMap residential areas data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_6_format,File Format,SHP
+resource_6_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/ae276e0a-3e27-46b6-b015-932c598ce9db/download/drc_uganda_ebola_residential_10june2026_shp.zip
+resource_6_id,Resource ID,ae276e0a-3e27-46b6-b015-932c598ce9db
+resource_6_last_modified,Updated,2026-06-10T14:45:24.517022
+resource_6_metadata_modified,Metadata Updated,2026-06-10T14:45:32.889534
+resource_6_microdata,Microdata,FALSE
+resource_6_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_6_resource_type,Resource Type,file.upload
+resource_6_name,Resource Name,DRC_Uganda_Ebola_Residential_10June2026_shp.zip
+resource_6_mimetype,MIME Type,application/zip
+resource_6_size,Size,7.7M
+resource_7_created,Created,2026-05-22T12:16:05.261315
+resource_7_description,Description,"Settlements - Places (GeoJSON): OpenStreetMap settlements data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_7_format,File Format,GeoJSON
+resource_7_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/8be6c794-328e-4e4c-9db2-8b58e6e7bc4e/download/drc_uganda_ebola_settlements_10june2026_geojson.zip
+resource_7_id,Resource ID,8be6c794-328e-4e4c-9db2-8b58e6e7bc4e
+resource_7_last_modified,Updated,2026-06-10T14:45:27.487418
+resource_7_metadata_modified,Metadata Updated,2026-06-10T14:45:55.683779
+resource_7_microdata,Microdata,FALSE
+resource_7_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_7_resource_type,Resource Type,file.upload
+resource_7_name,Resource Name,DRC_Uganda_Ebola_Settlements_10June2026_geojson.zip
+resource_7_mimetype,MIME Type,application/zip
+resource_7_size,Size,257.4K
+resource_8_created,Created,2026-05-22T12:16:06.400143
+resource_8_description,Description,"Settlements - Places (Shapefile): OpenStreetMap settlements data in the Ituri Province, Democratic Republic of the Congo, including updates from the 2026 Ebola disaster mapping activation (as of 10 June 2026)."
+resource_8_format,File Format,SHP
+resource_8_download_url,Download URL,https://data.humdata.org/dataset/8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66/resource/e5b9db59-03a3-4f0b-b02b-455478717a63/download/drc_uganda_ebola_settlements_10june2026_shp.zip
+resource_8_id,Resource ID,e5b9db59-03a3-4f0b-b02b-455478717a63
+resource_8_last_modified,Updated,2026-06-10T14:45:29.973067
+resource_8_metadata_modified,Metadata Updated,2026-06-10T14:45:36.111645
+resource_8_microdata,Microdata,FALSE
+resource_8_dataset_id,Dataset ID,8533ecce-8f2c-4f40-ba6f-34ffbf9c0d66
+resource_8_resource_type,Resource Type,file.upload
+resource_8_name,Resource Name,DRC_Uganda_Ebola_Settlements_10June2026_shp.zip
+resource_8_mimetype,MIME Type,application/zip
+resource_8_size,Size,439.5K
